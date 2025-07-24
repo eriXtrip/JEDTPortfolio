@@ -25,7 +25,7 @@ Hi! I'm JEDT, a developer passionate about building beautiful, functional web ap
 - Light/Dark mode toggle
 - Animated backgrounds and transitions
 - Responsive navigation for all devices
-- Hero, About, Skills, Projects, and Contact sections
+- Hero, About, Certificates, Works, Pubmats, and Contact sections
 - Project showcase with images and links
 - Contact form with toast notifications
 
@@ -48,11 +48,6 @@ npm run dev
 
 Visit [http://localhost:5173](http://localhost:5173) to view the site locally.
 
----
-
-## 🖼️ Screenshots
-
-> Add screenshots of your favorite sections here!
 
 ---
 
