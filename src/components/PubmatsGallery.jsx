@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Pubmat1 from "../assets/pubmats/Adolescent Health Awareness 3x4.png";
 import Pubmat2 from "../assets/pubmats/APINO.png";
-import Pubmat3 from "../assets/pubmats/JuvenileJustice3x4.png";
+import Pubmat3 from "../assets/pubmats/HappyBirthday.jpg";
 import Pubmat4 from "../assets/pubmats/Daily Lesson Log (1).jpg";
 import Pubmat5 from "../assets/pubmats/Christening.png";
 import Pubmat6 from "../assets/pubmats/MAGNACARTA3x4.png";
 import Pubmat7 from "../assets/pubmats/Child's Rights and Responsibilities.png";
 import Pubmat8 from "../assets/pubmats/GENDER  SENSITIVITY TRAINING.png";
 import Pubmat9 from "../assets/pubmats/GravelandSandConcreteHollowblocks3x4.png";
-import Pubmat10 from "../assets/pubmats/HappyBirthday.jpg";
+import Pubmat10 from "../assets/pubmats/JuvenileJustice3x4.png";
+import Pubmat11 from "../assets/pubmats/PRAISE.jpg";
 
 const pubmats = [
   { src: Pubmat1, alt: "Adolescent Health Awareness" },
@@ -22,6 +23,7 @@ const pubmats = [
   { src: Pubmat8, alt: "Gender Sensitivity Training" },
   { src: Pubmat9, alt: "Gravel and Sand Concrete Hollowblocks" },
   { src: Pubmat10, alt: "Happy Birthday" },
+  { src: Pubmat11, alt: "PRAISE" },
 ];
 
 export const PubmatsGallery = () => {
