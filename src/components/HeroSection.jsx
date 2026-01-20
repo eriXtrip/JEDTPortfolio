@@ -34,7 +34,7 @@ export const HeroSection = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-              Results-driven IT graduate with hands-on technical support experience and graphic design expertise seeking to leverage my problem-solving skills, 
+              Results-driven IT undergraduate with hands-on technical support experience and graphic design expertise seeking to leverage my problem-solving skills, 
               creativity, and adaptability in a professional IT role. 
             </p>
 

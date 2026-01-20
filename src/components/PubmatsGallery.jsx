@@ -20,6 +20,8 @@ const pubmats = [
   { src: Pubmat1, alt: "Adolescent Health Awareness" },
   { src: Pubmat2, alt: "APINO" },
   { src: Pubmat3, alt: "Juvenile Justice" },
+  { src: Pubmat14, alt: "FEEDING ACTIVITY"},
+  { src: Pubmat15, alt: "Livelihood Training"},
   { src: Pubmat4, alt: "Daily Lesson Log" },
   { src: Pubmat5, alt: "Christening" },
   { src: Pubmat6, alt: "MAGNA CARTA" },
@@ -30,8 +32,6 @@ const pubmats = [
   { src: Pubmat11, alt: "PRAISE" },
   { src: Pubmat12, alt: "Year-End Assessment"},
   { src: Pubmat13, alt: "Values Formation Session"},
-  { src: Pubmat14, alt: "FEEDING ACTIVITY"},
-  { src: Pubmat15, alt: "Livelihood Training"},
 ];
 
 export const PubmatsGallery = () => {
