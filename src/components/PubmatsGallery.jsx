@@ -11,6 +11,10 @@ import Pubmat8 from "../assets/pubmats/GENDER  SENSITIVITY TRAINING.png";
 import Pubmat9 from "../assets/pubmats/GravelandSandConcreteHollowblocks3x4.png";
 import Pubmat10 from "../assets/pubmats/JuvenileJustice3x4.png";
 import Pubmat11 from "../assets/pubmats/PRAISE.jpg";
+import Pubmat12 from "../assets/pubmats/YearEndAssessment.png";
+import Pubmat13 from "../assets/pubmats/ValuesFormationSession 3000x5000.jpg";
+import Pubmat14 from "../assets/pubmats/FEEDING ACTIVITY 3000X5000.jpg";
+import Pubmat15 from "../assets/pubmats/Barangay 28 Victory Village North Council Barangay Council For The Protection Of Children.jpg";
 
 const pubmats = [
   { src: Pubmat1, alt: "Adolescent Health Awareness" },
@@ -24,6 +28,10 @@ const pubmats = [
   { src: Pubmat9, alt: "Gravel and Sand Concrete Hollowblocks" },
   { src: Pubmat10, alt: "Happy Birthday" },
   { src: Pubmat11, alt: "PRAISE" },
+  { src: Pubmat12, alt: "Year-End Assessment"},
+  { src: Pubmat13, alt: "Values Formation Session"},
+  { src: Pubmat14, alt: "FEEDING ACTIVITY"},
+  { src: Pubmat15, alt: "Livelihood Training"},
 ];
 
 export const PubmatsGallery = () => {
