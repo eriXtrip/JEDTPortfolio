@@ -45,7 +45,7 @@ export const HeroSection = () => {
               </a>
 
               <a
-                href="https://jedtojtthingss.vercel.app/"
+                href="https://jedtojtthingssss.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-2 text-sm   rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition"
