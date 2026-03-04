@@ -7,7 +7,7 @@ export const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-4"
     >
-      <div className="container max-w-7xl mx-auto z-10 mt-1.5">
+      <div className="container max-w-7xl mx-auto z-10 sm:mt-1.5 mt-24">
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between space-y-8 lg:space-y-0 lg:space-x-12">
           {/* Profile Image */}
           <div className="flex-shrink-0 ">
@@ -20,7 +20,6 @@ export const HeroSection = () => {
 
           {/* Contents */}
           <div className="flex-1 text-left space-y-8">
-
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               <span className="opacity-0 animate-fade-in"> Hi, I'm</span>
               <span className="text-primary opacity-0 animate-fade-in-delay-1">
@@ -34,13 +33,24 @@ export const HeroSection = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-              Results-driven IT undergraduate with hands-on technical support experience and graphic design expertise seeking to leverage my problem-solving skills, 
-              creativity, and adaptability in a professional IT role. 
+              Results-driven IT undergraduate with hands-on technical support
+              experience and graphic design expertise seeking to leverage my
+              problem-solving skills, creativity, and adaptability in a
+              professional IT role.
             </p>
 
-            <div className="pt-2 opacity-0 animate-fade-in-delay-4">
+            <div className="pt-2 opacity-0 animate-fade-in-delay-4 flex gap-4">
               <a href="#works" className="cosmic-button">
                 View My Work
+              </a>
+
+              <a
+                href="https://jedtojtthingss.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 text-sm   rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition"
+              >
+                Read My Blog
               </a>
             </div>
           </div>
