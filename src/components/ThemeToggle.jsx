@@ -10,8 +10,11 @@ export const ThemeToggle = () => {
     if (storedTheme === "dark") {
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
       localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+      document.documentElement.setAttribute("data-theme", "light");
       setIsDarkMode(false);
     }
   }, []);
@@ -19,10 +22,12 @@ export const ThemeToggle = () => {
   const toggleTheme = () => {
     if (isDarkMode) {
       document.documentElement.classList.remove("dark");
+      document.documentElement.setAttribute("data-theme", "light");
       localStorage.setItem("theme", "light");
       setIsDarkMode(false);
     } else {
       document.documentElement.classList.add("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
       localStorage.setItem("theme", "dark");
       setIsDarkMode(true);
     }
@@ -32,14 +37,15 @@ export const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       className={cn(
-        "fixed top-4 right-2 z-50 p-2 rounded-full transition-colors duration-300",
-        "focus:outlin-hidden"
+        "p-2.5 rounded-2xl bg-neutral-100/60 dark:bg-neutral-900/60 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 border border-neutral-200/50 dark:border-neutral-800/60 text-neutral-600 dark:text-neutral-300 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center shadow-2xs backdrop-blur-xs",
+        "focus:outline-none"
       )}
+      aria-label="Toggle Theme"
     >
       {isDarkMode ? (
-        <Sun className="h-6 w-6 text-yellow-300" />
+        <Sun className="h-5 w-5 text-amber-500 animate-pulse" />
       ) : (
-        <Moon className="h-6 w-6 text-blue-900" />
+        <Moon className="h-5 w-5 text-indigo-500" />
       )}
     </button>
   );

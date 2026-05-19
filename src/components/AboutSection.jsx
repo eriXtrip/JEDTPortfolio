@@ -1,95 +1,100 @@
-import { Smartphone, Code, Monitor } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const AboutSection = () => {
+  const steps = [
+    {
+      number: "Step 1",
+      title: "Research & Discovery",
+      description:
+        "Understanding project constraints, target audience expectations, and technical goals to build a reliable strategic blueprint.",
+    },
+    {
+      number: "Step 2",
+      title: "Architecture & Wireframing",
+      description:
+        "Drafting responsive layouts, content structure, and sleek user journeys using minimalist wireframes before diving into code.",
+    },
+    {
+      number: "Step 3",
+      title: "Pixel-Perfect Development",
+      description:
+        "Writing clean, semantic, and highly performant code with React and Tailwind CSS, prioritizing modularity and page speed.",
+    },
+    {
+      number: "Step 4",
+      title: "Testing & Deployment",
+      description:
+        "Validating visual design integrity, responsive behavior, and accessibility across diverse devices and screens before going live.",
+    },
+  ];
+
   return (
-    <section id="about" className="py-24 px-4 relative">
-      {" "}
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          About <span className="text-primary"> Me</span>
-        </h2>
+    <section id="about" className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative">
+      <div className="container max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* Left Column: Heading and Background Summary */}
+          <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-32">
+            <div className="space-y-4">
+              <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
+                My Framework
+              </span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+                About My <br />
+                <span className="text-neutral-500 dark:text-neutral-400">Creative Process</span>
+              </h2>
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">
-              Versatile Developer & Creative Designer
-            </h3>
+            <div className="space-y-6 text-neutral-600 dark:text-neutral-400 leading-relaxed text-base">
+              <p>
+                I am an IT student specializing in Frontend Development and Graphic Design. 
+                My focus lies at the intersection of technical engineering and visual aesthetic—building fast, scalable, and responsive web systems that are a joy to use.
+              </p>
+              <p>
+                Whether building responsive layouts or designing publication materials, I combine a systematic analytical approach with a sharp, modern eye for layout, grids, and minimalist typography.
+              </p>
+            </div>
 
-            <p className="text-muted-foreground text-justify">
-              I have experience with a wide range of programming languages and frameworks, 
-              including React Native, Node.js, HTML, CSS, PHP, C++, C#, Java, and Python. 
-              I also work with tools such as MySQL, SQLite, and applying techniques like Exploratory Data Analysis (EDA).
-            </p>
-
-            <p className="text-muted-foreground text-justify">
-              I have developed web-app, software applications and Android application, 
-              including e-learning application, e-commerce platforms, enrollment systems, and management tools.
-            </p>
-
-            <p className="text-muted-foreground text-justify">
-              Additionally, I design publication materials (pubmats) for promotions and events using tools like Canva, Adobe Photoshop, and Illustrator.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+            <div className="flex flex-wrap gap-4 pt-4">
               <a href="#contact" className="cosmic-button">
-                {" "}
                 Get In Touch
               </a>
-
               <a
                 href="https://drive.google.com/uc?id=1J_SBIoSFEHiO2UaC7oEj7di7jeEdQ8XC&export=download"
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+                className="outline-button"
               >
-                Download CV
+                Download CV <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Smartphone className="h-6 w-6 text-primary" />
+          {/* Right Column: Timeline / Stepper Process */}
+          <div className="lg:col-span-7 space-y-12">
+            <div className="relative pl-6 md:pl-8 border-l border-neutral-200 dark:border-neutral-800 space-y-12">
+              {steps.map((step, idx) => (
+                <div key={idx} className="relative group text-left">
+                  {/* Circle dot on the border */}
+                  <span className="absolute -left-[31px] md:-left-[39px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white transition-all duration-300 group-hover:scale-125" />
+                  
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                      {step.number}
+                    </span>
+                    <h3 className="text-xl font-bold text-neutral-900 dark:text-white transition-colors duration-200 group-hover:text-neutral-500 dark:group-hover:text-neutral-400">
+                      {step.title}
+                    </h3>
+                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">E-Learning App</h4>
-                  <p className="text-muted-foreground">
-                    Developed an interactive e-learning app to facilitate online education and enhance student engagement.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">E-Commerce Web App</h4>
-                  <p className="text-muted-foreground">
-                    Developed a full-featured online store application for seamless product browsing, shopping, and checkout.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Monitor className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">Rental Management Program</h4>
-                  <p className="text-muted-foreground">
-                    Developed an executable application to streamline and manage rental business operations efficiently.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 };
+

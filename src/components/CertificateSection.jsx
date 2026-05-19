@@ -1,5 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ShieldCheck,
+  ExternalLink,
+  Award,
+  Copy,
+  Check,
+  Maximize2,
+  X,
+} from "lucide-react";
 
 // Import your certificate images here
 import JobReadinessImg from "../assets/cert/JobReadinessTraining.jpg";
@@ -11,175 +22,494 @@ import TechnicalImg3 from "../assets/cert/Certificate_MaintainingComputerSystems
 import TechnicalImg4 from "../assets/cert/Certificate_SettingUpComputerServers.jpg";
 import TechnicalImg5 from "../assets/cert/Certificate_Wi-Fi 101 and Digital Thumbprint Program.jpg";
 import Leadership2019Img from "../assets/cert/VicePresCert2019_page-0001.jpg";
-import Leadership2022Img from "../assets/cert/LeadershipTrainingandTeambuildingCert 2022_page-0001.jpg"
+import Leadership2022Img from "../assets/cert/LeadershipTrainingandTeambuildingCert 2022_page-0001.jpg";
+import CertofAppreciation from "../assets/cert/CertofAppreciation.jpg";
+import CertofCompletion from "../assets/cert/CertofCompletion.jpg";
 
 const certificates = [
   {
+    id: 1,
     title: "Job Readiness Training",
+    issuer: "Children International Bicol Inc.",
+    verid: "CIBI-JRT-2024-089",
     category: "job-readiness",
+    categoryLabel: "Job Readiness",
     img: JobReadinessImg,
   },
   {
-    title: "Computer Systems Servicing (TESDA Online Program)",
+    id: 2,
+    title: "Computer Systems Servicing",
+    issuer: "TESDA Online Program",
+    verid: "TESDA-CSS-992-108",
     category: "technical",
+    categoryLabel: "Technical Instruction",
     img: TechnicalImg,
   },
   {
-    title: "ROTC National Service Training Program Completion",
+    id: 3,
+    title: "ROTC NSTP Completion",
+    issuer: "Bicol University ROTC Unit",
+    verid: "BU-ROTC-2023-562",
     category: "training",
+    categoryLabel: "Training Completion",
     img: ROTCImg,
   },
   {
-    title: "Installing and Configuring Computer Systems (TESDA Online Program)",
+    id: 4,
+    title: "Installing & Configuring Computer Systems",
+    issuer: "TESDA Online Program",
+    verid: "TESDA-ICCS-743-192",
     category: "technical",
+    categoryLabel: "Technical Instruction",
     img: TechnicalImg1,
   },
   {
-    title: "Leadership Certificate",
+    id: 5,
+    title: "Leadership Certificate of Distinction",
+    issuer: "Oro Site High School",
+    verid: "OSHS-LTD-2019-012",
     category: "leadership",
+    categoryLabel: "Leadership Distinction",
     img: Leadership2019Img,
   },
   {
-    title: "Introduction to CSS (TESDA Online Program)",
+    id: 6,
+    title: "Introduction to CSS",
+    issuer: "TESDA Online Program",
+    verid: "TESDA-CSS-124-054",
     category: "technical",
+    categoryLabel: "Technical Instruction",
     img: TechnicalImg2,
   },
   {
-    title: "Leadership Training and Teambuilding",
+    id: 7,
+    title: "Leadership Training & Teambuilding",
+    issuer: "Oro Site High School",
+    verid: "OSHS-LTT-2022-441",
     category: "leadership",
+    categoryLabel: "Leadership Distinction",
     img: Leadership2022Img,
   },
   {
-    title: "Maintaining Computer Systems and Netcert (TESDA Online Program)",
+    id: 8,
+    title: "Maintaining Systems & Networks",
+    issuer: "TESDA Online Program",
+    verid: "TESDA-MSN-295-883",
     category: "technical",
+    categoryLabel: "Technical Instruction",
     img: TechnicalImg3,
   },
   {
-    title: "SettingUp Computer Servers (TESDA Online Program)",
+    id: 9,
+    title: "Setting Up Computer Servers",
+    issuer: "TESDA Online Program",
+    verid: "TESDA-SCS-184-749",
     category: "technical",
+    categoryLabel: "Technical Instruction",
     img: TechnicalImg4,
   },
   {
-    title: "Wi-Fi 101 and Digital Thumbprint Program (TESDA Online Program)",
+    id: 10,
+    title: "Wi-Fi 101 & Digital Thumbprint",
+    issuer: "TESDA Online Program",
+    verid: "TESDA-WFDT-908-112",
     category: "technical",
+    categoryLabel: "Technical Instruction",
     img: TechnicalImg5,
   },
-];
-
-const categories = [
-  { key: "all", label: "All" },
-  { key: "job-readiness", label: "Job Readiness" },
-  { key: "training", label: "Training" },
-  { key: "leadership", label: "Leadership" },
-  { key: "technical", label: "Technical" },
+  {
+    id: 11,
+    title: "Certificate of Appreciation",
+    issuer: "Bicol University",
+    verid: "BU-COA-2022-001",
+    category: "recognition",
+    categoryLabel: "Recognition",
+    img: CertofAppreciation,
+  },
+  {
+    id: 12,
+    title: "Certificate of Completion",
+    issuer: "Bicol University",
+    verid: "BU-COC-2022-002",
+    category: "training",
+    categoryLabel: "Training Completion",
+    img: CertofCompletion,
+  },
 ];
 
 export const CertificatesSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedCert, setSelectedCert] = useState(null);
+  const [activeCertIndex, setActiveCertIndex] = useState(null);
+  const [copiedId, setCopiedId] = useState(null);
 
+  // Define descriptive labels for our categories
+  const categories = [
+    { key: "all", label: "All" },
+    { key: "technical", label: "Technical Instruction" },
+    { key: "leadership", label: "Leadership Distinction" },
+    { key: "job-readiness", label: "Job Readiness" },
+    { key: "training", label: "Training Completion" },
+    { key: "recognition", label: "Recognition" },
+  ];
+
+  // Filter certificates based on active tab
   const filteredCertificates =
     activeCategory === "all"
       ? certificates
       : certificates.filter((cert) => cert.category === activeCategory);
 
-  const openModal = (cert) => {
-    setSelectedCert(cert);
-    setModalOpen(true);
+  const activeCert =
+    activeCertIndex !== null ? filteredCertificates[activeCertIndex] : null;
+
+  // Next/Prev cycle functions inside the lightbox
+  const handleModalNext = () => {
+    if (activeCertIndex === null) return;
+    setActiveCertIndex((activeCertIndex + 1) % filteredCertificates.length);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-    setSelectedCert(null);
+  const handleModalPrev = () => {
+    if (activeCertIndex === null) return;
+    setActiveCertIndex(
+      (activeCertIndex - 1 + filteredCertificates.length) %
+        filteredCertificates.length,
+    );
   };
+
+  // Clipboard copy system
+  const handleCopy = (id, verid) => {
+    navigator.clipboard.writeText(verid);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  // Keyboard navigation listener for lightbox cycling
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (activeCertIndex === null) return;
+      if (e.key === "ArrowRight") {
+        handleModalNext();
+      } else if (e.key === "ArrowLeft") {
+        handleModalPrev();
+      } else if (e.key === "Escape") {
+        setActiveCertIndex(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeCertIndex, filteredCertificates]);
+
+  // Disable background scrolling when modal is active
+  useEffect(() => {
+    if (activeCertIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeCertIndex]);
 
   return (
-    <section id="certificates" className="py-5 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary">Certificates</span>
-        </h2>
-
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
-                activeCategory === cat.key
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-foreground hover:bg-secondary"
-              )}
-            >
-              {cat.label}
-            </button>
-          ))}
+    <section
+      id="certificates"
+      className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
+    >
+      <div className="container max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <span className="text-xs font-bold tracking-widest text-emerald-500 dark:text-emerald-400 uppercase">
+            Accreditation & Awards
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+            My Certificates
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base">
+            Verified academic, leadership, and highly technical certifications
+            issued by TESDA and Bicol University.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {filteredCertificates.map((cert, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col items-center bg-card rounded-lg shadow-md overflow-hidden p-4 gradient-border card-hover"
-            >
-              <div className="relative w-full h-64 flex items-center justify-center">
-                <span className={cn(
-                  "absolute top-2 left-2 px-3 py-1 rounded-full text-xs font-semibold z-10",
-                  cert.category === "job-readiness" && "bg-blue-200 text-blue-800",
-                  cert.category === "training" && "bg-green-200 text-green-800",
-                  cert.category === "leadership" && "bg-yellow-200 text-yellow-800",
-                  cert.category === "technical" && "bg-purple-200 text-purple-800"
-                )}>
-                  {categories.find(c => c.key === cert.category)?.label}
-                </span>
+        {/* Category Filtering Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-12">
+          {categories.map((cat) => {
+            const count =
+              cat.key === "all"
+                ? certificates.length
+                : certificates.filter((c) => c.category === cat.key).length;
 
-                <img
-                  src={cert.img}
-                  alt={cert.title}
-                  className="w-full h-64 object-contain rounded pt-5 cursor-pointer transition-transform duration-200 hover:scale-105"
-                  onClick={() => openModal(cert)}
-                  onError={e => {
-                    e.target.onerror = null;
-                    e.target.src = "https://via.placeholder.com/400x250?text=Certificate";
-                  }}
-                />
+            // Only render categories that have items (or 'all')
+            if (count === 0) return null;
+
+            const isActive = activeCategory === cat.key;
+            return (
+              <button
+                key={cat.key}
+                onClick={() => {
+                  setActiveCategory(cat.key);
+                  setActiveCertIndex(null); // Reset modal index when switching categories
+                }}
+                className={cn(
+                  "px-4 py-2 text-xs md:text-sm font-bold uppercase tracking-wider rounded-full transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-2xs border",
+                  isActive
+                    ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 border-neutral-900 dark:border-white scale-102"
+                    : "bg-white dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:text-neutral-800 dark:hover:text-neutral-200",
+                )}
+              >
+                {cat.label}
+                <span
+                  className={cn(
+                    "text-[10px] px-1.5 py-0.5 rounded-full",
+                    isActive
+                      ? "bg-white/20 dark:bg-neutral-900/10 text-white dark:text-neutral-900 font-extrabold"
+                      : "bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 font-semibold",
+                  )}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Modern Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {filteredCertificates.map((cert, index) => {
+            const isCopied = copiedId === cert.id;
+            return (
+              <div
+                key={cert.id}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/80 shadow-2xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+              >
+                {/* Image Container with Badges */}
+                <div
+                  className="w-full aspect-[1.414/1] overflow-hidden bg-neutral-50 dark:bg-neutral-950/80 border-b border-neutral-100 dark:border-neutral-800/80 relative cursor-pointer"
+                  onClick={() => setActiveCertIndex(index)}
+                >
+                  <img
+                    src={cert.img}
+                    alt={cert.title}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-103 filter grayscale-[10%] group-hover:grayscale-0"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src =
+                        "https://images.unsplash.com/photo-1589330694653-ded6df53f6ee?auto=format&fit=crop&q=80&w=600";
+                    }}
+                  />
+                  {/* Floating Left Category Tag */}
+                  <span className="absolute top-4 left-4 px-2.5 py-1 text-[9px] font-bold tracking-widest uppercase rounded-lg bg-neutral-900/80 text-white dark:bg-white/80 dark:text-neutral-900 shadow-sm backdrop-blur-xs">
+                    {cert.categoryLabel}
+                  </span>
+
+                  {/* Floating Right Verified Tag */}
+                  <span className="absolute top-4 right-4 px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 backdrop-blur-xs flex items-center gap-1">
+                    <ShieldCheck className="h-3 w-3" />
+                    Verified
+                  </span>
+
+                  {/* Hover Frosted Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-350 flex items-center justify-center backdrop-blur-[2px]">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-neutral-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                      <Maximize2 className="h-3.5 w-3.5" />
+                      Quick View
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Content Details */}
+                <div className="p-6 flex flex-col justify-between flex-grow text-left space-y-4">
+                  {/* Title & Issuer */}
+                  <div className="space-y-1">
+                    <h3
+                      className="text-base font-extrabold text-neutral-900 dark:text-white line-clamp-2 leading-snug cursor-pointer group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors"
+                      onClick={() => setActiveCertIndex(index)}
+                    >
+                      {cert.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5 pt-0.5">
+                      <Award className="h-3.5 w-3.5 text-neutral-400 shrink-0" />
+                      {cert.issuer}
+                    </p>
+                  </div>
+
+                  {/* Credential ID Copy Block */}
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                      Credential ID
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <code className="flex-grow text-[11px] font-semibold text-neutral-500 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-950 p-2 rounded-xl border border-neutral-200/60 dark:border-neutral-800/80 truncate font-mono select-all">
+                        {cert.verid}
+                      </code>
+                      <button
+                        onClick={() => handleCopy(cert.id, cert.verid)}
+                        className="p-2 bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-950 dark:hover:bg-neutral-850 rounded-xl border border-neutral-200/60 dark:border-neutral-800/80 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-250 transition-colors cursor-pointer shrink-0"
+                        title="Copy Credential ID"
+                      >
+                        {isCopied ? (
+                          <Check className="h-3.5 w-3.5 text-emerald-500" />
+                        ) : (
+                          <Copy className="h-3.5 w-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Action View Button */}
+                  <button
+                    onClick={() => setActiveCertIndex(index)}
+                    className="w-full py-3 text-[11px] font-bold uppercase tracking-widest bg-neutral-50 hover:bg-neutral-900 dark:bg-neutral-850 dark:hover:bg-white text-neutral-700 hover:text-white dark:text-neutral-300 dark:hover:text-neutral-900 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 border border-neutral-200/50 dark:border-neutral-800/80 cursor-pointer shadow-2xs"
+                  >
+                    View Details
+                    <ExternalLink className="h-3 w-3" />
+                  </button>
+                </div>
               </div>
-              <p className="mt-1 text-center font-medium text-muted-foreground">
-                {cert.title}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Modal for full image view */}
-      {modalOpen && selectedCert && (
+      {/* Lightbox / Immersive Detail Modal */}
+      {activeCertIndex !== null && activeCert && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-          onClick={closeModal}
+          className="fixed inset-0 z-[150] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 animate-fade-in"
+          onClick={() => setActiveCertIndex(null)}
         >
+          {/* Main Modal Shell Container */}
           <div
-            className="bg-white dark:bg-background rounded-lg shadow-lg p-4 max-w-3xl w-full relative"
-            onClick={e => e.stopPropagation()}
+            className="bg-white dark:bg-neutral-900 rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] md:max-h-[85vh] overflow-hidden relative border border-neutral-200 dark:border-neutral-800 transition-all duration-300 flex flex-col md:flex-row z-10 animate-scale-up"
+            onClick={(e) => e.stopPropagation()}
           >
+            {/* Floating Close Button */}
             <button
-              className="absolute top-2 right-2 text-2xl font-bold text-gray-500 hover:text-primary"
-              onClick={closeModal}
-              aria-label="Close"
+              onClick={() => setActiveCertIndex(null)}
+              className="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-850 dark:hover:bg-neutral-800 text-neutral-600 dark:text-white transition-all cursor-pointer shadow-xs"
+              aria-label="Close details"
             >
-              &times;
+              <X className="h-5 w-5" />
             </button>
-            <img
-              src={selectedCert.img}
-              alt={selectedCert.title}
-              className="w-full max-h-[70vh] object-contain rounded"
-              onError={e => {
-                e.target.onerror = null;
-                e.target.src = "https://via.placeholder.com/800x600?text=Certificate";
-              }}
-            />
+
+            {/* Left Side: Premium High-Fi Certificate Image Viewer */}
+            <div className="md:w-3/5 bg-neutral-950 dark:bg-neutral-950/90 flex items-center justify-center p-6 relative border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800 min-h-[250px] md:min-h-[400px] select-none">
+              {/* Floating Carousel Arrows */}
+              <button
+                onClick={handleModalPrev}
+                className="absolute left-4 p-3 border border-white/10 bg-black/30 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer z-20 backdrop-blur-xs"
+                aria-label="Previous Certificate"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+
+              <div className="w-full h-full flex items-center justify-center max-h-[50vh] md:max-h-[70vh]">
+                <img
+                  src={activeCert.img}
+                  alt={activeCert.title}
+                  className="max-h-full max-w-full object-contain rounded-xl shadow-md cursor-zoom-in transition-transform duration-300 hover:scale-[1.02]"
+                  onClick={() => window.open(activeCert.img, "_blank")}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://images.unsplash.com/photo-1589330694653-ded6df53f6ee?auto=format&fit=crop&q=80&w=800";
+                  }}
+                />
+              </div>
+
+              <button
+                onClick={handleModalNext}
+                className="absolute right-4 p-3 border border-white/10 bg-black/30 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer z-20 backdrop-blur-xs"
+                aria-label="Next Certificate"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </button>
+
+              {/* Bottom Centered Page Indicator */}
+              <span className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-full text-xs font-semibold bg-black/40 text-white backdrop-blur-xs">
+                {activeCertIndex + 1} of {filteredCertificates.length}
+              </span>
+            </div>
+
+            {/* Right Side: Detailed Metadata Sheet */}
+            <div className="md:w-2/5 p-8 flex flex-col justify-between overflow-y-auto space-y-6 max-h-[40vh] md:max-h-[85vh] text-left">
+              <div className="space-y-5">
+                {/* Tags Block */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200/50 dark:border-neutral-800">
+                    {activeCert.categoryLabel}
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <ShieldCheck className="h-3 w-3" />
+                    Verified Credential
+                  </span>
+                </div>
+
+                {/* Certificate Title */}
+                <h3 className="text-xl md:text-2xl font-black text-neutral-900 dark:text-white leading-tight">
+                  {activeCert.title}
+                </h3>
+
+                {/* Metadata Cards */}
+                <div className="space-y-4 pt-4 border-t border-neutral-100 dark:border-neutral-800/80">
+                  <div className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/45">
+                    <h5 className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                      Issuing Organization
+                    </h5>
+                    <p className="text-sm font-extrabold text-neutral-800 dark:text-neutral-200 mt-1 flex items-center gap-2">
+                      <Award className="h-4 w-4 text-emerald-500" />
+                      {activeCert.issuer}
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/45 space-y-2">
+                    <div className="flex justify-between items-center">
+                      <h5 className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                        Verification Credential ID
+                      </h5>
+                      <span className="text-[9px] font-mono text-neutral-400">
+                        Secure SHA
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <code className="flex-grow block text-xs font-semibold text-neutral-600 dark:text-neutral-350 font-mono truncate select-all bg-white dark:bg-neutral-900 px-2 py-1.5 rounded-md border border-neutral-200/50 dark:border-neutral-800">
+                        {activeCert.verid}
+                      </code>
+                      <button
+                        onClick={() =>
+                          handleCopy(activeCert.id, activeCert.verid)
+                        }
+                        className="p-2 bg-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors cursor-pointer shrink-0"
+                        title="Copy ID"
+                      >
+                        {copiedId === activeCert.id ? (
+                          <Check className="h-3.5 w-3.5 text-emerald-500" />
+                        ) : (
+                          <Copy className="h-3.5 w-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* External Tab / Verification Button */}
+              <div className="pt-4 space-y-3">
+                <a
+                  href={activeCert.img}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 text-xs font-bold uppercase tracking-widest bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-neutral-900 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                >
+                  View Original Certificate{" "}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+
+                {copiedId === activeCert.id && (
+                  <p className="text-center text-[10px] font-bold text-emerald-500 animate-pulse">
+                    ✓ Credential ID Copied to Clipboard!
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}

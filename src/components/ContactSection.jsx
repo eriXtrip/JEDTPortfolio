@@ -5,179 +5,206 @@ import {
   Mail,
   MapPin,
   Phone,
-  Send,
-  Twitch,
-  Twitter,
+  Check,
+  Copy,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export const ContactSection = () => {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const emailAddress = "jedt2022-7943-17028@bicol-u.edu.ph";
 
-    setIsSubmitting(true);
-
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(emailAddress);
+    setCopied(true);
+    toast({
+      title: "Email address copied!",
+      description: "You can now paste it directly into your email client.",
+    });
     setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+      setCopied(false);
+    }, 2000);
   };
+
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary"> Touch</span>
-        </h2>
+    <section
+      id="contact"
+      className="py-24 px-6 md:px-12 bg-white dark:bg-neutral-900 relative overflow-hidden"
+    >
+      {/* Decorative Background Accent Glows */}
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          💬 Whether it’s an idea, a problem, or a full-on project,
-          I’m ready to code it into reality.<br></br> Reach out — let’s make it happen.
-        </p>
+      <div className="container max-w-6xl mx-auto relative z-10 text-center space-y-12">
+        {/* Header Section */}
+        <div className="space-y-4 max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/50 dark:border-emerald-800/30 px-4 py-2 rounded-full text-xs font-bold text-emerald-600 dark:text-emerald-400 shadow-xs mb-3">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 block animate-pulse"></span>
+            Available for Collaborations & Hiring
+          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+            Let's Construct Something Exceptional
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base leading-relaxed">
+            Have an exciting project, internship opportunity, or looking to
+            build modern web solutions? Select your preferred method below to
+            start the conversation!
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
-              Contact Information
-            </h3>
-
-            <div className="space-y-6 justify-center">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium"> Email</h4>
-                  <a
-                    href="mailto:jedt2022-7943-17028@bicol-u.edu.ph"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    jedt2022-7943-17028@bicol-u.edu.ph
-                  </a>
-                </div>
+        {/* Action Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-6">
+          {/* Card 1: Direct Email Hub */}
+          <div className="group bg-neutral-50/50 dark:bg-neutral-900/55 border border-neutral-200/40 dark:border-neutral-800/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg dark:hover:border-emerald-400/50 backdrop-blur-xs">
+            <div className="space-y-4 flex flex-col items-center">
+              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                <Mail className="h-6 w-6" />
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium"> Phone</h4>
-                  <a
-                    href="tel:+639054205568"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +63-905-4205568
-                  </a>
-                </div>
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+                  Direct Email
+                </h3>
+                <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-semibold">
+                  Primary contact channel
+                </p>
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div className="text-left">
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Brgy 28, Victory Village North, Legazpi City, Albay
-                  </a>
-                </div>
-              </div>
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-950 px-3.5 py-2 rounded-xl border border-neutral-200/20 dark:border-neutral-800/20 break-all select-all">
+                {emailAddress}
+              </p>
             </div>
 
-            <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
-                <a href="https://www.instagram.com/ccerilac/" target="_blank">
-                  <Instagram />
-                </a>
-                <a href="https://www.facebook.com/ccerilac" target="_blank">
-                  <Facebook />
-                </a>
-                <a href="https://github.com/eriXtrip" target="_blank">
-                  <Github />
-                </a>
-              </div>
+            <div className="w-full space-y-3 pt-6">
+              <a
+                href={`mailto:${emailAddress}`}
+                className=" w-full py-3 text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 rounded-full transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+              >
+                Send an Email
+              </a>
+              <button
+                onClick={handleCopyEmail}
+                className="w-full py-3 text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-950 transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                {copied ? (
+                  <>
+                    Copied! <Check className="h-3.5 w-3.5 text-emerald-500" />
+                  </>
+                ) : (
+                  <>
+                    Copy Address <Copy className="h-3.5 w-3.5" />
+                  </>
+                )}
+              </button>
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
-            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
-
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Juan Dela Cruz..."
-                />
+          {/* Card 2: Voice & Messaging */}
+          <div className="group bg-neutral-50/50 dark:bg-neutral-900/55 border border-neutral-200/40 dark:border-neutral-800/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg dark:hover:border-emerald-400/50 backdrop-blur-xs">
+            <div className="space-y-4 flex flex-col items-center">
+              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                <Phone className="h-6 w-6" />
               </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="juandelacruz@gmail.com"
-                />
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+                  Call & Message
+                </h3>
+                <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-semibold">
+                  Standard mobile call / SMS
+                </p>
               </div>
+              <p className="text-sm font-semibold text-neutral-850 dark:text-neutral-200 select-all">
+                +63 905 420 5568
+                <br />
+                +63 992 283 0813
+              </p>
+            </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
-                )}
+            <div className="w-full space-y-3 pt-6">
+              <a
+                href="tel:+639054205568"
+                className=" w-full py-3 text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 rounded-full transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} />
-              </button>
-            </form>
+                Call Direct
+              </a>
+              <p className="text-[10px] text-neutral-400 dark:text-neutral-500 font-semibold uppercase tracking-wider">
+                Active daily during office hours
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3: Location Hub */}
+          <div className="group bg-neutral-50/50 dark:bg-neutral-900/55 border border-neutral-200/40 dark:border-neutral-800/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg dark:hover:border-emerald-400/50 backdrop-blur-xs">
+            <div className="space-y-4 flex flex-col items-center">
+              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="h-6 w-6" />
+              </div>
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+                  Location & Availability
+                </h3>
+                <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-semibold">
+                  Timezone & Setup
+                </p>
+              </div>
+              <p className="text-sm font-semibold text-neutral-850 dark:text-neutral-200">
+                Legazpi City, Albay, PH
+              </p>
+            </div>
+
+            <div className="w-full space-y-3 pt-6">
+              <a
+                href="https://maps.google.com/?q=Legazpi+City,+Albay"
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" w-full py-3 text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-950 transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                View on Map
+              </a>
+              <p className="text-[10px] text-emerald-650 dark:text-emerald-450 font-semibold uppercase tracking-wider">
+                Remote Worldwide / Hybrid PH
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Center Divider */}
+        <div className="w-16 h-0.5 bg-neutral-200 dark:bg-neutral-800 mx-auto my-6" />
+
+        {/* Social Channels Row */}
+        <div className="space-y-4">
+          <p className="text-xs uppercase tracking-widest font-bold text-neutral-400 dark:text-neutral-500">
+            Let's connect socially
+          </p>
+          <div className="flex items-center justify-center gap-8">
+            <a
+              href="https://www.facebook.com/ccerilac"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+              aria-label="Facebook"
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.instagram.com/ccerilac/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a
+              href="https://github.com/eriXtrip"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
           </div>
         </div>
       </div>

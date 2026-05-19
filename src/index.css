@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
-  --color-border: hsl(var(--border));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--text);
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
 
-  --color-card: hsl(var(--card));
+  --color-card: var(--card);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -63,28 +67,28 @@
 }
 
 @layer base {
-  :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-
-    --primary: 19 100% 50%;
-    --primary-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
+  :root,
+  :root[data-theme="light"] {
+    --text: #040316;
+    --background: #f5fffc;
+    --primary: #1f4c2c;
+    --secondary: #c3e958;
+    --accent: #4b6e11;
+    --primary-foreground: #f5fffc;
+    --card: #ffffff;
+    --border: rgba(31, 76, 44, 0.15);
   }
 
-  .dark {
-    --background: 222 47% 4%;
-    --foreground: 213 31% 91%;
-
-    --card: 222 47% 8%;
-
-    --primary: 19 100% 50%;
-    --primary-foreground: 213 31% 91%;
-
-    --border: 217 33% 20%;
+  .dark,
+  :root[data-theme="dark"] {
+    --text: #eae9fc;
+    --background: #000a07;
+    --primary: #b3e0c0;
+    --secondary: #80a716;
+    --accent: #caee90;
+    --primary-foreground: #000a07;
+    --card: #04120e;
+    --border: rgba(179, 224, 192, 0.15);
   }
 
   * {
@@ -96,7 +100,7 @@
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground transition-colors duration-300 antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -124,24 +128,27 @@
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+  @apply transition-all duration-300 hover:translate-y-[-4px] hover:shadow-md;
 }
 
 @utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
+  @apply border border-border/80 rounded-xl bg-card transition-all duration-300;
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(255,81,0,1)]
-         hover:scale-105 active:scale-95;
+  @apply px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold 
+         transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-200 
+         hover:scale-[1.03] active:scale-[0.98] shadow-sm cursor-pointer inline-flex items-center justify-center gap-2;
+}
+
+@utility outline-button {
+  @apply px-6 py-3 rounded-full border border-primary text-primary font-semibold
+         transition-all duration-300 hover:bg-primary/5 hover:scale-[1.03] active:scale-[0.98]
+         cursor-pointer inline-flex items-center justify-center gap-2;
 }
 
 @utility star {
@@ -158,5 +165,5 @@
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
 }
+

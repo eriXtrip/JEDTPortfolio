@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
-  { name: "Certificates", href: "#certificates" },
   { name: "Works", href: "#works" },
+  { name: "Certificates", href: "#certificates" },
   { name: "Pubmats", href: "#pubmats" },
+  { name: "Services", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -17,68 +19,77 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
+        isScrolled
+          ? "py-4 bg-background/80 backdrop-blur-md border-b border-border/40 shadow-xs"
+          : "py-6 bg-transparent"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12">
         <a
-          className="text-xl font-bold text-primary flex items-center"
+          className="text-xl font-bold tracking-tight text-foreground flex items-center"
           href="#hero"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> JEDT </span>{" "}
-            Portfolio
+          <span className="relative z-10 font-bold tracking-tighter">
+            JEDT
+            <span className="font-light text-neutral-400 dark:text-neutral-500">
+              .portfolio
+            </span>
           </span>
         </a>
 
-        {/* desktop nav */}
-        <div className="hidden md:flex space-x-8 mr-4">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200"
             >
               {item.name}
             </a>
           ))}
+          <ThemeToggle />
         </div>
 
-        {/* mobile nav */}
+        {/* Mobile Actions (Theme Toggle & Hamburger Menu) */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="p-2 text-foreground z-50 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
 
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-1 text-foreground z-50 mr-3"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
-        </button>
-
+        {/* Mobile Dropdown Nav */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 bg-background/98 backdrop-blur-md z-45 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-6 text-2xl font-bold text-center">
             {navItems.map((item, key) => (
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -90,3 +101,4 @@ export const Navbar = () => {
     </nav>
   );
 };
+
