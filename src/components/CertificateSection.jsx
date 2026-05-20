@@ -31,7 +31,6 @@ const certificates = [
     id: 1,
     title: "Job Readiness Training",
     issuer: "Children International Bicol Inc.",
-    verid: "CIBI-JRT-2024-089",
     category: "job-readiness",
     categoryLabel: "Job Readiness",
     img: JobReadinessImg,
@@ -40,7 +39,6 @@ const certificates = [
     id: 2,
     title: "Computer Systems Servicing",
     issuer: "TESDA Online Program",
-    verid: "TESDA-CSS-992-108",
     category: "technical",
     categoryLabel: "Technical Instruction",
     img: TechnicalImg,
@@ -49,7 +47,6 @@ const certificates = [
     id: 3,
     title: "ROTC NSTP Completion",
     issuer: "Bicol University ROTC Unit",
-    verid: "BU-ROTC-2023-562",
     category: "training",
     categoryLabel: "Training Completion",
     img: ROTCImg,
@@ -58,7 +55,6 @@ const certificates = [
     id: 4,
     title: "Installing & Configuring Computer Systems",
     issuer: "TESDA Online Program",
-    verid: "TESDA-ICCS-743-192",
     category: "technical",
     categoryLabel: "Technical Instruction",
     img: TechnicalImg1,
@@ -67,7 +63,6 @@ const certificates = [
     id: 5,
     title: "Leadership Certificate of Distinction",
     issuer: "Oro Site High School",
-    verid: "OSHS-LTD-2019-012",
     category: "leadership",
     categoryLabel: "Leadership Distinction",
     img: Leadership2019Img,
@@ -76,7 +71,6 @@ const certificates = [
     id: 6,
     title: "Introduction to CSS",
     issuer: "TESDA Online Program",
-    verid: "TESDA-CSS-124-054",
     category: "technical",
     categoryLabel: "Technical Instruction",
     img: TechnicalImg2,
@@ -85,7 +79,6 @@ const certificates = [
     id: 7,
     title: "Leadership Training & Teambuilding",
     issuer: "Oro Site High School",
-    verid: "OSHS-LTT-2022-441",
     category: "leadership",
     categoryLabel: "Leadership Distinction",
     img: Leadership2022Img,
@@ -94,7 +87,6 @@ const certificates = [
     id: 8,
     title: "Maintaining Systems & Networks",
     issuer: "TESDA Online Program",
-    verid: "TESDA-MSN-295-883",
     category: "technical",
     categoryLabel: "Technical Instruction",
     img: TechnicalImg3,
@@ -103,7 +95,6 @@ const certificates = [
     id: 9,
     title: "Setting Up Computer Servers",
     issuer: "TESDA Online Program",
-    verid: "TESDA-SCS-184-749",
     category: "technical",
     categoryLabel: "Technical Instruction",
     img: TechnicalImg4,
@@ -112,7 +103,6 @@ const certificates = [
     id: 10,
     title: "Wi-Fi 101 & Digital Thumbprint",
     issuer: "TESDA Online Program",
-    verid: "TESDA-WFDT-908-112",
     category: "technical",
     categoryLabel: "Technical Instruction",
     img: TechnicalImg5,
@@ -121,7 +111,6 @@ const certificates = [
     id: 11,
     title: "Certificate of Appreciation",
     issuer: "Bicol University",
-    verid: "BU-COA-2022-001",
     category: "recognition",
     categoryLabel: "Recognition",
     img: CertofAppreciation,
@@ -130,7 +119,6 @@ const certificates = [
     id: 12,
     title: "Certificate of Completion",
     issuer: "Bicol University",
-    verid: "BU-COC-2022-002",
     category: "training",
     categoryLabel: "Training Completion",
     img: CertofCompletion,
@@ -173,13 +161,6 @@ export const CertificatesSection = () => {
       (activeCertIndex - 1 + filteredCertificates.length) %
         filteredCertificates.length,
     );
-  };
-
-  // Clipboard copy system
-  const handleCopy = (id, verid) => {
-    navigator.clipboard.writeText(verid);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
   };
 
   // Keyboard navigation listener for lightbox cycling
@@ -332,33 +313,10 @@ export const CertificatesSection = () => {
                     </p>
                   </div>
 
-                  {/* Credential ID Copy Block */}
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                      Credential ID
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <code className="flex-grow text-[11px] font-semibold text-neutral-500 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-950 p-2 rounded-xl border border-neutral-200/60 dark:border-neutral-800/80 truncate font-mono select-all">
-                        {cert.verid}
-                      </code>
-                      <button
-                        onClick={() => handleCopy(cert.id, cert.verid)}
-                        className="p-2 bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-950 dark:hover:bg-neutral-850 rounded-xl border border-neutral-200/60 dark:border-neutral-800/80 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-250 transition-colors cursor-pointer shrink-0"
-                        title="Copy Credential ID"
-                      >
-                        {isCopied ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-500" />
-                        ) : (
-                          <Copy className="h-3.5 w-3.5" />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-
                   {/* Action View Button */}
                   <button
                     onClick={() => setActiveCertIndex(index)}
-                    className="w-full py-3 text-[11px] font-bold uppercase tracking-widest bg-neutral-50 hover:bg-neutral-900 dark:bg-neutral-850 dark:hover:bg-white text-neutral-700 hover:text-white dark:text-neutral-300 dark:hover:text-neutral-900 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 border border-neutral-200/50 dark:border-neutral-800/80 cursor-pointer shadow-2xs"
+                    className="w-full py-3 text-[11px] font-bold uppercase tracking-widest bg-neutral-50 hover:bg-neutral-900 dark:bg-neutral-850 dark:hover:bg-white text-neutral-700 hover:text-white dark:text-neutral-800 dark:hover:text-neutral-900 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 border border-neutral-200/50 dark:border-neutral-800/80 cursor-pointer shadow-2xs"
                   >
                     View Details
                     <ExternalLink className="h-3 w-3" />
@@ -384,7 +342,7 @@ export const CertificatesSection = () => {
             {/* Floating Close Button */}
             <button
               onClick={() => setActiveCertIndex(null)}
-              className="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-850 dark:hover:bg-neutral-800 text-neutral-600 dark:text-white transition-all cursor-pointer shadow-xs"
+              className="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-850 dark:hover:bg-neutral-500 text-neutral-600 dark:text-neutral-900 transition-all cursor-pointer shadow-xs"
               aria-label="Close details"
             >
               <X className="h-5 w-5" />
@@ -458,35 +416,6 @@ export const CertificatesSection = () => {
                       <Award className="h-4 w-4 text-emerald-500" />
                       {activeCert.issuer}
                     </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/45 space-y-2">
-                    <div className="flex justify-between items-center">
-                      <h5 className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                        Verification Credential ID
-                      </h5>
-                      <span className="text-[9px] font-mono text-neutral-400">
-                        Secure SHA
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <code className="flex-grow block text-xs font-semibold text-neutral-600 dark:text-neutral-350 font-mono truncate select-all bg-white dark:bg-neutral-900 px-2 py-1.5 rounded-md border border-neutral-200/50 dark:border-neutral-800">
-                        {activeCert.verid}
-                      </code>
-                      <button
-                        onClick={() =>
-                          handleCopy(activeCert.id, activeCert.verid)
-                        }
-                        className="p-2 bg-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors cursor-pointer shrink-0"
-                        title="Copy ID"
-                      >
-                        {copiedId === activeCert.id ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-500" />
-                        ) : (
-                          <Copy className="h-3.5 w-3.5" />
-                        )}
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>

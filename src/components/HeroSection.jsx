@@ -31,7 +31,7 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-18 pb-5 px-6 md:px-12 bg-background"
+      className="relative min-h-screen flex items-center justify-center pt-25 sm:pb-5 pb-25 px-6 md:px-12 bg-background"
     >
       <div className="container max-w-7xl mx-auto z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
@@ -56,15 +56,18 @@ export const HeroSection = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2 animate-fade-in-delay-3">
-              <a href="#works" className="cosmic-button">
+            <div className="flex flex-row gap-4 pt-2 animate-fade-in-delay-3">
+              <a
+                href="#works"
+                className="cosmic-button h-auto whitespace-nowrap"
+              >
                 View My Work
               </a>
               <a
                 href="https://jedtojtthingssss.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="outline-button"
+                className="outline-button h-auto whitespace-nowrap"
               >
                 Read My Blog
               </a>
@@ -91,7 +94,7 @@ export const HeroSection = () => {
 
           {/* Right Column: Image Staggered Grid Wireframe Graphic */}
           <div className="flex-1 w-full max-w-lg lg:max-w-none flex justify-center animate-fade-in-delay-2">
-            <div className="grid grid-cols-2 gap-4 h-full w-full max-w-[490px]">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 h-full w-full md:max-w-[450px] max-w-[550px]">
               <div className="flex flex-col justify-center h-full">
                 <WireframeMedia aspectRatio="aspect-[3/4]" src={profileImg} />
               </div>

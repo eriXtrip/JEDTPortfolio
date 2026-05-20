@@ -267,18 +267,18 @@ export const PubmatsGallery = () => {
 
               {/* Paginated Navigation Control Bar */}
               {batches.length > 1 && (
-                <div className="mt-8 flex items-center justify-between border-t border-neutral-100 dark:border-neutral-800/80 pt-6">
+                <div className="mt-8 flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-5 sm:gap-y-0 border-t border-neutral-100 dark:border-neutral-800/80 pt-6">
                   {/* Previous Button */}
                   <button
                     onClick={() =>
                       setCurrentPage((prev) => Math.max(0, prev - 1))
                     }
                     disabled={currentPage === 0}
-                    className="px-5 py-2.5 text-xs font-bold uppercase tracking-widest bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed flex items-center gap-1.5 shadow-xs"
+                    className="order-2 sm:order-1 px-4 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed flex items-center gap-1 sm:gap-1.5 shadow-xs"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
+                      className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -290,11 +290,11 @@ export const PubmatsGallery = () => {
                         d="M15 19l-7-7 7-7"
                       />
                     </svg>
-                    Prev Batch
+                    Prev
                   </button>
 
                   {/* Dynamic page indicator dots */}
-                  <div className="flex items-center gap-2">
+                  <div className="order-1 sm:order-2 w-full sm:w-auto flex items-center justify-center gap-2">
                     {batches.map((_, pageIdx) => (
                       <button
                         key={pageIdx}
@@ -317,12 +317,12 @@ export const PubmatsGallery = () => {
                       )
                     }
                     disabled={currentPage === batches.length - 1}
-                    className="px-5 py-2.5 text-xs font-bold uppercase tracking-widest bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed flex items-center gap-1.5 shadow-xs"
+                    className="order-3 sm:order-3 px-4 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed flex items-center gap-1 sm:gap-1.5 shadow-xs"
                   >
-                    Next Batch
+                    Next
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
+                      className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

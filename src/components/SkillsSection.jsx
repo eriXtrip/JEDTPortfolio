@@ -74,7 +74,7 @@ export const SkillsSection = () => {
       company: "Bicol University College of Science (BUCS-MCC)",
       period: "14-Week Internship",
       description:
-        'Over the course of my 14-week internship at the Bicol University College of Science, I had the opportunity to contribute to the study "Advancing Microbial Bioprospecting through the BUCS-Microbial Culture Collection" (Project BUCS-MCC). Working under the mentorship of Project Leader Joseph Paet and Study Leaders Charmain Q. Malonzo, Phil V. Morano, Jazzlyn T. Imperial, and Joan Rabe Nace Mallorca, I successfully achieved the core objective of modernizing the collection’s data infrastructure. I transitioned the department from a legacy Excel-based system to a sophisticated, full-stack web application using React and Laravel, featuring automated email notifications, secure specimen request tracking, and a comprehensive administrative dashboard for data management and reporting.',
+        "Modernized the department's data infrastructure by transitioning from a legacy Excel system to a full-stack React and Laravel web application. Engineered features including secure specimen request tracking, automated email notifications, and an administrative dashboard.",
     },
     {
       role: "Technical Support Specialist (DESO)",

@@ -26,18 +26,30 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
         isScrolled
           ? "py-4 bg-background/80 backdrop-blur-md border-b border-border/40 shadow-xs"
-          : "py-6 bg-transparent"
+          : "py-6 bg-transparent",
       )}
     >
       <div className="container max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12">
         <a
-          className="text-xl font-bold tracking-tight text-foreground flex items-center"
+          className="text-xl font-bold tracking-tight text-foreground flex items-center relative z-50"
           href="#hero"
         >
           <span className="relative z-10 font-bold tracking-tighter">
@@ -63,11 +75,11 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Actions (Theme Toggle & Hamburger Menu) */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 md:hidden relative z-50">
           <ThemeToggle />
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="p-2 text-foreground z-50 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            className="p-2 text-foreground rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -77,14 +89,14 @@ export const Navbar = () => {
         {/* Mobile Dropdown Nav */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/98 backdrop-blur-md z-45 flex flex-col items-center justify-center",
+            "fixed inset-0 h-[100dvh] w-screen bg-background/98 backdrop-blur-md z-40 flex flex-col items-center justify-center overflow-y-auto",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+              : "opacity-0 pointer-events-none",
           )}
         >
-          <div className="flex flex-col space-y-6 text-2xl font-bold text-center">
+          <div className="flex flex-col space-y-6 text-2xl font-bold text-center py-20 min-h-full justify-center">
             {navItems.map((item, key) => (
               <a
                 key={key}
@@ -101,4 +113,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-

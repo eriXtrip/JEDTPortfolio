@@ -330,7 +330,7 @@ export const ProjectsSection = () => {
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${
+                className={`px-3 py-1.5 text-xs md:px-6 md:py-2 md:text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${
                   activeTab === category.id
                     ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm"
                     : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
@@ -475,7 +475,7 @@ export const ProjectsSection = () => {
 
                 return (
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
                       <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
                         Video Showcase{" "}
                         {projectVideos.length > 1 &&
@@ -499,7 +499,7 @@ export const ProjectsSection = () => {
                         </div>
                       )}
                     </div>
-                    <div className="w-full aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
+                    <div className="w-full h-[300px] sm:h-auto sm:aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
                       <iframe
                         src={getEmbedUrl(projectVideos[activeVideoIndex])}
                         className="w-full h-full border-0"
