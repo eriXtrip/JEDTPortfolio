@@ -15,7 +15,7 @@ export const ContactSection = () => {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
 
-  const emailAddress = "jedt2022-7943-17028@bicol-u.edu.ph";
+  const emailAddress = "jonerictripulca@gmail.com";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
