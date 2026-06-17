@@ -20,6 +20,10 @@ import Pubmat16 from "../assets/pubmats/PROJECT LAYAG (1).png";
 import Pubmat17 from "../assets/pubmats/DiversionProgram.jpg";
 import Pubmat18 from "../assets/pubmats/HIVAIDS Poster.jpg";
 import Pubmat19 from "../assets/pubmats/HandlingCICLandCAR.jpg";
+import Pubmat20 from "../assets/pubmats/GRADtarp TEMPLATE 4x3 (8).png";
+import Pubmat21 from "../assets/pubmats/GRADtarp TEMPLATE-jay 4x3.png";
+import Pubmat22 from "../assets/pubmats/GRADtarp TEMPLATE-kyle 4x3.png";
+import Pubmat23 from "../assets/pubmats/GRADtarp TEMPLATE-oli 4x3.png"
 
 const pubmats = [
   {
@@ -116,6 +120,26 @@ const pubmats = [
     src: Pubmat19,
     title: "Handling CICL & CAR",
     desc: "Formal banner branding for child protection councils.",
+  },
+  {
+    src: Pubmat20,
+    title: "GRADtarp TEMPLATE 4x3 (8)",
+    desc: "Graduation tarpaulin for us sibling.",
+  },
+  {
+    src: Pubmat21,
+    title: "GRADtarp TEMPLATE-jay 4x3",
+    desc: "Graduation tarpaulin for Jay-R.",
+  },
+  {
+    src: Pubmat22,
+    title: "GRADtarp TEMPLATE-kyle 4x3",
+    desc: "Graduation tarpaulin for Kyle.",
+  },
+  {
+    src: Pubmat23,
+    title: "GRADtarp TEMPLATE-oli 4x3",
+    desc: "Graduation tarpaulin for Oliver.",
   },
 ];
 
@@ -299,11 +323,10 @@ export const PubmatsGallery = () => {
                       <button
                         key={pageIdx}
                         onClick={() => setCurrentPage(pageIdx)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          currentPage === pageIdx
+                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentPage === pageIdx
                             ? "w-6 bg-emerald-500"
                             : "w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-450 dark:hover:bg-neutral-500"
-                        }`}
+                          }`}
                         aria-label={`Go to page ${pageIdx + 1}`}
                       />
                     ))}
