@@ -25,42 +25,13 @@ import Leadership2019Img from "../assets/cert/VicePresCert2019_page-0001.jpg";
 import Leadership2022Img from "../assets/cert/LeadershipTrainingandTeambuildingCert 2022_page-0001.jpg";
 import CertofAppreciation from "../assets/cert/CertofAppreciation.jpg";
 import CertofCompletion from "../assets/cert/CertofCompletion.jpg";
+import DiplomaCollege from "../assets/cert/Diploma College 2026.jpg"
+import DiplomaSHS from "../assets/cert/Diploma SHS 2022.png"
+import DiplomaJHS from "../assets/cert/Diploma JHS 2020.png"
 
 const certificates = [
   {
     id: 1,
-    title: "Job Readiness Training",
-    issuer: "Children International Bicol Inc.",
-    category: "job-readiness",
-    categoryLabel: "Job Readiness",
-    img: JobReadinessImg,
-  },
-  {
-    id: 2,
-    title: "Computer Systems Servicing",
-    issuer: "TESDA Online Program",
-    category: "technical",
-    categoryLabel: "Technical Instruction",
-    img: TechnicalImg,
-  },
-  {
-    id: 3,
-    title: "ROTC NSTP Completion",
-    issuer: "Bicol University ROTC Unit",
-    category: "training",
-    categoryLabel: "Training Completion",
-    img: ROTCImg,
-  },
-  {
-    id: 4,
-    title: "Installing & Configuring Computer Systems",
-    issuer: "TESDA Online Program",
-    category: "technical",
-    categoryLabel: "Technical Instruction",
-    img: TechnicalImg1,
-  },
-  {
-    id: 5,
     title: "Leadership Certificate of Distinction",
     issuer: "Oro Site High School",
     category: "leadership",
@@ -68,15 +39,15 @@ const certificates = [
     img: Leadership2019Img,
   },
   {
-    id: 6,
-    title: "Introduction to CSS",
-    issuer: "TESDA Online Program",
-    category: "technical",
-    categoryLabel: "Technical Instruction",
-    img: TechnicalImg2,
+    id: 2,
+    title: "Junior High School Diploma",
+    issuer: "Oro Site High School",
+    category: "diploma",
+    categoryLabel: "Diploma",
+    img: DiplomaJHS,
   },
   {
-    id: 7,
+    id: 3,
     title: "Leadership Training & Teambuilding",
     issuer: "Oro Site High School",
     category: "leadership",
@@ -84,23 +55,15 @@ const certificates = [
     img: Leadership2022Img,
   },
   {
-    id: 8,
-    title: "Maintaining Systems & Networks",
-    issuer: "TESDA Online Program",
-    category: "technical",
-    categoryLabel: "Technical Instruction",
-    img: TechnicalImg3,
+    id: 4,
+    title: "Senior High School Diploma",
+    issuer: "Oro Site High School",
+    category: "diploma",
+    categoryLabel: "Diploma",
+    img: DiplomaSHS,
   },
   {
-    id: 9,
-    title: "Setting Up Computer Servers",
-    issuer: "TESDA Online Program",
-    category: "technical",
-    categoryLabel: "Technical Instruction",
-    img: TechnicalImg4,
-  },
-  {
-    id: 10,
+    id: 5,
     title: "Wi-Fi 101 & Digital Thumbprint",
     issuer: "TESDA Online Program",
     category: "technical",
@@ -108,7 +71,71 @@ const certificates = [
     img: TechnicalImg5,
   },
   {
+    id: 6,
+    title: "Setting Up Computer Servers",
+    issuer: "TESDA Online Program",
+    category: "technical",
+    categoryLabel: "Technical Instruction",
+    img: TechnicalImg4,
+  },
+  {
+    id: 7,
+    title: "Maintaining Systems & Networks",
+    issuer: "TESDA Online Program",
+    category: "technical",
+    categoryLabel: "Technical Instruction",
+    img: TechnicalImg3,
+  },
+  {
+    id: 8,
+    title: "Introduction to CSS",
+    issuer: "TESDA Online Program",
+    category: "technical",
+    categoryLabel: "Technical Instruction",
+    img: TechnicalImg2,
+  },
+  {
+    id: 9,
+    title: "Installing & Configuring Computer Systems",
+    issuer: "TESDA Online Program",
+    category: "technical",
+    categoryLabel: "Technical Instruction",
+    img: TechnicalImg1,
+  },
+  {
+    id: 10,
+    title: "Computer Systems Servicing",
+    issuer: "TESDA Online Program",
+    category: "technical",
+    categoryLabel: "Technical Instruction",
+    img: TechnicalImg,
+  },
+  {
     id: 11,
+    title: "ROTC NSTP Completion",
+    issuer: "Bicol University ROTC Unit",
+    category: "training",
+    categoryLabel: "Training Completion",
+    img: ROTCImg,
+  },
+  {
+    id: 12,
+    title: "Job Readiness Training",
+    issuer: "Children International Bicol Inc.",
+    category: "job-readiness",
+    categoryLabel: "Job Readiness",
+    img: JobReadinessImg,
+  },
+  {
+    id: 13,
+    title: "Certificate of Completion",
+    issuer: "Bicol University",
+    category: "training",
+    categoryLabel: "Training Completion",
+    img: CertofCompletion,
+  },
+  {
+    id: 14,
     title: "Certificate of Appreciation",
     issuer: "Bicol University",
     category: "recognition",
@@ -116,12 +143,12 @@ const certificates = [
     img: CertofAppreciation,
   },
   {
-    id: 12,
-    title: "Certificate of Completion",
+    id: 15,
+    title: "Diploma in Information Technology",
     issuer: "Bicol University",
-    category: "training",
-    categoryLabel: "Training Completion",
-    img: CertofCompletion,
+    category: "diploma",
+    categoryLabel: "Diploma",
+    img: DiplomaCollege,
   },
 ];
 
@@ -133,6 +160,7 @@ export const CertificatesSection = () => {
   // Define descriptive labels for our categories
   const categories = [
     { key: "all", label: "All" },
+    { key: "diploma", label: "Diploma" },
     { key: "technical", label: "Technical Instruction" },
     { key: "leadership", label: "Leadership Distinction" },
     { key: "job-readiness", label: "Job Readiness" },
@@ -141,11 +169,10 @@ export const CertificatesSection = () => {
   ];
 
   // Filter certificates based on active tab
-  const filteredCertificates =
-    activeCategory === "all"
-      ? certificates
-      : certificates.filter((cert) => cert.category === activeCategory);
-
+  const filteredCertificates = (activeCategory === "all"
+    ? [...certificates]
+    : certificates.filter((cert) => cert.category === activeCategory)
+  ).sort((a, b) => b.id - a.id);
   const activeCert =
     activeCertIndex !== null ? filteredCertificates[activeCertIndex] : null;
 
@@ -159,7 +186,7 @@ export const CertificatesSection = () => {
     if (activeCertIndex === null) return;
     setActiveCertIndex(
       (activeCertIndex - 1 + filteredCertificates.length) %
-        filteredCertificates.length,
+      filteredCertificates.length,
     );
   };
 
