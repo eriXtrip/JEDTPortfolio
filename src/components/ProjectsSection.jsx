@@ -56,6 +56,14 @@ import RentalManagmentSystem3 from "../assets/works/RentalManagmentSystem/Rental
 import RentalManagmentSystem4 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (4).png";
 import RentalManagmentSystem5 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (5).png";
 
+import SystemAdmin1 from "../assets/works/SystemAdmin.png"
+import SystemAdmin2 from "../assets/works/SystemAdmin/SystemAdmin (1).png"
+import SystemAdmin3 from "../assets/works/SystemAdmin/SystemAdmin (2).png"
+import SystemAdmin4 from "../assets/works/SystemAdmin/SystemAdmin (3).png"
+import SystemAdmin5 from "../assets/works/SystemAdmin/SystemAdmin (4).png"
+import SystemAdmin6 from "../assets/works/SystemAdmin/SystemAdmin (5).png"
+import SystemAdmin7 from "../assets/works/SystemAdmin/SystemAdmin (6).png"
+
 import BUCSMCC from "../assets/works/BUCSMCC.png";
 import BUCSMCCimg1 from "../assets/works/BUCSMCC/BUCSMCC (1).png";
 import BUCSMCCimg3 from "../assets/works/BUCSMCC/BUCSMCC (3).png";
@@ -70,6 +78,14 @@ import BUCSMCCimg11 from "../assets/works/BUCSMCC/BUCSMCC (11).png";
 import BUCSMCCimg12 from "../assets/works/BUCSMCC/BUCSMCC (12).png";
 import BUCSMCCimg13 from "../assets/works/BUCSMCC/BUCSMCC (13).png";
 import BUCSMCCimg14 from "../assets/works/BUCSMCC/BUCSMCC (14).png";
+
+import Networking1 from "../assets/works/Networking.jpg";
+import Networking2 from "../assets/works/Networking/Networking (1).jpg"
+import Networking3 from "../assets/works/Networking/Networking (2).jpg"
+import Networking4 from "../assets/works/Networking/Networking (3).jpg"
+import Networking5 from "../assets/works/Networking/Networking (4).jpg"
+import Networking6 from "../assets/works/Networking/Networking (5).jpg"
+import Networking7 from "../assets/works/Networking/Networking (6).jpg"
 
 const projects = [
   {
@@ -96,6 +112,27 @@ const projects = [
   },
   {
     id: 2,
+    title: "Network Design & Implementation Projects",
+    description:
+      "Designed and simulated university network infrastructures using Cisco Packet Tracer, configuring TCP/IP, DNS, DHCP, VLANs, routing, switching, and firewall rules.",
+    image: Networking1,
+    category: ["networking"],
+    categoryLabel: "Networking",
+    year: "2024",
+    githubUrl: "https://github.com/eriXtrip",
+    images: [Networking1, Networking2, Networking3, Networking4, Networking5, Networking6, Networking7],
+    videoUrl: null,
+    problemStatement:
+      "Educational institutions required realistic network labs without costly hardware, leading to limited hands‑on experience for students.",
+    solution:
+      "Created comprehensive Packet Tracer simulations covering physical and logical topologies, VLAN segmentation, routing protocols, and security policies.",
+    documentation:
+      "Detailed project write‑ups include network diagrams, IP addressing schemes, and step‑by‑step configuration scripts.",
+    conclusion:
+      "Enabled students to design, test, and troubleshoot complex network scenarios, improving practical networking competency.",
+  },
+  {
+    id: 3,
     title: "OroSite Teachers Portal",
     description:
       "A web portal for teachers to manage academic classes, student assignments, and cross-departmental communication.",
@@ -124,7 +161,7 @@ const projects = [
       "Decreased manual faculty administrative overhead by an estimated 5 hours per week per instructor while establishing a unified digital communication hub.",
   },
   {
-    id: 3,
+    id: 4,
     title: "Rental Management System",
     description:
       "A sleek desktop utility application for managing rental business operations, built with C# and packaged as a local executable.",
@@ -153,7 +190,28 @@ const projects = [
       "Completely solved inventory overbooking problems, modernized ledger records, and drastically minimized invoicing errors for small-scale local shops.",
   },
   {
-    id: 4,
+    id: 5,
+    title: "Ubuntu System Administration Laboratory Projects",
+    description:
+      "Deployed and managed Ubuntu server environments using VirtualBox, performing installation, configuration, user management, and basic network services.",
+    image: SystemAdmin1,
+    category: ["system-admin"],
+    categoryLabel: "System Admin",
+    year: "2025",
+    githubUrl: "https://github.com/eriXtrip",
+    images: [SystemAdmin1, SystemAdmin2, SystemAdmin3, SystemAdmin4, SystemAdmin5, SystemAdmin6, SystemAdmin7],
+    videoUrl: null,
+    problemStatement:
+      "Hands‑on Ubuntu administration practice was limited to theoretical exercises, hindering real‑world skill development.",
+    solution:
+      "Built VirtualBox lab environments with Ubuntu server, configuring services such as SSH, Apache, MySQL, and implementing user permissions.",
+    documentation:
+      "Each lab includes step‑by‑step commands, configuration files, and troubleshooting notes.",
+    conclusion:
+      "Provided a repeatable, isolated environment for mastering Ubuntu system administration tasks.",
+  },
+  {
+    id: 6,
     title: "MQuest E-learning",
     description:
       "A mobile-first e-learning application built with React Native and Node.js, supporting interactive lessons and gamified quizzes.",
@@ -208,7 +266,7 @@ const projects = [
       "Enhanced student course engagement rates by 38% and significantly improved micro-learning task completion metrics over traditional learning formats.",
   },
   {
-    id: 5,
+    id: 7,
     title: "BUCS MCC",
     description:
       "A secure React and Laravel web application modernizing microbial culture data infrastructure with automated specimen tracking and RBAC security.",
@@ -249,6 +307,7 @@ const projects = [
     conclusion:
       "Transitioned the department to a paperless environment, reducing specimen processing turnaround times by 75% while laying a solid foundation for future biotech research.",
   },
+
 ];
 
 const categories = [
@@ -256,6 +315,8 @@ const categories = [
   { id: "web-dev", name: "Web Dev" },
   { id: "desktop-dev", name: "Desktop Dev" },
   { id: "app-dev", name: "App Dev" },
+  { id: "networking", name: "Networking" },
+  { id: "system-admin", name: "System Admin" },
 ];
 
 export const ProjectsSection = () => {
@@ -295,10 +356,10 @@ export const ProjectsSection = () => {
     activeTab === "all"
       ? projects
       : projects.filter((project) =>
-          Array.isArray(project.category)
-            ? project.category.includes(activeTab)
-            : project.category === activeTab,
-        )
+        Array.isArray(project.category)
+          ? project.category.includes(activeTab)
+          : project.category === activeTab,
+      )
   )
     .slice()
     .sort((a, b) => b.id - a.id);
@@ -330,11 +391,10 @@ export const ProjectsSection = () => {
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-3 py-1.5 text-xs md:px-6 md:py-2 md:text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${
-                  activeTab === category.id
-                    ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm"
-                    : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-                }`}
+                className={`px-3 py-1.5 text-xs md:px-6 md:py-2 md:text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${activeTab === category.id
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm"
+                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+                  }`}
               >
                 {category.name}
               </button>
@@ -415,18 +475,16 @@ export const ProjectsSection = () => {
       </div>
       {/* Sliding Drawer for Project Details */}
       <div
-        className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-xs z-50 transition-opacity duration-500 ease-in-out ${
-          isDrawerOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-xs z-50 transition-opacity duration-500 ease-in-out ${isDrawerOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+          }`}
         onClick={closeDrawer}
       />
 
       <div
-        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 shadow-2xl z-[150] flex flex-col transition-transform duration-500 ease-in-out ${
-          isDrawerOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 shadow-2xl z-[150] flex flex-col transition-transform duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {selectedProject && (
           <>
@@ -487,11 +545,10 @@ export const ProjectsSection = () => {
                             <button
                               key={idx}
                               onClick={() => setActiveVideoIndex(idx)}
-                              className={`px-2.5 py-1 rounded-md transition-all duration-200 cursor-pointer ${
-                                activeVideoIndex === idx
-                                  ? "bg-white text-emerald-600 shadow-xs dark:bg-neutral-700 dark:text-emerald-400"
-                                  : "text-neutral-500 hover:text-neutral-850 dark:hover:text-neutral-200"
-                              }`}
+                              className={`px-2.5 py-1 rounded-md transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
+                                ? "bg-white text-emerald-600 shadow-xs dark:bg-neutral-700 dark:text-emerald-400"
+                                : "text-neutral-500 hover:text-neutral-850 dark:hover:text-neutral-200"
+                                }`}
                             >
                               Video {idx + 1}
                             </button>
@@ -515,50 +572,49 @@ export const ProjectsSection = () => {
               {/* Media Section: Project Screenshots */}
               {((selectedProject.images && selectedProject.images.length > 0) ||
                 selectedProject.image) && (
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                      Project Screenshots
-                    </h3>
-                    <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/50 dark:border-neutral-800/50 relative shadow-sm">
-                      <img
-                        src={
-                          selectedProject.images &&
-                          selectedProject.images[activeImgIndex]
-                            ? selectedProject.images[activeImgIndex]
-                            : selectedProject.image
-                        }
-                        alt={`${selectedProject.title} screenshot ${activeImgIndex + 1}`}
-                        className="w-full h-full object-contain transition-all duration-500 ease-in-out"
-                      />
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                        Project Screenshots
+                      </h3>
+                      <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/50 dark:border-neutral-800/50 relative shadow-sm">
+                        <img
+                          src={
+                            selectedProject.images &&
+                              selectedProject.images[activeImgIndex]
+                              ? selectedProject.images[activeImgIndex]
+                              : selectedProject.image
+                          }
+                          alt={`${selectedProject.title} screenshot ${activeImgIndex + 1}`}
+                          className="w-full h-full object-contain transition-all duration-500 ease-in-out"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Thumbnails list */}
-                  {selectedProject.images &&
-                    selectedProject.images.length > 1 && (
-                      <div className="flex items-center gap-3 overflow-x-auto py-1 scrollbar-none">
-                        {selectedProject.images.map((img, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => setActiveImgIndex(idx)}
-                            className={`relative w-24 aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${
-                              activeImgIndex === idx
+                    {/* Thumbnails list */}
+                    {selectedProject.images &&
+                      selectedProject.images.length > 1 && (
+                        <div className="flex items-center gap-3 overflow-x-auto py-1 scrollbar-none">
+                          {selectedProject.images.map((img, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => setActiveImgIndex(idx)}
+                              className={`relative w-24 aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
                                 ? "border-emerald-600 scale-[1.02] shadow-md dark:border-emerald-400"
                                 : "border-transparent opacity-60 hover:opacity-100"
-                            }`}
-                          >
-                            <img
-                              src={img}
-                              alt="thumbnail"
-                              className="w-full h-full object-cover"
-                            />
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                </div>
-              )}
+                                }`}
+                            >
+                              <img
+                                src={img}
+                                alt="thumbnail"
+                                className="w-full h-full object-cover"
+                              />
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                  </div>
+                )}
 
               {/* Grid: Details */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-neutral-100 dark:border-neutral-800">

@@ -66,6 +66,34 @@ export const SkillsSection = () => {
         "Vite",
       ],
     },
+    {
+      title: "Networking",
+      skills: [
+        "Cisco Packet Tracer",
+        "TCP/IP",
+        "DNS",
+        "DHCP",
+        "VLANs",
+        "Routing",
+        "Switching",
+        "Firewall Rules",
+        "Network Topology Design",
+      ],
+    },
+    {
+      title: "System Administration",
+      skills: [
+        "Ubuntu",
+        "VirtualBox",
+        "Bash",
+        "User Management",
+        "SSH",
+        "Apache",
+        "MySQL",
+        "Network Services",
+        "Shell Scripting",
+      ],
+    },
   ];
 
   const experiences = [
@@ -121,30 +149,27 @@ export const SkillsSection = () => {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className={`flex flex-col justify-between p-6 md:p-8 rounded-3xl border text-left transition-all duration-300 hover:translate-y-[-6px] ${
-                service.isInverted
+              className={`flex flex-col justify-between p-6 md:p-8 rounded-3xl border text-left transition-all duration-300 hover:translate-y-[-6px] ${service.isInverted
                   ? "bg-neutral-900 text-white border-neutral-900 dark:bg-neutral-900 dark:border-neutral-800"
                   : "bg-white text-neutral-900 border-neutral-200 dark:bg-neutral-900/60 dark:text-white dark:border-neutral-800"
-              }`}
+                }`}
             >
               <div className="space-y-6">
                 {/* Top-aligned number */}
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-xs font-bold tracking-widest uppercase ${
-                      service.isInverted
+                    className={`text-xs font-bold tracking-widest uppercase ${service.isInverted
                         ? "text-neutral-400"
                         : "text-neutral-400 dark:text-neutral-500"
-                    }`}
+                      }`}
                   >
                     Service
                   </span>
                   <span
-                    className={`text-lg font-bold tracking-tighter ${
-                      service.isInverted
+                    className={`text-lg font-bold tracking-tighter ${service.isInverted
                         ? "text-neutral-400"
                         : "text-neutral-400 dark:text-neutral-500"
-                    }`}
+                      }`}
                   >
                     {service.number}
                   </span>
@@ -156,11 +181,10 @@ export const SkillsSection = () => {
                     {service.title}
                   </h3>
                   <p
-                    className={`text-xs md:text-sm leading-relaxed ${
-                      service.isInverted
+                    className={`text-xs md:text-sm leading-relaxed ${service.isInverted
                         ? "text-neutral-350"
                         : "text-neutral-600 dark:text-neutral-400"
-                    }`}
+                      }`}
                   >
                     {service.description}
                   </p>
@@ -171,11 +195,10 @@ export const SkillsSection = () => {
               <div className="pt-6">
                 <a
                   href="#contact"
-                  className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest ${
-                    service.isInverted
+                  className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest ${service.isInverted
                       ? "text-white hover:text-neutral-300"
                       : "text-neutral-900 dark:text-white hover:text-neutral-500"
-                  } transition-colors`}
+                    } transition-colors`}
                 >
                   Hire Me <ArrowUpRight className="h-4 w-4" />
                 </a>
