@@ -223,7 +223,7 @@ export const CertificatesSection = () => {
       id="certificates"
       className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      <div className="container max-w-7xl mx-auto">
+      <div className="container max-w-7xl mx-auto px-1">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <span className="text-xs font-bold tracking-widest text-emerald-500 dark:text-emerald-400 uppercase">
@@ -281,7 +281,7 @@ export const CertificatesSection = () => {
         </div>
 
         {/* Modern Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 px-4 mid:px-2">
           {filteredCertificates.map((cert, index) => {
             const isCopied = copiedId === cert.id;
             return (

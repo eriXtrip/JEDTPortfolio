@@ -39,7 +39,7 @@ export const AboutSection = () => {
       id="about"
       className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      <div className="container max-w-7xl mx-auto">
+      <div className="container max-w-7xl mx-auto px-3 md:px-10   ">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left Column: Heading and Background Summary */}
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-32">

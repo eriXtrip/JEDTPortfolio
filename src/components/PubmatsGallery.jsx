@@ -188,9 +188,9 @@ export const PubmatsGallery = () => {
   return (
     <section
       id="pubmats"
-      className="py-24 px-6 md:px-12 bg-white dark:bg-neutral-900 relative"
+      className="py-24 px-6 md:px-15 bg-white dark:bg-neutral-900 relative"
     >
-      <div className="container max-w-7xl mx-auto">
+      <div className="container max-w-7xl mx-auto px-2 mid:px-12">
         {/* Asymmetrical Split Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: High-contrast Statistics & Introduction */}
@@ -324,8 +324,8 @@ export const PubmatsGallery = () => {
                         key={pageIdx}
                         onClick={() => setCurrentPage(pageIdx)}
                         className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentPage === pageIdx
-                            ? "w-6 bg-emerald-500"
-                            : "w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-450 dark:hover:bg-neutral-500"
+                          ? "w-6 bg-emerald-500"
+                          : "w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-450 dark:hover:bg-neutral-500"
                           }`}
                         aria-label={`Go to page ${pageIdx + 1}`}
                       />

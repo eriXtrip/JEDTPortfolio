@@ -7,6 +7,8 @@ import {
   AlertCircle,
   FileText,
   CheckCircle2,
+  MonitorCog,
+  Target
 } from "lucide-react";
 
 // Import your project images from assets
@@ -119,7 +121,7 @@ const projects = [
     category: ["networking"],
     categoryLabel: "Networking",
     year: "2024",
-    githubUrl: "https://github.com/eriXtrip",
+    githubUrl: null,
     images: [Networking1, Networking2, Networking3, Networking4, Networking5, Networking6, Networking7],
     videoUrl: null,
     problemStatement:
@@ -198,7 +200,7 @@ const projects = [
     category: ["system-admin"],
     categoryLabel: "System Admin",
     year: "2025",
-    githubUrl: "https://github.com/eriXtrip",
+    githubUrl: null,
     images: [SystemAdmin1, SystemAdmin2, SystemAdmin3, SystemAdmin4, SystemAdmin5, SystemAdmin6, SystemAdmin7],
     videoUrl: null,
     problemStatement:
@@ -369,7 +371,7 @@ export const ProjectsSection = () => {
       id="works"
       className="py-24 px-6 md:px-12 bg-white dark:bg-neutral-900 relative"
     >
-      <div className="container max-w-7xl mx-auto">
+      <div className="container max-w-7xl mx-auto px-1">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
@@ -403,7 +405,7 @@ export const ProjectsSection = () => {
         </div>
 
         {/* Grid: 3-column desktop, collapses to mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1 md:px-12 ">
           {filteredProjects.map((project) => (
             <article
               key={project.id}
@@ -447,15 +449,17 @@ export const ProjectsSection = () => {
                 >
                   View Project
                 </button>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full transition-colors"
-                  aria-label="GitHub Repo"
-                >
-                  <Github className="h-4 w-4" />
-                </a>
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full transition-colors"
+                    aria-label="GitHub Repo"
+                  >
+                    <Github className="h-4 w-4" />
+                  </a>
+                )}
               </div>
             </article>
           ))}
@@ -617,6 +621,15 @@ export const ProjectsSection = () => {
                 )}
 
               {/* Grid: Details */}
+              <div className="space-y-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+                <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                  <FileText className="h-4 w-4 text-primary" />Short Description
+                </h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                  {selectedProject.description}
+                </p>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-neutral-100 dark:border-neutral-800">
                 <div className="space-y-2">
                   <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
@@ -641,7 +654,7 @@ export const ProjectsSection = () => {
               {/* Documentation */}
               <div className="space-y-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
                 <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <FileText className="h-4 w-4 text-primary" /> Technical
+                  < MonitorCog className="h-4 w-4 text-primary" /> Technical
                   Architecture
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
@@ -652,7 +665,7 @@ export const ProjectsSection = () => {
               {/* Conclusion */}
               <div className="space-y-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
                 <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <Info className="h-4 w-4 text-primary" /> Outcomes & Impact
+                  <Target className="h-4 w-4 text-primary" /> Outcomes & Impact
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {selectedProject.conclusion}
@@ -662,14 +675,16 @@ export const ProjectsSection = () => {
 
             {/* Footer */}
             <div className="p-6 border-t border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 flex gap-4">
-              <a
-                href={selectedProject.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                GitHub Repository <Github className="h-4 w-4" />
-              </a>
+              {selectedProject.githubUrl && (
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  GitHub Repository <Github className="h-4 w-4" />
+                </a>
+              )}
               <button
                 onClick={closeDrawer}
                 className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
