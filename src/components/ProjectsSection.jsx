@@ -8,7 +8,8 @@ import {
   FileText,
   CheckCircle2,
   MonitorCog,
-  Target
+  Target,
+  Maximize2
 } from "lucide-react";
 
 // Import your project images from assets
@@ -592,6 +593,19 @@ export const ProjectsSection = () => {
                           alt={`${selectedProject.title} screenshot ${activeImgIndex + 1}`}
                           className="w-full h-full object-contain transition-all duration-500 ease-in-out"
                         />
+                        {/* Maximize button */}
+                        <button
+                          onClick={() => {
+                            const imgSrc = selectedProject.images && selectedProject.images[activeImgIndex]
+                              ? selectedProject.images[activeImgIndex]
+                              : selectedProject.image;
+                            window.open(imgSrc, "_blank");
+                          }}
+                          className="absolute bottom-2 right-2 p-1 bg-neutral-800/70 rounded-full hover:bg-neutral-600 transition-colors"
+                          aria-label="View full image"
+                        >
+                          <Maximize2 className="h-5 w-5 text-white" />
+                        </button>
                       </div>
                     </div>
 
