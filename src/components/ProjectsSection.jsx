@@ -164,7 +164,7 @@ const projects = [
     id: 4,
     title: "Rental Management System",
     description:
-      "A sleek desktop utility application for managing rental business operations, built with C# and packaged as a local executable.",
+      "A Windows Forms desktop utility for rental management, built with C# in Visual Studio 2022, using MySQL Server Community Edition via .NET Connector. Implements a normalized relational database with primary and foreign keys, updatable and non-updatable views, stored procedures, triggers, and foreign‑key constraints on update/delete. Includes C#/MySQL login system with password recovery, CRUD user management, Excel‑based report generation, and is packaged into a single installer using Inno Setup.",
     image: RentalManagementSystemImg,
     category: ["desktop-dev"],
     categoryLabel: "Desktop Dev",
