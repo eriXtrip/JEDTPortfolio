@@ -15,7 +15,7 @@ export const Home = () => {
       {/* Background Effects */}
       {/* Navbar */}
       <Navbar />
-      
+
       {/* Main Content */}
       <main className="relative">
         <HeroSection />

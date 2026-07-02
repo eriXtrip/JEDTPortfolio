@@ -34,64 +34,70 @@ export const SkillsSection = () => {
 
   const skillCategories = [
     {
-      title: "Frontend & Mobile",
+      title: "Web & Mobile Development",
       skills: [
         "React",
+        "Laravel",
         "React Native",
-        "TypeScript",
+        "Node.js",
         "JavaScript (ES6+)",
         "HTML5 & CSS3",
+        "PHP",
+        "REST API",
         "Tailwind CSS",
       ],
     },
     {
-      title: "Backend & Databases",
+      title: "Databases & Analytics",
       skills: [
-        "Node.js",
-        "Laravel",
-        "PHP",
-        "Express.js",
         "MySQL",
-        "RESTful APIs",
+        "SQLite",
+        "Data Migration",
+        "CRUD Operations",
+        "Database Design",
       ],
     },
     {
-      title: "Design & Professional Tools",
+      title: "Software Engineering",
       skills: [
-        "Figma",
-        "Adobe Photoshop",
-        "Adobe Illustrator",
-        "Canva",
+        "OOP & MVC",
+        "JWT Authentication",
         "Git & GitHub",
-        "Vite",
+        "Version Control",
+        "System Deployment",
+        "Software Testing",
       ],
     },
     {
-      title: "Networking",
+      title: "Networking & Infrastructure",
       skills: [
         "Cisco Packet Tracer",
         "TCP/IP",
-        "DNS",
-        "DHCP",
-        "VLANs",
-        "Routing",
-        "Switching",
-        "Firewall Rules",
-        "Network Topology Design",
+        "DNS & DHCP",
+        "VLAN Configuration",
+        "Routing & Switching",
+        "Firewall",
+        "Network Design",
       ],
     },
     {
       title: "System Administration",
       skills: [
-        "Ubuntu",
+        "Ubuntu Server",
         "VirtualBox",
-        "Bash",
-        "User Management",
-        "SSH",
-        "Apache",
-        "MySQL",
+        "Bash / CLI",
+        "User & Permission Mgmt",
+        "Server Maintenance",
         "Network Services",
-        "Shell Scripting",
+      ],
+    },
+    {
+      title: "Design & Media",
+      skills: [
+        "Canva",
+        "Adobe Photoshop",
+        "Video / Audio Editing",
+        "Publication Materials",
       ],
     },
   ];
@@ -227,25 +233,26 @@ export const SkillsSection = () => {
           </div>
 
           {/* Skill Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {skillCategories.map((cat, idx) => (
               <div
                 key={idx}
-                className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl p-6 md:p-8 space-y-6 hover:border-emerald-500/20 dark:hover:border-emerald-450/20 hover:shadow-xs transition-all duration-300 text-left"
+                className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl overflow-hidden hover:translate-y-[-6px] hover:shadow-lg transition-all duration-300 group text-left"
               >
-                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white border-b border-neutral-100 dark:border-neutral-800 pb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  {cat.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill, sIdx) => (
-                    <span
-                      key={sIdx}
-                      className="px-3.5 py-2 bg-neutral-50 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/40 rounded-xl text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/20 dark:hover:border-emerald-400/20 transition-all duration-200 cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <div className="p-6 md:p-8 space-y-5">
+                  <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    {cat.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className="px-3.5 py-2 bg-neutral-50 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/40 rounded-xl text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-400/40 dark:hover:border-emerald-400/30 hover:scale-105 transition-all duration-200 cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

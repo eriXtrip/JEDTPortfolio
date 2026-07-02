@@ -358,7 +358,7 @@ export const CertificatesSection = () => {
       {/* Lightbox / Immersive Detail Modal */}
       {activeCertIndex !== null && activeCert && (
         <div
-          className="fixed inset-0 z-[150] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 animate-fade-in"
+          className="fixed inset-0 z-[150] flex items-center justify-center bg-black/85 backdrop-blur-md p-4"
           onClick={() => setActiveCertIndex(null)}
         >
           {/* Main Modal Shell Container */}

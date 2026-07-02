@@ -57,17 +57,18 @@ export const AboutSection = () => {
 
             <div className="space-y-6 text-neutral-600 dark:text-neutral-400 leading-relaxed text-base">
               <p>
-                I am an IT undergraduate specializing in Full Stack Development
-                and Graphic Design. My focus lies at the intersection of
-                technical engineering and visual aesthetic—building fast,
-                scalable, and responsive web systems that are a joy to use.
+                IT graduate with hands-on experience in full-stack development,
+                technical support, networking, and Linux system administration.
+                Experienced in React, Laravel, MySQL, TCP/IP networking, and
+                troubleshooting through internship, academic projects, and field
+                support roles.
               </p>
 
               <p>
-                Whether building responsive layouts or designing intuitive
-                interfaces, I prioritize user-first interaction and seamless UX,
-                combining a systematic analytical approach with a sharp, modern
-                eye for clean typography and accessible design.
+                Seeking an entry-level IT Support, Systems Administration,
+                Network Support, or Software Development position where I can
+                apply my technical skills and problem-solving mindset to
+                deliver impactful solutions.
               </p>
             </div>
 

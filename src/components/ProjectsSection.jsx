@@ -1,7 +1,5 @@
 import { useState } from "react";
 import {
-  ArrowUpRight,
-  Github,
   X,
   Info,
   AlertCircle,
@@ -450,35 +448,15 @@ export const ProjectsSection = () => {
                 >
                   View Project
                 </button>
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full transition-colors"
-                    aria-label="GitHub Repo"
-                  >
-                    <Github className="h-4 w-4" />
-                  </a>
-                )}
+
               </div>
             </article>
           ))}
         </div>
 
-        {/* Bottom Callout */}
-        <div className="text-center mt-16">
-          <a
-            href="https://github.com/eriXtrip"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="outline-button"
-          >
-            Check My GitHub <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
+
       </div>
-      {/* Sliding Drawer for Project Details */}
+      {/* Overlay */}
       <div
         className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-xs z-50 transition-opacity duration-500 ease-in-out ${isDrawerOpen
           ? "opacity-100 pointer-events-auto"
@@ -487,35 +465,36 @@ export const ProjectsSection = () => {
         onClick={closeDrawer}
       />
 
+      {/* Sliding Drawer */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 shadow-2xl z-[150] flex flex-col transition-transform duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 shadow-2xl z-[150] flex flex-col transition-all duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         {selectedProject && (
           <>
+
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+            <div className="flex items-start justify-between p-6 pb-4">
               <div className="text-left space-y-1">
                 <span className="text-xs font-bold uppercase tracking-widest text-primary">
                   {selectedProject.year} / {selectedProject.categoryLabel}
                 </span>
-                <h2 className="text-2xl font-extrabold text-neutral-900 dark:text-white">
+                <h2 className="text-2xl font-extrabold text-neutral-900 dark:text-white pr-8">
                   {selectedProject.title}
                 </h2>
               </div>
               <button
                 onClick={closeDrawer}
-                className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer"
+                className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
                 aria-label="Close details"
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 text-left">
-              {/* Media Section: Video or Image */}
-              {/* Media Section: Video Showcase */}
+            <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-8 text-left">
+              {/* Media: Video */}
               {(() => {
                 let projectVideos = [];
                 if (Array.isArray(selectedProject.videoUrls)) {
@@ -538,11 +517,9 @@ export const ProjectsSection = () => {
 
                 return (
                   <div className="space-y-3">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-                      <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                        Video Showcase{" "}
-                        {projectVideos.length > 1 &&
-                          `(${activeVideoIndex + 1}/${projectVideos.length})`}
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                        Video {projectVideos.length > 1 && `(${activeVideoIndex + 1}/${projectVideos.length})`}
                       </h3>
                       {projectVideos.length > 1 && (
                         <div className="flex items-center gap-1 bg-neutral-100 dark:bg-neutral-800/80 p-0.5 rounded-lg text-[10px] font-bold">
@@ -555,13 +532,13 @@ export const ProjectsSection = () => {
                                 : "text-neutral-500 hover:text-neutral-850 dark:hover:text-neutral-200"
                                 }`}
                             >
-                              Video {idx + 1}
+                              {idx + 1}
                             </button>
                           ))}
                         </div>
                       )}
                     </div>
-                    <div className="w-full h-[300px] sm:h-auto sm:aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
+                    <div className="w-full aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
                       <iframe
                         src={getEmbedUrl(projectVideos[activeVideoIndex])}
                         className="w-full h-full border-0"
@@ -574,90 +551,69 @@ export const ProjectsSection = () => {
                 );
               })()}
 
-              {/* Media Section: Project Screenshots */}
-              {((selectedProject.images && selectedProject.images.length > 0) ||
-                selectedProject.image) && (
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                        Project Screenshots
-                      </h3>
-                      <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/50 dark:border-neutral-800/50 relative shadow-sm">
-                        <img
-                          src={
-                            selectedProject.images &&
-                              selectedProject.images[activeImgIndex]
-                              ? selectedProject.images[activeImgIndex]
-                              : selectedProject.image
-                          }
-                          alt={`${selectedProject.title} screenshot ${activeImgIndex + 1}`}
-                          className="w-full h-full object-contain transition-all duration-500 ease-in-out"
-                        />
-                        {/* Maximize button */}
-                        <button
-                          onClick={() => {
-                            const imgSrc = selectedProject.images && selectedProject.images[activeImgIndex]
-                              ? selectedProject.images[activeImgIndex]
-                              : selectedProject.image;
-                            window.open(imgSrc, "_blank");
-                          }}
-                          className="absolute bottom-2 right-2 p-1 bg-neutral-800/70 rounded-full hover:bg-neutral-600 transition-colors"
-                          aria-label="View full image"
-                        >
-                          <Maximize2 className="h-5 w-5 text-white" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Thumbnails list */}
-                    {selectedProject.images &&
-                      selectedProject.images.length > 1 && (
-                        <div className="flex items-center gap-3 overflow-x-auto py-1 scrollbar-none">
-                          {selectedProject.images.map((img, idx) => (
-                            <button
-                              key={idx}
-                              onClick={() => setActiveImgIndex(idx)}
-                              className={`relative w-24 aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
-                                ? "border-emerald-600 scale-[1.02] shadow-md dark:border-emerald-400"
-                                : "border-transparent opacity-60 hover:opacity-100"
-                                }`}
-                            >
-                              <img
-                                src={img}
-                                alt="thumbnail"
-                                className="w-full h-full object-cover"
-                              />
-                            </button>
-                          ))}
-                        </div>
-                      )}
+              {/* Media: Screenshots */}
+              {selectedProject.images && selectedProject.images.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                    Screenshots
+                  </h3>
+                  <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/50 dark:border-neutral-800/50 relative shadow-sm">
+                    <img
+                      src={selectedProject.images[activeImgIndex]}
+                      alt={`${selectedProject.title} ${activeImgIndex + 1}`}
+                      className="w-full h-full object-contain"
+                    />
+                    <button
+                      onClick={() => window.open(selectedProject.images[activeImgIndex], "_blank")}
+                      className="absolute bottom-2 right-2 p-1.5 bg-neutral-800/70 rounded-full hover:bg-neutral-600 transition-colors"
+                      aria-label="View full image"
+                    >
+                      <Maximize2 className="h-4 w-4 text-white" />
+                    </button>
                   </div>
-                )}
 
-              {/* Grid: Details */}
-              <div className="space-y-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-                <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <FileText className="h-4 w-4 text-primary" />Short Description
+                  {selectedProject.images.length > 1 && (
+                    <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+                      {selectedProject.images.map((img, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setActiveImgIndex(idx)}
+                          className={`relative w-20 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
+                            ? "border-emerald-500 scale-105 shadow-xs dark:border-emerald-400"
+                            : "border-transparent opacity-50 hover:opacity-100"
+                            }`}
+                        >
+                          <img src={img} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Overview */}
+              <div className="space-y-2">
+                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                  <FileText className="h-3.5 w-3.5 text-primary" /> Overview
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {selectedProject.description}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-neutral-100 dark:border-neutral-800">
-                <div className="space-y-2">
-                  <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                    <AlertCircle className="h-4 w-4 text-primary" /> The Problem
+              {/* Problem & Solution */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="space-y-2 bg-neutral-50 dark:bg-neutral-950/50 rounded-2xl p-5 border border-neutral-100 dark:border-neutral-800/50">
+                  <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                    <AlertCircle className="h-3.5 w-3.5 text-primary" /> The Problem
                   </h3>
                   <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                     {selectedProject.problemStatement}
                   </p>
                 </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                    <CheckCircle2 className="h-4 w-4 text-primary" /> The
-                    Solution
+                <div className="space-y-2 bg-neutral-50 dark:bg-neutral-950/50 rounded-2xl p-5 border border-neutral-100 dark:border-neutral-800/50">
+                  <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-primary" /> The Solution
                   </h3>
                   <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                     {selectedProject.solution}
@@ -665,21 +621,20 @@ export const ProjectsSection = () => {
                 </div>
               </div>
 
-              {/* Documentation */}
-              <div className="space-y-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-                <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  < MonitorCog className="h-4 w-4 text-primary" /> Technical
-                  Architecture
+              {/* Tech Architecture */}
+              <div className="space-y-2">
+                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                  <MonitorCog className="h-3.5 w-3.5 text-primary" /> Technical Architecture
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {selectedProject.documentation}
                 </p>
               </div>
 
-              {/* Conclusion */}
-              <div className="space-y-2 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-                <h3 className="text-sm uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <Target className="h-4 w-4 text-primary" /> Outcomes & Impact
+              {/* Outcomes */}
+              <div className="space-y-2">
+                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                  <Target className="h-3.5 w-3.5 text-primary" /> Outcomes & Impact
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {selectedProject.conclusion}
@@ -688,20 +643,10 @@ export const ProjectsSection = () => {
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 flex gap-4">
-              {selectedProject.githubUrl && (
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  GitHub Repository <Github className="h-4 w-4" />
-                </a>
-              )}
+            <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0">
               <button
                 onClick={closeDrawer}
-                className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
               >
                 Close Details
               </button>

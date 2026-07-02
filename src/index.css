@@ -22,6 +22,10 @@
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
+  --animate-expand: expand 1.2s ease-out forwards;
+  --animate-splash-float: splash-float 2s ease-in-out infinite;
+  --animate-shimeji-bob: shimeji-bob 3s ease-in-out infinite;
+  --animate-shimeji-code: shimeji-code-blink 2.5s ease-in-out infinite;
 
   @keyframes float {
     0%,
@@ -63,6 +67,23 @@
       transform: rotate(215deg) translateX(-500px);
       opacity: 0;
     }
+  }
+  @keyframes expand {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes splash-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes shimeji-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-4px) rotate(0.5deg); }
+    75% { transform: translateY(-2px) rotate(-0.5deg); }
+  }
+  @keyframes shimeji-code-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
 }
 
