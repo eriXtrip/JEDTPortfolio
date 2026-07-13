@@ -2,6 +2,7 @@ import {
   Instagram,
   Facebook,
   Github,
+  Linkedin,
   Mail,
   MapPin,
   Phone,
@@ -204,6 +205,15 @@ export const ContactSection = () => {
               aria-label="GitHub"
             >
               <Github className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jon-eric-tripulca-2b87ab417"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+              aria-label="Linkedin"
+            >
+              <Linkedin className="h-5 w-5" />
             </a>
           </div>
         </div>
