@@ -77,7 +77,7 @@ export const AboutSection = () => {
                 Get In Touch
               </a>
               <a
-                href="https://drive.google.com/uc?id=1CF_F642k5VVjtOxvY5Czd75YxhE5bota&export=download"
+                href="https://drive.google.com/uc?id=1nRWuFgGzzmHxZDKoLaMx3yk2Bmt26C1t&export=download"
                 className="outline-button whitespace-nowrap"
               >
                 Download CV <ArrowUpRight className="h-4 w-4" />
