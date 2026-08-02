@@ -10,6 +10,8 @@ const navItems = [
   { name: "Certificates", href: "#certificates" },
   { name: "Pubmats", href: "#pubmats" },
   { name: "Services", href: "#skills" },
+  { name: "Stack", href: "#techstack" },
+  { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 

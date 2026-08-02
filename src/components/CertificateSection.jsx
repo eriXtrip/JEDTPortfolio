@@ -170,10 +170,10 @@ export const CertificatesSection = () => {
   const categories = [
     { key: "all", label: "All" },
     { key: "diploma", label: "Diploma" },
-    { key: "technical", label: "Technical Instruction" },
-    { key: "leadership", label: "Leadership Distinction" },
+    { key: "technical", label: "Technical" },
+    { key: "leadership", label: "Leadership" },
     { key: "job-readiness", label: "Job Readiness" },
-    { key: "training", label: "Training Completion" },
+    { key: "training", label: "Training" },
     { key: "recognition", label: "Recognition" },
   ];
 

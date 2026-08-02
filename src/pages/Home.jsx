@@ -3,7 +3,9 @@ import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
 import { CertificatesSection } from "../components/CertificateSection";
-import { SkillsSection } from "../components/SkillsSection";
+import { SkillsSection } from "../components/ServiceSection";
+import { TechStackSection } from "../components/TechStackSection";
+import { ExperienceSection } from "../components/ExperienceSection";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { PubmatsGallery } from "../components/PubmatsGallery";
 import { ContactSection } from "../components/ContactSection";
@@ -24,6 +26,8 @@ export const Home = () => {
         <CertificatesSection />
         <PubmatsGallery />
         <SkillsSection />
+        <TechStackSection />
+        <ExperienceSection />
         <ContactSection />
       </main>
 
@@ -32,3 +36,4 @@ export const Home = () => {
     </div>
   );
 };
+
