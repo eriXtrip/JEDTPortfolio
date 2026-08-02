@@ -28,6 +28,7 @@ import CertofCompletion from "../assets/cert/CertofCompletion.jpg";
 import DiplomaCollege from "../assets/cert/Diploma College 2026.jpg"
 import DiplomaSHS from "../assets/cert/Diploma SHS 2022.png"
 import DiplomaJHS from "../assets/cert/Diploma JHS 2020.png"
+import ITCustomerSupportBasicsImg from "../assets/cert/IT_Customer_Support_Basics_certificate_jedt.png"
 
 const certificates = [
   {
@@ -149,6 +150,14 @@ const certificates = [
     category: "diploma",
     categoryLabel: "Diploma",
     img: DiplomaCollege,
+  },
+  {
+    id: 16,
+    title: "IT Customer Support Basics",
+    issuer: "CISCO Network Academy",
+    category: "technical",
+    categoryLabel: "Technical Instruction",
+    img: ITCustomerSupportBasicsImg,
   },
 ];
 
