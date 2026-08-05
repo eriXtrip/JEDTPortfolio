@@ -39,7 +39,7 @@ export const HeroSection = () => {
           <div className="flex-1 text-left space-y-8 lg:max-w-2xl">
             {/* Tagline */}
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 animate-fade-in">
-              <Sparkles className="h-3 w-3" /> Available For Freelance & Roles
+              <Sparkles className="h-3 w-3" /> Full-Stack Developer | IT Support | Designer
             </span>
 
             {/* Headline */}
@@ -50,9 +50,10 @@ export const HeroSection = () => {
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl animate-fade-in-delay-2">
-              Hi, I'm Jon Eric. I build high-performance web applications, clean
-              interactive user interfaces, and deliver results-oriented IT
-              support fused with premium graphic design.
+              Hi, I'm Jon Eric — a full-stack developer experienced in React,
+              Laravel, and MySQL, a hands-on IT support specialist in
+              troubleshooting and networking, and a freelance graphic designer
+              crafting premium visual content.
             </p>
 
             {/* CTA Buttons */}
@@ -78,15 +79,15 @@ export const HeroSection = () => {
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-semibold text-neutral-500 dark:text-neutral-400">
                 <span className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-neutral-900 dark:bg-white" />
-                  Fast Performance
+                  Full-Stack Developer
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-neutral-900 dark:bg-white" />
-                  Clean Code
+                  IT Support Specialist
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-neutral-900 dark:bg-white" />
-                  Pixel Perfect
+                  Graphic Designer
                 </span>
               </div>
             </div>

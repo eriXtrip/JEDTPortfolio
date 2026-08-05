@@ -7,7 +7,8 @@ import {
   CheckCircle2,
   MonitorCog,
   Target,
-  Maximize2
+  Maximize2,
+  ExternalLink
 } from "lucide-react";
 
 // Import your project images from assets
@@ -276,6 +277,7 @@ const projects = [
     categoryLabel: "Web Dev",
     year: "2026",
     githubUrl: "https://github.com/eriXtrip",
+    liveUrl: "https://bucs-mcc-demo.vercel.app/",
     images: [
       BUCSMCC,
       BUCSMCCimg1,
@@ -442,6 +444,16 @@ export const ProjectsSection = () => {
 
               {/* View Project Button */}
               <div className="pt-6 px-2 w-full flex items-center gap-3">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" /> Live Demo
+                  </a>
+                )}
                 <button
                   onClick={() => openDrawer(project)}
                   className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
@@ -643,7 +655,17 @@ export const ProjectsSection = () => {
             </div>
 
             {/* Footer */}
-            <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0">
+            <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0 space-y-2">
+              {selectedProject.liveUrl && (
+                <a
+                  href={selectedProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-2xl transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" /> Open Live Demo
+                </a>
+              )}
               <button
                 onClick={closeDrawer}
                 className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"

@@ -193,8 +193,9 @@ export const SplashScreen = ({ onFinish }) => {
               animation: "fade-in 0.6s ease-out 1.2s forwards",
             }}
           >
-            Full-Stack Developer & Designer
+            Full-Stack Developer, IT Support & Designer
           </p>
+
         </div>
       </div>
     </div>
