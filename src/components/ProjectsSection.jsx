@@ -8,7 +8,9 @@ import {
   MonitorCog,
   Target,
   Maximize2,
-  ExternalLink
+  ExternalLink,
+  Download,
+  Smartphone
 } from "lucide-react";
 
 // Import your project images from assets
@@ -258,6 +260,8 @@ const projects = [
       "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/view?usp=sharing",
       "https://drive.google.com/file/d/1BAOr4JUv7lQec1knzEoRLDrry9SK1sFn/view?usp=sharing",
     ],
+    demoUrl:
+      "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
     problemStatement:
       "Traditional distance learning platforms suffer from poor student engagement and lack gamified milestones, leading to high drop-out rates.",
     solution:
@@ -328,6 +332,7 @@ export const ProjectsSection = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [demoProject, setDemoProject] = useState(null);
 
   const openDrawer = (project) => {
     setSelectedProject(project);
@@ -453,6 +458,14 @@ export const ProjectsSection = () => {
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> Live Demo
                   </a>
+                )}
+                {project.demoUrl && (
+                  <button
+                    onClick={() => setDemoProject(project)}
+                    className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                  >
+                    <Smartphone className="h-3.5 w-3.5" /> Demo App
+                  </button>
                 )}
                 <button
                   onClick={() => openDrawer(project)}
@@ -666,6 +679,14 @@ export const ProjectsSection = () => {
                   <ExternalLink className="h-3.5 w-3.5" /> Open Live Demo
                 </a>
               )}
+              {selectedProject.demoUrl && (
+                <button
+                  onClick={() => setDemoProject(selectedProject)}
+                  className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                >
+                  <Smartphone className="h-3.5 w-3.5" /> Download Demo App
+                </button>
+              )}
               <button
                 onClick={closeDrawer}
                 className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
@@ -676,6 +697,119 @@ export const ProjectsSection = () => {
           </>
         )}
       </div>
+
+      {/* Demo App Instructions Modal */}
+      {demoProject && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-neutral-950/60 backdrop-blur-xs"
+            onClick={() => setDemoProject(null)}
+          />
+          <div className="relative w-full max-w-lg bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
+            {/* Modal Header */}
+            <div className="flex items-start justify-between p-6 pb-4 flex-shrink-0">
+              <div className="text-left space-y-1">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1.5">
+                  <Smartphone className="h-3.5 w-3.5" /> Demo App
+                </span>
+                <h2 className="text-xl font-extrabold text-neutral-900 dark:text-white pr-8">
+                  {demoProject.title}
+                </h2>
+              </div>
+              <button
+                onClick={() => setDemoProject(null)}
+                className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
+                aria-label="Close demo instructions"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Instructions */}
+            <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-5 text-left">
+              {/* Description */}
+              <div className="space-y-2">
+                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                  <Info className="h-3.5 w-3.5 text-primary" /> Description
+                </h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                  MQuest is a gamified learning platform for students to learn
+                  math and science with a quiz engine. It uses file-based
+                  routing with route groups for auth, dashboard, and profile
+                  flows, plus local SQLite storage, themed UI components, and
+                  API-driven sync with a backend server.
+                </p>
+              </div>
+
+              {/* Instructions */}
+              <div className="space-y-2">
+                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
+                  <FileText className="h-3.5 w-3.5 text-primary" /> Instructions
+                </h3>
+                <ol className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed space-y-2">
+                  <li>
+                    1) Install <span className="font-semibold text-neutral-900 dark:text-white">MQuest_Demo.apk</span> to Android phone
+                  </li>
+                  <li>
+                    2) Demo login (use these credentials):
+                    <div className="mt-2 space-y-1 bg-neutral-50 dark:bg-neutral-950/50 rounded-xl p-3 border border-neutral-100 dark:border-neutral-800/50 text-sm">
+                      <p>
+                        <span className="font-semibold text-neutral-900 dark:text-white">Email:</span>{" "}
+                        <span className="text-neutral-600 dark:text-neutral-300">MQuest.com</span>
+                      </p>
+                      <p>
+                        <span className="font-semibold text-neutral-900 dark:text-white">Password:</span>{" "}
+                        <span className="text-neutral-600 dark:text-neutral-300">Demo2026</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li>3) Explore the app.</li>
+                </ol>
+              </div>
+
+              {/* Notice */}
+              <div className="space-y-2 bg-amber-50 dark:bg-amber-950/20 rounded-2xl p-5 border border-amber-100 dark:border-amber-900/40">
+                <h3 className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5 font-bold">
+                  <AlertCircle className="h-3.5 w-3.5" /> Notice
+                </h3>
+                <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
+                  This is a DEMO application. Not every feature is fully
+                  functional. The following features will NOT work or may fail
+                  without a complete, properly configured backend:
+                </p>
+                <ul className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed list-disc pl-5 space-y-1">
+                  <li>Account recovery (forgot password)</li>
+                  <li>Enrollment</li>
+                  <li>Ranking</li>
+                  <li>Data syncing</li>
+                  <li>Creating accounts / registration</li>
+                  <li>Any other feature that depends on a live backend server</li>
+                </ul>
+                <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
+                  These screens and flows are present in the UI for demonstration
+                  purposes only.
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0 space-y-2">
+              <a
+                href={demoProject.demoUrl}
+                className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-2xl transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
+              >
+                <Download className="h-3.5 w-3.5" /> Download Demo App
+              </a>
+              <button
+                onClick={() => setDemoProject(null)}
+                className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
