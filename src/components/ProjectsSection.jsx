@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   X,
   Info,
@@ -258,7 +258,11 @@ const projects = [
     ],
     videoUrls: [
       "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/view?usp=sharing",
-      "https://drive.google.com/file/d/1BAOr4JUv7lQec1knzEoRLDrry9SK1sFn/view?usp=sharing",
+      "https://drive.google.com/file/d/1u36-oRxAe7ah9Mfrpd0_YUOOghPdlRHu/view?usp=sharing",
+      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/view?usp=sharing",
+      "https://drive.google.com/file/d/1qdms1b_7ysUPl_Tt279s_13UQJk933Gt/view?usp=sharing",
+      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/view?usp=sharing",
+      "https://drive.google.com/file/d/1UckwU4FaLLIDioJ4O2sHbGWQmzC7TiWB/view?usp=sharing",
     ],
     demoUrl:
       "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
@@ -333,13 +337,31 @@ export const ProjectsSection = () => {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [demoProject, setDemoProject] = useState(null);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < 768,
+  );
+  const [useNativeVideo, setUseNativeVideo] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    setIsMobile(mq.matches);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const openDrawer = (project) => {
     setSelectedProject(project);
     setActiveImgIndex(0);
     setActiveVideoIndex(0);
+    setUseNativeVideo(true);
     setIsDrawerOpen(true);
     document.body.style.overflow = "hidden";
+  };
+
+  const selectVideo = (idx) => {
+    setActiveVideoIndex(idx);
+    setUseNativeVideo(true);
   };
 
   const closeDrawer = () => {
@@ -356,6 +378,15 @@ export const ProjectsSection = () => {
     const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
     if (match && match[1]) {
       return `https://drive.google.com/file/d/${match[1]}/preview`;
+    }
+    return url;
+  };
+
+  const getDirectVideoUrl = (url) => {
+    if (!url || typeof url !== "string") return null;
+    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
     }
     return url;
   };
@@ -551,7 +582,7 @@ export const ProjectsSection = () => {
                           {projectVideos.map((_, idx) => (
                             <button
                               key={idx}
-                              onClick={() => setActiveVideoIndex(idx)}
+                              onClick={() => selectVideo(idx)}
                               className={`px-2.5 py-1 rounded-md transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
                                 ? "bg-white text-emerald-600 shadow-xs dark:bg-neutral-700 dark:text-emerald-400"
                                 : "text-neutral-500 hover:text-neutral-850 dark:hover:text-neutral-200"
@@ -563,14 +594,26 @@ export const ProjectsSection = () => {
                         </div>
                       )}
                     </div>
-                    <div className="w-full aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
-                      <iframe
-                        src={getEmbedUrl(projectVideos[activeVideoIndex])}
-                        className="w-full h-full border-0"
-                        allow="autoplay; encrypted-media; picture-in-picture"
-                        allowFullScreen
-                        title={`${selectedProject.title} Video ${activeVideoIndex + 1}`}
-                      />
+                    <div className="w-full h-[65vh] md:h-auto md:aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
+                      {isMobile && useNativeVideo ? (
+                        <video
+                          key={projectVideos[activeVideoIndex]}
+                          src={getDirectVideoUrl(projectVideos[activeVideoIndex])}
+                          className="w-full h-full object-contain bg-black"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          onError={() => setUseNativeVideo(false)}
+                        />
+                      ) : (
+                        <iframe
+                          src={getEmbedUrl(projectVideos[activeVideoIndex])}
+                          className="w-full h-full border-0"
+                          allow="autoplay; encrypted-media; picture-in-picture"
+                          allowFullScreen
+                          title={`${selectedProject.title} Video ${activeVideoIndex + 1}`}
+                        />
+                      )}
                     </div>
                   </div>
                 );
