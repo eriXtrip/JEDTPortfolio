@@ -266,6 +266,43 @@ const projects = [
     ],
     demoUrl:
       "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
+    demoModal: {
+      kind: "app",
+      url: "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
+      instructions: [
+        {
+          type: "text",
+          parts: [
+            "Install ",
+            { bold: "MQuest_Demo.apk" },
+            " to Android phone",
+          ],
+        },
+        {
+          type: "credentials",
+          title: "Demo login (use these credentials):",
+          credentials: [
+            { label: "Email", value: "MQuest.com" },
+            { label: "Password", value: "Demo2026" },
+          ],
+        },
+        { type: "text", parts: ["Explore the app."] },
+      ],
+      notice: {
+        intro:
+          "This is a DEMO application. Not every feature is fully functional. The following features will NOT work or may fail without a complete, properly configured backend:",
+        items: [
+          "Account recovery (forgot password)",
+          "Enrollment",
+          "Ranking",
+          "Data syncing",
+          "Creating accounts / registration",
+          "Any other feature that depends on a live backend server",
+        ],
+        outro:
+          "These screens and flows are present in the UI for demonstration purposes only.",
+      },
+    },
     problemStatement:
       "Traditional distance learning platforms suffer from poor student engagement and lack gamified milestones, leading to high drop-out rates.",
     solution:
@@ -309,6 +346,59 @@ const projects = [
       "https://drive.google.com/file/d/1zVKWx8t6sJTYrEsTsiTR9WjWk11iAUcc/view?usp=sharing",
       "https://drive.google.com/file/d/1UG0skwEBd9ka_u5QZSgFaduSrShMQL5q/view?usp=sharing",
     ],
+    demoModal: {
+      kind: "web",
+      url: "https://bucs-mcc-demo.vercel.app/",
+      instructions: [
+        {
+          type: "text",
+          parts: [
+            "This is a FRONT-END ONLY demo. Not every feature is fully functional. Email confirmation, validation, and data saving are simulated.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "To navigate to the admin side, go to ",
+            { bold: "https://bucs-mcc-demo.vercel.app/login" },
+            " and enter ANY credentials. It will take you to the admin dashboard.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "Data you add as admin is saved locally in your browser and will NOT persist. It will not remain after refresh or in another browser.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "For Specimen Request Status, you may use any email. You will then be asked for a 6-digit verification code. Email delivery is not active, so just input 6 random digits to proceed.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "Click ",
+            { bold: "LIVE DEMO" },
+            " below to open the app.",
+          ],
+        },
+      ],
+      notice: {
+        intro:
+          "This is a DEMO application. Not every feature is fully functional. The following features will NOT work or may fail without a complete, properly configured backend:",
+        items: [
+          "Email confirmation / OTP verification codes",
+          "Server-side data validation",
+          "Persistent data saving (data is only stored locally in your browser)",
+          "Real specimen request workflows end-to-end",
+          "Any other feature that depends on a live backend server",
+        ],
+        outro:
+          "These screens and flows are present in the UI for demonstration purposes only.",
+      },
+    },
     problemStatement:
       "The BUCS Microbial Culture Collection (BUCS-MCC) operated on a manual, Excel-based registration grid, leading to sluggish search queries, a high probability of data errors, and delays in specimen approvals.",
     solution:
@@ -480,7 +570,23 @@ export const ProjectsSection = () => {
 
               {/* View Project Button */}
               <div className="pt-6 px-2 w-full flex items-center gap-3">
-                {project.liveUrl && (
+                {project.demoModal && (
+                  <button
+                    onClick={() => setDemoProject(project)}
+                    className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                  >
+                    {project.liveUrl ? (
+                      <>
+                        <ExternalLink className="h-3.5 w-3.5" /> Live Demo
+                      </>
+                    ) : (
+                      <>
+                        <Smartphone className="h-3.5 w-3.5" /> Demo App
+                      </>
+                    )}
+                  </button>
+                )}
+                {project.liveUrl && !project.demoModal && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
@@ -489,14 +595,6 @@ export const ProjectsSection = () => {
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> Live Demo
                   </a>
-                )}
-                {project.demoUrl && (
-                  <button
-                    onClick={() => setDemoProject(project)}
-                    className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
-                  >
-                    <Smartphone className="h-3.5 w-3.5" /> Demo App
-                  </button>
                 )}
                 <button
                   onClick={() => openDrawer(project)}
@@ -742,7 +840,7 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Demo App Instructions Modal */}
-      {demoProject && (
+      {demoProject && demoProject.demoModal && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
           <div
             className="absolute inset-0 bg-neutral-950/60 backdrop-blur-xs"
@@ -753,7 +851,15 @@ export const ProjectsSection = () => {
             <div className="flex items-start justify-between p-6 pb-4 flex-shrink-0">
               <div className="text-left space-y-1">
                 <span className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1.5">
-                  <Smartphone className="h-3.5 w-3.5" /> Demo App
+                  {demoProject.demoModal.kind === "app" ? (
+                    <>
+                      <Smartphone className="h-3.5 w-3.5" /> Demo App
+                    </>
+                  ) : (
+                    <>
+                      <ExternalLink className="h-3.5 w-3.5" /> Live Demo
+                    </>
+                  )}
                 </span>
                 <h2 className="text-xl font-extrabold text-neutral-900 dark:text-white pr-8">
                   {demoProject.title}
@@ -770,19 +876,6 @@ export const ProjectsSection = () => {
 
             {/* Scrollable Instructions */}
             <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-5 text-left">
-              {/* Description */}
-              <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <Info className="h-3.5 w-3.5 text-primary" /> Description
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                  MQuest is a gamified learning platform for students to learn
-                  math and science with a quiz engine. It uses file-based
-                  routing with route groups for auth, dashboard, and profile
-                  flows, plus local SQLite storage, themed UI components, and
-                  API-driven sync with a backend server.
-                </p>
-              </div>
 
               {/* Instructions */}
               <div className="space-y-2">
@@ -790,23 +883,43 @@ export const ProjectsSection = () => {
                   <FileText className="h-3.5 w-3.5 text-primary" /> Instructions
                 </h3>
                 <ol className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed space-y-2">
-                  <li>
-                    1) Install <span className="font-semibold text-neutral-900 dark:text-white">MQuest_Demo.apk</span> to Android phone
-                  </li>
-                  <li>
-                    2) Demo login (use these credentials):
-                    <div className="mt-2 space-y-1 bg-neutral-50 dark:bg-neutral-950/50 rounded-xl p-3 border border-neutral-100 dark:border-neutral-800/50 text-sm">
-                      <p>
-                        <span className="font-semibold text-neutral-900 dark:text-white">Email:</span>{" "}
-                        <span className="text-neutral-600 dark:text-neutral-300">MQuest.com</span>
-                      </p>
-                      <p>
-                        <span className="font-semibold text-neutral-900 dark:text-white">Password:</span>{" "}
-                        <span className="text-neutral-600 dark:text-neutral-300">Demo2026</span>
-                      </p>
-                    </div>
-                  </li>
-                  <li>3) Explore the app.</li>
+                  {demoProject.demoModal.instructions.map((instr, idx) => (
+                    <li key={idx}>
+                      {idx + 1}){" "}
+                      {instr.type === "credentials" ? (
+                        <>
+                          {instr.title}
+                          <div className="mt-2 space-y-1 bg-neutral-50 dark:bg-neutral-950/50 rounded-xl p-3 border border-neutral-100 dark:border-neutral-800/50 text-sm">
+                            {instr.credentials.map((cred) => (
+                              <p key={cred.label}>
+                                <span className="font-semibold text-neutral-900 dark:text-white">
+                                  {cred.label}:
+                                </span>{" "}
+                                <span className="text-neutral-600 dark:text-neutral-300">
+                                  {cred.value}
+                                </span>
+                              </p>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          {instr.parts.map((part, j) =>
+                            typeof part === "string" ? (
+                              <span key={j}>{part}</span>
+                            ) : (
+                              <span
+                                key={j}
+                                className="font-semibold text-neutral-900 dark:text-white break-all"
+                              >
+                                {part.bold}
+                              </span>
+                            ),
+                          )}
+                        </>
+                      )}
+                    </li>
+                  ))}
                 </ol>
               </div>
 
@@ -816,21 +929,15 @@ export const ProjectsSection = () => {
                   <AlertCircle className="h-3.5 w-3.5" /> Notice
                 </h3>
                 <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
-                  This is a DEMO application. Not every feature is fully
-                  functional. The following features will NOT work or may fail
-                  without a complete, properly configured backend:
+                  {demoProject.demoModal.notice.intro}
                 </p>
                 <ul className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed list-disc pl-5 space-y-1">
-                  <li>Account recovery (forgot password)</li>
-                  <li>Enrollment</li>
-                  <li>Ranking</li>
-                  <li>Data syncing</li>
-                  <li>Creating accounts / registration</li>
-                  <li>Any other feature that depends on a live backend server</li>
+                  {demoProject.demoModal.notice.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
                 <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
-                  These screens and flows are present in the UI for demonstration
-                  purposes only.
+                  {demoProject.demoModal.notice.outro}
                 </p>
               </div>
             </div>
@@ -838,10 +945,19 @@ export const ProjectsSection = () => {
             {/* Modal Footer */}
             <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0 space-y-2">
               <a
-                href={demoProject.demoUrl}
+                href={demoProject.demoModal.url}
+                target={demoProject.demoModal.kind === "web" ? "_blank" : undefined}
+                rel={demoProject.demoModal.kind === "web" ? "noopener noreferrer" : undefined}
                 className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-2xl transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
               >
-                <Download className="h-3.5 w-3.5" /> Download Demo App
+                {demoProject.demoModal.kind === "app" ? (
+                  <Download className="h-3.5 w-3.5" />
+                ) : (
+                  <ExternalLink className="h-3.5 w-3.5" />
+                )}{" "}
+                {demoProject.demoModal.kind === "app"
+                  ? "Download Demo App"
+                  : "Open Live Demo"}
               </a>
               <button
                 onClick={() => setDemoProject(null)}
