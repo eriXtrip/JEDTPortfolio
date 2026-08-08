@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   X,
-  Info,
   AlertCircle,
   FileText,
   CheckCircle2,
@@ -481,6 +480,14 @@ export const ProjectsSection = () => {
     return url;
   };
 
+  const categoryPriority = {
+    "web-dev": 0,
+    "app-dev": 1,
+    "desktop-dev": 2,
+    networking: 3,
+    "system-admin": 4,
+  };
+
   const filteredProjects = (
     activeTab === "all"
       ? projects
@@ -491,7 +498,15 @@ export const ProjectsSection = () => {
       )
   )
     .slice()
-    .sort((a, b) => b.id - a.id);
+    .sort((a, b) => {
+      const aPriority = Math.min(
+        ...a.category.map((c) => categoryPriority[c] ?? 99),
+      );
+      const bPriority = Math.min(
+        ...b.category.map((c) => categoryPriority[c] ?? 99),
+      );
+      return aPriority - bPriority || b.id - a.id;
+    });
 
   return (
     <section

@@ -1,4 +1,4 @@
-import { ArrowDown, Check, Zap, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 import profileImg from "../assets/94f63a79-5160-429b-8511-5bd4b2508d10.jpg";
 import profileImg2 from "../assets/JUVZ9136.jpg";
 import profileImg3 from "../assets/PAU_6201.jpg";
@@ -39,7 +39,7 @@ export const HeroSection = () => {
           <div className="flex-1 text-left space-y-8 lg:max-w-2xl">
             {/* Tagline */}
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 animate-fade-in">
-              <Sparkles className="h-3 w-3" /> Full-Stack Developer | IT Support | Designer
+              <Sparkles className="h-3 w-3" /> Open to Full-Time &amp; Part-Time Roles
             </span>
 
             {/* Headline */}

@@ -6,24 +6,29 @@ export const ExperienceSection = () => {
       role: "Full-Stack Developer Intern",
       company: "Bicol University College of Science (BUCS-MCC)",
       period: "14-Week Internship",
-      description:
-        "Modernized the department's data infrastructure by transitioning from a legacy Excel system to a full-stack React and Laravel web application. Engineered features including secure specimen request tracking, automated email notifications, and an administrative dashboard.",
+      bullets: [
+        "Developed and deployed a React-Laravel web application that automated specimen management workflows and centralized laboratory records, reducing specimen processing turnaround times by 75%.",
+        "Collaborated with faculty and project stakeholders to gather requirements, perform testing, and deliver production-ready system enhancements.",
+        "Communicated complex technical solutions and conducted system walkthroughs for non-technical stakeholders.",
+      ],
     },
     {
       role: "Technical Support Specialist (DESO)",
       company: "COMELEC Legazpi",
       period: "May 2025 (Election Period)",
       bullets: [
-        "Provided on-site IT support for election systems and hardware/software troubleshooting",
+        "Provided on-site IT support for election systems across 5 voting precincts, serving 15+ election personnel and 1,000+ voters.",
+        "Set up and configured Automatic Counting Machines (ACMs), preparing batteries and connecting them to all ACMs.",
+        "Managed election-day connectivity using Starlink and a local internet provider USB SIM card, ensuring uninterrupted data transmission.",
         "Assisted users with technical issues, ensuring smooth operations",
       ],
     },
     {
-      role: "Self-Employed Freelancer",
-      company: "Independent Graphic Designer",
+      role: "Freelance Graphic Designer",
+      company: "Self-Employed",
       period: "2024 – Present",
       bullets: [
-        "Designed publicity materials (pubmats) for various organizations and events",
+        "Designed publicity materials (pubmats) for 30+ clients, including barangay events, Oro Site High School teacher materials, individual requests, and national organizations such as Project Layag from UPLB.",
         "Collaborated with clients to deliver visually appealing content",
       ],
     },
@@ -75,11 +80,7 @@ export const ExperienceSection = () => {
                   </div>
                 </div>
 
-                {exp.description ? (
-                  <p className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
-                    {exp.description}
-                  </p>
-                ) : (
+                {exp.bullets ? (
                   <ul className="space-y-2">
                     {exp.bullets.map((bullet, bIdx) => (
                       <li
@@ -91,6 +92,10 @@ export const ExperienceSection = () => {
                       </li>
                     ))}
                   </ul>
+                ) : (
+                  <p className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
+                    {exp.description}
+                  </p>
                 )}
               </div>
             </div>

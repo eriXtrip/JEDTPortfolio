@@ -150,19 +150,20 @@ export const AboutSection = () => {
                   icon: Code,
                 },
                 {
-                  id: "design",
-                  label: "Graphic Design",
-                  shortLabel: "Design",
-                  count: "05 Steps",
-                  icon: Palette,
-                },
-                {
                   id: "support",
                   label: "Tech Support",
                   shortLabel: "Support",
                   count: "05 Steps",
                   icon: Wrench,
                 },
+                {
+                  id: "design",
+                  label: "Graphic Design",
+                  shortLabel: "Design",
+                  count: "05 Steps",
+                  icon: Palette,
+                },
+
               ].map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -231,10 +232,11 @@ export const AboutSection = () => {
                 </p>
 
                 <p>
-                  Seeking an entry-level IT Support, Systems Administration,
-                  Network Support, or Software Development position where I can
-                  apply my technical skills and problem-solving mindset to
-                  deliver impactful solutions.
+                  Seeking an entry-level Software Development and Full-Stack
+                  position where I can apply my technical skills and
+                  problem-solving mindset to deliver impactful solutions — with
+                  hands-on IT support, networking, and systems administration
+                  as a strong secondary foundation.
                 </p>
               </div>
 
