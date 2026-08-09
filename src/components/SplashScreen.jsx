@@ -110,13 +110,23 @@ export const SplashScreen = ({ onFinish }) => {
   const isMobile = useIsMobile();
 
   useEffect(() => {
+    const applyTheme = (dark) => {
+      if (dark) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    };
+
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
+      applyTheme(true);
+    } else if (storedTheme === "light") {
+      applyTheme(false);
     } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.setAttribute("data-theme", "light");
+      applyTheme(true);
     }
   }, []);
 
