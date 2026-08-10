@@ -10,7 +10,7 @@ import { ProjectsSection } from "../components/ProjectsSection";
 import { PubmatsGallery } from "../components/PubmatsGallery";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
-import { CombinedHero } from "../components/TestSection";
+// import { CombinedHero } from "../components/TestSection";
 
 export const Home = () => {
   return (

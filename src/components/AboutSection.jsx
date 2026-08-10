@@ -9,31 +9,31 @@ export const AboutSection = () => {
       number: "Step 1",
       title: "Research & Discovery",
       description:
-        "Understanding project constraints, target audience expectations, and technical goals to build a reliable strategic blueprint.",
+        "Before touching code, I talk with the people who'll actually use the system. During the BUCS-MCC internship, sitting down with lab staff and watching how they logged specimen records by hand is what shaped the whole build.",
     },
     {
       number: "Step 2",
       title: "Architecture & Wireframing",
       description:
-        "Drafting responsive layouts, content structure, and sleek user journeys using minimalist highfidelity mockups before diving into code.",
+        "I draw the layout on paper first to get the structure down fast. Once it feels right, I move straight into a high-fidelity prototype and let the code act as the main wireframe — skipping throwaway mockups and cutting the back-and-forth time.",
     },
     {
       number: "Step 3",
       title: "Backend & Business Logic",
       description:
-        "Understanding backend systems and seamlessly integrating business rules to ensure robust, secure, and scalable data flows.",
+        "I build the backend around the data the app actually has to insert and display. I start by listing the major data that has to exist in the database, then use the front end to group related fields visually — and those groupings become the tables.",
     },
     {
       number: "Step 4",
       title: "Pixel-Perfect Development",
       description:
-        "Writing clean, semantic, and highly performant code with React and Tailwind CSS, prioritizing modularity and page speed.",
+        "I build React and Tailwind components to match the design, wire them to the API, then test on real devices — a layout that looks fine on desktop can fall apart on a phone. From here I keep polishing the logic and improving the flow.",
     },
     {
       number: "Step 5",
       title: "Testing & Deployment",
       description:
-        "Validating visual design integrity, responsive behavior, and accessibility across diverse devices and screens before going live.",
+        "Before going live, I walk through the core user paths myself, check responsiveness and accessibility, then deploy and keep an eye on the logs for the first few days.",
     },
   ];
 
@@ -42,31 +42,31 @@ export const AboutSection = () => {
       number: "Step 1",
       title: "Briefing & Requirements Gathering",
       description:
-        "Discussing goals, target audience, dimensions, branding guidelines, and key visual assets required for the project.",
+        "I start by asking what the design is for and who it's speaking to, so I'm not guessing at the brief before I even open Photoshop or Figma.",
     },
     {
       number: "Step 2",
       title: "Inspiration & Moodboard Research",
       description:
-        "Browsing platforms like Pinterest, Behance, and Dribbble to explore typography trends, color palettes, visual themes, and layout ideas.",
+        "I pull references from Behance and Dribbble to see what's already working in that space, then filter it down to what actually fits the brand instead of copying trends.",
     },
     {
       number: "Step 3",
       title: "Concept Sketching & Composition",
       description:
-        "Creating rough layout drafts, experimenting with focal points, hierarchy, and element positioning in Photoshop, Illustrator, or Figma.",
+        "I rough out compositions first, playing with focal points, hierarchy, and placement before committing to a direction — it's cheaper to throw away a sketch than a finished piece.",
     },
     {
       number: "Step 4",
       title: "Refinement & Asset Generation",
       description:
-        "Fine-tuning visual assets, color harmony, typography contrast, lighting, and vector graphics to craft high-impact publication materials.",
+        "I tighten color harmony, typography contrast, and spacing until the piece holds up at both small and large sizes, then clean up the vectors and export-ready assets.",
     },
     {
       number: "Step 5",
       title: "Client Feedback & Final Delivery",
       description:
-        "Presenting concepts to the client, incorporating requested revisions, and exporting high-resolution assets in optimal formats for print or web.",
+        "I present the concept, take the revision notes without taking them personally, and export high-resolution assets in the right formats for print or web.",
     },
   ];
 
@@ -75,31 +75,31 @@ export const AboutSection = () => {
       number: "Step 1",
       title: "Inquiry & Initial Assessment",
       description:
-        "Actively communicate with the user to identify the exact problem and learn about any initial troubleshooting steps they have already taken.",
+        "I listen to how the user describes the problem first, including what they've already tried — half of support is getting the full picture before touching anything.",
     },
     {
       number: "Step 2",
       title: "Technical Diagnosis",
       description:
-        "Analyze system behaviors and error diagnostics to determine whether the root cause is hardware or software related.",
+        "I work through system logs and error messages to figure out whether it's a hardware or software fault, instead of firing off fixes at random.",
     },
     {
       number: "Step 3",
       title: "Resolution & Escalation",
       description:
-        "Execute appropriate repair, configuration, or software procedures. If the issue is highly complex, escalate to senior support engineers smoothly.",
+        "I handle repairs, configs, and re-installs on the spot, and escalate fast when the issue is beyond my scope so the user isn't left waiting around.",
     },
     {
       number: "Step 4",
       title: "User Communication & Support",
       description:
-        "Explain the cause and fix clearly to the user, offering tips to prevent minor issues, and reassuring them of ongoing engineer availability.",
+        "I explain the cause and the fix in plain language, share tips to stop it happening again, and make sure they know they're not being left hanging.",
     },
     {
       number: "Step 5",
       title: "Documentation & Knowledge Base",
       description:
-        "Record step-by-step resolution logs in the ticketing/support system to streamline future troubleshooting and team reference.",
+        "I log the full resolution in the ticketing system, so the next person who hits the same issue doesn't have to rediscover the fix from scratch.",
     },
   ];
 
