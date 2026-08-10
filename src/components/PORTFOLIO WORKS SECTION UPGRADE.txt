@@ -1,0 +1,178 @@
+================================================================================
+MASTER IMPLEMENTATION PLAN: PORTFOLIO WORKS SECTION UPGRADE
+================================================================================
+
+--------------------------------------------------------------------------------
+OVERVIEW & OBJECTIVES
+--------------------------------------------------------------------------------
+1. Eliminate the generic card-based grid layout.
+2. Adopt a zero-click, unfolded technical specification layout for top works.
+3. Keep the homepage concise by pairing spotlight works with a secondary archive grid.
+4. Implement a fullscreen modal overlay (Expanded Archive Viewport) for "Explore All Works" 
+   with real-time search, category filters, and a technical data table.
+5. Align completely with dark mode, monospaced typography, and brutalist developer aesthetics.
+
+
+--------------------------------------------------------------------------------
+PHASE 1: DATA STRUCTURE (projectsData.js)
+--------------------------------------------------------------------------------
+Centralize all project items into a single array to feed both the main page 
+and the full archive modal.
+
+[Data Model Schema]
+- id (string)
+- year (string)
+- title (string)
+- subtitle (string)
+- category (string) // Web Dev, Desktop Dev, App Dev, Networking, System Admin
+- featured (boolean) // true = Spotlight (Full Spec), false = Secondary / Archive
+- image (string)
+- overview (string)
+- architecture (array of strings)
+- tech (array of strings)
+- demoUrl (string)
+- codeUrl (string)
+
+use the const projects as it is
+
+
+--------------------------------------------------------------------------------
+PHASE 2: SPOTLIGHT WORKS SECTION (Zero-Click Unfolded Spec Layout)
+--------------------------------------------------------------------------------
+Target: Top 2-3 projects (e.g., BUCS MCC, Rental Management System)
+
+[Layout Pattern]
+- Alternating 2-column grid (60% Image Preview | 40% Technical Spec)
+- Row 1: Image Left | Details Right
+- Row 2: Details Left | Image Right
+
+[Exposed Information (100% Upfront)]
+- Header Tag: [ YEAR / CATEGORY ] (e.g., 2026 // WEB DEVELOPMENT)
+- Title & Subtitle: Bold uppercase headings (e.g., BUCS MCC)
+- // OVERVIEW & IMPACT: Direct paragraph explaining problem and result.
+- // KEY ARCHITECTURE: Bulleted technical deliverables.
+- // ENVIRONMENT: Exposed tech pills (React, Laravel, MySQL).
+- Action Trigger: Clean borderless links ([ LIVE DEMO → ], [ SOURCE CODE → ])
+
++-----------------------------------------------------------------------------------+
+|  01 / WEB DEV                                                   YEAR: 2026        |
+|                                                                                   |
+|  +-------------------------------------+  BUCS MCC                                |
+|  |                                     |  Microbial Specimen Tracking System      |
+|  |                                     |  --------------------------------------- |
+|  |                                     |  OVERVIEW                                |
+|  |                                     |  Automated specimen workflows across     |
+|  |           IMAGE / MOCKUP            |  multiple labs, replacing manual logs    |
+|  |             (60% Width)             |  and reducing turnaround times by 75%.   |
+|  |                                     |                                          |
+|  |                                     |  KEY HIGHLIGHTS                          |
+|  |                                     |  • RBAC & Multi-Lab Security             |
+|  |                                     |  • Real-time Audit Trail                 |
+|  |                                     |  • Automated PDF Specimen Reports        |
+|  |                                     |                                          |
+|  |                                     |  TECH STACK                              |
+|  |                                     |  [React] [Laravel] [MySQL] [Tailwind]    |
+|  |                                     |                                          |
+|  |                                     |  [ LIVE DEMO → ]                         |
++-----------------------------------------------------------------------------------+
+
+
+--------------------------------------------------------------------------------
+PHASE 3: SECONDARY ARCHIVE GRID (Compact Collection)
+--------------------------------------------------------------------------------
+Target: Next 3-4 notable projects (e.g., OroSite, EcoLocal, Network Design)
+
+[Layout Pattern]
+- 3-column responsive grid (grid-cols-1 md:grid-cols-3 gap-8)
+- Sharp rectangular borders (border-zinc-800) with dark background (bg-zinc-900/30)
+
+[Exposed Information]
+- Aspect-ratio thumbnail container
+- Metadata line: YEAR / CATEGORY
+- Title & 2-line truncated description
+- Single action link ([ VIEW PROJECT → ])
+
+[Modal Trigger Button]
+- Positioned directly below the 3-column grid
+- Text: [ EXPLORE COMPLETE ARCHIVE (12+) → ]
+- Action: Sets state `isModalOpen = true`
+
+*OTHER NOTABLE PROJECTS*
+
++----------------------------+  +----------------------------+  +----------------------------+
+| [ IMAGE PREVIEW ]          |  | [ IMAGE PREVIEW ]          |  | [ IMAGE PREVIEW ]          |
+| 2023 / WEB DEV             |  | 2023 / WEB DEV             |  | 2024 / NETWORKING          |
+| OroSite Teachers Portal    |  | EcoLocal E-commerce        |  | Cisco Campus Network       |
+| Academic portal for grades |  | Local marketplace platform |  | Multi-VLAN & DHCP setup    |
+| & student tracking.        |  | with secure checkout.      |  | with Cisco Packet Tracer.  |
+| [ VIEW PROJECT → ]         |  | [ VIEW PROJECT → ]         |  | [ VIEW PROJECT → ]         |
++----------------------------+  +----------------------------+  +----------------------------+
+
+--------------------------------------------------------------------------------
+PHASE 4: FULLSCREEN ARCHIVE MODAL (AllWorksModal.jsx)
+--------------------------------------------------------------------------------
+Target: Full catalog takeover view
+
+[Modal Behavior & Structure]
+1. Fullscreen Overlay: Fixed viewport takeover (`fixed inset-0 z-50 bg-zinc-950`).
+2. Body Scroll Lock: Disable body scrolling when modal active (`overflow: hidden`).
+3. Keyboard Event: Dismiss modal on pressing `Escape` key.
+4. Top Bar: Title `[ JEDT.ARCHIVE ] / COMPLETE CATALOGUE` and `[ CLOSE ✕ ]` button.
+
+[Interactive Controls]
+- Search Input: Filter projects by title or technology keyword in real-time.
+- Category Pills: Filter tabs ([ ALL ], [ WEB DEV ], [ DESKTOP DEV ], [ NETWORKING ]).
+
+[Non-Table Interactive Grid Layout]
+- 2-Column Responsive Grid (grid-cols-1 md:grid-cols-2 gap-6)
+- Each tile features:
+  * Header metadata line (Year // Category)
+  * Bold project title with emerald color hover state
+  * Brief 2-3 line overview
+  * Monospaced environment pills ([React], [Laravel], [MySQL])
+  * Direct action links ([ LIVE DEMO → ])
+
++-----------------------------------------------------------------------------------+
+|  [JEDT.ARCHIVE]                         PROJECT CATALOGUE             [ ESC / X ] |
+|  -------------------------------------------------------------------------------  |
+|                                                                                   |
+|  *ALL INDEXED WORKS*                                                              |
+|  # Complete Digital Archive                                                       |
+|                                                                                   |
+|  [ Search by keyword, tech, or title... 🔍 ]                                     |
+|  [ALL (12)]  [WEB DEV (5)]  [DESKTOP (2)]  [NETWORKING (3)]  [SYSTEM ADMIN (2)]   |
+|                                                                                   |
+|  +-----------------------------------+   +-----------------------------------+    |
+|  | 2026 // WEB DEV                   |   | 2025 // WEB / APP DEV             |    |
+|  | BUCS MCC                          |   | MQUEST E-LEARNING                 |    |
+|  | Microbial Specimen Tracking       |   | Gamified Mobile Learning System   |    |
+|  |                                   |   |                                   |    |
+|  | [React] [Laravel] [MySQL]         |   | [React Native] [Node.js]          |    |
+|  |                                   |   |                                   |    |
+|  | [ LIVE DEMO → ]                   |   | [ VIEW APP → ]                    |
+|  +-----------------------------------+   +-----------------------------------+    |
+|                                                                                   |
+|  +-----------------------------------+   +-----------------------------------+    |
+|  | 2024 // DESKTOP DEV               |   | 2024 // NETWORKING                |    |
+|  | RENTAL MANAGEMENT SYSTEM          |   | CAMPUS NETWORK DESIGN             |    |
+|  | Windows Forms desktop utility     |   | Cisco Packet Tracer simulation    |    |
+|  |                                   |   |                                   |    |
+|  | [C#] [MySQL] [Inno Setup]         |   | [Cisco] [VLANs] [DHCP]            |    |
+|  |                                   |   |                                   |    |
+|  |                                   |   |                                   |    |
+|  +-----------------------------------+   +-----------------------------------+    |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
+
+--------------------------------------------------------------------------------
+PHASE 5: RESPONSIVE & STYLING FINE-TUNING
+--------------------------------------------------------------------------------
+- Mobile Viewport (< 768px):
+  * Stack spotlight rows vertically (Image on top, details underneath).
+  * Hide lower-priority columns in the modal table (e.g., Built With) to avoid horizontal overflow.
+- Style Tokens:
+  * Backgrounds: `bg-zinc-950`, `bg-zinc-900`
+  * Text & Accents: `text-white`, `text-emerald-400`, `text-zinc-400`
+  * Borders: `border-zinc-800` (Strict 90-degree corners, `rounded-none`)
+  * Typography: Mixed Sans-Serif Headlines with Monospaced Metadata (`font-mono`)
+================================================================================

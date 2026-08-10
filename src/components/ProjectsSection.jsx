@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import {
   X,
   AlertCircle,
@@ -9,423 +10,44 @@ import {
   Maximize2,
   ExternalLink,
   Download,
-  Smartphone
+  Smartphone,
+  ArrowRight,
+  ArrowUpRight,
+  Image as ImageIcon,
+  Play,
+  Cpu,
+  Layers,
 } from "lucide-react";
+import { projects } from "../data/projectsData";
+import { AllWorksModal } from "./AllWorksModal";
 
-// Import your project images from assets
-import EcoLocalImg from "../assets/works/EcoLocalE-commerce.png";
-import MQuestImg from "../assets/works/MQuest E-learning.png";
-import MQuest1 from "../assets/works/MQuest/MQuest E-learning (1).png";
-import MQuest2 from "../assets/works/MQuest/MQuest E-learning (2).png";
-import MQuest3 from "../assets/works/MQuest/MQuest E-learning (3).png";
-import MQuest4 from "../assets/works/MQuest/MQuest E-learning (4).png";
-import MQuest5 from "../assets/works/MQuest/MQuest E-learning (5).png";
-import MQuest6 from "../assets/works/MQuest/MQuest E-learning (6).png";
-import MQuest7 from "../assets/works/MQuest/MQuest E-learning (7).png";
-import MQuest8 from "../assets/works/MQuest/MQuest E-learning (8).png";
-import MQuest9 from "../assets/works/MQuest/MQuest E-learning (9).png";
-import MQuest10 from "../assets/works/MQuest/MQuest E-learning (10).png";
-import MQuest11 from "../assets/works/MQuest/MQuest E-learning (11).png";
-import MQuest12 from "../assets/works/MQuest/MQuest E-learning (12).png";
-import MQuest13 from "../assets/works/MQuest/MQuest E-learning (13).png";
-import MQuest14 from "../assets/works/MQuest/MQuest E-learning (14).png";
-import MQuest15 from "../assets/works/MQuest/MQuest E-learning (15).png";
-import MQuest16 from "../assets/works/MQuest/MQuest E-learning (16).png";
-import MQuest17 from "../assets/works/MQuest/MQuest E-learning (17).png";
-import MQuest18 from "../assets/works/MQuest/MQuest E-learning (18).png";
-import MQuest19 from "../assets/works/MQuest/MQuest E-learning (19).png";
-import MQuest20 from "../assets/works/MQuest/MQuest E-learning (1).jpg";
-import MQuest21 from "../assets/works/MQuest/MQuest E-learning (2).jpg";
-import MQuest22 from "../assets/works/MQuest/MQuest E-learning (3).jpg";
-import MQuest23 from "../assets/works/MQuest/MQuest E-learning (4).jpg";
-import MQuest24 from "../assets/works/MQuest/MQuest E-learning (5).jpg";
-import MQuest25 from "../assets/works/MQuest/MQuest E-learning (6).jpg";
-import MQuest26 from "../assets/works/MQuest/MQuest E-learning (7).jpg";
-import MQuest27 from "../assets/works/MQuest/MQuest E-learning (8).jpg";
-import MQuest28 from "../assets/works/MQuest/MQuest E-learning (9).jpg";
-import MQuest29 from "../assets/works/MQuest/MQuest E-learning (10).jpg";
+const featuredProjects = projects.filter((project) => project.featured);
+const archiveProjects = projects.filter((project) => !project.featured);
 
-import OroSiteTeachersPortalImg from "../assets/works/OroSiteTeachersPortal.png";
-import OroSiteTeachersPortal1 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (1).png";
-import OroSiteTeachersPortal2 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (2).png";
-import OroSiteTeachersPortal3 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (3).png";
-import OroSiteTeachersPortal4 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (4).png";
-import OroSiteTeachersPortal5 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (5).png";
+const badgeClass =
+  "inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-300 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/40 rounded-full";
 
-import RentalManagementSystemImg from "../assets/works/RentalManagmentSystem.png";
-import RentalManagmentSystem1 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (1).png";
-import RentalManagmentSystem2 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (2).png";
-import RentalManagmentSystem3 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (3).png";
-import RentalManagmentSystem4 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (4).png";
-import RentalManagmentSystem5 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (5).png";
+const SectionLabel = ({ icon: Icon, children }) => (
+  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+    <Icon className="h-3.5 w-3.5" />
+    {children}
+  </h4>
+);
 
-import SystemAdmin1 from "../assets/works/SystemAdmin.png"
-import SystemAdmin2 from "../assets/works/SystemAdmin/SystemAdmin (1).png"
-import SystemAdmin3 from "../assets/works/SystemAdmin/SystemAdmin (2).png"
-import SystemAdmin4 from "../assets/works/SystemAdmin/SystemAdmin (3).png"
-import SystemAdmin5 from "../assets/works/SystemAdmin/SystemAdmin (4).png"
-import SystemAdmin6 from "../assets/works/SystemAdmin/SystemAdmin (5).png"
-import SystemAdmin7 from "../assets/works/SystemAdmin/SystemAdmin (6).png"
-
-import BUCSMCC from "../assets/works/BUCSMCC.png";
-import BUCSMCCimg1 from "../assets/works/BUCSMCC/BUCSMCC (1).png";
-import BUCSMCCimg3 from "../assets/works/BUCSMCC/BUCSMCC (3).png";
-import BUCSMCCimg4 from "../assets/works/BUCSMCC/BUCSMCC (4).png";
-import BUCSMCCimg5 from "../assets/works/BUCSMCC/BUCSMCC (5).png";
-import BUCSMCCimg6 from "../assets/works/BUCSMCC/BUCSMCC (6).png";
-import BUCSMCCimg7 from "../assets/works/BUCSMCC/BUCSMCC (7).png";
-import BUCSMCCimg8 from "../assets/works/BUCSMCC/BUCSMCC (8).png";
-import BUCSMCCimg9 from "../assets/works/BUCSMCC/BUCSMCC (9).png";
-import BUCSMCCimg10 from "../assets/works/BUCSMCC/BUCSMCC (10).png";
-import BUCSMCCimg11 from "../assets/works/BUCSMCC/BUCSMCC (11).png";
-import BUCSMCCimg12 from "../assets/works/BUCSMCC/BUCSMCC (12).png";
-import BUCSMCCimg13 from "../assets/works/BUCSMCC/BUCSMCC (13).png";
-import BUCSMCCimg14 from "../assets/works/BUCSMCC/BUCSMCC (14).png";
-
-import Networking1 from "../assets/works/Networking.jpg";
-import Networking2 from "../assets/works/Networking/Networking (1).jpg"
-import Networking3 from "../assets/works/Networking/Networking (2).jpg"
-import Networking4 from "../assets/works/Networking/Networking (3).jpg"
-import Networking5 from "../assets/works/Networking/Networking (4).jpg"
-import Networking6 from "../assets/works/Networking/Networking (5).jpg"
-import Networking7 from "../assets/works/Networking/Networking (6).jpg"
-
-const projects = [
-  {
-    id: 1,
-    title: "EcoLocal E-commerce",
-    description:
-      "A full-featured e-commerce platform for local products, supporting user authentication, product management, and secure checkout.",
-    image: EcoLocalImg,
-    category: ["web-dev"],
-    categoryLabel: "Web Dev",
-    year: "2023",
-    githubUrl: "https://github.com/eriXtrip",
-    images: [EcoLocalImg],
-    videoUrl:
-      "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/view?usp=sharing",
-    problemStatement:
-      "Local merchants and farmers lacked a direct, digital connection to potential retail customers, leading to reliance on third-party intermediaries and reduced net profitability.",
-    solution:
-      "Built a robust, multi-vendor e-commerce platform that enables local creators to host digital storefronts, list inventory, and receive payments directly from consumers.",
-    documentation:
-      "Built using React for the front end and an Express-based Node.js back end. The data architecture is managed via MongoDB, featuring secure JWT authentication and Stripe integration for payments.",
-    conclusion:
-      "Digitized over 50 local vendor storefronts, directly increasing their monthly net profit margins by an average of 22% while providing organic local goods to buyers.",
-  },
-  {
-    id: 2,
-    title: "Network Design & Implementation Projects",
-    description:
-      "Designed and simulated university network infrastructures using Cisco Packet Tracer, configuring TCP/IP, DNS, DHCP, VLANs, routing, switching, and firewall rules.",
-    image: Networking1,
-    category: ["networking"],
-    categoryLabel: "Networking",
-    year: "2024",
-    githubUrl: null,
-    images: [Networking1, Networking2, Networking3, Networking4, Networking5, Networking6, Networking7],
-    videoUrl: null,
-    problemStatement:
-      "Educational institutions required realistic network labs without costly hardware, leading to limited hands‑on experience for students.",
-    solution:
-      "Created comprehensive Packet Tracer simulations covering physical and logical topologies, VLAN segmentation, routing protocols, and security policies.",
-    documentation:
-      "Detailed project write‑ups include network diagrams, IP addressing schemes, and step‑by‑step configuration scripts.",
-    conclusion:
-      "Enabled students to design, test, and troubleshoot complex network scenarios, improving practical networking competency.",
-  },
-  {
-    id: 3,
-    title: "OroSite Teachers Portal",
-    description:
-      "A web portal for teachers to manage academic classes, student assignments, and cross-departmental communication.",
-    image: OroSiteTeachersPortalImg,
-    category: ["web-dev"],
-    categoryLabel: "Web Dev",
-    year: "2023",
-    githubUrl: "https://github.com/eriXtrip",
-    images: [
-      OroSiteTeachersPortalImg,
-      OroSiteTeachersPortal1,
-      OroSiteTeachersPortal2,
-      OroSiteTeachersPortal3,
-      OroSiteTeachersPortal4,
-      OroSiteTeachersPortal5,
-    ],
-    videoUrl:
-      "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/view?usp=sharing",
-    problemStatement:
-      "Faculty members faced fractured operational overhead due to using disjointed digital apps for daily scheduling, attendance logs, and administrative reporting.",
-    solution:
-      "Developed OroSite, a single-source educational dashboard uniting grade submissions, live attendance tracking, and cross-departmental message boards under one clean layout.",
-    documentation:
-      "Created using React, focusing heavily on responsive dashboard layout grids and modular design systems. Integrated robust state handling to support high-frequency scheduling edits.",
-    conclusion:
-      "Decreased manual faculty administrative overhead by an estimated 5 hours per week per instructor while establishing a unified digital communication hub.",
-  },
-  {
-    id: 4,
-    title: "Rental Management System",
-    description:
-      "A Windows Forms desktop utility for rental management, built with C# in Visual Studio 2022, using MySQL Server Community Edition via .NET Connector. Implements a normalized relational database with primary and foreign keys, updatable and non-updatable views, stored procedures, triggers, and foreign‑key constraints on update/delete. Includes C#/MySQL login system with password recovery, CRUD user management, Excel‑based report generation, and is packaged into a single installer using Inno Setup.",
-    image: RentalManagementSystemImg,
-    category: ["desktop-dev"],
-    categoryLabel: "Desktop Dev",
-    year: "2024",
-    githubUrl: "https://github.com/eriXtrip",
-    images: [
-      RentalManagementSystemImg,
-      RentalManagmentSystem1,
-      RentalManagmentSystem2,
-      RentalManagmentSystem3,
-      RentalManagmentSystem4,
-      RentalManagmentSystem5,
-    ],
-    videoUrl:
-      "https://drive.google.com/file/d/1QuOof0npp9a5SeE6qnPMqfmfNANc04Yc/view?usp=sharing",
-    problemStatement:
-      "Local rental shops managed active bookings via physical paperwork grids, resulting in frequent booking collisions, inventory mismatches, and untracked late returns.",
-    solution:
-      "Designed and programmed a standalone local desktop solution featuring auto-scheduling buffers, real-time product tracking states, and automatic invoice generation.",
-    documentation:
-      "Developed in C# using WPF (Windows Presentation Foundation) with an embedded SQLite local database engine to ensure absolute operational speed and offline support.",
-    conclusion:
-      "Completely solved inventory overbooking problems, modernized ledger records, and drastically minimized invoicing errors for small-scale local shops.",
-  },
-  {
-    id: 5,
-    title: "Ubuntu System Administration Laboratory Projects",
-    description:
-      "Deployed and managed Ubuntu server environments using VirtualBox, performing installation, configuration, user management, and basic network services.",
-    image: SystemAdmin1,
-    category: ["system-admin"],
-    categoryLabel: "System Admin",
-    year: "2025",
-    githubUrl: null,
-    images: [SystemAdmin1, SystemAdmin2, SystemAdmin3, SystemAdmin4, SystemAdmin5, SystemAdmin6, SystemAdmin7],
-    videoUrl: null,
-    problemStatement:
-      "Hands‑on Ubuntu administration practice was limited to theoretical exercises, hindering real‑world skill development.",
-    solution:
-      "Built VirtualBox lab environments with Ubuntu server, configuring services such as SSH, Apache, MySQL, and implementing user permissions.",
-    documentation:
-      "Each lab includes step‑by‑step commands, configuration files, and troubleshooting notes.",
-    conclusion:
-      "Provided a repeatable, isolated environment for mastering Ubuntu system administration tasks.",
-  },
-  {
-    id: 6,
-    title: "MQuest E-learning",
-    description:
-      "A mobile-first e-learning application built with React Native and Node.js, supporting interactive lessons and gamified quizzes.",
-    image: MQuestImg,
-    category: ["web-dev", "app-dev"],
-    categoryLabel: "Web Dev / App Dev",
-    year: "2025",
-    githubUrl: "https://github.com/eriXtrip",
-    images: [
-      MQuestImg,
-      MQuest28,
-      MQuest2,
-      MQuest8,
-      MQuest4,
-      MQuest23,
-      MQuest6,
-      MQuest7,
-      MQuest3,
-      MQuest9,
-      MQuest10,
-      MQuest11,
-      MQuest12,
-      MQuest13,
-      MQuest14,
-      MQuest15,
-      MQuest16,
-      MQuest17,
-      MQuest18,
-      MQuest19,
-      MQuest20,
-      MQuest21,
-      MQuest22,
-      MQuest5,
-      MQuest24,
-      MQuest25,
-      MQuest26,
-      MQuest27,
-      MQuest1,
-      MQuest29,
-    ],
-    videoUrls: [
-      "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/view?usp=sharing",
-      "https://drive.google.com/file/d/1u36-oRxAe7ah9Mfrpd0_YUOOghPdlRHu/view?usp=sharing",
-      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/view?usp=sharing",
-      "https://drive.google.com/file/d/1qdms1b_7ysUPl_Tt279s_13UQJk933Gt/view?usp=sharing",
-      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/view?usp=sharing",
-      "https://drive.google.com/file/d/1UckwU4FaLLIDioJ4O2sHbGWQmzC7TiWB/view?usp=sharing",
-    ],
-    demoUrl:
-      "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
-    demoModal: {
-      kind: "app",
-      url: "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
-      instructions: [
-        {
-          type: "text",
-          parts: [
-            "Install ",
-            { bold: "MQuest_Demo.apk" },
-            " to Android phone",
-          ],
-        },
-        {
-          type: "credentials",
-          title: "Demo login (use these credentials):",
-          credentials: [
-            { label: "Email", value: "MQuest.com" },
-            { label: "Password", value: "Demo2026" },
-          ],
-        },
-        { type: "text", parts: ["Explore the app."] },
-      ],
-      notice: {
-        intro:
-          "This is a DEMO application. Not every feature is fully functional. The following features will NOT work or may fail without a complete, properly configured backend:",
-        items: [
-          "Account recovery (forgot password)",
-          "Enrollment",
-          "Ranking",
-          "Data syncing",
-          "Creating accounts / registration",
-          "Any other feature that depends on a live backend server",
-        ],
-        outro:
-          "These screens and flows are present in the UI for demonstration purposes only.",
-      },
-    },
-    problemStatement:
-      "Traditional distance learning platforms suffer from poor student engagement and lack gamified milestones, leading to high drop-out rates.",
-    solution:
-      "Designed and engineered MQuest, a mobile-first e-learning solution featuring bite-sized interactive learning cards, gamified challenges, and real-time scoreboards.",
-    documentation:
-      "Leveraged React Native for cross-platform app performance, combined with Tailwind CSS for layout styling. State management uses custom React contexts with a RESTful Node.js backend.",
-    conclusion:
-      "Enhanced student course engagement rates by 38% and significantly improved micro-learning task completion metrics over traditional learning formats.",
-  },
-  {
-    id: 7,
-    title: "BUCS MCC",
-    description:
-      "A secure React and Laravel web application modernizing microbial culture data infrastructure with automated specimen tracking and RBAC security.",
-    image: BUCSMCC,
-    category: ["web-dev"],
-    categoryLabel: "Web Dev",
-    year: "2026",
-    githubUrl: "https://github.com/eriXtrip",
-    liveUrl: "https://bucs-mcc-demo.vercel.app/",
-    images: [
-      BUCSMCC,
-      BUCSMCCimg1,
-      BUCSMCCimg3,
-      BUCSMCCimg4,
-      BUCSMCCimg5,
-      BUCSMCCimg6,
-      BUCSMCCimg7,
-      BUCSMCCimg8,
-      BUCSMCCimg9,
-      BUCSMCCimg10,
-      BUCSMCCimg11,
-      BUCSMCCimg12,
-      BUCSMCCimg13,
-      BUCSMCCimg14,
-    ],
-    videoUrl: [
-      "https://drive.google.com/file/d/1_cotwUWiXWVXGR-I2Va4foa_3JGUgL8i/view?usp=sharing",
-      "https://drive.google.com/file/d/1TuzlCm4tZxUfllUoa-IS0YNOkO75JKAi/view?usp=sharing",
-      "https://drive.google.com/file/d/1Q2xgmSClQLBLykZfsG3lzMZ5Odmecvqa/view?usp=sharing",
-      "https://drive.google.com/file/d/1zVKWx8t6sJTYrEsTsiTR9WjWk11iAUcc/view?usp=sharing",
-      "https://drive.google.com/file/d/1UG0skwEBd9ka_u5QZSgFaduSrShMQL5q/view?usp=sharing",
-    ],
-    demoModal: {
-      kind: "web",
-      url: "https://bucs-mcc-demo.vercel.app/",
-      instructions: [
-        {
-          type: "text",
-          parts: [
-            "This is a FRONT-END ONLY demo. Not every feature is fully functional. Email confirmation, validation, and data saving are simulated.",
-          ],
-        },
-        {
-          type: "text",
-          parts: [
-            "To navigate to the admin side, go to ",
-            { bold: "https://bucs-mcc-demo.vercel.app/login" },
-            " and enter ANY credentials. It will take you to the admin dashboard.",
-          ],
-        },
-        {
-          type: "text",
-          parts: [
-            "Data you add as admin is saved locally in your browser and will NOT persist. It will not remain after refresh or in another browser.",
-          ],
-        },
-        {
-          type: "text",
-          parts: [
-            "For Specimen Request Status, you may use any email. You will then be asked for a 6-digit verification code. Email delivery is not active, so just input 6 random digits to proceed.",
-          ],
-        },
-        {
-          type: "text",
-          parts: [
-            "Click ",
-            { bold: "LIVE DEMO" },
-            " below to open the app.",
-          ],
-        },
-      ],
-      notice: {
-        intro:
-          "This is a DEMO application. Not every feature is fully functional. The following features will NOT work or may fail without a complete, properly configured backend:",
-        items: [
-          "Email confirmation / OTP verification codes",
-          "Server-side data validation",
-          "Persistent data saving (data is only stored locally in your browser)",
-          "Real specimen request workflows end-to-end",
-          "Any other feature that depends on a live backend server",
-        ],
-        outro:
-          "These screens and flows are present in the UI for demonstration purposes only.",
-      },
-    },
-    problemStatement:
-      "The BUCS Microbial Culture Collection (BUCS-MCC) operated on a manual, Excel-based registration grid, leading to sluggish search queries, a high probability of data errors, and delays in specimen approvals.",
-    solution:
-      "Engineered a secure, full-stack React and Laravel web application that replaces legacy sheets with a robust database architecture, real-time availability filters, and automated status mailers.",
-    documentation:
-      "Programmed on a normalized MySQL database structure. Implemented advanced Role-Based Access Control (RBAC), customized data filters, secure SMTP mail relays, and comprehensive backend API documentation.",
-    conclusion:
-      "Transitioned the department to a paperless environment, reducing specimen processing turnaround times by 75% while laying a solid foundation for future biotech research.",
-  },
-
-];
-
-const categories = [
-  { id: "all", name: "All Works" },
-  { id: "web-dev", name: "Web Dev" },
-  { id: "desktop-dev", name: "Desktop Dev" },
-  { id: "app-dev", name: "App Dev" },
-  { id: "networking", name: "Networking" },
-  { id: "system-admin", name: "System Admin" },
-];
+SectionLabel.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export const ProjectsSection = () => {
-  const [activeTab, setActiveTab] = useState("all");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [demoProject, setDemoProject] = useState(null);
+  const [hoverImage, setHoverImage] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 768,
   );
@@ -452,6 +74,28 @@ export const ProjectsSection = () => {
     setActiveVideoIndex(idx);
     setUseNativeVideo(true);
   };
+
+  const handleImageEnter = (project) => {
+    if (!project.images || project.images.length < 2) return;
+    const others = project.images.filter((img) => img !== project.image);
+    const random = others[Math.floor(Math.random() * others.length)];
+    setHoverImage({ id: project.id, src: random });
+  };
+
+  const handleImageLeave = () => setHoverImage(null);
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightboxImage(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [lightboxImage]);
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
@@ -480,151 +124,214 @@ export const ProjectsSection = () => {
     return url;
   };
 
-  const categoryPriority = {
-    "web-dev": 0,
-    "app-dev": 1,
-    "desktop-dev": 2,
-    networking: 3,
-    "system-admin": 4,
-  };
-
-  const filteredProjects = (
-    activeTab === "all"
-      ? projects
-      : projects.filter((project) =>
-        Array.isArray(project.category)
-          ? project.category.includes(activeTab)
-          : project.category === activeTab,
-      )
-  )
-    .slice()
-    .sort((a, b) => {
-      const aPriority = Math.min(
-        ...a.category.map((c) => categoryPriority[c] ?? 99),
-      );
-      const bPriority = Math.min(
-        ...b.category.map((c) => categoryPriority[c] ?? 99),
-      );
-      return aPriority - bPriority || b.id - a.id;
-    });
+  const renderActionLinks = (project) => (
+    <>
+      {project.demoModal ? (
+        <button
+          onClick={() => setDemoProject(project)}
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 cursor-pointer"
+        >
+          Live Demo
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        </button>
+      ) : project.demoUrl ? (
+        <a
+          href={project.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300"
+        >
+          Live Demo
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      ) : null}
+      <button
+        onClick={() => openDrawer(project)}
+        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 cursor-pointer"
+      >
+        Full Details
+        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+      </button>
+    </>
+  );
 
   return (
     <section
       id="works"
-      className="py-24 px-6 md:px-12 bg-white dark:bg-neutral-900 relative"
+      className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      <div className="container max-w-7xl mx-auto px-1">
+      <div className="container max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
-            Portfolio Showcase
-          </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-            Featured Works
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base">
-            Explore a curated selection of my digital products, developed with
-            high standard frontend practices and minimal aesthetic.
-          </p>
-        </div>
-
-        {/* Tabbed Filter Bar */}
-        <div className="flex justify-center gap-2 mb-16">
-          <div className="inline-flex p-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200/50 dark:border-neutral-700/50">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveTab(category.id)}
-                className={`px-3 py-1.5 text-xs md:px-6 md:py-2 md:text-sm font-semibold rounded-full transition-all duration-300 cursor-pointer ${activeTab === category.id
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-sm"
-                  : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-                  }`}
-              >
-                {category.name}
-              </button>
-            ))}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80 mb-14">
+          <div className="space-y-4 max-w-2xl text-left">
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Featured Works &amp; Archive
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+              Works &amp;{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400">
+                Archive
+              </span>
+            </h2>
+            <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Explore a curated selection of my digital products, developed with high standard frontend practices and minimal aesthetic.
+            </p>
           </div>
+
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="cosmic-button whitespace-nowrap"
+          >
+            Explore Archive ({projects.length})
+            <ArrowUpRight className="h-4 w-4 shrink-0" />
+          </button>
         </div>
 
-        {/* Grid: 3-column desktop, collapses to mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-1 md:px-12 ">
-          {filteredProjects.map((project) => (
-            <article
-              key={project.id}
-              className="group flex flex-col justify-between bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-4 transition-all duration-300 hover:translate-y-[-6px] hover:shadow-lg"
-            >
-              <div className="space-y-4">
-                {/* Rounded Image Container */}
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/40 flex items-center justify-center">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src =
-                        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600";
-                    }}
-                  />
-                  {/* Category / Year Tag - Wireframe Pricing Tag Substitute */}
-                  <span className="absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-semibold bg-neutral-900/90 text-white backdrop-blur-xs">
-                    {project.year} / {project.categoryLabel}
-                  </span>
+        {/* PHASE 2: Spotlight Works — Zero-Click Unfolded Spec */}
+        <div className="space-y-10">
+          {featuredProjects.map((project, index) => {
+            const reverse = index % 2 === 1;
+            return (
+              <div
+                key={project.id}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+              >
+                {/* Image Preview */}
+                <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
+                  <div
+                    className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[2.5rem] overflow-hidden border border-neutral-200/50 dark:border-neutral-800/55 bg-neutral-100 dark:bg-neutral-900 cursor-pointer"
+                    onMouseEnter={() => handleImageEnter(project)}
+                    onMouseLeave={handleImageLeave}
+                  >
+                    <img
+                      key={hoverImage?.id === project.id ? hoverImage.src : project.image}
+                      src={hoverImage?.id === project.id ? hoverImage.src : project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-contain animate-fade-in"
+                    />
+                    <span className={`absolute top-4 left-4 z-10 ${badgeClass}`}>
+                      {project.year} · {project.category}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Project Details */}
-                <div className="text-left px-2 space-y-2">
-                  <h3 className="text-xl font-bold text-neutral-900 dark:text-white group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
+                {/* Technical Spec */}
+                <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
+                  <div className="h-full flex flex-col p-6 md:p-8 bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] shadow-xs">
+                    <h3 className="text-2xl md:text-3xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                      {project.subtitle}
+                    </p>
+
+                    <div className="mt-6 space-y-5">
+                      <div className="space-y-2">
+                        <SectionLabel icon={FileText}>
+                          Overview &amp; Impact
+                        </SectionLabel>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                          {project.overview}
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <SectionLabel icon={Layers}>Key Architecture</SectionLabel>
+                        <ul className="space-y-2">
+                          {project.architecture.map((item) => (
+                            <li
+                              key={item}
+                              className="flex gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
+                            >
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="space-y-2">
+                        <SectionLabel icon={Cpu}>Environment</SectionLabel>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((tech) => (
+                            <span
+                              key={tech}
+                              className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-400/20"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      {renderActionLinks(project)}
+                    </div>
+                  </div>
                 </div>
               </div>
+            );
+          })}
+        </div>
 
-              {/* View Project Button */}
-              <div className="pt-6 px-2 w-full flex items-center gap-3">
-                {project.demoModal && (
-                  <button
-                    onClick={() => setDemoProject(project)}
-                    className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
-                  >
-                    {project.liveUrl ? (
-                      <>
-                        <ExternalLink className="h-3.5 w-3.5" /> Live Demo
-                      </>
-                    ) : (
-                      <>
-                        <Smartphone className="h-3.5 w-3.5" /> Demo App
-                      </>
-                    )}
-                  </button>
-                )}
-                {project.liveUrl && !project.demoModal && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5" /> Live Demo
-                  </a>
-                )}
+        {/* PHASE 3: Secondary Archive Grid */}
+        <div className="mt-20 mb-8 flex items-center gap-3">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <h3 className="text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+            Secondary Works
+          </h3>
+          <div className="h-px flex-1 bg-neutral-200/80 dark:bg-neutral-800/80" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {archiveProjects.map((project) => (
+            <article
+              key={project.id}
+              className="group flex flex-col bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
+            >
+              <div className="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className={`absolute top-3 left-3 ${badgeClass}`}>
+                  {project.year} · {project.category}
+                </span>
+              </div>
+              <div className="p-5 flex flex-col flex-1 text-left space-y-2">
+                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-2">
+                  {project.subtitle}
+                </p>
                 <button
                   onClick={() => openDrawer(project)}
-                  className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
+                  className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 transition-colors cursor-pointer self-start"
                 >
                   View Project
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
-
               </div>
             </article>
           ))}
         </div>
 
-
+        {/* Archive Modal Trigger */}
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="outline-button whitespace-nowrap"
+          >
+            Open Complete Archive ({projects.length})
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
       </div>
+
       {/* Overlay */}
       <div
         className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-xs z-50 transition-opacity duration-500 ease-in-out ${isDrawerOpen
@@ -636,25 +343,27 @@ export const ProjectsSection = () => {
 
       {/* Sliding Drawer */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 shadow-2xl z-[150] flex flex-col transition-all duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-950 border-l border-neutral-200/80 dark:border-neutral-800/80 shadow-2xl z-[150] flex flex-col transition-all duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         {selectedProject && (
           <>
-
             {/* Header */}
-            <div className="flex items-start justify-between p-6 pb-4">
-              <div className="text-left space-y-1">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                  {selectedProject.year} / {selectedProject.categoryLabel}
+            <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0">
+              <div className="text-left space-y-2">
+                <span className={badgeClass}>
+                  {selectedProject.year} · {selectedProject.category}
                 </span>
-                <h2 className="text-2xl font-extrabold text-neutral-900 dark:text-white pr-8">
+                <h2 className="text-2xl font-extrabold text-neutral-900 dark:text-white tracking-tight pr-8">
                   {selectedProject.title}
                 </h2>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  {selectedProject.subtitle}
+                </p>
               </div>
               <button
                 onClick={closeDrawer}
-                className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
+                className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
                 aria-label="Close details"
               >
                 <X className="h-5 w-5" />
@@ -662,7 +371,7 @@ export const ProjectsSection = () => {
             </div>
 
             {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-8 text-left">
+            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8 text-left">
               {/* Media: Video */}
               {(() => {
                 let projectVideos = [];
@@ -687,18 +396,20 @@ export const ProjectsSection = () => {
                 return (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                        Video {projectVideos.length > 1 && `(${activeVideoIndex + 1}/${projectVideos.length})`}
-                      </h3>
+                      <SectionLabel icon={Play}>
+                        Video{" "}
+                        {projectVideos.length > 1 &&
+                          `(${activeVideoIndex + 1}/${projectVideos.length})`}
+                      </SectionLabel>
                       {projectVideos.length > 1 && (
-                        <div className="flex items-center gap-1 bg-neutral-100 dark:bg-neutral-800/80 p-0.5 rounded-lg text-[10px] font-bold">
+                        <div className="flex items-center gap-1 bg-neutral-100 dark:bg-neutral-800/80 p-1 rounded-full text-[10px] font-bold">
                           {projectVideos.map((_, idx) => (
                             <button
                               key={idx}
                               onClick={() => selectVideo(idx)}
-                              className={`px-2.5 py-1 rounded-md transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
+                              className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
                                 ? "bg-white text-emerald-600 shadow-xs dark:bg-neutral-700 dark:text-emerald-400"
-                                : "text-neutral-500 hover:text-neutral-850 dark:hover:text-neutral-200"
+                                : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
                                 }`}
                             >
                               {idx + 1}
@@ -707,7 +418,7 @@ export const ProjectsSection = () => {
                         </div>
                       )}
                     </div>
-                    <div className="w-full h-[65vh] md:h-auto md:aspect-video rounded-2xl overflow-hidden bg-black border border-neutral-200/50 dark:border-neutral-800/50 shadow-inner">
+                    <div className="w-full h-[65vh] md:h-auto md:aspect-video bg-black rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50">
                       {isMobile && useNativeVideo ? (
                         <video
                           key={projectVideos[activeVideoIndex]}
@@ -735,17 +446,17 @@ export const ProjectsSection = () => {
               {/* Media: Screenshots */}
               {selectedProject.images && selectedProject.images.length > 0 && (
                 <div className="space-y-3">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                    Screenshots
-                  </h3>
-                  <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-950 border border-neutral-200/50 dark:border-neutral-800/50 relative shadow-sm">
+                  <SectionLabel icon={ImageIcon}>Screenshots</SectionLabel>
+                  <div className="w-full aspect-video bg-neutral-100 dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 relative">
                     <img
                       src={selectedProject.images[activeImgIndex]}
                       alt={`${selectedProject.title} ${activeImgIndex + 1}`}
                       className="w-full h-full object-contain"
                     />
                     <button
-                      onClick={() => window.open(selectedProject.images[activeImgIndex], "_blank")}
+                      onClick={() =>
+                        setLightboxImage(selectedProject.images[activeImgIndex])
+                      }
                       className="absolute bottom-2 right-2 p-1.5 bg-neutral-800/70 rounded-full hover:bg-neutral-600 transition-colors"
                       aria-label="View full image"
                     >
@@ -759,7 +470,7 @@ export const ProjectsSection = () => {
                         <button
                           key={idx}
                           onClick={() => setActiveImgIndex(idx)}
-                          className={`relative w-20 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
+                          className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
                             ? "border-emerald-500 scale-105 shadow-xs dark:border-emerald-400"
                             : "border-transparent opacity-50 hover:opacity-100"
                             }`}
@@ -774,28 +485,22 @@ export const ProjectsSection = () => {
 
               {/* Overview */}
               <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <FileText className="h-3.5 w-3.5 text-primary" /> Overview
-                </h3>
+                <SectionLabel icon={FileText}>Overview</SectionLabel>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                  {selectedProject.description}
+                  {selectedProject.overview}
                 </p>
               </div>
 
               {/* Problem & Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="space-y-2 bg-neutral-50 dark:bg-neutral-950/50 rounded-2xl p-5 border border-neutral-100 dark:border-neutral-800/50">
-                  <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                    <AlertCircle className="h-3.5 w-3.5 text-primary" /> The Problem
-                  </h3>
+                <div className="space-y-2 bg-neutral-100 dark:bg-neutral-900/40 p-5 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55">
+                  <SectionLabel icon={AlertCircle}>The Problem</SectionLabel>
                   <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                     {selectedProject.problemStatement}
                   </p>
                 </div>
-                <div className="space-y-2 bg-neutral-50 dark:bg-neutral-950/50 rounded-2xl p-5 border border-neutral-100 dark:border-neutral-800/50">
-                  <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-primary" /> The Solution
-                  </h3>
+                <div className="space-y-2 bg-neutral-100 dark:bg-neutral-900/40 p-5 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55">
+                  <SectionLabel icon={CheckCircle2}>The Solution</SectionLabel>
                   <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                     {selectedProject.solution}
                   </p>
@@ -804,9 +509,7 @@ export const ProjectsSection = () => {
 
               {/* Tech Architecture */}
               <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <MonitorCog className="h-3.5 w-3.5 text-primary" /> Technical Architecture
-                </h3>
+                <SectionLabel icon={MonitorCog}>Technical Architecture</SectionLabel>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {selectedProject.documentation}
                 </p>
@@ -814,9 +517,7 @@ export const ProjectsSection = () => {
 
               {/* Outcomes */}
               <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <Target className="h-3.5 w-3.5 text-primary" /> Outcomes & Impact
-                </h3>
+                <SectionLabel icon={Target}>Outcomes &amp; Impact</SectionLabel>
                 <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {selectedProject.conclusion}
                 </p>
@@ -824,28 +525,36 @@ export const ProjectsSection = () => {
             </div>
 
             {/* Footer */}
-            <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0 space-y-2">
-              {selectedProject.liveUrl && (
-                <a
-                  href={selectedProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-2xl transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
-                >
-                  <ExternalLink className="h-3.5 w-3.5" /> Open Live Demo
-                </a>
-              )}
-              {selectedProject.demoUrl && (
+            <div className="p-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0 space-y-2">
+              {selectedProject.demoModal && (
                 <button
                   onClick={() => setDemoProject(selectedProject)}
-                  className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                  className="cosmic-button w-full whitespace-nowrap"
                 >
-                  <Smartphone className="h-3.5 w-3.5" /> Download Demo App
+                  {selectedProject.demoModal.kind === "app" ? (
+                    <>
+                      <Smartphone className="h-3.5 w-3.5" /> Demo Instructions
+                    </>
+                  ) : (
+                    <>
+                      <ExternalLink className="h-3.5 w-3.5" /> Demo Instructions
+                    </>
+                  )}
                 </button>
+              )}
+              {!selectedProject.demoModal && selectedProject.demoUrl && (
+                <a
+                  href={selectedProject.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="outline-button w-full whitespace-nowrap"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" /> Open Demo
+                </a>
               )}
               <button
                 onClick={closeDrawer}
-                className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                className="outline-button w-full whitespace-nowrap"
               >
                 Close Details
               </button>
@@ -861,11 +570,11 @@ export const ProjectsSection = () => {
             className="absolute inset-0 bg-neutral-950/60 backdrop-blur-xs"
             onClick={() => setDemoProject(null)}
           />
-          <div className="relative w-full max-w-lg bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
+          <div className="relative w-full max-w-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800/80 rounded-3xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
             {/* Modal Header */}
-            <div className="flex items-start justify-between p-6 pb-4 flex-shrink-0">
-              <div className="text-left space-y-1">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-1.5">
+            <div className="flex items-start justify-between p-6 pb-4 flex-shrink-0 border-b border-neutral-200/80 dark:border-neutral-800/80">
+              <div className="text-left space-y-2">
+                <span className={badgeClass}>
                   {demoProject.demoModal.kind === "app" ? (
                     <>
                       <Smartphone className="h-3.5 w-3.5" /> Demo App
@@ -876,13 +585,13 @@ export const ProjectsSection = () => {
                     </>
                   )}
                 </span>
-                <h2 className="text-xl font-extrabold text-neutral-900 dark:text-white pr-8">
+                <h2 className="text-xl font-extrabold text-neutral-900 dark:text-white tracking-tight pr-8">
                   {demoProject.title}
                 </h2>
               </div>
               <button
                 onClick={() => setDemoProject(null)}
-                className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
+                className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
                 aria-label="Close demo instructions"
               >
                 <X className="h-5 w-5" />
@@ -891,12 +600,9 @@ export const ProjectsSection = () => {
 
             {/* Scrollable Instructions */}
             <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-5 text-left">
-
               {/* Instructions */}
-              <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-neutral-400 dark:text-neutral-500 flex items-center gap-1.5 font-bold">
-                  <FileText className="h-3.5 w-3.5 text-primary" /> Instructions
-                </h3>
+              <div className="space-y-2 pt-4">
+                <SectionLabel icon={FileText}>Instructions</SectionLabel>
                 <ol className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed space-y-2">
                   {demoProject.demoModal.instructions.map((instr, idx) => (
                     <li key={idx}>
@@ -904,7 +610,7 @@ export const ProjectsSection = () => {
                       {instr.type === "credentials" ? (
                         <>
                           {instr.title}
-                          <div className="mt-2 space-y-1 bg-neutral-50 dark:bg-neutral-950/50 rounded-xl p-3 border border-neutral-100 dark:border-neutral-800/50 text-sm">
+                          <div className="mt-2 space-y-1 bg-neutral-100 dark:bg-neutral-900/40 p-3 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 text-sm">
                             {instr.credentials.map((cred) => (
                               <p key={cred.label}>
                                 <span className="font-semibold text-neutral-900 dark:text-white">
@@ -939,8 +645,8 @@ export const ProjectsSection = () => {
               </div>
 
               {/* Notice */}
-              <div className="space-y-2 bg-amber-50 dark:bg-amber-950/20 rounded-2xl p-5 border border-amber-100 dark:border-amber-900/40">
-                <h3 className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5 font-bold">
+              <div className="space-y-2 bg-amber-50 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-100 dark:border-amber-900/40">
+                <h3 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-amber-600 dark:text-amber-400">
                   <AlertCircle className="h-3.5 w-3.5" /> Notice
                 </h3>
                 <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
@@ -958,12 +664,12 @@ export const ProjectsSection = () => {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-6 pt-4 border-t border-neutral-100 dark:border-neutral-800 flex-shrink-0 space-y-2">
+            <div className="p-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0 space-y-2">
               <a
                 href={demoProject.demoModal.url}
                 target={demoProject.demoModal.kind === "web" ? "_blank" : undefined}
                 rel={demoProject.demoModal.kind === "web" ? "noopener noreferrer" : undefined}
-                className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded-2xl transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-100 cursor-pointer"
+                className="cosmic-button w-full whitespace-nowrap"
               >
                 {demoProject.demoModal.kind === "app" ? (
                   <Download className="h-3.5 w-3.5" />
@@ -976,7 +682,7 @@ export const ProjectsSection = () => {
               </a>
               <button
                 onClick={() => setDemoProject(null)}
-                className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-2xl transition-all duration-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+                className="outline-button w-full whitespace-nowrap"
               >
                 Close
               </button>
@@ -984,6 +690,31 @@ export const ProjectsSection = () => {
           </div>
         </div>
       )}
+
+      {/* Fullscreen Image Viewer */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-[220] bg-neutral-950/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
+            aria-label="Close fullscreen image"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <img
+            src={lightboxImage}
+            alt=""
+            className="max-w-full max-h-full object-contain animate-fade-in"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* Fullscreen Archive Modal */}
+      <AllWorksModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
