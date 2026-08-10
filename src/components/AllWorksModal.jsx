@@ -384,16 +384,6 @@ export const AllWorksModal = ({ open, onClose }) => {
                                         Live Demo <ArrowUpRight className="h-3.5 w-3.5" />
                                       </a>
                                     )}
-                                    {project.codeUrl ? (
-                                      <a
-                                        href={project.codeUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                                      >
-                                        Source Code <ArrowUpRight className="h-3.5 w-3.5" />
-                                      </a>
-                                    ) : null}
                                   </div>
                                 </div>
                               ) : null}
