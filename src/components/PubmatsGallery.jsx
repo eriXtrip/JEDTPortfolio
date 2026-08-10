@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sparkles, X, Maximize2 } from "lucide-react";
+import { X, Eye, ArrowUpRight } from "lucide-react";
 
 import Pubmat1 from "../assets/pubmats/Adolescent Health Awareness 3x4.png";
 import Pubmat2 from "../assets/pubmats/APINO.png";
@@ -23,7 +23,7 @@ import Pubmat19 from "../assets/pubmats/HandlingCICLandCAR.jpg";
 import Pubmat20 from "../assets/pubmats/GRADtarp TEMPLATE 4x3 (8).png";
 import Pubmat21 from "../assets/pubmats/GRADtarp TEMPLATE-jay 4x3.png";
 import Pubmat22 from "../assets/pubmats/GRADtarp TEMPLATE-kyle 4x3.png";
-import Pubmat23 from "../assets/pubmats/GRADtarp TEMPLATE-oli 4x3.png"
+import Pubmat23 from "../assets/pubmats/GRADtarp TEMPLATE-oli 4x3.png";
 
 const pubmats = [
   {
@@ -33,7 +33,7 @@ const pubmats = [
   },
   {
     src: Pubmat2,
-    title: "APINO Brand Identity",
+    title: "Election Poster",
     desc: "Minimalist modern tech company branding layout.",
   },
   {
@@ -98,7 +98,7 @@ const pubmats = [
   },
   {
     src: Pubmat15,
-    title: "Council Protection Program",
+    title: "Livelihood Training",
     desc: "Formal banner branding for child protection councils.",
   },
   {
@@ -123,39 +123,34 @@ const pubmats = [
   },
   {
     src: Pubmat20,
-    title: "GRADtarp TEMPLATE 4x3 (8)",
+    title: "Graduation Tarp",
     desc: "Graduation tarpaulin for us sibling.",
   },
   {
     src: Pubmat21,
-    title: "GRADtarp TEMPLATE-jay 4x3",
+    title: "Graduation Tarp",
     desc: "Graduation tarpaulin for Jay-R.",
   },
   {
     src: Pubmat22,
-    title: "GRADtarp TEMPLATE-kyle 4x3",
+    title: "Graduation Tarp",
     desc: "Graduation tarpaulin for Kyle.",
   },
   {
     src: Pubmat23,
-    title: "GRADtarp TEMPLATE-oli 4x3",
+    title: "Graduation Tarp",
     desc: "Graduation tarpaulin for Oliver.",
   },
 ];
 
+const featuredIndexes = [1, 0, 3, 11, 9, 10, 19, 15, 14];
+const morePubmats = pubmats.filter((_, i) => !featuredIndexes.includes(i));
+
 export const PubmatsGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
   const featured = pubmats[activeIndex];
-
-  const itemsPerPage = 6;
-  const totalPages = Math.ceil(pubmats.length / itemsPerPage);
-
-  const batches = [];
-  for (let i = 0; i < pubmats.length; i += itemsPerPage) {
-    batches.push(pubmats.slice(i, i + itemsPerPage));
-  }
 
   const openLightbox = () => {
     setIsLightboxOpen(true);
@@ -164,210 +159,204 @@ export const PubmatsGallery = () => {
 
   const closeLightbox = () => {
     setIsLightboxOpen(false);
+    document.body.style.overflow = isPortfolioOpen ? "hidden" : "unset";
+  };
+
+  const openPortfolio = () => {
+    setIsPortfolioOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closePortfolio = () => {
+    setIsPortfolioOpen(false);
     document.body.style.overflow = "unset";
   };
 
-  const stats = [
-    {
-      value: "50+",
-      label: "Graphics Delivered",
-      desc: "For public events, seminars, & municipal campaigns.",
-    },
-    {
-      value: "8x",
-      label: "Engagement Increase",
-      desc: "Social media reach elevated via clean visual layouts.",
-    },
-    {
-      value: "100%",
-      label: "Satisfaction Rate",
-      desc: "Strictly aligned with organizational identity goals.",
-    },
-  ];
+  const Card = ({ pubmat, aspect, className = "" }) => {
+    const originalIndex = pubmats.findIndex((p) => p.src === pubmat.src);
+    return (
+      <div
+        onClick={() => {
+          setActiveIndex(originalIndex);
+          openLightbox();
+        }}
+        className={`group relative cursor-pointer overflow-hidden rounded-lg lg:rounded-[1.75rem] border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl ${aspect} ${className}`}
+      >
+        <img
+          src={pubmat.src}
+          alt={pubmat.title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-100"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=800";
+          }}
+        />
+        {/* Gradient Reveal + Title Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+            <Eye className="h-3 w-3 animate-pulse" /> View Design
+          </span>
+          <h4 className="mt-1 text-sm font-extrabold leading-tight text-white md:text-base">
+            {pubmat.title}
+          </h4>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section
       id="pubmats"
-      className="py-24 px-6 md:px-15 bg-white dark:bg-neutral-900 relative"
+      className="relative py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40"
     >
-      <div className="container max-w-7xl mx-auto px-2 mid:px-12">
-        {/* Asymmetrical Split Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: High-contrast Statistics & Introduction */}
-          <div className="lg:col-span-4 flex flex-col justify-between space-y-12 text-left lg:sticky lg:top-32">
-            <div className="space-y-4">
-              <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
-                Visual Art & Media
-              </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-[1.15]">
-                Graphic Design <br />
-                <span className="text-neutral-500 dark:text-neutral-400">
-                  That Inspires
-                </span>
-              </h2>
-              <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base pt-2">
-                Merging typography, composition, and brand messaging. I design
-                clean, high-impact publication materials (pubmats) that
-                effectively translate complex information into striking visuals.
-              </p>
-            </div>
+      {/* Decorative Abstract Background Glows */}
+      <div className="pointer-events-none absolute inset-0 overflow-visible">
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[32rem] w-[40rem] max-w-full rounded-full bg-emerald-300/25 dark:bg-emerald-400/10 blur-3xl" />
+        <div className="absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-green-400/15 dark:bg-green-500/10 blur-3xl" />
+        <div className="absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-emerald-300/15 dark:bg-emerald-500/10 blur-3xl" />
+      </div>
 
-            {/* Vertical Stats Deck */}
-            <div className="space-y-8 py-4 border-t border-neutral-100 dark:border-neutral-800/80">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="flex gap-6 items-start">
-                  <div className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white tracking-tighter w-24 shrink-0">
-                    {stat.value}
-                  </div>
-                  <div className="space-y-1">
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-800 dark:text-neutral-200">
-                      {stat.label}
-                    </h4>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-450 leading-relaxed">
-                      {stat.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
+      <div className="relative container max-w-7xl mx-auto px-2 md:px-12">
+        {/* Header — Centered High-Impact Headline */}
+        <div className="mx-auto max-w-3xl space-y-5 pb-16 text-center">
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            Visual Art & Media
+          </span>
+          <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
+            My{" "}
+            <span className="italic font-black text-emerald-600 dark:text-emerald-400">
+              Designs
+            </span>
+          </h2>
+          <p className="mx-auto max-w-xl text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            A curated selection of publication materials — posters, banners, and
+            decks engineered to translate complex information into clean,
+            high-impact visuals.
+          </p>
+        </div>
+
+        {/* 5-Column Asymmetric Staggered Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
+          {/* Column 1 — Left Split Stack (3:4 top + 4:3 bottom) */}
+          <div className="flex flex-col justify-between gap-4 md:gap-5">
+            <Card pubmat={pubmats[1]} aspect="aspect-[3/4]" />
+            <Card pubmat={pubmats[0]} aspect="aspect-[4/3]" />
+          </div>
+
+          {/* Column 2 — Left Mid Full-Height (1:2), bottom baseline aligned */}
+          <div className="flex flex-col justify-end gap-4 md:gap-5">
+            <Card pubmat={pubmats[3]} aspect="aspect-[1/2]" />
+          </div>
+
+          {/* Column 3 — Center Anchor Column (raised main card + floating CTA) */}
+          <div className="relative flex flex-col gap-4 md:gap-5 sm:col-span-2 lg:col-span-1">
+            <Card pubmat={pubmats[14]} aspect="aspect-[2/1]"
+            />
+            <Card
+              pubmat={pubmats[11]}
+              aspect="aspect-[4/3]"
+            />
+            <Card pubmat={pubmats[15]} aspect="aspect-[2/1]" />
+            {/* Floating Pill CTA opening the full portfolio */}
+            <button
+              onClick={openPortfolio}
+              className="relative z-20 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-emerald-600 dark:bg-emerald-500 px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:scale-105 hover:bg-emerald-700 dark:hover:bg-emerald-400 cursor-pointer lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6"
+            >
+              View All Designs <ArrowUpRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Column 4 — Right Mid Full-Height (1:2), bottom baseline aligned */}
+          <div className="flex-col justify-end gap-4 md:gap-5 hidden lg:block ">
+            <Card pubmat={pubmats[10]} aspect="aspect-[1/2]" />
+          </div>
+
+          {/* Column 5 — Right Split Stack (3:4 top + 4:3 bottom) */}
+          <div className="flex-col justify-between gap-4 md:gap-5 sm:col-span-2 lg:col-span-1 hidden lg:block">
+            <Card pubmat={pubmats[19]} aspect="aspect-[3/4]" />
+            <Card pubmat={pubmats[9]} aspect="aspect-[4/3]" />
+          </div>
+        </div>
+
+      </div>
+
+      {/* Full-Screen Portfolio Modal */}
+      {isPortfolioOpen && (
+        <div className="fixed inset-0 z-[200] overflow-y-auto bg-neutral-50 dark:bg-neutral-950">
+          {/* Sticky Modal Header */}
+          <div className="sticky top-0 z-10 border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/90 dark:bg-neutral-950/90 backdrop-blur-md">
+            <div className="mx-auto max-w-7xl px-6 md:px-12 py-6 flex items-center justify-between gap-6">
+              <div className="space-y-1 text-left">
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Explore More
+                </span>
+                <h3 className="text-2xl md:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+                  Design{" "}
+                  <span className="text-neutral-500 dark:text-neutral-400">
+                    Gallery
+                  </span>
+                </h3>
+              </div>
+              <button
+                onClick={closePortfolio}
+                className="shrink-0 p-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200/70 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 transition-all cursor-pointer hover:border-emerald-500/40 hover:text-emerald-600 dark:hover:text-emerald-400"
+                aria-label="Close portfolio"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
           </div>
 
-          {/* Right Column: Pinterest Masonry Grid Showcase */}
-          <div className="lg:col-span-8 overflow-hidden">
-            <div className="relative">
-              {/* Sliding Track Wrapper */}
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentPage * 100}%)` }}
-              >
-                {batches.map((batch, batchIdx) => (
-                  <div key={batchIdx} className="w-full flex-shrink-0 px-1">
-                    <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 [column-fill:_balance]">
-                      {batch.map((pubmat, idx) => {
-                        const originalIndex = pubmats.findIndex(
-                          (p) => p.src === pubmat.src,
-                        );
-                        return (
-                          <div
-                            key={idx}
-                            onClick={() => {
-                              setActiveIndex(originalIndex);
-                              openLightbox();
-                            }}
-                            className="break-inside-avoid relative overflow-hidden rounded-2xl bg-neutral-50 dark:bg-neutral-950/40 border border-neutral-200/40 dark:border-neutral-850/60 group cursor-pointer hover:border-emerald-500/40 dark:hover:border-emerald-450/40 transition-all duration-300 shadow-xs hover:shadow-md"
-                          >
-                            <img
-                              src={pubmat.src}
-                              alt={pubmat.title}
-                              className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-103"
-                              onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src =
-                                  "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600";
-                              }}
-                            />
-                            {/* Floating Glassmorphic Details Overlay on Hover */}
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 text-left backdrop-blur-[2px]">
-                              <div className="space-y-1.5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest text-emerald-400">
-                                  <Maximize2 className="h-2.5 w-2.5 animate-pulse" />{" "}
-                                  Inspect Details
-                                </span>
-                                <h4 className="text-sm font-extrabold text-white leading-tight">
-                                  {pubmat.title}
-                                </h4>
-                                <p className="text-[11px] text-neutral-300 leading-normal line-clamp-2">
-                                  {pubmat.desc}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
+          {/* Masonry Grid */}
+          <div className="mx-auto max-w-7xl px-6 md:px-12 py-10">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 [column-fill:_balance]">
+              {morePubmats.map((pubmat, idx) => {
+                const originalIndex = pubmats.findIndex(
+                  (p) => p.src === pubmat.src,
+                );
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(originalIndex);
+                      openLightbox();
+                    }}
+                    className="group relative break-inside-avoid cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl"
+                  >
+                    <img
+                      src={pubmat.src}
+                      alt={pubmat.title}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+                        <Eye className="h-3 w-3 animate-pulse" /> View Design
+                      </span>
+                      <h4 className="mt-1 text-sm font-extrabold leading-tight text-white">
+                        {pubmat.title}
+                      </h4>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              {/* Paginated Navigation Control Bar */}
-              {batches.length > 1 && (
-                <div className="mt-8 flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-5 sm:gap-y-0 border-t border-neutral-100 dark:border-neutral-800/80 pt-6">
-                  {/* Previous Button */}
-                  <button
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.max(0, prev - 1))
-                    }
-                    disabled={currentPage === 0}
-                    className="order-2 sm:order-1 px-4 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed flex items-center gap-1 sm:gap-1.5 shadow-xs"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                    Prev
-                  </button>
-
-                  {/* Dynamic page indicator dots */}
-                  <div className="order-1 sm:order-2 w-full sm:w-auto flex items-center justify-center gap-2">
-                    {batches.map((_, pageIdx) => (
-                      <button
-                        key={pageIdx}
-                        onClick={() => setCurrentPage(pageIdx)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentPage === pageIdx
-                          ? "w-6 bg-emerald-500"
-                          : "w-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-450 dark:hover:bg-neutral-500"
-                          }`}
-                        aria-label={`Go to page ${pageIdx + 1}`}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Next Button */}
-                  <button
-                    onClick={() =>
-                      setCurrentPage((prev) =>
-                        Math.min(batches.length - 1, prev + 1),
-                      )
-                    }
-                    disabled={currentPage === batches.length - 1}
-                    className="order-3 sm:order-3 px-4 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 cursor-pointer disabled:cursor-not-allowed flex items-center gap-1 sm:gap-1.5 shadow-xs"
-                  >
-                    Next
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              )}
+                );
+              })}
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Full-Screen Detail Lightbox Modal */}
       {isLightboxOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 transition-all duration-300">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/35 backdrop-blur-md p-4 transition-all duration-300">
           {/* Close Area */}
           <div
             className="absolute inset-0 cursor-zoom-out"
@@ -388,7 +377,7 @@ export const PubmatsGallery = () => {
             </div>
 
             {/* Main Full-Size Image Frame */}
-            <div className="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-2xl bg-neutral-950 border border-neutral-800 shadow-2xl relative p-2 md:p-4 group">
+            <div className="w-full max-h-[75vh] flex items-center justify-center overflow-hidden relative p-2 md:p-4 group">
               <img
                 src={featured.src}
                 alt={featured.title}
@@ -399,16 +388,6 @@ export const PubmatsGallery = () => {
                     "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=800";
                 }}
               />
-            </div>
-
-            {/* Bottom floating Details overlay */}
-            <div className="bg-white/10 dark:bg-black/50 border border-white/10 dark:border-neutral-800/80 rounded-2xl px-6 py-4 max-w-xl text-center backdrop-blur-md space-y-2 select-none shadow-lg">
-              <h3 className="text-lg md:text-xl font-extrabold text-white">
-                {featured.title}
-              </h3>
-              <p className="text-xs md:text-sm text-neutral-300">
-                {featured.desc}
-              </p>
             </div>
           </div>
         </div>

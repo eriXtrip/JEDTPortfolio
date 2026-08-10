@@ -200,7 +200,7 @@ export const ProjectsSection = () => {
                 {/* Image Preview */}
                 <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
                   <div
-                    className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[2.5rem] overflow-hidden border border-neutral-200/50 dark:border-neutral-800/55 bg-neutral-100 dark:bg-neutral-900 cursor-pointer"
+                    className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[1.5rem] overflow-hidden border border-neutral-200/50 dark:border-neutral-800/55 bg-neutral-100 dark:bg-neutral-900 cursor-pointer"
                     onMouseEnter={() => handleImageEnter(project)}
                     onMouseLeave={handleImageLeave}
                   >
@@ -218,7 +218,7 @@ export const ProjectsSection = () => {
 
                 {/* Technical Spec */}
                 <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
-                  <div className="h-full flex flex-col p-6 md:p-8 bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] shadow-xs">
+                  <div className="h-full flex flex-col p-6 md:p-8 bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[1.5rem] shadow-xs">
                     <h3 className="text-2xl md:text-3xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
                       {project.title}
                     </h3>
@@ -286,7 +286,7 @@ export const ProjectsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {archiveProjects.map((project) => (
+          {archiveProjects.slice(0, 3).map((project) => (
             <article
               key={project.id}
               className="group flex flex-col bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"

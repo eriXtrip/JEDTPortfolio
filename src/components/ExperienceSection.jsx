@@ -7,7 +7,7 @@ export const ExperienceSection = () => {
       company: "Bicol University College of Science (BUCS-MCC)",
       period: "14-Week Internship",
       bullets: [
-        "Developed and deployed a React-Laravel web application that automated specimen management workflows and centralized laboratory records, reducing specimen processing turnaround times by 75%.",
+        "Developed and deployed a React-Laravel web application that automated specimen management workflows and centralized laboratory records, reducing specimen processing.",
         "Collaborated with faculty and project stakeholders to gather requirements, perform testing, and deliver production-ready system enhancements.",
         "Communicated complex technical solutions and conducted system walkthroughs for non-technical stakeholders.",
       ],

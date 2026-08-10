@@ -478,6 +478,7 @@ export const CertificatesSection = () => {
           </div>
         </div>
       )}
+
     </section>
   );
 };
