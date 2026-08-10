@@ -1,7 +1,7 @@
-import { ArrowRight, Clock, ShoppingBag, Star, Tag } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import profileImg2 from "../assets/2.png";
 import bucsmcc from "../assets/works/BUCSMCC.png";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text"
+import GlareHover from './GlareHover';
 import { cn } from "@/lib/utils"
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"
 
@@ -10,7 +10,7 @@ export function CombinedHero() {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex flex-col justify-center pt-35 sm:pb-0 md:pb-25 px-6 md:px-12 items-center bg-background max-sm:border-b max-sm:border-emerald-700"
+            className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-6 md:px-12 items-center bg-background max-md:border-b max-md:dark:border-emerald-700 max-md:border-gray-700 "
         >
 
             <AnimatedGridPattern
@@ -69,7 +69,7 @@ export function CombinedHero() {
                                 IT graduate and developer building web apps with React & Laravel.
                             </p>
 
-                            <div className="pt-2 flex md:flex-col lg:flex-row sm:flex-row items-start lg:items-center sm:gap-3">
+                            {/* <div className="pt-2 flex md:flex-col lg:flex-row sm:flex-row items-start lg:items-center sm:gap-3">
                                 <a href="#works" className="inline-flex items-center space-x-3 transition-all px-5 py-3 font-bold group">
                                     <AnimatedShinyText className="text-white">
                                         View Projects
@@ -81,6 +81,14 @@ export function CombinedHero() {
                                 <a href="#contact" className="lg:inline-flex items-center px-5 py-3 font-semibold text-gray/90 dark:text-white/50 hover:text-white/50 transition-all">
                                     Let's Talk
                                 </a>
+                            </div> */}
+
+
+                            <div className="flex flex-wrap items-center gap-8 pt-4">
+                                <a href="#works" className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-emerald-400 transition-all duration-300 hover:text-white">
+                                    <span>View Projects</span>
+                                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5"><ArrowRight /></span>
+                                </a>
                             </div>
 
                         </div>
@@ -89,10 +97,18 @@ export function CombinedHero() {
                         <div className="hidden lg:block lg:col-span-4"></div>
 
                         {/* Right Column: Domains & Featured Terminal Card */}
-                        <div className="md:col-span-4 flex flex-col items-start md:items-end gap-8 z-20 mb:-mt-45 md:mb-20 lg:mt-0 lg:mb-0 sm:mb-0 sm:-mt-0">
+                        <div className="md:col-span-4 flex flex-col items-start md:items-end gap-8 z-20 md:-mt-45 md:mb-20 lg:mt-0 lg:mb-0 sm:mb-0 sm:-mt-0">
 
                             {/* Featured Project Mini-Showcase */}
-                            <div className="text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-white/20 overflow-hidden bg-white/5 backdrop-blur-md">
+                            <GlareHover
+                                glareColor="#ffffff"
+                                glareOpacity={0.6}
+                                glareAngle={-30}
+                                glareSize={300}
+                                transitionDuration={1550}
+                                playOnce={false}
+                                className="text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-white/20 overflow-hidden bg-white/5 backdrop-blur-md"
+                            >
                                 <div className="px-4 py-2.5 flex items-center justify-between border-b border-white/20">
                                     <span className="text-white/50 text-[11px]">Featured Project</span>
                                     <div className="flex gap-1.5">
@@ -101,11 +117,11 @@ export function CombinedHero() {
                                         <div className="w-3 h-3 rounded-full bg-green-500"></div>
                                     </div>
                                 </div>
-                                <div className="relative aspect-[16/10] overflow-hidden">
+                                <div className="relative aspect-[12/10] overflow-hidden">
                                     <img
                                         src={bucsmcc}
                                         alt="BUCS MCC Specimen Tracking System"
-                                        className="w-full h-full object-cover object-top"
+                                        className="w-full h-full object-cover object-top "
                                     />
                                     <span className="absolute top-2 left-2 bg-emerald-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Live Demo</span>
                                 </div>
@@ -120,7 +136,7 @@ export function CombinedHero() {
                                         Automated microbial specimen workflows across multiple labs, replacing manual logs and reducing tracking errors.
                                     </p>
                                 </div>
-                            </div>
+                            </GlareHover>
 
                         </div>
 
@@ -128,11 +144,11 @@ export function CombinedHero() {
                 </div>
 
                 {/* Center Column: Profile Photo Cutout (in-flow on mobile, pop-out anchored above card on md+) */}
-                <div className="flex justify-center mt-8 md:mt-0 md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 md:z-30 pointer-events-none md:-ml-35 lg:ml-0 lg:-mb-0 sm:-ml-0 sm:-mb-20">
+                <div className="flex justify-center mt-8 md:mt-0 md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 md:z-30 pointer-events-none md:-ml-30 lg:ml-0 lg:-mb-0 sm:-ml-0 sm:-mb-25">
                     <img
                         src={profileImg2}
                         alt="Jon Eric Tripulca"
-                        className="sm:h-[250px] md:h-[580px] lg:h-[660px] w-auto object-cover object-top filter drop-shadow-2xl"
+                        className="sm:h-[250px] md:h-[570px] lg:h-[660px] w-auto object-cover object-top filter drop-shadow-2xl"
                     />
                 </div>
             </div>

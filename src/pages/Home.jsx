@@ -21,8 +21,8 @@ export const Home = () => {
 
       {/* Main Content */}
       <main className="relative">
-        <CombinedHero />
-        {/* <HeroSection /> */}
+        {/* <CombinedHero /> */}
+        <HeroSection />
         <AboutSection />
         <ProjectsSection />
         <ExperienceSection />
