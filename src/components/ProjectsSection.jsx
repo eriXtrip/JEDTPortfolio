@@ -168,9 +168,9 @@ export const ProjectsSection = () => {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Featured Works &amp; Archive
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Works &amp;{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 underline">
                 Archive
               </span>
             </h2>

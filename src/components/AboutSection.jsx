@@ -130,9 +130,9 @@ export const AboutSection = () => {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Methodologies & Workflows
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-              How I Execute & <br />
-              <span className="text-neutral-500 dark:text-neutral-400">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
+              How I {" "}
+              <span className="font-black text-emerald-600 dark:text-emerald-400 italic">
                 Solve Problems
               </span>
             </h2>

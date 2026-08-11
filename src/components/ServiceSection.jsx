@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { GlareHover } from "@/components/ui/glare-hover"
 
 export const SkillsSection = () => {
   const services = [
@@ -39,24 +40,25 @@ export const SkillsSection = () => {
     >
       <div className="container max-w-7xl mx-auto px-2 mid:px-10">
         {/* Services Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
-            Services
+        <div className="mb-12 md:mb-16">
+          {/* Pre-title tag matching Works section */}
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            SERVICES & EXPERTISE
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-            My Expertise
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base">
-            Delivering the perfect balance of robust engineering, intuitive
-            interfaces, and premium visuals.
+
+          {/* Subtitle / Description */}
+          <p className="mt-4 max-w-2xl text-base text-neutral-400">
+            Delivering the perfect balance of robust engineering, intuitive interfaces, and premium visuals across web, mobile, and technical operations.
           </p>
         </div>
 
         {/* Stark 4-Column Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, idx) => (
-            <div
+            <GlareHover
               key={idx}
+              background="transparent"
               className={`flex flex-col justify-between p-6 md:p-8 rounded-3xl border text-left transition-all duration-300 hover:translate-y-[-6px] ${service.isInverted
                 ? "bg-neutral-900 text-white border-neutral-900 dark:bg-neutral-900 dark:border-neutral-800"
                 : "bg-white text-neutral-900 border-neutral-200 dark:bg-neutral-900/60 dark:text-white dark:border-neutral-800"
@@ -111,7 +113,7 @@ export const SkillsSection = () => {
                   Hire Me <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
-            </div>
+            </GlareHover>
           ))}
         </div>
       </div>
