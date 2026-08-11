@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { X, Eye, ArrowUpRight } from "lucide-react";
 
 import Pubmat1 from "../assets/pubmats/Adolescent Health Awareness 3x4.png";
@@ -146,11 +146,69 @@ const pubmats = [
 const featuredIndexes = [1, 0, 3, 11, 9, 10, 19, 15, 14];
 const morePubmats = pubmats.filter((_, i) => !featuredIndexes.includes(i));
 
+const skeletonAspects = [
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-[1/1]",
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-[1/1]",
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-[1/1]",
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-[1/1]",
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+];
+
+const SkeletonCard = ({ aspect }) => (
+  <div className="break-inside-avoid overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs">
+    <div
+      className={`relative w-full ${aspect} overflow-hidden bg-neutral-200/70 dark:bg-neutral-800/60`}
+    >
+      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-neutral-300/60 to-transparent dark:via-neutral-700/50" />
+      <div className="absolute inset-x-0 bottom-0 p-4">
+        <div className="h-2.5 w-24 rounded-full bg-neutral-300/80 dark:bg-neutral-700 animate-pulse" />
+        <div className="mt-2 h-3.5 w-32 rounded-full bg-neutral-300/80 dark:bg-neutral-700 animate-pulse" />
+      </div>
+    </div>
+  </div>
+);
+
 export const PubmatsGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
+  const [isGalleryOpen, setisGalleryOpen] = useState(false);
+  const [galleryLoaded, setGalleryLoaded] = useState(false);
+  const loadedCount = useRef(0);
   const featured = pubmats[activeIndex];
+
+  useEffect(() => {
+    if (!isGalleryOpen) {
+      loadedCount.current = 0;
+      setGalleryLoaded(false);
+      return;
+    }
+
+    const imgs = morePubmats.map((pubmat) => new Image());
+    imgs.forEach((img, idx) => {
+      img.onload = () => {
+        loadedCount.current += 1;
+        if (loadedCount.current >= morePubmats.length) {
+          setGalleryLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount.current += 1;
+        if (loadedCount.current >= morePubmats.length) {
+          setGalleryLoaded(true);
+        }
+      };
+      img.src = morePubmats[idx].src;
+    });
+  }, [isGalleryOpen]);
 
   const openLightbox = () => {
     setIsLightboxOpen(true);
@@ -159,16 +217,16 @@ export const PubmatsGallery = () => {
 
   const closeLightbox = () => {
     setIsLightboxOpen(false);
-    document.body.style.overflow = isPortfolioOpen ? "hidden" : "unset";
+    document.body.style.overflow = isGalleryOpen ? "hidden" : "unset";
   };
 
-  const openPortfolio = () => {
-    setIsPortfolioOpen(true);
+  const openGallery = () => {
+    setisGalleryOpen(true);
     document.body.style.overflow = "hidden";
   };
 
-  const closePortfolio = () => {
-    setIsPortfolioOpen(false);
+  const closeGallery = () => {
+    setisGalleryOpen(false);
     document.body.style.overflow = "unset";
   };
 
@@ -262,7 +320,7 @@ export const PubmatsGallery = () => {
             <Card pubmat={pubmats[15]} aspect="aspect-[2/1]" />
             {/* Floating Pill CTA opening the full portfolio */}
             <button
-              onClick={openPortfolio}
+              onClick={openGallery}
               className="relative z-20 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-emerald-600 dark:bg-emerald-500 px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:scale-105 hover:bg-emerald-700 dark:hover:bg-emerald-400 cursor-pointer lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6"
             >
               View All Designs <ArrowUpRight className="h-4 w-4" />
@@ -284,7 +342,7 @@ export const PubmatsGallery = () => {
       </div>
 
       {/* Full-Screen Portfolio Modal */}
-      {isPortfolioOpen && (
+      {isGalleryOpen && (
         <div className="fixed inset-0 z-[200] overflow-y-auto bg-neutral-50 dark:bg-neutral-950">
           {/* Sticky Modal Header */}
           <div className="sticky top-0 z-10 border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/90 dark:bg-neutral-950/90 backdrop-blur-md">
@@ -302,7 +360,7 @@ export const PubmatsGallery = () => {
                 </h3>
               </div>
               <button
-                onClick={closePortfolio}
+                onClick={closeGallery}
                 className="shrink-0 p-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200/70 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 transition-all cursor-pointer hover:border-emerald-500/40 hover:text-emerald-600 dark:hover:text-emerald-400"
                 aria-label="Close portfolio"
               >
@@ -313,43 +371,51 @@ export const PubmatsGallery = () => {
 
           {/* Masonry Grid */}
           <div className="mx-auto max-w-7xl px-6 md:px-12 py-10">
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 [column-fill:_balance]">
-              {morePubmats.map((pubmat, idx) => {
-                const originalIndex = pubmats.findIndex(
-                  (p) => p.src === pubmat.src,
-                );
-                return (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(originalIndex);
-                      openLightbox();
-                    }}
-                    className="group relative break-inside-avoid cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl"
-                  >
-                    <img
-                      src={pubmat.src}
-                      alt={pubmat.title}
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src =
-                          "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600";
+            {!galleryLoaded ? (
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 [column-fill:_balance]">
+                {skeletonAspects.map((aspect, idx) => (
+                  <SkeletonCard key={idx} aspect={aspect} />
+                ))}
+              </div>
+            ) : (
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 [column-fill:_balance]">
+                {morePubmats.map((pubmat, idx) => {
+                  const originalIndex = pubmats.findIndex(
+                    (p) => p.src === pubmat.src,
+                  );
+                  return (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        setActiveIndex(originalIndex);
+                        openLightbox();
                       }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                    <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
-                        <Eye className="h-3 w-3 animate-pulse" /> View Design
-                      </span>
-                      <h4 className="mt-1 text-sm font-extrabold leading-tight text-white">
-                        {pubmat.title}
-                      </h4>
+                      className="group relative break-inside-avoid cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl"
+                    >
+                      <img
+                        src={pubmat.src}
+                        alt={pubmat.title}
+                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src =
+                            "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=600";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+                          <Eye className="h-3 w-3 animate-pulse" /> View Design
+                        </span>
+                        <h4 className="mt-1 text-sm font-extrabold leading-tight text-white">
+                          {pubmat.title}
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       )}
