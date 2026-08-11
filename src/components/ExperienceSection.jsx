@@ -1,4 +1,4 @@
-import { Briefcase, Calendar } from "lucide-react";
+import { BriefcaseBusiness, Calendar } from "lucide-react";
 
 export const ExperienceSection = () => {
   const experiences = [
@@ -42,25 +42,37 @@ export const ExperienceSection = () => {
       <div className="container max-w-7xl mx-auto px-2 mid:px-10 space-y-16">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
             Chronology
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-            Work Experience
+          <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
+            My{" "}
+            <span className="font-black text-emerald-600 dark:text-emerald-400">
+              Experience
+            </span>
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base">
-            A comprehensive chronicle of my engineering roles, technical
-            support operations, and creative contracts.
+            A history of my engineering, technical support, and creative roles.
           </p>
         </div>
 
         {/* Timeline Node List */}
-        <div className="max-w-4xl mx-auto relative border-l border-neutral-200 dark:border-neutral-800 pl-6 md:pl-10 space-y-12 text-left">
+        <div className="max-w-4xl mx-auto relative space-y-12 text-left">
+          {/* Straight Flow Connector Line */}
+          <svg
+            className="absolute left-0 top-0 h-full w-8 pointer-events-none stroke-emerald-500/60 dark:stroke-emerald-400/50 fill-none z-0"
+            viewBox="0 0 32 100"
+            preserveAspectRatio="none"
+            style={{ strokeDasharray: "3 3" }}
+          >
+            <path d="M 16,0 L 16,100" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
+          </svg>
           {experiences.map((exp, idx) => (
-            <div key={idx} className="relative group">
+            <div key={idx} className="relative group pl-11 md:pl-12">
               {/* Timeline node icon */}
-              <div className="absolute -left-[37px] md:-left-[53px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-750 dark:text-white shadow-xs group-hover:scale-110 group-hover:border-emerald-500 dark:group-hover:border-emerald-400 transition-all duration-300">
-                <Briefcase className="h-3.5 w-3.5 text-neutral-500 dark:text-neutral-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+              <div className="absolute left-0 top-1.5 flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-750 dark:text-white shadow-xs group-hover:scale-110 group-hover:border-emerald-500 dark:group-hover:border-emerald-400 transition-all duration-300">
+                <BriefcaseBusiness className="h-3.5 w-3.5 text-neutral-500 dark:text-neutral-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
               </div>
 
               {/* Experience Card */}

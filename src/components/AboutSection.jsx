@@ -215,11 +215,8 @@ export const AboutSection = () => {
                 Personal Background
               </span>
 
-              <h3 className="relative mt-4 text-2xl md:text-3xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-                Engineering & Support
-                <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400">
-                  Mindset
-                </span>
+              <h3 className=" font-black relative mt-4 text-2xl md:text-3xl text-neutral-900 dark:text-white tracking-tight uppercase">
+                Career Profile
               </h3>
 
               <div className="relative mt-5 space-y-4 text-neutral-700 dark:text-neutral-300 leading-relaxed text-sm md:text-base">
