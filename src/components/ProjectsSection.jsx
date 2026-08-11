@@ -160,7 +160,7 @@ export const ProjectsSection = () => {
       id="works"
       className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      <div className="container max-w-7xl mx-auto">
+      <div className="container max-w-7xl mx-auto p-0">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80 mb-14">
           <div className="space-y-4 max-w-2xl text-left">

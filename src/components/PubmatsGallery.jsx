@@ -209,7 +209,7 @@ export const PubmatsGallery = () => {
   return (
     <section
       id="pubmats"
-      className="relative py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40"
+      className="relative py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40"
     >
       {/* Decorative Abstract Background Glows */}
       <div className="pointer-events-none absolute inset-0 overflow-visible">
@@ -218,7 +218,7 @@ export const PubmatsGallery = () => {
         <div className="absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-emerald-300/15 dark:bg-emerald-500/10 blur-3xl" />
       </div>
 
-      <div className="relative container max-w-7xl mx-auto px-2 md:px-12">
+      <div className="relative container max-w-7xl mx-auto px-2 md:px-10">
         {/* Header — Centered High-Impact Headline */}
         <div className="mx-auto max-w-3xl space-y-5 pb-16 text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
@@ -239,7 +239,7 @@ export const PubmatsGallery = () => {
         </div>
 
         {/* 5-Column Asymmetric Staggered Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
           {/* Column 1 — Left Split Stack (3:4 top + 4:3 bottom) */}
           <div className="flex flex-col justify-between gap-4 md:gap-5">
             <Card pubmat={pubmats[1]} aspect="aspect-[3/4]" />

@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-6 md:px-12 items-center bg-background max-md:border-b max-md:dark:border-emerald-700 max-md:border-gray-700 "
+      className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-4 md:px-10 items-center bg-background max-md:border-b max-md:dark:border-emerald-700 max-md:border-gray-700 "
     >
 
       <AnimatedGridPattern

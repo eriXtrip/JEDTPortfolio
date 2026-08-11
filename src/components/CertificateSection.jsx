@@ -230,9 +230,9 @@ export const CertificatesSection = () => {
   return (
     <section
       id="certificates"
-      className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
+      className="py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      <div className="container max-w-7xl mx-auto px-1">
+      <div className="container max-w-7xl mx-auto px-0">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <span className="text-xs font-bold tracking-widest text-emerald-500 dark:text-emerald-400 uppercase">

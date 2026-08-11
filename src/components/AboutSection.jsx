@@ -122,7 +122,7 @@ export const AboutSection = () => {
       id="about"
       className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      <div className="container max-w-7xl mx-auto px-3 md:px-10 space-y-16">
+      <div className="container max-w-7xl mx-auto px-0 space-y-16">
         {/* Section Header & Ultra-Modern Workflow Switcher Bar */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80">
           <div className="space-y-4 max-w-2xl text-left">
