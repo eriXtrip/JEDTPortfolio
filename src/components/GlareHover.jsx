@@ -7,7 +7,9 @@ const GlareHover = ({
     glareAngle = -45,
     glareSize = 250,
     transitionDuration = 650,
+    autoDuration,
     playOnce = false,
+    autoGlare = false,
     className = 'text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-white/20 overflow-hidden bg-white/5 backdrop-blur-md',
     style = {}
 }) => {
@@ -28,13 +30,14 @@ const GlareHover = ({
     const vars = {
         '--gh-angle': `${glareAngle}deg`,
         '--gh-duration': `${transitionDuration}ms`,
+        '--gh-auto-duration': autoDuration ? `${autoDuration}ms` : undefined,
         '--gh-size': `${glareSize}%`,
         '--gh-rgba': rgba
     };
 
     return (
         <div
-            className={`glare-hover ${playOnce ? 'glare-hover--play-once' : ''} ${className}`}
+            className={`glare-hover ${playOnce ? 'glare-hover--play-once' : ''} ${autoGlare ? 'glare-hover--auto' : ''} ${className}`}
             style={{ ...vars, ...style }}
         >
             {children}

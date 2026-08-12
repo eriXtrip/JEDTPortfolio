@@ -50,6 +50,30 @@
         0 0;
 }
 
+.glare-hover--auto::before {
+    animation: gh-sweep var(--gh-auto-duration, var(--gh-duration)) ease-in-out infinite;
+}
+
+@keyframes gh-sweep {
+    0% {
+        background-position:
+            -100% -100%,
+            0 0;
+    }
+    100% {
+        background-position:
+            100% 100%,
+            0 0;
+    }
+}
+
+.glare-hover--auto:hover::before {
+    animation-play-state: paused;
+    background-position:
+        100% 100%,
+        0 0;
+}
+
 .glare-hover--play-once::before {
     transition: none;
 }

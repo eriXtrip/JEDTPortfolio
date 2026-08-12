@@ -87,6 +87,8 @@ export function HeroSection() {
               {/* Featured Project Mini-Showcase */}
               <a href="#works">
                 <GlareHover
+                  autoGlare
+                  autoDuration={1900}
                   glareColor="#ffffff"
                   glareOpacity={0.6}
                   glareAngle={-30}

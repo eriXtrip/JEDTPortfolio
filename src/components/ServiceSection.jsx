@@ -58,9 +58,8 @@ export const SkillsSection = () => {
           {services.map((service, idx) => (
             <GlareHover
               key={idx}
-              background="transparent"
               className={`flex flex-col justify-between p-6 md:p-8 rounded-3xl border text-left transition-all duration-300 hover:translate-y-[-6px] ${service.isInverted
-                ? "bg-neutral-900 text-white border-neutral-900 dark:bg-neutral-900 dark:border-neutral-800"
+                ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-neutral-900 dark:border-neutral-200"
                 : "bg-white text-neutral-900 border-neutral-200 dark:bg-neutral-900/60 dark:text-white dark:border-neutral-800"
                 }`}
             >
@@ -69,7 +68,7 @@ export const SkillsSection = () => {
                 <div className="flex items-center justify-between">
                   <span
                     className={`text-xs font-bold tracking-widest uppercase ${service.isInverted
-                      ? "text-neutral-400"
+                      ? "text-neutral-400 dark:text-neutral-500"
                       : "text-neutral-400 dark:text-neutral-500"
                       }`}
                   >
@@ -77,7 +76,7 @@ export const SkillsSection = () => {
                   </span>
                   <span
                     className={`text-lg font-bold tracking-tighter ${service.isInverted
-                      ? "text-neutral-400"
+                      ? "text-neutral-400 dark:text-neutral-500"
                       : "text-neutral-400 dark:text-neutral-500"
                       }`}
                   >
@@ -92,7 +91,7 @@ export const SkillsSection = () => {
                   </h3>
                   <p
                     className={`text-xs md:text-sm leading-relaxed ${service.isInverted
-                      ? "text-neutral-350"
+                      ? "text-neutral-350 dark:text-neutral-600"
                       : "text-neutral-600 dark:text-neutral-400"
                       }`}
                   >
@@ -106,7 +105,7 @@ export const SkillsSection = () => {
                 <a
                   href="#contact"
                   className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest ${service.isInverted
-                    ? "text-white hover:text-neutral-300"
+                    ? "text-white hover:text-neutral-300 dark:text-neutral-900 dark:hover:text-neutral-500"
                     : "text-neutral-900 dark:text-white hover:text-neutral-500"
                     } transition-colors`}
                 >

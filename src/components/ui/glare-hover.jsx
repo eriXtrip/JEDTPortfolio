@@ -16,14 +16,13 @@ function parseHEX(color, opacity) {
 }
 
 function GlareHover({
-  background = "#000",
+  background,
   children,
   color = "#ffffff",
   opacity = 0.5,
   angle = -45,
   size = 250,
-  duration = 650,
-  playOnce = false,
+  duration = 1550,
   className,
   style,
   width,
@@ -56,10 +55,9 @@ function GlareHover({
         "before:[background-size:var(--gh-size)_var(--gh-size),100%_100%]",
         "before:[background-position:-100%_-100%,0_0]",
         // TRANSITION
-        !playOnce &&
-        "before:transition-[background-position] before:duration-[var(--gh-duration)] before:ease-in-out",
-        playOnce &&
-        "before:transition-none hover:before:transition-[background-position] hover:before:duration-[var(--gh-duration)]",
+        "before:transition-none",
+        // HOVER EFFECT (sweep in on hover, no reverse sweep out)
+        "hover:before:transition-[background-position] hover:before:duration-[var(--gh-duration)] hover:before:ease-in-out",
         // HOVER EFFECT
         "hover:before:[background-position:100%_100%,0_0]",
         className

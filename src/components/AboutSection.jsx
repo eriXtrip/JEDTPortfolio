@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ArrowUpRight, Code, Wrench, Palette } from "lucide-react";
+import { Download, Code, Wrench, Palette, Eye, X } from "lucide-react";
 
 export const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("development");
+  const [cvOpen, setCvOpen] = useState(false);
 
   const devSteps = [
     {
@@ -241,12 +242,12 @@ export const AboutSection = () => {
                 <a href="#contact" className="cosmic-button whitespace-nowrap text-xs sm:text-sm px-3 sm:px-6 py-2.5 sm:py-3 flex-1 text-center justify-center">
                   Get In Touch
                 </a>
-                <a
-                  href="https://drive.google.com/uc?id=1nRWuFgGzzmHxZDKoLaMx3yk2Bmt26C1t&export=download"
-                  className="outline-button whitespace-nowrap text-xs sm:text-sm px-3 sm:px-6 py-2.5 sm:py-3 flex-1 text-center justify-center inline-flex items-center gap-1.5"
+                <button
+                  onClick={() => setCvOpen(true)}
+                  className="outline-button whitespace-nowrap text-xs sm:text-sm px-3 sm:px-6 py-2.5 sm:py-3 flex-1 text-center justify-center inline-flex items-center gap-1.5 cursor-pointer"
                 >
-                  Download CV <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
-                </a>
+                  View CV <Eye className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+                </button>
               </div>
             </div>
           </div>
@@ -294,6 +295,35 @@ export const AboutSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Resume Preview Modal (in-page, no new tab) */}
+      {cvOpen && (
+        <div className="fixed inset-0 z-50">
+          <iframe
+            src="https://drive.google.com/file/d/1nRWuFgGzzmHxZDKoLaMx3yk2Bmt26C1t/preview"
+            title="Resume Preview"
+            className="w-full h-full border-0 bg-transparent"
+            allow="autoplay"
+          />
+          <div className="absolute top-4 right-4 flex items-center gap-2">
+            <a
+              href="https://drive.google.com/uc?id=1nRWuFgGzzmHxZDKoLaMx3yk2Bmt26C1t&export=download"
+              className="inline-flex items-center justify-center gap-1.5 h-10 w-10 sm:w-auto sm:px-4 rounded-full bg-white/90 dark:bg-neutral-900/90 text-neutral-700 dark:text-neutral-200 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors text-sm font-semibold"
+              aria-label="Download CV"
+            >
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline">Download CV</span>
+            </a>
+            <button
+              onClick={() => setCvOpen(false)}
+              className="h-10 w-10 inline-flex items-center justify-center rounded-full bg-white/90 dark:bg-neutral-900/90 text-neutral-700 dark:text-neutral-200 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+              aria-label="Close preview"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
