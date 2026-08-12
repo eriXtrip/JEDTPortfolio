@@ -127,10 +127,6 @@ export const AboutSection = () => {
         {/* Section Header & Ultra-Modern Workflow Switcher Bar */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80">
           <div className="space-y-4 max-w-2xl text-left">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Methodologies & Workflows
-            </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               How I {" "}
               <span className="font-black text-emerald-600 dark:text-emerald-400 italic">
@@ -230,11 +226,9 @@ export const AboutSection = () => {
                 </p>
 
                 <p>
-                  Seeking an entry-level Software Development and Full-Stack
-                  position where I can apply my technical skills and
-                  problem-solving mindset to deliver impactful solutions — with
-                  hands-on IT support, networking, and systems administration
-                  as a strong secondary foundation.
+                  Ready to contribute as a Full-Stack Developer or IT Specialist,
+                  bringing both modern web engineering skills and
+                  practical infrastructure experience to the team.
                 </p>
               </div>
 

@@ -293,9 +293,7 @@ export const CertificatesSection = () => {
               Credentials
             </h2>
             <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              A curated wall of verified academic, leadership, and technical
-              credentials issued by TESDA, Bicol University, and partner
-              institutions.
+              Technical certifications, academic milestones, and training.
             </p>
           </div>
 

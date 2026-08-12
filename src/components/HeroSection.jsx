@@ -66,7 +66,7 @@ export function HeroSection() {
               </h2>
 
               <p className="text-sm md:text-base opacity-85 max-w-xs leading-relaxed">
-                IT graduate and developer building web apps with React & Laravel.
+                Building web applications and practical IT systems that streamline real-world workflows.
               </p>
 
               <div className="flex flex-wrap items-center gap-8 pt-4">

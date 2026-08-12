@@ -7,28 +7,28 @@ export const SkillsSection = () => {
       number: "01",
       title: "Full-Stack & Mobile Dev",
       description:
-        "Architecting robust, end-to-end web systems and cross-platform mobile apps. Proficient in engineering secure backends with Node.js and Laravel, designing databases with MySQL, and crafting fluid layouts with React Native and Tailwind CSS.",
+        "E-commerce stores, school enrollment systems, inventory and rental management software, Android e-learning apps. Built with PHP, React Native, C#, and Python, backed by MySQL and SQLite.",
       isInverted: true,
     },
     {
       number: "02",
       title: "IT Support & Systems",
       description:
-        "Providing technical support, hardware/software diagnostics, system maintenance, and remote assistance. Experienced in network setup, troubleshooting, and user support.",
+        "On-site IT support for COMELEC's election systems — hardware and software diagnostics, network setup, server configuration, and remote troubleshooting that keeps operations running.",
       isInverted: false,
     },
     {
       number: "03",
       title: "UI/UX Design",
       description:
-        "Designing user-centered structures, interactive wireframes, and prototypes in Figma. Emphasizing typography contrast, fluid grid layouts, and meticulous responsive design.",
+        "Figma wireframes and interactive prototypes that translate directly into responsive screens. Typography, spacing, and grid layouts refined for every breakpoint.",
       isInverted: false,
     },
     {
       number: "04",
       title: "Graphic & Branding",
       description:
-        "Creating premium publication materials (pubmats), vectors, and event banners using Photoshop, Illustrator, and Canva. Focused on harmonic palettes and stark visual storytelling.",
+        "Pubmats, vectors, and event banners for organizations and clients. Produced in Photoshop, Illustrator, and Canva and delivered on brand.",
       isInverted: false,
     },
   ];
@@ -47,10 +47,12 @@ export const SkillsSection = () => {
             SERVICES & EXPERTISE
           </span>
 
-          {/* Subtitle / Description */}
-          <p className="mt-4 max-w-2xl text-base text-neutral-400">
-            Delivering the perfect balance of robust engineering, intuitive interfaces, and premium visuals across web, mobile, and technical operations.
-          </p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
+            What i {" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 underline">
+              Do
+            </span>
+          </h2>
         </div>
 
         {/* Stark 4-Column Services Grid */}

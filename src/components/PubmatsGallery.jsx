@@ -290,9 +290,7 @@ export const PubmatsGallery = () => {
             </span>
           </h2>
           <p className="mx-auto max-w-xl text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            A curated selection of publication materials — posters, banners, and
-            decks engineered to translate complex information into clean,
-            high-impact visuals.
+            Publication materials, posters, and event banners designed for organizations, schools, and local clients
           </p>
         </div>
 

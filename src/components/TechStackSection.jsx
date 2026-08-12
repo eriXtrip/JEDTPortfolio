@@ -94,14 +94,18 @@ export const TechStackSection = () => {
       <div className="container max-w-7xl mx-auto px-2 mid:px-10 space-y-16">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="text-xs font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase">
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
             Capabilities & Tools
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-            Technical Stack & Skills
+          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
+            Stack &{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 italic">
+              Skills
+            </span>
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm md:text-base">
-            A comprehensive overview of the programming languages, database systems, networking tools, and technical support frameworks I leverage to solve complex IT problems.
+            Technologies and systems I build with in development, networking, and technical support.
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 import {
-  Instagram,
   Facebook,
   Github,
+  Instagram,
   Linkedin,
   Mail,
   MapPin,
@@ -10,7 +10,16 @@ import {
   Copy,
 } from "lucide-react";
 import { useState } from "react";
+import profileImg2 from "../assets/Profile5.png";
+import qrcode from "../assets/qrcode_jedt-portfolio.vercel.app.png";
 import { useToast } from "@/hooks/use-toast";
+
+const socials = [
+  { label: "Facebook", href: "https://www.facebook.com/ccerilac", Icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/ccerilac/", Icon: Instagram },
+  { label: "GitHub", href: "https://github.com/eriXtrip", Icon: Github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/jon-eric-tripulca-2b87ab417", Icon: Linkedin },
+];
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -33,188 +42,148 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-2 md:px-12 bg-white dark:bg-neutral-900 relative overflow-hidden"
+      className="py-24 px-3 md:px-10 bg-white dark:bg-neutral-900 relative overflow-hidden"
     >
       {/* Decorative Background Accent Glows */}
       <div className="absolute top-1/3 -left-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container max-w-6xl mx-auto relative z-10 text-center space-y-12">
-        {/* Header Section */}
-        <div className="space-y-4 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/50 dark:border-emerald-800/30 px-4 py-2 rounded-full text-xs font-bold text-emerald-600 dark:text-emerald-400 shadow-xs mb-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 block animate-pulse"></span>
-            Available for Collaborations & Hiring
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-            Let's Construct Something Exceptional
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base leading-relaxed">
-            Have an exciting project, internship opportunity, or looking to
-            build modern web solutions? Select your preferred method below to
-            start the conversation!
-          </p>
-        </div>
+      <div className="container max-w-7xl mx-auto relative z-10">
+        {/* Horizontal / Landscape Layout Grid — Left Visual (40%) · Right Content (60%) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 lg:min-h-[680px]">
 
-        {/* Action Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-6">
-          {/* Card 1: Direct Email Hub */}
-          <div className="group bg-neutral-50/50 dark:bg-neutral-900/55 border border-neutral-200/40 dark:border-neutral-800/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg dark:hover:border-emerald-400/50 backdrop-blur-xs">
-            <div className="space-y-4 flex flex-col items-center">
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                <Mail className="h-6 w-6" />
-              </div>
-              <div className="space-y-1.5">
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
-                  Direct Email
-                </h3>
-                <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-semibold">
-                  Primary contact channel
-                </p>
-              </div>
-              <p className="text-xs text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-950 px-3.5 py-2 rounded-xl border border-neutral-200/20 dark:border-neutral-800/20 break-all select-all">
-                {emailAddress}
-              </p>
-            </div>
-
-            <div className="w-full space-y-3 pt-6">
-              <a
-                href={`mailto:${emailAddress}`}
-                className=" w-full py-3 text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 rounded-full transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
-              >
-                Send an Email
-              </a>
-              <button
-                onClick={handleCopyEmail}
-                className="w-full py-3 text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-950 transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                {copied ? (
-                  <>
-                    Copied! <Check className="h-3.5 w-3.5 text-emerald-500" />
-                  </>
-                ) : (
-                  <>
-                    Copy Address <Copy className="h-3.5 w-3.5" />
-                  </>
-                )}
-              </button>
+          {/* ============ LEFT COLUMN — Visual / Portrait ============ */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            {/* Full-Height Portrait Photo */}
+            <div className="relative flex-1 min-h-[380px] sm:min-h-[520px] lg:min-h-0 rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-800">
+              <img
+                src={profileImg2}
+                alt="Jon Eric Tripulca"
+                className="absolute inset-0 w-full h-full object-cover object-bottom"
+              />
             </div>
           </div>
 
-          {/* Card 2: Voice & Messaging */}
-          <div className="group bg-neutral-50/50 dark:bg-neutral-900/55 border border-neutral-200/40 dark:border-neutral-800/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg dark:hover:border-emerald-400/50 backdrop-blur-xs">
-            <div className="space-y-4 flex flex-col items-center">
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                <Phone className="h-6 w-6" />
-              </div>
-              <div className="space-y-1.5">
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
-                  Call & Message
-                </h3>
-                <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-semibold">
-                  Standard mobile call / SMS
+          {/* ============ RIGHT COLUMN — Content ============ */}
+          <div className="lg:col-span-7 flex flex-col justify-between gap-8">
+            {/* Header */}
+            <div className="flex items-start justify-between gap-6">
+              <div className="space-y-3">
+                <h2 className="text-6xl md:text-8xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-none">
+                  Contact
+                </h2>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base leading-relaxed max-w-md">
+                  Currently open to full-time roles, internships, and freelance technical projects. Feel free to reach out via email or phone.
                 </p>
               </div>
-              <p className="text-sm font-semibold text-neutral-850 dark:text-neutral-200 select-all">
-                +63 905 420 5568
-                <br />
-                +63 992 283 0813
-              </p>
+              <span className="hidden md:inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/50 dark:border-emerald-800/30 px-4 py-2 rounded-full text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 block animate-pulse" />
+                Open to Work
+              </span>
             </div>
 
-            <div className="w-full space-y-3 pt-6">
+            {/* Contact Details Strip — Phone · Email · Location */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <a
                 href="tel:+639054205568"
-                className=" w-full py-3 text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 rounded-full transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20"
               >
-                Call Direct
+                <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <span className="flex flex-col gap-0.5 min-w-0">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                    Phone No.
+                  </span>
+                  <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200">
+                    +63 905 420 5568
+                  </span>
+                </span>
               </a>
-              <p className="text-[10px] text-neutral-400 dark:text-neutral-500 font-semibold uppercase tracking-wider">
-                Active daily during office hours
-              </p>
-            </div>
-          </div>
 
-          {/* Card 3: Location Hub */}
-          <div className="group bg-neutral-50/50 dark:bg-neutral-900/55 border border-neutral-200/40 dark:border-neutral-800/50 rounded-3xl p-8 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-emerald-500/50 hover:shadow-lg dark:hover:border-emerald-400/50 backdrop-blur-xs">
-            <div className="space-y-4 flex flex-col items-center">
-              <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="h-6 w-6" />
-              </div>
-              <div className="space-y-1.5">
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
-                  Location & Availability
-                </h3>
-                <p className="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-semibold">
-                  Timezone & Setup
-                </p>
-              </div>
-              <p className="text-sm font-semibold text-neutral-850 dark:text-neutral-200">
-                Legazpi City, Albay, PH
-              </p>
-            </div>
+              <button
+                onClick={handleCopyEmail}
+                className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20 text-left cursor-pointer"
+              >
+                <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span className="flex flex-col gap-0.5 min-w-0">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                    Email Address
+                  </span>
+                  <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 break-all">
+                    {copied ? "Copied to clipboard!" : emailAddress}
+                  </span>
+                </span>
+              </button>
 
-            <div className="w-full space-y-3 pt-6">
               <a
                 href="https://maps.google.com/?q=Legazpi+City,+Albay"
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" w-full py-3 text-xs font-bold uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-950 transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer"
+                className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20"
               >
-                View on Map
+                <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <span className="flex flex-col gap-0.5 min-w-0">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                    Location
+                  </span>
+                  <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200">
+                    Legazpi City, Albay, PH
+                  </span>
+                </span>
               </a>
-              <p className="text-[10px] text-emerald-650 dark:text-emerald-450 font-semibold uppercase tracking-wider">
-                Remote Worldwide / Hybrid PH
-              </p>
             </div>
-          </div>
-        </div>
 
-        {/* Center Divider */}
-        <div className="w-16 h-0.5 bg-neutral-200 dark:bg-neutral-800 mx-auto my-6" />
+            {/* Middle Section — Full Name Block + Portfolio QR Code */}
+            <div className="border-t border-neutral-200 dark:border-neutral-800 pt-8 flex items-center justify-between gap-8 flex-wrap">
+              {/* Full Name (left) + QR Code (right) */}
+              <div className="w-full flex items-center justify-between gap-8 flex-wrap">
+                {/* Full Name — left side */}
+                <div className="space-y-5">
+                  <p className="text-xs uppercase tracking-widest font-bold text-neutral-400 dark:text-neutral-500">
+                    Full Name
+                  </p>
+                  <h3 className="text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
+                    Jon Eric{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400">
+                      Tripulca
+                    </span>
+                  </h3>
+                </div>
 
-        {/* Social Channels Row */}
-        <div className="space-y-4">
-          <p className="text-xs uppercase tracking-widest font-bold text-neutral-400 dark:text-neutral-500">
-            Let's connect socially
-          </p>
-          <div className="flex items-center justify-center gap-8">
-            <a
-              href="https://www.facebook.com/ccerilac"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
-              aria-label="Facebook"
-            >
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.instagram.com/ccerilac/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
-              aria-label="Instagram"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://github.com/eriXtrip"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jon-eric-tripulca-2b87ab417"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
-              aria-label="Linkedin"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
+                {/* QR Code — right side */}
+                <div className="flex items-center gap-3 shrink-0">
+                  <img
+                    src={qrcode}
+                    alt="Portfolio QR Code"
+                    className="h-28 w-28 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white"
+                  />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 [writing-mode:vertical-rl]">
+                    Portafolio
+                  </span>
+                </div>
+              </div>
+
+              {/* Social Channels */}
+              <div className="flex items-center gap-8 shrink-0 pr-1">
+                {socials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="p-2.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -175,7 +175,7 @@ export const ProjectsSection = () => {
               </span>
             </h2>
             <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Explore a curated selection of my digital products, developed with high standard frontend practices and minimal aesthetic.
+              Selected software, desktop tools, and web systems built for real-world use.
             </p>
           </div>
 
