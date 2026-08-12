@@ -1,9 +1,21 @@
-import { useState } from "react";
-import { Download, Code, Wrench, Palette, Eye, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+import {
+  Download,
+  Code,
+  Wrench,
+  Palette,
+  Eye,
+  X,
+  ChevronDown,
+  Check,
+} from "lucide-react";
 
 export const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("development");
   const [cvOpen, setCvOpen] = useState(false);
+  const [workflowOpen, setWorkflowOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const devSteps = [
     {
@@ -104,6 +116,30 @@ export const AboutSection = () => {
     },
   ];
 
+  const tabs = [
+    {
+      id: "development",
+      label: "Development",
+      shortLabel: "Dev",
+      count: "05 Steps",
+      icon: Code,
+    },
+    {
+      id: "support",
+      label: "Tech Support",
+      shortLabel: "Support",
+      count: "05 Steps",
+      icon: Wrench,
+    },
+    {
+      id: "design",
+      label: "Graphic Design",
+      shortLabel: "Design",
+      count: "05 Steps",
+      icon: Palette,
+    },
+  ];
+
   const getSteps = () => {
     switch (activeTab) {
       case "design":
@@ -117,6 +153,23 @@ export const AboutSection = () => {
   };
 
   const currentSteps = getSteps();
+  const ActiveIcon = tabs.find((tab) => tab.id === activeTab)?.icon;
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setWorkflowOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectWorkflow = (tabId) => {
+    setActiveTab(tabId);
+    setWorkflowOpen(false);
+  };
 
   return (
     <section
@@ -135,62 +188,71 @@ export const AboutSection = () => {
             </h2>
           </div>
 
-          {/* Segmented Floating Control Switcher (Fully Responsive) */}
-          <div className="w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 scrollbar-none self-start lg:self-end">
-            <div className="flex items-center gap-1.5 p-1.5 bg-white dark:bg-neutral-900/90 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl shadow-xs min-w-max sm:min-w-0">
-              {[
-                {
-                  id: "development",
-                  label: "Development",
-                  shortLabel: "Dev",
-                  count: "05 Steps",
-                  icon: Code,
-                },
-                {
-                  id: "support",
-                  label: "Tech Support",
-                  shortLabel: "Support",
-                  count: "05 Steps",
-                  icon: Wrench,
-                },
-                {
-                  id: "design",
-                  label: "Graphic Design",
-                  shortLabel: "Design",
-                  count: "05 Steps",
-                  icon: Palette,
-                },
+          {/* Workflow Switcher — Custom Dropdown */}
+          <div
+            ref={dropdownRef}
+            className="relative z-20 w-full lg:w-auto self-start lg:self-end"
+          >
+            <button
+              onClick={() => setWorkflowOpen((open) => !open)}
+              className={cn(
+                "inline-flex items-center justify-between gap-6 min-w-[200px] w-full lg:w-auto px-5 py-3.5 rounded-2xl text-left transition-all duration-300 cursor-pointer shadow-sm border",
+                workflowOpen
+                  ? "bg-white dark:bg-neutral-900 border-emerald-500/40 shadow-emerald-500/10 shadow-lg"
+                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-emerald-500/40",
+              )}
+            >
+              <span className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-200">
+                <ActiveIcon
+                  className={cn(
+                    "h-4 w-4 shrink-0 transition-colors",
+                    workflowOpen
+                      ? "text-emerald-500"
+                      : "text-emerald-600 dark:text-emerald-400",
+                  )}
+                />
+                {tabs.find((tab) => tab.id === activeTab)?.label}
+              </span>
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 text-neutral-400 transition-transform duration-300",
+                  workflowOpen && "rotate-180 text-emerald-500",
+                )}
+              />
+            </button>
 
-              ].map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`group relative inline-flex items-center justify-center gap-2 px-3 sm:px-4 md:px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer flex-1 sm:flex-initial ${isActive
-                      ? "bg-neutral-900 text-white dark:bg-neutral-800 dark:text-white shadow-xs"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-                      }`}
-                  >
-                    <Icon
-                      className={`h-4 w-4 shrink-0 transition-colors ${isActive ? "text-emerald-400" : "text-neutral-400 group-hover:text-emerald-500"
-                        }`}
-                    />
-                    <span className="hidden md:inline">{tab.label}</span>
-                    <span className="md:hidden">{tab.shortLabel}</span>
-                    <span
-                      className={`hidden lg:inline-block text-[10px] font-extrabold px-2 py-0.5 rounded-full transition-colors ${isActive
-                        ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
-                        : "bg-neutral-100 dark:bg-neutral-800 text-neutral-500"
-                        }`}
+            {workflowOpen && (
+              <div className="absolute right-0 top-full mt-2 w-full min-w-[220px] bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl shadow-xl p-1.5">
+                {tabs.map((tab) => {
+                  const Icon = tab.icon;
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => selectWorkflow(tab.id)}
+                      className={cn(
+                        "w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer",
+                        isActive
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
+                          : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/60 hover:text-neutral-900 dark:hover:text-white",
+                      )}
                     >
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                      <span className="flex items-center gap-2">
+                        <Icon
+                          className={cn(
+                            "h-4 w-4 shrink-0 transition-colors",
+                            isActive
+                              ? "text-emerald-600 dark:text-emerald-400"
+                              : "text-neutral-400 group-hover:text-emerald-500",
+                          )}
+                        />
+                        {tab.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
         </div>

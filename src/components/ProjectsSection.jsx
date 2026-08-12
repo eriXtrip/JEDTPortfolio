@@ -229,7 +229,7 @@ export const ProjectsSection = () => {
                     <div className="mt-6 space-y-5">
                       <div className="space-y-2">
                         <SectionLabel icon={FileText}>
-                          Overview &amp; Impact
+                          Overview
                         </SectionLabel>
                         <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                           {project.overview}
@@ -237,7 +237,7 @@ export const ProjectsSection = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <SectionLabel icon={Layers}>Key Architecture</SectionLabel>
+                        <SectionLabel icon={Layers}>Technical Architecture</SectionLabel>
                         <ul className="space-y-2">
                           {project.architecture.map((item) => (
                             <li
