@@ -52,7 +52,7 @@ export function HeroSection() {
             <div className="lg:col-span-4 flex flex-col justify-center space-y-6">
               <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase opacity-90 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full w-fit border border-white/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
-                Portfolio — 2026
+                Portfolio — 2025
               </span>
 
               <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] mb-5">
