@@ -26,9 +26,18 @@ import CertofCompletion from "../assets/cert/CertofCompletion.jpg";
 import DiplomaCollege from "../assets/cert/Diploma College 2026.jpg"
 import DiplomaSHS from "../assets/cert/Diploma SHS 2022.png"
 import DiplomaJHS from "../assets/cert/Diploma JHS 2020.png"
+import DiplomaElementary from "../assets/cert/Deploma_Elementary.png"
 import ITCustomerSupportBasicsImg from "../assets/cert/IT_Customer_Support_Basics_certificate_jedt.png"
 
 const certificates = [
+  {
+    id: 0,
+    title: "Elementary School Diploma",
+    issuer: "Ibalon Central School",
+    category: "diploma",
+    categoryLabel: "Diploma",
+    img: DiplomaElementary,
+  },
   {
     id: 1,
     title: "Leadership Certificate of Distinction",
@@ -275,11 +284,6 @@ export const CertificatesSection = () => {
       id="certificates"
       className="py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40 relative"
     >
-      {/* Decorative Abstract Background Glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/4 h-72 w-72 rounded-full bg-emerald-300/20 dark:bg-emerald-400/10 blur-3xl" />
-        <div className="absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-green-400/15 dark:bg-green-500/10 blur-3xl" />
-      </div>
 
       <div className="relative container max-w-7xl mx-auto px-0">
         {/* Header — aligned with ProjectsSection principle, redesigned */}
@@ -422,10 +426,10 @@ export const CertificatesSection = () => {
           {/* Floating Close Button */}
           <button
             onClick={() => setActiveCertIndex(null)}
-            className="absolute top-5 right-5 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer shadow-md"
+            className="absolute top-3 right-3 sm:top-5 sm:right-5 md:top-6 md:right-8 lg:top-8 lg:right-12 z-50 p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer shadow-md"
             aria-label="Close lightbox"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
 
           {/* Full-Screen Image */}
@@ -444,11 +448,6 @@ export const CertificatesSection = () => {
               }}
             />
           </div>
-
-          {/* Bottom Centered Page Indicator */}
-          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-xs font-semibold bg-black/50 text-white backdrop-blur-xs border border-white/10">
-            {activeCertIndex + 1} of {filteredCertificates.length}
-          </span>
         </div>
       )}
     </section>

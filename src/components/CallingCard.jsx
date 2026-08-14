@@ -54,9 +54,6 @@ export const CallingCardFace = () => {
       displayOverlayContent={false}
     >
       <div className="relative w-full rounded-[2rem] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 shadow-xl overflow-hidden text-left">
-        {/* Decorative corner accents */}
-        <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-emerald-300/20 dark:bg-emerald-500/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-6 left-8 w-3 h-3 rounded-full bg-emerald-300/70 dark:bg-emerald-500/40 animate-pulse pointer-events-none" />
 
         <div className="relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 p-6 md:p-10">
           {/* Left — Identity */}

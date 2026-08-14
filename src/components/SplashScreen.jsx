@@ -95,63 +95,55 @@ export const SplashScreen = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] overflow-hidden bg-background select-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.83,0,0.17,1)] ${
-        exiting ? "opacity-0" : "opacity-100"
-      }`}
+      className={`fixed inset-0 z-[9999] overflow-hidden bg-background select-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.83,0,0.17,1)] ${exiting ? "opacity-0" : "opacity-100"
+        }`}
     >
       <div
-        className={`absolute inset-0 will-change-transform transition-all duration-[1100ms] ease-[cubic-bezier(0.83,0,0.17,1)] ${
-          exiting
-            ? "opacity-0 blur-2xl scale-110 -translate-y-4 translate-x-2 rotate-[0.5deg]"
-            : "opacity-100 blur-0 scale-100 translate-y-0 translate-x-0 rotate-0"
-        }`}
+        className={`absolute inset-0 will-change-transform transition-all duration-[1100ms] ease-[cubic-bezier(0.83,0,0.17,1)] ${exiting
+          ? "opacity-0 blur-2xl scale-110 -translate-y-4 translate-x-2 rotate-[0.5deg]"
+          : "opacity-100 blur-0 scale-100 translate-y-0 translate-x-0 rotate-0"
+          }`}
       >
-      {/* Soft accent glow behind the name */}
-      <div className="absolute -top-24 -left-24 h-72 w-72 md:h-[28rem] md:w-[28rem] rounded-full bg-emerald-400/20 blur-3xl pointer-events-none" />
-      <div className="absolute top-10 left-10 md:top-16 md:left-16 rounded-full bg-secondary/10 blur-2xl h-56 w-56 md:h-80 md:w-80 pointer-events-none" />
 
-      {/* Branding — top-left */}
-      <div className="absolute top-8 left-8 sm:top-12 sm:left-12 md:top-16 md:left-16 z-30 pointer-events-none">
-        <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] mb-5">
-          Jon Eric<br />
-          <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent italic font-black">Tripulca</span>
-            <svg className="absolute -bottom-2 left-0 w-full text-emerald-400" viewBox="0 0 200 12" fill="none">
-              <path d="M2 9C60 3 140 3 198 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-            </svg>
-          </span>
-        </h2>
-      </div>
+        {/* Branding — top-left */}
+        <div className="absolute top-8 left-8 sm:top-12 sm:left-12 md:top-16 md:left-16 z-30 pointer-events-none">
+          <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] mb-5">
+            JEDT<br />
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent font-black">PORTFOLIO{" "}</span>
+            </span>
+          </h2>
+        </div>
 
-      {/* Isometric angled grid */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute left-[60%] top-[70%] w-[200%] -translate-x-1/2 -translate-y-1/2 rotate-[-18deg] skew-x-[-5deg]">
-          <div className="flex flex-col items-center gap-8 md:gap-10">
-            {gridRows.map((row, r) => (
-              <div key={r} className={`flex items-center ${row.gap}`}>
-                {row.items.map((item, i) => (
-                  <div
-                    key={i}
-                    className={`relative ${item.width} ${row.height} shrink-0 overflow-hidden shadow-[0_18px_45px_-12px_rgba(0,0,0,0.55)] ring-1 ring-white/15 dark:ring-white/10`}
-                    style={{
-                      opacity: 0,
-                      animation: `fade-in 0.8s cubic-bezier(0.22,1,0.36,1) ${row.delay + i * 0.12
-                        }s forwards`,
-                    }}
-                  >
-                    <img
-                      src={item.src}
-                      alt=""
-                      draggable={false}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
+        {/* Isometric angled grid */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute left-[60%] top-[70%] w-[200%] -translate-x-1/2 -translate-y-1/2 rotate-[-18deg] skew-x-[-5deg]">
+            <div className="flex flex-col items-center gap-8 md:gap-10">
+              {gridRows.map((row, r) => (
+                <div key={r} className={`flex items-center ${row.gap}`}>
+                  {row.items.map((item, i) => (
+                    <div
+                      key={i}
+                      className={`relative ${item.width} ${row.height} shrink-0 overflow-hidden shadow-[0_18px_45px_-12px_rgba(0,0,0,0.55)] ring-1 ring-white/15 dark:ring-white/10`}
+                      style={{
+                        opacity: 0,
+                        animation: `fade-in 0.8s cubic-bezier(0.22,1,0.36,1) ${row.delay + i * 0.12
+                          }s forwards`,
+                      }}
+                    >
+                      <img
+                        src={item.src}
+                        alt=""
+                        draggable={false}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

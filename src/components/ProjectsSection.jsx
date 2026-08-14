@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import {
   X,
@@ -37,6 +37,111 @@ const SectionLabel = ({ icon: Icon, children }) => (
 SectionLabel.propTypes = {
   icon: PropTypes.elementType.isRequired,
   children: PropTypes.node.isRequired,
+};
+
+const getFirstVideoUrl = (project) => {
+  if (!project) return null;
+  if (Array.isArray(project.videoUrls) && project.videoUrls.length) {
+    return project.videoUrls[0];
+  }
+  if (Array.isArray(project.videoUrl) && project.videoUrl.length) {
+    return project.videoUrl[0];
+  }
+  if (typeof project.videoUrls === "string" && project.videoUrls) {
+    return project.videoUrls;
+  }
+  if (typeof project.videoUrl === "string" && project.videoUrl) {
+    return project.videoUrl;
+  }
+  return null;
+};
+
+const getEmbedUrl = (url, autoplay = false) => {
+  if (!url || typeof url !== "string") return null;
+  let embed;
+  if (url.includes("/preview")) {
+    embed = url;
+  } else {
+    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      embed = `https://drive.google.com/file/d/${match[1]}/preview`;
+    } else {
+      return url;
+    }
+  }
+  const sep = embed.includes("?") ? "&" : "?";
+  const params = [];
+  if (autoplay) params.push("autoplay=1");
+  if (autoplay) params.push("mute=1");
+  return params.length ? `${embed}${sep}${params.join("&")}` : embed;
+};
+
+const getDirectVideoUrl = (url) => {
+  if (!url || typeof url !== "string") return null;
+  const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+  }
+  return url;
+};
+
+const FeaturedPreview = ({
+  project,
+  hoverImage,
+  onImageEnter,
+  onImageLeave,
+}) => {
+  const containerRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const video = getFirstVideoUrl(project);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || !video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.80 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [video]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[1.5rem] overflow-hidden border border-neutral-200/50 dark:border-neutral-800/55 bg-neutral-100 dark:bg-neutral-900 cursor-pointer"
+      onMouseEnter={() => onImageEnter(project)}
+      onMouseLeave={onImageLeave}
+    >
+      {inView && video ? (
+        <iframe
+          key={video}
+          src={getEmbedUrl(video, true)}
+          title={`${project.title} preview video`}
+          className="absolute inset-0 w-full h-full border-0"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <img
+          key={hoverImage?.id === project.id ? hoverImage.src : project.image}
+          src={hoverImage?.id === project.id ? hoverImage.src : project.image}
+          alt={project.title}
+          className="absolute inset-0 w-full h-full object-contain animate-fade-in"
+        />
+      )}
+      <span className={`absolute top-4 left-4 z-10 ${badgeClass}`}>
+        {project.year} · {project.category}
+      </span>
+    </div>
+  );
+};
+
+FeaturedPreview.propTypes = {
+  project: PropTypes.object.isRequired,
+  hoverImage: PropTypes.object,
+  onImageEnter: PropTypes.func.isRequired,
+  onImageLeave: PropTypes.func.isRequired,
 };
 
 export const ProjectsSection = () => {
@@ -103,25 +208,6 @@ export const ProjectsSection = () => {
       setSelectedProject(null);
     }, 500);
     document.body.style.overflow = "unset";
-  };
-
-  const getEmbedUrl = (url) => {
-    if (!url || typeof url !== "string") return null;
-    if (url.includes("/preview")) return url;
-    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      return `https://drive.google.com/file/d/${match[1]}/preview`;
-    }
-    return url;
-  };
-
-  const getDirectVideoUrl = (url) => {
-    if (!url || typeof url !== "string") return null;
-    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
-    }
-    return url;
   };
 
   const renderActionLinks = (project) => (
@@ -199,21 +285,12 @@ export const ProjectsSection = () => {
               >
                 {/* Image Preview */}
                 <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
-                  <div
-                    className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[1.5rem] overflow-hidden border border-neutral-200/50 dark:border-neutral-800/55 bg-neutral-100 dark:bg-neutral-900 cursor-pointer"
-                    onMouseEnter={() => handleImageEnter(project)}
-                    onMouseLeave={handleImageLeave}
-                  >
-                    <img
-                      key={hoverImage?.id === project.id ? hoverImage.src : project.image}
-                      src={hoverImage?.id === project.id ? hoverImage.src : project.image}
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-contain animate-fade-in"
-                    />
-                    <span className={`absolute top-4 left-4 z-10 ${badgeClass}`}>
-                      {project.year} · {project.category}
-                    </span>
-                  </div>
+                  <FeaturedPreview
+                    project={project}
+                    hoverImage={hoverImage}
+                    onImageEnter={handleImageEnter}
+                    onImageLeave={handleImageLeave}
+                  />
                 </div>
 
                 {/* Technical Spec */}

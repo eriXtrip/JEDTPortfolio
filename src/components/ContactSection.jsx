@@ -80,9 +80,6 @@ export const ContactSection = () => {
         id="contact"
         className="py-24 px-3 md:px-10 bg-white dark:bg-neutral-900 relative overflow-hidden"
       >
-        {/* Decorative Background Accent Glows */}
-        <div className="absolute top-1/3 -left-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container max-w-7xl mx-auto relative z-10">
           {/* Horizontal / Landscape Layout Grid — Left Visual (40%) · Right Content (60%) */}

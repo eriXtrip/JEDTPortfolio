@@ -269,12 +269,6 @@ export const PubmatsGallery = () => {
       id="pubmats"
       className="relative py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40"
     >
-      {/* Decorative Abstract Background Glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-visible">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[32rem] w-[40rem] max-w-full rounded-full bg-emerald-300/25 dark:bg-emerald-400/10 blur-3xl" />
-        <div className="absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-green-400/15 dark:bg-green-500/10 blur-3xl" />
-        <div className="absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-emerald-300/15 dark:bg-emerald-500/10 blur-3xl" />
-      </div>
 
       <div className="relative container max-w-7xl mx-auto px-2 md:px-10">
         {/* Header — Centered High-Impact Headline */}
@@ -445,7 +439,7 @@ export const PubmatsGallery = () => {
               <img
                 src={featured.src}
                 alt={featured.title}
-                className="max-h-[70vh] w-auto max-w-full object-contain rounded-xl select-none"
+                className="max-h-[70vh] w-auto max-w-full object-contain rounded-xl select-none drop-shadow-2xl animate-fade-in"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src =

@@ -9,6 +9,7 @@ import {
   X,
   ChevronDown,
   Check,
+  GraduationCap
 } from "lucide-react";
 
 export const AboutSection = () => {
@@ -292,6 +293,21 @@ export const AboutSection = () => {
                   bringing both modern web engineering skills and
                   practical infrastructure experience to the team.
                 </p>
+              </div>
+
+              <div className="relative mt-6 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60 space-y-3">
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+                  <GraduationCap className="h-4 w-4" />
+                  Education
+                </span>
+                <div className="space-y-1">
+                  <p className="text-sm font-extrabold text-neutral-900 dark:text-white">
+                    Bachelor of Science in Information Technology
+                  </p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-300">
+                    Bicol University Legazpi · 2022-2026
+                  </p>
+                </div>
               </div>
 
               <div className="relative flex flex-row flex-nowrap items-center gap-2 sm:gap-4 pt-6 mt-2 w-full">
