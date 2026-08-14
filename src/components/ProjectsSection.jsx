@@ -122,11 +122,7 @@ const FeaturedPreview = ({
             key={video}
             src={getEmbedUrl(video, true)}
             title={`${project.title} preview video`}
-            className="absolute left-0 w-full border-0"
-            style={{
-              top: '-12%',
-              height: '124%',
-            }}
+            className="absolute left-0 w-full border-0 top-[-12%] h-[124%] max-md:top-[-18%] max-md:h-[136%]"
             allow="autoplay; encrypted-media; picture-in-picture;"
             allowFullScreen
             loading="lazy"
