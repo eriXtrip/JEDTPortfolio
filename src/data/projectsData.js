@@ -115,11 +115,11 @@ const projects = [
       BUCSMCC14,
     ],
     videoUrl: [
-      "https://drive.google.com/file/d/1_cotwUWiXWVXGR-I2Va4foa_3JGUgL8i/view?usp=sharing",
-      "https://drive.google.com/file/d/1TuzlCm4tZxUfllUoa-IS0YNOkO75JKAi/view?usp=sharing",
-      "https://drive.google.com/file/d/1Q2xgmSClQLBLykZfsG3lzMZ5Odmecvqa/view?usp=sharing",
-      "https://drive.google.com/file/d/1zVKWx8t6sJTYrEsTsiTR9WjWk11iAUcc/view?usp=sharing",
-      "https://drive.google.com/file/d/1UG0skwEBd9ka_u5QZSgFaduSrShMQL5q/view?usp=sharing",
+      "https://drive.google.com/file/d/1_cotwUWiXWVXGR-I2Va4foa_3JGUgL8i/preview?autoplay=1",
+      "https://drive.google.com/file/d/1TuzlCm4tZxUfllUoa-IS0YNOkO75JKAi/preview?autoplay=1",
+      "https://drive.google.com/file/d/1Q2xgmSClQLBLykZfsG3lzMZ5Odmecvqa/preview?autoplay=1",
+      "https://drive.google.com/file/d/1zVKWx8t6sJTYrEsTsiTR9WjWk11iAUcc/preview?autoplay=1",
+      "https://drive.google.com/file/d/1UG0skwEBd9ka_u5QZSgFaduSrShMQL5q/preview?autoplay=1",
     ],
     demoModal: {
       kind: "web",
@@ -232,12 +232,12 @@ const projects = [
       MQuest29,
     ],
     videoUrls: [
-      "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/view?usp=sharing",
-      "https://drive.google.com/file/d/1u36-oRxAe7ah9Mfrpd0_YUOOghPdlRHu/view?usp=sharing",
-      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/view?usp=sharing",
-      "https://drive.google.com/file/d/1qdms1b_7ysUPl_Tt279s_13UQJk933Gt/view?usp=sharing",
-      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/view?usp=sharing",
-      "https://drive.google.com/file/d/1UckwU4FaLLIDioJ4O2sHbGWQmzC7TiWB/view?usp=sharing",
+      "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/preview?autoplay=1",
+      "https://drive.google.com/file/d/1u36-oRxAe7ah9Mfrpd0_YUOOghPdlRHu/preview?autoplay=1",
+      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/preview?autoplay=1",
+      "https://drive.google.com/file/d/1qdms1b_7ysUPl_Tt279s_13UQJk933Gt/preview?autoplay=1",
+      "https://drive.google.com/file/d/1eR-b8h4Sq_tmEwAjvtlVTooUa8OAuNtm/preview?autoplay=1",
+      "https://drive.google.com/file/d/1UckwU4FaLLIDioJ4O2sHbGWQmzC7TiWB/preview?autoplay=1",
     ],
     demoModal: {
       kind: "app",
@@ -303,7 +303,7 @@ const projects = [
     codeUrl: "https://github.com/eriXtrip",
     images: [RentalImg, Rental1, Rental2, Rental3, Rental4, Rental5],
     videoUrl:
-      "https://drive.google.com/file/d/1QuOof0npp9a5SeE6qnPMqfmfNANc04Yc/view?usp=sharing",
+      "https://drive.google.com/file/d/1QuOof0npp9a5SeE6qnPMqfmfNANc04Yc/preview?autoplay=1",
     problemStatement:
       "Local rental shops managed active bookings via physical paperwork grids, resulting in frequent booking collisions, inventory mismatches, and untracked late returns.",
     solution:
@@ -330,11 +330,11 @@ const projects = [
     ],
     tech: ["HTML & CSS", "JavaScript", "Laravel"],
     demoUrl:
-      "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/view?usp=sharing",
+      "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
     codeUrl: "https://github.com/eriXtrip",
     images: [OroSiteImg, OroSite1, OroSite2, OroSite3, OroSite4, OroSite5],
     videoUrl:
-      "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/view?usp=sharing",
+      "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
     problemStatement:
       "Faculty members faced fractured operational overhead due to using disjointed digital apps for daily scheduling, attendance logs, and administrative reporting.",
     solution:
@@ -361,11 +361,11 @@ const projects = [
     ],
     tech: ["HTML & CSS", "JavaScript", "Laravel"],
     demoUrl:
-      "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/view?usp=sharing",
+      "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
     codeUrl: "https://github.com/eriXtrip",
     images: [EcoLocalImg],
     videoUrl:
-      "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/view?usp=sharing",
+      "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
     problemStatement:
       "Local merchants and farmers lacked a direct, digital connection to potential retail customers, leading to reliance on third-party intermediaries and reduced net profitability.",
     solution:

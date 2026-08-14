@@ -78,9 +78,12 @@ const getEmbedUrl = (url, autoplay = false) => {
 
 const getDirectVideoUrl = (url) => {
   if (!url || typeof url !== "string") return null;
+  if (url.includes("uc?id=") || url.includes("uc?export=download")) {
+    return url;
+  }
   const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
   if (match && match[1]) {
-    return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+    return `https://drive.google.com/uc?id=${match[1]}`;
   }
   return url;
 };
@@ -114,14 +117,21 @@ const FeaturedPreview = ({
       onMouseLeave={onImageLeave}
     >
       {inView && video ? (
-        <iframe
-          key={video}
-          src={getEmbedUrl(video, true)}
-          title={`${project.title} preview video`}
-          className="absolute inset-0 w-full h-full border-0"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
+        <div className="relative w-full h-full overflow-hidden pointer-events-none">
+          <iframe
+            key={video}
+            src={getEmbedUrl(video, true)}
+            title={`${project.title} preview video`}
+            className="absolute left-0 w-full border-0"
+            style={{
+              top: '-12%',
+              height: '124%',
+            }}
+            allow="autoplay; encrypted-media; picture-in-picture;"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
       ) : (
         <img
           key={hoverImage?.id === project.id ? hoverImage.src : project.image}
@@ -499,7 +509,7 @@ export const ProjectsSection = () => {
                       {isMobile && useNativeVideo ? (
                         <video
                           key={projectVideos[activeVideoIndex]}
-                          src={getDirectVideoUrl(projectVideos[activeVideoIndex])}
+                          src={projectVideos[activeVideoIndex]}
                           className="w-full h-full object-contain bg-black"
                           controls
                           playsInline
