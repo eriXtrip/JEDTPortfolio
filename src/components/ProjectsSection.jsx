@@ -76,7 +76,7 @@ const getEmbedUrl = (url, autoplay = false) => {
   return params.length ? `${embed}${sep}${params.join("&")}` : embed;
 };
 
-const getDirectVideoUrl = (url) => {
+const getGifUrl = (url) => {
   if (!url || typeof url !== "string") return null;
   if (url.includes("uc?id=") || url.includes("uc?export=download")) {
     return url;
@@ -96,18 +96,26 @@ const FeaturedPreview = ({
 }) => {
   const containerRef = useRef(null);
   const [inView, setInView] = useState(false);
+  const [showGif, setShowGif] = useState(false);
   const video = getFirstVideoUrl(project);
+  const gif = project.gifUrl;
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el || !video) return;
+    if (!el || (!video && !gif)) return;
     const observer = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
       { threshold: 0.80 },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [video]);
+  }, [video, gif]);
+
+  useEffect(() => {
+    if (!inView || !gif) return;
+    const timer = setTimeout(() => setShowGif(true), 2000);
+    return () => clearTimeout(timer);
+  }, [inView, gif]);
 
   return (
     <div
@@ -116,15 +124,13 @@ const FeaturedPreview = ({
       onMouseEnter={() => onImageEnter(project)}
       onMouseLeave={onImageLeave}
     >
-      {inView && video ? (
+      {inView && gif && showGif ? (
         <div className="relative w-full h-full overflow-hidden pointer-events-none">
           <iframe
-            key={video}
-            src={getEmbedUrl(video, true)}
-            title={`${project.title} preview video`}
-            className="absolute left-0 w-full border-0 top-[-12%] h-[124%] max-md:top-[-18%] max-md:h-[136%]"
-            allow="autoplay; encrypted-media; picture-in-picture;"
-            allowFullScreen
+            key={gif}
+            src={gif}
+            alt={`${project.title} gif`}
+            className="absolute left-0 w-full h-full object-cover border-0 animate-fade-in"
             loading="lazy"
           />
         </div>

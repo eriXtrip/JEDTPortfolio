@@ -114,6 +114,7 @@ const projects = [
       BUCSMCC13,
       BUCSMCC14,
     ],
+    gifUrl: "https://drive.google.com/file/d/1Bhp6NUvaLeD3wu4p2yJD3xv1MGP8l50k/preview",
     videoUrl: [
       "https://drive.google.com/file/d/1_cotwUWiXWVXGR-I2Va4foa_3JGUgL8i/preview?autoplay=1",
       "https://drive.google.com/file/d/1TuzlCm4tZxUfllUoa-IS0YNOkO75JKAi/preview?autoplay=1",
@@ -231,6 +232,7 @@ const projects = [
       MQuest1,
       MQuest29,
     ],
+    gifUrl: "https://drive.google.com/file/d/156KfBm0iBLWoeCL_-QJyiQr0xnAzAKyk/preview",
     videoUrls: [
       "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/preview?autoplay=1",
       "https://drive.google.com/file/d/1u36-oRxAe7ah9Mfrpd0_YUOOghPdlRHu/preview?autoplay=1",
@@ -302,6 +304,7 @@ const projects = [
     demoUrl: null,
     codeUrl: "https://github.com/eriXtrip",
     images: [RentalImg, Rental1, Rental2, Rental3, Rental4, Rental5],
+    gifUrl: "https://drive.google.com/file/d/1lg5mglk4PN_oHA1Nag-gjQ5GP1iuyCbN/preview",
     videoUrl:
       "https://drive.google.com/file/d/1QuOof0npp9a5SeE6qnPMqfmfNANc04Yc/preview?autoplay=1",
     problemStatement:
@@ -333,6 +336,7 @@ const projects = [
       "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
     codeUrl: "https://github.com/eriXtrip",
     images: [OroSiteImg, OroSite1, OroSite2, OroSite3, OroSite4, OroSite5],
+    gifUrl: null,
     videoUrl:
       "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
     problemStatement:
@@ -364,6 +368,7 @@ const projects = [
       "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
     codeUrl: "https://github.com/eriXtrip",
     images: [EcoLocalImg],
+    gifUrl: null,
     videoUrl:
       "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
     problemStatement:
@@ -402,6 +407,7 @@ const projects = [
       Networking5,
       Networking6,
     ],
+    gifUrl: null,
     videoUrl: null,
     problemStatement:
       "Educational institutions required realistic network labs without costly hardware, leading to limited hands‑on experience for students.",
@@ -440,6 +446,7 @@ const projects = [
       SystemAdmin6,
       SystemAdmin7,
     ],
+    gifUrl: null,
     videoUrl: null,
     problemStatement:
       "Hands‑on Ubuntu administration practice was limited to theoretical exercises, hindering real‑world skill development.",
