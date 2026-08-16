@@ -1,5 +1,7 @@
 // Import project images from assets
 import EcoLocalImg from "../assets/works/EcoLocalE-commerce.png";
+
+import MQuestGif from "../assets/works/MQuest/MQuest App Demo.gif";
 import MQuestImg from "../assets/works/MQuest E-learning.png";
 import MQuest1 from "../assets/works/MQuest/MQuest E-learning (1).png";
 import MQuest2 from "../assets/works/MQuest/MQuest E-learning (2).png";
@@ -38,6 +40,7 @@ import OroSite3 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPorta
 import OroSite4 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (4).png";
 import OroSite5 from "../assets/works/OroSiteTeachersPortal/OroSiteTeachersPortal (5).png";
 
+import RentalGif from "../assets/works/RentalManagmentSystem/RentalHALL.gif";
 import RentalImg from "../assets/works/RentalManagmentSystem.png";
 import Rental1 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (1).png";
 import Rental2 from "../assets/works/RentalManagmentSystem/RentalManagmentSystem (2).png";
@@ -54,6 +57,7 @@ import SystemAdmin5 from "../assets/works/SystemAdmin/SystemAdmin (5).png";
 import SystemAdmin6 from "../assets/works/SystemAdmin/SystemAdmin (6).png";
 import SystemAdmin7 from "../assets/works/SystemAdmin/SystemAdmin (7).png";
 
+import BUCSMCCGif from "../assets/works/BUCSMCC/BUCSMCC5.gif";
 import BUCSMCCImg from "../assets/works/BUCSMCC.png";
 import BUCSMCC1 from "../assets/works/BUCSMCC/BUCSMCC (1).png";
 import BUCSMCC3 from "../assets/works/BUCSMCC/BUCSMCC (3).png";
@@ -114,7 +118,7 @@ const projects = [
       BUCSMCC13,
       BUCSMCC14,
     ],
-    gifUrl: "https://drive.google.com/file/d/1Bhp6NUvaLeD3wu4p2yJD3xv1MGP8l50k/preview",
+    Gif: BUCSMCCGif,
     videoUrl: [
       "https://drive.google.com/file/d/1_cotwUWiXWVXGR-I2Va4foa_3JGUgL8i/preview?autoplay=1",
       "https://drive.google.com/file/d/1TuzlCm4tZxUfllUoa-IS0YNOkO75JKAi/preview?autoplay=1",
@@ -232,7 +236,7 @@ const projects = [
       MQuest1,
       MQuest29,
     ],
-    gifUrl: "https://drive.google.com/file/d/156KfBm0iBLWoeCL_-QJyiQr0xnAzAKyk/preview",
+    Gif: MQuestGif,
     videoUrls: [
       "https://drive.google.com/file/d/1l7EVit0H4eHHKrRduqeVi7cTfwPViyLJ/preview?autoplay=1",
       "https://drive.google.com/file/d/1u36-oRxAe7ah9Mfrpd0_YUOOghPdlRHu/preview?autoplay=1",
@@ -304,7 +308,7 @@ const projects = [
     demoUrl: null,
     codeUrl: "https://github.com/eriXtrip",
     images: [RentalImg, Rental1, Rental2, Rental3, Rental4, Rental5],
-    gifUrl: "https://drive.google.com/file/d/1lg5mglk4PN_oHA1Nag-gjQ5GP1iuyCbN/preview",
+    Gif: RentalGif,
     videoUrl:
       "https://drive.google.com/file/d/1QuOof0npp9a5SeE6qnPMqfmfNANc04Yc/preview?autoplay=1",
     problemStatement:
@@ -336,7 +340,7 @@ const projects = [
       "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
     codeUrl: "https://github.com/eriXtrip",
     images: [OroSiteImg, OroSite1, OroSite2, OroSite3, OroSite4, OroSite5],
-    gifUrl: null,
+    Gif: null,
     videoUrl:
       "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
     problemStatement:
@@ -368,7 +372,7 @@ const projects = [
       "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
     codeUrl: "https://github.com/eriXtrip",
     images: [EcoLocalImg],
-    gifUrl: null,
+    Gif: null,
     videoUrl:
       "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
     problemStatement:
@@ -407,7 +411,7 @@ const projects = [
       Networking5,
       Networking6,
     ],
-    gifUrl: null,
+    Gif: null,
     videoUrl: null,
     problemStatement:
       "Educational institutions required realistic network labs without costly hardware, leading to limited hands‑on experience for students.",
@@ -446,7 +450,7 @@ const projects = [
       SystemAdmin6,
       SystemAdmin7,
     ],
-    gifUrl: null,
+    Gif: null,
     videoUrl: null,
     problemStatement:
       "Hands‑on Ubuntu administration practice was limited to theoretical exercises, hindering real‑world skill development.",

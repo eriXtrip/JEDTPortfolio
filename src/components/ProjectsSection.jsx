@@ -98,7 +98,7 @@ const FeaturedPreview = ({
   const [inView, setInView] = useState(false);
   const [showGif, setShowGif] = useState(false);
   const video = getFirstVideoUrl(project);
-  const gif = project.gifUrl;
+  const gif = project.Gif;
 
   useEffect(() => {
     const el = containerRef.current;
@@ -113,9 +113,15 @@ const FeaturedPreview = ({
 
   useEffect(() => {
     if (!inView || !gif) return;
-    const timer = setTimeout(() => setShowGif(true), 2000);
-    return () => clearTimeout(timer);
+    const showTimer = setTimeout(() => setShowGif(true), 2000);
+    return () => clearTimeout(showTimer);
   }, [inView, gif]);
+
+  useEffect(() => {
+    if (!showGif || !gif) return;
+    const hideTimer = setTimeout(() => setShowGif(false), 30000);
+    return () => clearTimeout(hideTimer);
+  }, [showGif, gif]);
 
   return (
     <div
@@ -126,11 +132,11 @@ const FeaturedPreview = ({
     >
       {inView && gif && showGif ? (
         <div className="relative w-full h-full overflow-hidden pointer-events-none">
-          <iframe
+          <img
             key={gif}
             src={gif}
             alt={`${project.title} gif`}
-            className="absolute left-0 w-full h-full object-cover border-0 animate-fade-in"
+            className="absolute left-0 w-full h-full object-contain border-0 animate-fade-in"
             loading="lazy"
           />
         </div>
