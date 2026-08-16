@@ -1,5 +1,4 @@
 import {
-  ArrowUpRight,
   Github,
   Instagram,
   Linkedin,
@@ -9,6 +8,7 @@ import {
   Phone,
 } from "lucide-react";
 import TiltedCard from "./TiltedCard";
+import PropTypes from "prop-types";
 import qrcode from "../assets/qrcode_jedt-portfolio.vercel.app.png";
 
 const contacts = [
@@ -39,7 +39,31 @@ const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/jon-eric-tripulca-2b87ab417", Icon: Linkedin },
 ];
 
-export const CallingCardFace = () => {
+export const CallingCardFace = ({ forceLandscape = false }) => {
+  const gridClass = forceLandscape
+    ? "relative grid grid-cols-12 gap-6 p-10"
+    : "relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 p-6 md:p-10";
+
+  const leftClass = forceLandscape
+    ? "col-span-8 space-y-6"
+    : "md:col-span-8 space-y-6";
+
+  const rightClass = forceLandscape
+    ? "col-span-4 flex flex-col items-center justify-center gap-6 border-l border-neutral-200/80 dark:border-neutral-800 pl-8"
+    : "md:col-span-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-6 md:border-l md:border-neutral-200/80 dark:md:border-neutral-800 md:pl-8";
+
+  const qrLabelClass = forceLandscape
+    ? "block"
+    : "hidden md:block";
+
+  const qrTextClass = forceLandscape
+    ? "text-left"
+    : "text-center md:text-left";
+
+  const footerClass = forceLandscape
+    ? "px-10"
+    : "px-6 md:px-10";
+
   return (
     <TiltedCard
       altText="Jon Eric Tripulca — Digital Calling Card"
@@ -55,9 +79,9 @@ export const CallingCardFace = () => {
     >
       <div className="relative w-full rounded-[2rem] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 shadow-xl overflow-hidden text-left">
 
-        <div className="relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 p-6 md:p-10">
+        <div className={gridClass}>
           {/* Left — Identity */}
-          <div className="md:col-span-8 space-y-6">
+          <div className={leftClass}>
             {/* Name Block */}
             <div className="space-y-2">
               <p className="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
@@ -115,35 +139,29 @@ export const CallingCardFace = () => {
                   </a>
                 ))}
               </div>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-bold uppercase tracking-widest hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-xs"
-              >
-                Hire Me <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
             </div>
           </div>
 
           {/* Right — QR Scan Block */}
-          <div className="md:col-span-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-6 md:border-l md:border-neutral-200/80 dark:md:border-neutral-800 md:pl-8">
+          <div className={rightClass}>
             <div className="flex items-center gap-3">
               <img
                 src={qrcode}
                 alt="Portfolio QR Code"
                 className="h-32 w-32 shrink-0 object-contain rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white shadow-sm"
               />
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 [writing-mode:vertical-rl] hidden md:block">
+              <span className={`text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 [writing-mode:vertical-rl] ${qrLabelClass}`}>
                 Portafolio
               </span>
             </div>
-            <p className="text-[11px] text-neutral-500 dark:text-neutral-400 font-semibold uppercase tracking-wider text-center md:text-left leading-relaxed max-w-[8rem]">
+            <p className={`text-[11px] text-neutral-500 dark:text-neutral-400 font-semibold uppercase tracking-wider leading-relaxed max-w-[8rem] ${qrTextClass}`}>
               Scan to view the full portfolio &amp; work
             </p>
           </div>
         </div>
 
         {/* Footer Strip */}
-        <div className="relative border-t border-neutral-200/80 dark:border-neutral-800 px-6 md:px-10 py-4 flex items-center justify-between flex-wrap gap-2">
+        <div className={`relative border-t border-neutral-200/80 dark:border-neutral-800 py-4 flex items-center justify-between flex-wrap gap-2 ${footerClass}`}>
           <p className="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
             Available for collaborations &amp; hiring
           </p>
@@ -155,6 +173,10 @@ export const CallingCardFace = () => {
       </div>
     </TiltedCard>
   );
+};
+
+CallingCardFace.propTypes = {
+  forceLandscape: PropTypes.bool,
 };
 
 export const CallingCard = () => {

@@ -257,7 +257,7 @@ export const ContactSection = () => {
         className="pointer-events-none fixed left-[-9999px] top-0 w-[900px] max-w-none"
       >
         <div ref={cardRef} className="bg-white dark:bg-neutral-900">
-          <CallingCardFace />
+          <CallingCardFace forceLandscape />
         </div>
       </div>
     </>
