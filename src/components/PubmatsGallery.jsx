@@ -212,38 +212,38 @@ export const PubmatsGallery = () => {
 
   const openLightbox = () => {
     setIsLightboxOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setIsLightboxOpen(false);
-    document.body.style.overflow = isGalleryOpen ? "hidden" : "unset";
   };
 
   const openGallery = () => {
     setisGalleryOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeGallery = () => {
     setisGalleryOpen(false);
-    document.body.style.overflow = "unset";
   };
 
-  const Card = ({ pubmat, aspect, className = "" }) => {
+  const handleCardSelect = (index) => {
+    setActiveIndex(index);
+    openLightbox();
+  };
+
+  const Card = ({ pubmat, aspect, className = "", onSelect }) => {
     const originalIndex = pubmats.findIndex((p) => p.src === pubmat.src);
     return (
       <div
-        onClick={() => {
-          setActiveIndex(originalIndex);
-          openLightbox();
-        }}
+        onClick={() => onSelect(originalIndex)}
         className={`group relative cursor-pointer overflow-hidden rounded-lg lg:rounded-[1.75rem] border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl ${aspect} ${className}`}
       >
         <img
           src={pubmat.src}
           alt={pubmat.title}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-100"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =
@@ -292,24 +292,20 @@ export const PubmatsGallery = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
           {/* Column 1 — Left Split Stack (3:4 top + 4:3 bottom) */}
           <div className="flex flex-col justify-between gap-4 md:gap-5">
-            <Card pubmat={pubmats[1]} aspect="aspect-[3/4]" />
-            <Card pubmat={pubmats[0]} aspect="aspect-[4/3]" />
+            <Card pubmat={pubmats[1]} aspect="aspect-[3/4]" onSelect={handleCardSelect} />
+            <Card pubmat={pubmats[0]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
           </div>
 
           {/* Column 2 — Left Mid Full-Height (1:2), bottom baseline aligned */}
           <div className="flex flex-col justify-end gap-4 md:gap-5">
-            <Card pubmat={pubmats[3]} aspect="aspect-[1/2]" />
+            <Card pubmat={pubmats[3]} aspect="aspect-[1/2]" onSelect={handleCardSelect} />
           </div>
 
           {/* Column 3 — Center Anchor Column (raised main card + floating CTA) */}
           <div className="relative flex flex-col gap-4 md:gap-5 sm:col-span-2 lg:col-span-1">
-            <Card pubmat={pubmats[14]} aspect="aspect-[2/1]"
-            />
-            <Card
-              pubmat={pubmats[11]}
-              aspect="aspect-[4/3]"
-            />
-            <Card pubmat={pubmats[15]} aspect="aspect-[2/1]" />
+            <Card pubmat={pubmats[14]} aspect="aspect-[2/1]" onSelect={handleCardSelect} />
+            <Card pubmat={pubmats[11]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
+            <Card pubmat={pubmats[15]} aspect="aspect-[2/1]" onSelect={handleCardSelect} />
             {/* Floating Pill CTA opening the full portfolio */}
             <button
               onClick={openGallery}
@@ -321,13 +317,13 @@ export const PubmatsGallery = () => {
 
           {/* Column 4 — Right Mid Full-Height (1:2), bottom baseline aligned */}
           <div className="flex-col justify-end gap-4 md:gap-5 hidden lg:block ">
-            <Card pubmat={pubmats[10]} aspect="aspect-[1/2]" />
+            <Card pubmat={pubmats[10]} aspect="aspect-[1/2]" onSelect={handleCardSelect} />
           </div>
 
           {/* Column 5 — Right Split Stack (3:4 top + 4:3 bottom) */}
           <div className="flex-col justify-between gap-4 md:gap-5 sm:col-span-2 lg:col-span-1 hidden lg:block">
-            <Card pubmat={pubmats[19]} aspect="aspect-[3/4]" />
-            <Card pubmat={pubmats[9]} aspect="aspect-[4/3]" />
+            <Card pubmat={pubmats[19]} aspect="aspect-[3/4]" onSelect={handleCardSelect} />
+            <Card pubmat={pubmats[9]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
           </div>
         </div>
 
@@ -335,7 +331,7 @@ export const PubmatsGallery = () => {
 
       {/* Full-Screen Portfolio Modal */}
       {isGalleryOpen && (
-        <div className="fixed inset-0 z-[200] overflow-y-auto bg-neutral-50 dark:bg-neutral-950">
+        <div className="fixed inset-0 z-[200] overflow-y-auto bg-neutral-50 dark:bg-neutral-950" data-lenis-prevent>
           {/* Sticky Modal Header */}
           <div className="sticky top-0 z-10 border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/90 dark:bg-neutral-950/90 backdrop-blur-md">
             <div className="mx-auto max-w-7xl px-6 md:px-12 py-6 flex items-center justify-between gap-6">

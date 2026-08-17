@@ -140,7 +140,6 @@ export const AllWorksModal = ({ open, onClose }) => {
 
   useEffect(() => {
     if (!open) return;
-    document.body.style.overflow = "hidden";
     const onKey = (e) => {
       if (e.key === "Escape") {
         if (lightboxImage) setLightboxImage(null);
@@ -150,7 +149,6 @@ export const AllWorksModal = ({ open, onClose }) => {
     };
     window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = "unset";
       window.removeEventListener("keydown", onKey);
     };
   }, [open, onClose, lightboxImage, demoProject]);
@@ -185,7 +183,7 @@ export const AllWorksModal = ({ open, onClose }) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white flex flex-col">
+    <div className="fixed inset-0 z-[100] bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white flex flex-col" data-lenis-prevent>
       {/* Top Bar */}
       <header className="flex items-center justify-between gap-4 border-b border-neutral-200/80 dark:border-neutral-800/80 px-4 py-3 md:px-8 md:py-4 flex-shrink-0">
         <div className="flex items-center gap-2.5">
