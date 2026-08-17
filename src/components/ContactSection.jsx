@@ -78,7 +78,7 @@ export const ContactSection = () => {
     <>
       <section
         id="contact"
-        className="py-24 px-3 md:px-10 bg-white dark:bg-neutral-900 relative overflow-hidden"
+        className="py-24 px-3 md:px-10 bg-background/50 relative overflow-hidden"
       >
 
         <div className="container max-w-7xl mx-auto relative z-10">

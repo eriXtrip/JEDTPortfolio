@@ -251,7 +251,7 @@ export const ProjectsSection = () => {
   return (
     <section
       id="works"
-      className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
+      className="py-24 px-6 md:px-12 relative"
     >
       <div className="container max-w-7xl mx-auto p-0">
         {/* Header */}
@@ -290,7 +290,7 @@ export const ProjectsSection = () => {
                 key={project.id}
                 itemClassName="h-auto my-0 p-0 rounded-none shadow-none bg-transparent"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch bg-background">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
                   {/* Image Preview */}
                   <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
                     <FeaturedPreview

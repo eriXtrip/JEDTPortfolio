@@ -267,7 +267,7 @@ export const PubmatsGallery = () => {
   return (
     <section
       id="pubmats"
-      className="relative py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40"
+      className="relative py-24 px-3 md:px-10"
     >
 
       <div className="relative container max-w-7xl mx-auto px-2 md:px-10">

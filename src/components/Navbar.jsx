@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
@@ -15,7 +16,7 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ];
 
-export const Navbar = () => {
+export const Navbar = ({ isDarkMode, onThemeToggle }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -45,7 +46,7 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
         isScrolled
-          ? "py-4 bg-background/80 backdrop-blur-md border-b border-border/40 shadow-xs"
+          ? "py-4 backdrop-blur-md border-b border-border/40 shadow-xs"
           : "py-6 bg-transparent",
       )}
     >
@@ -73,12 +74,12 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
-          <ThemeToggle />
+          <ThemeToggle isDarkMode={isDarkMode} onToggle={onThemeToggle} />
         </div>
 
         {/* Mobile Actions (Theme Toggle & Hamburger Menu) */}
         <div className="flex items-center gap-2 md:hidden relative z-50">
-          <ThemeToggle />
+          <ThemeToggle isDarkMode={isDarkMode} onToggle={onThemeToggle} />
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="p-2 text-foreground rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -114,4 +115,9 @@ export const Navbar = () => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+  onThemeToggle: PropTypes.func.isRequired,
 };

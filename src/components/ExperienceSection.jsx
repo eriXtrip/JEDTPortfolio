@@ -37,7 +37,7 @@ export const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40 relative"
+      className="py-24 px-3 md:px-10 relative"
     >
       <div className="container max-w-7xl mx-auto px-2 mid:px-10 space-y-16">
         {/* Header */}

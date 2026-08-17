@@ -175,7 +175,7 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      className="py-24 px-6 md:px-12 bg-neutral-50 dark:bg-neutral-950/40 relative"
+      className="py-24 px-6 md:px-12 relative"
     >
       <div className="container max-w-7xl mx-auto px-0 space-y-16">
         {/* Section Header & Ultra-Modern Workflow Switcher Bar */}
