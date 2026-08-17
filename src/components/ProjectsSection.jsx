@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { projects } from "../data/projectsData";
 import { AllWorksModal } from "./AllWorksModal";
+import ScrollStack, { ScrollStackItem } from "./ScrollStack";
 
 const featuredProjects = projects.filter((project) => project.featured);
 const archiveProjects = projects.filter((project) => !project.featured);
@@ -76,18 +77,6 @@ const getEmbedUrl = (url, autoplay = false) => {
   return params.length ? `${embed}${sep}${params.join("&")}` : embed;
 };
 
-const getGifUrl = (url) => {
-  if (!url || typeof url !== "string") return null;
-  if (url.includes("uc?id=") || url.includes("uc?export=download")) {
-    return url;
-  }
-  const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-  if (match && match[1]) {
-    return `https://drive.google.com/uc?id=${match[1]}`;
-  }
-  return url;
-};
-
 const FeaturedPreview = ({
   project,
   hoverImage,
@@ -126,7 +115,7 @@ const FeaturedPreview = ({
   return (
     <div
       ref={containerRef}
-      className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[1.5rem] overflow-hidden border border-neutral-200/50 dark:border-neutral-800/55 bg-neutral-100 dark:bg-neutral-900 cursor-pointer"
+      className="relative h-full min-h-[260px] lg:min-h-[420px] rounded-[1.5rem] overflow-hidden cursor-pointer"
       onMouseEnter={() => onImageEnter(project)}
       onMouseLeave={onImageLeave}
     >
@@ -293,83 +282,85 @@ export const ProjectsSection = () => {
         </div>
 
         {/* PHASE 2: Spotlight Works — Zero-Click Unfolded Spec */}
-        <div className="space-y-10">
+        <ScrollStack useWindowScroll>
           {featuredProjects.map((project, index) => {
             const reverse = index % 2 === 1;
             return (
-              <div
+              <ScrollStackItem
                 key={project.id}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+                itemClassName="h-auto my-0 p-0 rounded-none shadow-none bg-transparent"
               >
-                {/* Image Preview */}
-                <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
-                  <FeaturedPreview
-                    project={project}
-                    hoverImage={hoverImage}
-                    onImageEnter={handleImageEnter}
-                    onImageLeave={handleImageLeave}
-                  />
-                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch bg-background">
+                  {/* Image Preview */}
+                  <div className={`lg:col-span-7 ${reverse ? "lg:order-2" : ""}`}>
+                    <FeaturedPreview
+                      project={project}
+                      hoverImage={hoverImage}
+                      onImageEnter={handleImageEnter}
+                      onImageLeave={handleImageLeave}
+                    />
+                  </div>
 
-                {/* Technical Spec */}
-                <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
-                  <div className="h-full flex flex-col p-6 md:p-8 bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[1.5rem] shadow-xs">
-                    <h3 className="text-2xl md:text-3xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
-                      {project.subtitle}
-                    </p>
+                  {/* Technical Spec */}
+                  <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : ""}`}>
+                    <div className="h-full flex flex-col p-6 md:p-8 shadow-xs">
+                      <h3 className="text-2xl md:text-3xl font-extrabold text-neutral-900 dark:text-white tracking-tight">
+                        {project.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                        {project.subtitle}
+                      </p>
 
-                    <div className="mt-6 space-y-5">
-                      <div className="space-y-2">
-                        <SectionLabel icon={FileText}>
-                          Overview
-                        </SectionLabel>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                          {project.overview}
-                        </p>
-                      </div>
+                      <div className="mt-6 space-y-5">
+                        <div className="space-y-2">
+                          <SectionLabel icon={FileText}>
+                            Overview
+                          </SectionLabel>
+                          <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                            {project.overview}
+                          </p>
+                        </div>
 
-                      <div className="space-y-2">
-                        <SectionLabel icon={Layers}>Technical Architecture</SectionLabel>
-                        <ul className="space-y-2">
-                          {project.architecture.map((item) => (
-                            <li
-                              key={item}
-                              className="flex gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
-                            >
-                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                        <div className="space-y-2">
+                          <SectionLabel icon={Layers}>Technical Architecture</SectionLabel>
+                          <ul className="space-y-2">
+                            {project.architecture.map((item) => (
+                              <li
+                                key={item}
+                                className="flex gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
+                              >
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
 
-                      <div className="space-y-2">
-                        <SectionLabel icon={Cpu}>Environment</SectionLabel>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((tech) => (
-                            <span
-                              key={tech}
-                              className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-400/20"
-                            >
-                              {tech}
-                            </span>
-                          ))}
+                        <div className="space-y-2">
+                          <SectionLabel icon={Cpu}>Environment</SectionLabel>
+                          <div className="flex flex-wrap gap-2">
+                            {project.tech.map((tech) => (
+                              <span
+                                key={tech}
+                                className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-400/20"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                      {renderActionLinks(project)}
+                      <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                        {renderActionLinks(project)}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollStackItem>
             );
           })}
-        </div>
+        </ScrollStack>
 
         {/* PHASE 3: Secondary Archive Grid */}
         <div className="mt-20 mb-8 flex items-center gap-3">
@@ -384,9 +375,9 @@ export const ProjectsSection = () => {
           {archiveProjects.slice(0, 3).map((project) => (
             <article
               key={project.id}
-              className="group flex flex-col bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
+              className="group flex flex-col rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
             >
-              <div className="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+              <div className="relative aspect-video overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -396,7 +387,7 @@ export const ProjectsSection = () => {
                   {project.year} · {project.category}
                 </span>
               </div>
-              <div className="p-5 flex flex-col flex-1 text-left space-y-2">
+              <div className="p-5 flex flex-col flex-1 text-left space-y-2 bg-white dark:bg-neutral-900/40">
                 <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   {project.title}
                 </h3>

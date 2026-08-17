@@ -336,8 +336,7 @@ const projects = [
       "Robust client state handling for high-frequency scheduling edits",
     ],
     tech: ["HTML & CSS", "JavaScript", "Laravel"],
-    demoUrl:
-      "https://drive.google.com/file/d/181XF02IEp_50qcNR1MSnWGlp7cwOG0P1/preview?autoplay=1",
+    demoUrl: null,
     codeUrl: "https://github.com/eriXtrip",
     images: [OroSiteImg, OroSite1, OroSite2, OroSite3, OroSite4, OroSite5],
     Gif: null,
@@ -368,8 +367,7 @@ const projects = [
       "Stripe integration for payment processing",
     ],
     tech: ["HTML & CSS", "JavaScript", "Laravel"],
-    demoUrl:
-      "https://drive.google.com/file/d/1B8ZWoWT6EqoGuRJ8V-zI3hgD6n5gzVXG/preview?autoplay=1",
+    demoUrl: null,
     codeUrl: "https://github.com/eriXtrip",
     images: [EcoLocalImg],
     Gif: null,
