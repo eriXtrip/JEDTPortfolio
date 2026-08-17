@@ -91,7 +91,7 @@ const projects = [
     featured: true,
     image: BUCSMCCImg,
     overview:
-      "The BUCS Microbial Culture Collection ran on a manual Excel-based registration grid — sluggish search queries, error-prone records, and slow specimen approvals. This project replaced the legacy sheets with a secure full-stack system that automates specimen tracking and status mailers, cutting processing turnaround times by 75%.",
+      "The BUCS Microbial Culture Collection ran on a manual Excel-based registration grid — sluggish search queries, error-prone records, and slow specimen approvals. This project replaced the legacy sheets with a secure full-stack system that automates specimen tracking and status mailers, cutting processing turnaround times.",
     architecture: [
       "React SPA front-end with a Laravel RESTful API backend",
       "Normalized MySQL schema for specimens, cultures, and requests",

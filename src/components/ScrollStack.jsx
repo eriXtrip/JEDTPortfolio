@@ -6,7 +6,7 @@ import { cn } from '../lib/utils';
 export const ScrollStackItem = ({ children, itemClassName = '' }) => (
   <div
     className={cn(
-      'scroll-stack-card relative w-full h-80 my-8 p-12 rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform',
+      'scroll-stack-card relative w-full h-auto min-h-80 my-8 p-0 rounded-[30px] md:rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform',
       itemClassName
     )}
     style={{
@@ -86,6 +86,17 @@ const ScrollStack = ({
   const updateCardTransforms = useCallback(() => {
     if (!cardsRef.current.length || isUpdatingRef.current) return;
 
+    // On mobile and tablet screens (< 1024px), disable stack pinning and reset transforms for standard scrolling
+    if (window.innerWidth < 1024) {
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        card.style.transform = 'none';
+        card.style.opacity = '1';
+        card.style.filter = 'none';
+      });
+      return;
+    }
+
     isUpdatingRef.current = true;
 
     const { scrollTop, containerHeight } = getScrollData();
@@ -103,12 +114,19 @@ const ScrollStack = ({
     const positions = cards.map((card, i) => {
       if (!card) return null;
       const cardTop = getElementOffset(card, i);
+      const cardHeight = card.offsetHeight || 0; // Measure card height
+
+      // On mobile/small screens, add space based on card height so content finishes displaying
+      const isSmallScreen = window.innerWidth < 768;
+      const extraPadding = isSmallScreen ? cardHeight * 0.4 : 0;
+
       return {
         i,
         cardTop,
         enterStart: cardTop - containerHeight,
         pinStart: cardTop - stackPositionPx - itemStackDistance * i,
-        pinEnd: endElementTop - containerHeight / 2
+        // Extend pinEnd on small screens so the lower detail remains visible
+        pinEnd: endElementTop - containerHeight / 2 + extraPadding
       };
     });
 
@@ -279,10 +297,17 @@ const ScrollStack = ({
     cardsRef.current = cards;
     const transformsCache = lastTransformsRef.current;
 
+    const applyCardSpacing = () => {
+      const isSmallScreen = window.innerWidth < 1024;
+      const effectiveDistance = isSmallScreen ? 48 : itemDistance;
+      cards.forEach((card, i) => {
+        if (i < cards.length - 1) {
+          card.style.marginBottom = `${effectiveDistance}px`;
+        }
+      });
+    };
+
     cards.forEach((card, i) => {
-      if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
-      }
       card.style.willChange = 'transform, filter, opacity';
       card.style.transformOrigin = 'top center';
       card.style.backfaceVisibility = 'hidden';
@@ -294,11 +319,15 @@ const ScrollStack = ({
       card.dataset.index = String(i);
     });
 
+    applyCardSpacing();
+    window.addEventListener('resize', applyCardSpacing);
+
     setupLenis();
 
     updateCardTransforms();
 
     return () => {
+      window.removeEventListener('resize', applyCardSpacing);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -347,7 +376,7 @@ const ScrollStack = ({
 
   return (
     <div className={containerClassName} ref={scrollerRef} style={containerStyles}>
-      <div className="scroll-stack-inner pt-[0vh] pb-[25rem] min-h-screen">
+      <div className="scroll-stack-inner pt-0 pb-0 lg:pb-[25rem] min-h-screen">
         {children}
         {/* Spacer so the last pin can release cleanly */}
         <div className="scroll-stack-end w-full h-px" />
