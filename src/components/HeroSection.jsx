@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-4 md:px-10 items-center max-md:border-b max-md:dark:border-emerald-700 max-md:border-gray-700 "
+      className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-4 md:px-10 items-center max-md:border-b max-md:dark:border-indigo-700 max-md:border-gray-700 "
     >
 
       <AnimatedGridPattern
@@ -27,10 +27,10 @@ export function HeroSection() {
       {/* Top Banner Typography */}
       <div className="w-full max-w-6xl flex justify-between items-end mb-[-56px] z-20 px-4">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase leading-none">
-          Full-Stack <span className="font-black italic text-emerald-700 dark:text-emerald-400">Dev</span>
+          Full-Stack <span className="font-black italic text-indigo-600 dark:text-indigo-400">Dev</span>
         </h1>
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase text-right leading-none">
-          IT <span className="font-black italic text-emerald-700 dark:text-emerald-400">Specialist</span>
+          IT <span className="font-black italic text-indigo-600 dark:text-indigo-400">Specialist</span>
         </h1>
       </div>
 
@@ -38,11 +38,11 @@ export function HeroSection() {
       <div className="relative w-full max-w-6xl mt-15 md:mt-20">
 
         {/* Main Container Card */}
-        <div className="relative w-full bg-emerald-800  dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl min-h-[520px] sm:min-h-[600px] md:min-h-[220px] flex flex-col justify-between">
+        <div className="relative w-full bg-indigo-900 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl min-h-[520px] sm:min-h-[600px] md:min-h-[220px] flex flex-col justify-between">
 
           {/* Decorative Abstract Background Strokes */}
           <div className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden rounded-[2.5rem]">
-            <div className="w-[800px] h-[300px] bg-white dark:bg-emerald-950 rounded-full blur-2xl transform -rotate-12"></div>
+            <div className="w-[800px] h-[300px] bg-white dark:bg-indigo-950 rounded-full blur-2xl transform -rotate-12"></div>
           </div>
 
           {/* Hero Section Content Grid */}
@@ -51,15 +51,15 @@ export function HeroSection() {
             {/* Left Column: Headline & Action */}
             <div className="lg:col-span-4 flex flex-col justify-center space-y-6">
               <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase opacity-90 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full w-fit border border-white/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-300 animate-pulse"></span>
                 Portfolio — 2025
               </span>
 
               <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] mb-5">
                 Jon Eric<br />
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent italic font-black">Tripulca</span>
-                  <svg className="absolute -bottom-2 left-0 w-full text-emerald-400" viewBox="0 0 200 12" fill="none">
+                  <span className="bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent italic font-black">Tripulca</span>
+                  <svg className="absolute -bottom-2 left-0 w-full text-indigo-400" viewBox="0 0 200 12" fill="none">
                     <path d="M2 9C60 3 140 3 198 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                   </svg>
                 </span>
@@ -70,7 +70,7 @@ export function HeroSection() {
               </p>
 
               <div className="flex flex-wrap items-center gap-8 pt-4">
-                <a href="#works" className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-emerald-400 transition-all duration-300 hover:text-white">
+                <a href="#works" className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-violet-300 transition-all duration-300 hover:text-white">
                   <span>View Projects</span>
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5"><ArrowRight /></span>
                 </a>
@@ -111,14 +111,14 @@ export function HeroSection() {
                       alt="BUCS MCC Specimen Tracking System"
                       className="w-full h-full object-cover object-top "
                     />
-                    <span className="absolute top-2 left-2 bg-emerald-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Live Demo</span>
+                    <span className="absolute top-2 left-2 bg-indigo-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Live Demo</span>
                   </div>
                   <div className="p-4 flex flex-col gap-2.5">
                     <h3 className="text-sm font-bold text-white leading-snug">BUCS MCC</h3>
                     <div className="flex flex-wrap gap-1.5">
-                      <span className="bg-emerald-400/15 text-emerald-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-emerald-400/20">React</span>
-                      <span className="bg-emerald-400/15 text-emerald-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-emerald-400/20">Laravel</span>
-                      <span className="bg-emerald-400/15 text-emerald-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-emerald-400/20">MySQL</span>
+                      <span className="bg-indigo-400/15 text-indigo-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-indigo-400/20">React</span>
+                      <span className="bg-indigo-400/15 text-indigo-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-indigo-400/20">Laravel</span>
+                      <span className="bg-indigo-400/15 text-indigo-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-indigo-400/20">MySQL</span>
                     </div>
                     <p className="text-[11px] text-white/70 leading-relaxed">
                       Automated microbial specimen workflows across multiple labs, replacing manual logs and reducing tracking errors.

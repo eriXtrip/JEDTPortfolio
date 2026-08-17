@@ -236,7 +236,7 @@ export const PubmatsGallery = () => {
     return (
       <div
         onClick={() => onSelect(originalIndex)}
-        className={`group relative cursor-pointer overflow-hidden rounded-lg lg:rounded-[1.75rem] border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl ${aspect} ${className}`}
+        className={`group relative cursor-pointer overflow-hidden rounded-lg lg:rounded-[1.75rem] border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:shadow-xl ${aspect} ${className}`}
       >
         <img
           src={pubmat.src}
@@ -253,7 +253,7 @@ export const PubmatsGallery = () => {
         {/* Gradient Reveal + Title Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-indigo-300">
             <Eye className="h-3 w-3 animate-pulse" /> View Design
           </span>
           <h4 className="mt-1 text-sm font-extrabold leading-tight text-white md:text-base">
@@ -273,13 +273,13 @@ export const PubmatsGallery = () => {
       <div className="relative container max-w-7xl mx-auto px-2 md:px-10">
         {/* Header — Centered High-Impact Headline */}
         <div className="mx-auto max-w-3xl space-y-5 pb-16 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             Visual Art & Media
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
             My{" "}
-            <span className="italic font-black text-emerald-600 dark:text-emerald-400">
+            <span className="italic font-black text-indigo-600 dark:text-indigo-400">
               Designs
             </span>
           </h2>
@@ -309,7 +309,7 @@ export const PubmatsGallery = () => {
             {/* Floating Pill CTA opening the full portfolio */}
             <button
               onClick={openGallery}
-              className="relative z-20 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-emerald-600 dark:bg-emerald-500 px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:scale-105 hover:bg-emerald-700 dark:hover:bg-emerald-400 cursor-pointer lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6"
+              className="relative z-20 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-indigo-600 dark:bg-indigo-500 px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg shadow-indigo-600/30 transition-all duration-300 hover:scale-105 hover:bg-indigo-700 dark:hover:bg-indigo-400 cursor-pointer lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6"
             >
               View All Designs <ArrowUpRight className="h-4 w-4" />
             </button>
@@ -336,8 +336,8 @@ export const PubmatsGallery = () => {
           <div className="sticky top-0 z-10 border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/90 dark:bg-neutral-950/90 backdrop-blur-md">
             <div className="mx-auto max-w-7xl px-6 md:px-12 py-6 flex items-center justify-between gap-6">
               <div className="space-y-1 text-left">
-                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+                  <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
                   Explore More
                 </span>
                 <h3 className="text-2xl md:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
@@ -349,7 +349,7 @@ export const PubmatsGallery = () => {
               </div>
               <button
                 onClick={closeGallery}
-                className="shrink-0 p-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200/70 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 transition-all cursor-pointer hover:border-emerald-500/40 hover:text-emerald-600 dark:hover:text-emerald-400"
+                className="shrink-0 p-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200/70 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 transition-all cursor-pointer hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-400"
                 aria-label="Close portfolio"
               >
                 <X className="h-5 w-5" />
@@ -378,7 +378,7 @@ export const PubmatsGallery = () => {
                         setActiveIndex(originalIndex);
                         openLightbox();
                       }}
-                      className="group relative break-inside-avoid cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-xl"
+                      className="group relative break-inside-avoid cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:shadow-xl"
                     >
                       <img
                         src={pubmat.src}
@@ -392,7 +392,7 @@ export const PubmatsGallery = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-indigo-300">
                           <Eye className="h-3 w-3 animate-pulse" /> View Design
                         </span>
                         <h4 className="mt-1 text-sm font-extrabold leading-tight text-white">

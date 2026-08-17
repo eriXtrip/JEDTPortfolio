@@ -32,91 +32,138 @@
   --animate-blink: blink 1s step-end infinite;
 
   @keyframes float {
+
     0%,
     100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-10px);
     }
   }
+
   @keyframes pulse-subtle {
+
     0%,
     100% {
       opacity: 1;
     }
+
     50% {
       opacity: 0.8;
     }
   }
+
   @keyframes fade-in {
     from {
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
   @keyframes meteor {
     0% {
       transform: rotate(215deg) translateX(0);
       opacity: 1;
     }
+
     70% {
       opacity: 1;
     }
+
     100% {
       transform: rotate(215deg) translateX(-500px);
       opacity: 0;
     }
   }
+
   @keyframes expand {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+    from {
+      transform: scaleX(0);
+    }
+
+    to {
+      transform: scaleX(1);
+    }
   }
+
   @keyframes splash-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-6px);
+    }
   }
+
   @keyframes shimeji-bob {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-4px) rotate(0.5deg); }
-    75% { transform: translateY(-2px) rotate(-0.5deg); }
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+      transform: translateY(-4px) rotate(0.5deg);
+    }
+
+    75% {
+      transform: translateY(-2px) rotate(-0.5deg);
+    }
   }
+
   @keyframes shimeji-code-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
   }
+
   @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+      opacity: 0;
+    }
   }
 }
 
 @layer base {
+
   :root,
   :root[data-theme="light"] {
     --text: #040316;
-    --background: #f5fffc;
-    --primary: #1f4c2c;
-    --secondary: #c3e958;
-    --accent: #4b6e11;
-    --primary-foreground: #f5fffc;
+    --background: #f8fafc;
+    --primary: #4f46e5;
+    --secondary: #818cf8;
+    --accent: #6366f1;
+    --primary-foreground: #ffffff;
     --card: #ffffff;
-    --border: rgba(31, 76, 44, 0.15);
+    --border: rgba(79, 70, 229, 0.15);
   }
 
   .dark,
   :root[data-theme="dark"] {
     --text: #eae9fc;
-    --background: #000a07;
-    --primary: #b3e0c0;
-    --secondary: #80a716;
-    --accent: #caee90;
-    --primary-foreground: #000a07;
-    --card: #04120e;
-    --border: rgba(179, 224, 192, 0.15);
+    --background: #030712;
+    --primary: #818cf8;
+    --secondary: #6366f1;
+    --accent: #a5b4fc;
+    --primary-foreground: #030712;
+    --card: #0b0f19;
+    --border: rgba(129, 140, 248, 0.15);
   }
 
   * {
@@ -137,19 +184,23 @@
   margin-inline: auto;
   padding-inline: 2rem;
 
-  @media (width >= 640px) {
+  @media (width >=640px) {
     max-width: 640px;
   }
-  @media (width >= 768px) {
+
+  @media (width >=768px) {
     max-width: 768px;
   }
-  @media (width >= 1024px) {
+
+  @media (width >=1024px) {
     max-width: 1024px;
   }
-  @media (width >= 1280px) {
+
+  @media (width >=1280px) {
     max-width: 1280px;
   }
-  @media (width >= 1400px) {
+
+  @media (width >=1400px) {
     max-width: 1400px;
   }
 }
@@ -168,15 +219,11 @@
 }
 
 @utility cosmic-button {
-  @apply px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold 
-         transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-200 
-         hover:scale-[1.03] active:scale-[0.98] shadow-sm cursor-pointer inline-flex items-center justify-center gap-2;
+  @apply px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:bg-neutral-800 dark:hover:bg-neutral-200 hover:scale-[1.03] active:scale-[0.98] shadow-sm cursor-pointer inline-flex items-center justify-center gap-2;
 }
 
 @utility outline-button {
-  @apply px-6 py-3 rounded-full border border-primary text-primary font-semibold
-         transition-all duration-300 hover:bg-primary/5 hover:scale-[1.03] active:scale-[0.98]
-         cursor-pointer inline-flex items-center justify-center gap-2;
+  @apply px-6 py-3 rounded-full border border-primary text-primary font-semibold transition-all duration-300 hover:bg-primary/5 hover:scale-[1.03] active:scale-[0.98] cursor-pointer inline-flex items-center justify-center gap-2;
 }
 
 @utility star {
@@ -237,12 +284,18 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-shiny-text: shiny-text 8s infinite;
+
   @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
+
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
     }
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
+
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
 }

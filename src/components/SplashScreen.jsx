@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Download, CheckCircle2, FileCode, Layers, ShieldCheck, Terminal, Cpu } from "lucide-react";
 
 import img1 from "../assets/SplashImg/Splash (1).png";
 import img2 from "../assets/SplashImg/Splash (2).png";
@@ -6,60 +7,20 @@ import img3 from "../assets/SplashImg/Splash (3).png";
 import img4 from "../assets/SplashImg/Splash (4).png";
 import img5 from "../assets/SplashImg/Splash (5).png";
 import img6 from "../assets/SplashImg/Splash (6).png";
-import img7 from "../assets/SplashImg/Splash (7).png";
-import img8 from "../assets/SplashImg/Splash (8).png";
-import img9 from "../assets/SplashImg/Splash (9).png";
-import img10 from "../assets/SplashImg/Splash (10).png";
-import img11 from "../assets/SplashImg/Splash (11).png";
 
-const repeat = (items, count) => Array.from({ length: count }, () => items).flat();
-
-const gridRows = [
-  {
-    height: "h-27 md:h-47",
-    gap: "gap-3 md:gap-6",
-    delay: 0.35,
-    items: repeat(
-      [
-        { src: img7, width: "w-59 md:w-83" },
-        { src: img8, width: "w-15 md:w-25" },
-        { src: img9, width: "w-59 md:w-85" },
-        { src: img10, width: "w-59 md:w-85" },
-      ],
-      3
-    ),
-  },
-  {
-    height: "h-35 md:h-55",
-    gap: "gap-4 md:gap-7",
-    delay: 0.6,
-    items: repeat(
-      [
-        { src: img11, width: "w-65 md:w-99" },
-        { src: img3, width: "w-65 md:w-99" },
-        { src: img4, width: "w-17 md:w-29" },
-        { src: img5, width: "w-65 md:w-99" },
-        { src: img6, width: "w-17 md:w-29" },
-      ],
-      3
-    ),
-  },
-  {
-    height: "h-36 md:h-60",
-    gap: "gap-5 md:gap-8",
-    delay: 0.85,
-    items: repeat(
-      [
-        { src: img1, width: "w-72 md:w-112" },
-        { src: img2, width: "w-16 md:w-30" },
-      ],
-      6
-    ),
-  },
+const assetFiles = [
+  { name: "bucs_mcc_app.spec", size: "4.2 MB", type: "React + Laravel", icon: Layers, img: img1 },
+  { name: "comelec_acm.sys", size: "1.8 MB", type: "Network Config", icon: Terminal, img: img2 },
+  { name: "pubmats_bundle.zip", size: "8.5 MB", type: "Design Media", icon: FileCode, img: img3 },
+  { name: "it_support_suite.iso", size: "3.1 MB", type: "System Tools", icon: Cpu, img: img4 },
+  { name: "portfolio_core.v2", size: "2.4 MB", type: "React + Tailwind", icon: ShieldCheck, img: img5 },
+  { name: "certifications.pack", size: "1.2 MB", type: "Accreditations", icon: CheckCircle2, img: img6 },
 ];
 
 export const SplashScreen = ({ onFinish }) => {
   const [phase, setPhase] = useState("enter");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [downloadProgress, setDownloadProgress] = useState(0);
 
   useEffect(() => {
     const applyTheme = (dark) => {
@@ -82,69 +43,116 @@ export const SplashScreen = ({ onFinish }) => {
     }
   }, []);
 
+  // Downloading files simulation ticker — extended duration (~6s total animation)
   useEffect(() => {
-    const exitTimer = setTimeout(() => setPhase("exit"), 3600);
-    const finishTimer = setTimeout(() => onFinish(), 4900);
+    const fileInterval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % assetFiles.length);
+    }, 850);
+
+    const progressInterval = setInterval(() => {
+      setDownloadProgress((prev) => Math.min(100, prev + 1.25));
+    }, 70);
+
+    const exitTimer = setTimeout(() => setPhase("exit"), 5600);
+    const finishTimer = setTimeout(() => onFinish(), 6500);
+
     return () => {
+      clearInterval(fileInterval);
+      clearInterval(progressInterval);
       clearTimeout(exitTimer);
       clearTimeout(finishTimer);
     };
   }, [onFinish]);
 
+  const activeFile = assetFiles[currentIndex];
+  const ActiveIcon = activeFile.icon;
   const exiting = phase === "exit";
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] overflow-hidden bg-background select-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.83,0,0.17,1)] ${exiting ? "opacity-0" : "opacity-100"
+      className={`fixed inset-0 z-[9999] overflow-hidden bg-neutral-950 text-white select-none transition-all duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] ${exiting ? "opacity-0 scale-105 filter blur-md" : "opacity-100 scale-100 filter blur-0"
         }`}
     >
-      <div
-        className={`absolute inset-0 will-change-transform transition-all duration-[1100ms] ease-[cubic-bezier(0.83,0,0.17,1)] ${exiting
-          ? "opacity-0 blur-2xl scale-110 -translate-y-4 translate-x-2 rotate-[0.5deg]"
-          : "opacity-100 blur-0 scale-100 translate-y-0 translate-x-0 rotate-0"
-          }`}
-      >
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Branding — top-left */}
-        <div className="absolute top-8 left-8 sm:top-12 sm:left-12 md:top-16 md:left-16 z-30 pointer-events-none">
-          <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] mb-5">
-            JEDT<br />
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent font-black">PORTFOLIO{" "}</span>
-            </span>
-          </h2>
+      {/* Main Center Container */}
+      <div className="relative z-10 h-full w-full flex flex-col items-center justify-center p-6 text-center">
+
+        {/* Header Branding */}
+        <div className="space-y-3 max-w-lg mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[11px] font-extrabold uppercase tracking-widest text-indigo-400">
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
+            System Initialization
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white leading-none">
+            JEDT<span className="text-neutral-500 font-light">.FOLIO</span>
+          </h1>
         </div>
 
-        {/* Isometric angled grid */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute left-[60%] top-[70%] w-[200%] -translate-x-1/2 -translate-y-1/2 rotate-[-18deg] skew-x-[-5deg]">
-            <div className="flex flex-col items-center gap-8 md:gap-10">
-              {gridRows.map((row, r) => (
-                <div key={r} className={`flex items-center ${row.gap}`}>
-                  {row.items.map((item, i) => (
-                    <div
-                      key={i}
-                      className={`relative ${item.width} ${row.height} shrink-0 overflow-hidden shadow-[0_18px_45px_-12px_rgba(0,0,0,0.55)] ring-1 ring-white/15 dark:ring-white/10`}
-                      style={{
-                        opacity: 0,
-                        animation: `fade-in 0.8s cubic-bezier(0.22,1,0.36,1) ${row.delay + i * 0.12
-                          }s forwards`,
-                      }}
-                    >
-                      <img
-                        src={item.src}
-                        alt=""
-                        draggable={false}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
+        {/* Live File Downloading Terminal Card */}
+        <div className="w-full max-w-md bg-neutral-900/90 backdrop-blur-md border border-white/15 rounded-3xl p-6 shadow-2xl text-left space-y-5">
+          {/* Card Top Indicator */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <div className="flex items-center gap-2.5">
+              <Download className="h-4 w-4 text-indigo-400 animate-bounce" />
+              <span className="text-xs font-extrabold uppercase tracking-wider text-neutral-200">
+                Fetching Project Assets
+              </span>
+            </div>
+            <span className="text-xs font-mono text-indigo-400 font-bold">
+              {Math.round(downloadProgress)}%
+            </span>
+          </div>
+
+          {/* Active File Line Item */}
+          <div className="flex items-center gap-4 bg-neutral-950/60 p-3.5 rounded-2xl border border-white/10">
+            {/* Image Preview Thumbnail */}
+            <div className="relative h-12 w-16 rounded-xl overflow-hidden bg-neutral-800 border border-white/10 shrink-0">
+              <img
+                src={activeFile.img}
+                alt=""
+                className="w-full h-full object-cover animate-fade-in"
+              />
+            </div>
+
+            {/* File Info */}
+            <div className="min-w-0 flex-1 space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold text-white truncate">
+                  {activeFile.name}
+                </span>
+                <span className="text-[10px] font-mono text-neutral-400 ml-2 shrink-0">
+                  {activeFile.size}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 text-[10px] text-neutral-400">
+                <ActiveIcon className="h-3 w-3 text-indigo-400" />
+                <span className="truncate">{activeFile.type}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="space-y-2">
+            <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
+              <div
+                className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-150 ease-out"
+                style={{ width: `${downloadProgress}%` }}
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500">
+              <span>status: downloading assets...</span>
+              <span className="text-indigo-400">[{currentIndex + 1}/6]</span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
 };
+
+export default SplashScreen;

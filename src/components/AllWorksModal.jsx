@@ -19,10 +19,10 @@ import {
 import { categories, projects } from "../data/projectsData";
 
 const badgeClass =
-  "inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-300 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/40 rounded-full";
+  "inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-300 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/60 dark:border-indigo-800/40 rounded-full";
 
 const SectionLabel = ({ icon: Icon, children }) => (
-  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
     <Icon className="h-3.5 w-3.5" />
     {children}
   </h4>
@@ -100,7 +100,7 @@ const MediaViewer = ({ project, activeIndex, onSelect, onOpenLightbox }) => {
               key={idx}
               onClick={() => onSelect(idx)}
               className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeIndex === idx
-                ? "border-emerald-500 scale-105 shadow-xs dark:border-emerald-400"
+                ? "border-indigo-500 scale-105 shadow-xs dark:border-indigo-400"
                 : "border-transparent opacity-50 hover:opacity-100"
                 }`}
             >
@@ -187,8 +187,8 @@ export const AllWorksModal = ({ open, onClose }) => {
       {/* Top Bar */}
       <header className="flex items-center justify-between gap-4 border-b border-neutral-200/80 dark:border-neutral-800/80 px-4 py-3 md:px-8 md:py-4 flex-shrink-0">
         <div className="flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+          <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+          <span className="text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
             Complete Catalogue
           </span>
           <span className="hidden sm:inline text-xs font-semibold text-neutral-500 dark:text-neutral-400">
@@ -214,7 +214,7 @@ export const AllWorksModal = ({ open, onClose }) => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by title or technology..."
-            className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800/80 pl-11 pr-4 py-2.5 rounded-full text-sm placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:border-emerald-500 dark:focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+            className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800/80 pl-11 pr-4 py-2.5 rounded-full text-sm placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:border-indigo-500 dark:focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
           />
         </div>
 
@@ -295,7 +295,7 @@ export const AllWorksModal = ({ open, onClose }) => {
                           onClick={() => toggleExpand(project.id)}
                           aria-expanded={isExpanded}
                           aria-label={`${isExpanded ? "Collapse" : "Expand"} ${project.title} details`}
-                          className="inline-flex items-center justify-center p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 cursor-pointer"
+                          className="inline-flex items-center justify-center p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 cursor-pointer"
                         >
                           <ChevronDown
                             className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
@@ -342,7 +342,7 @@ export const AllWorksModal = ({ open, onClose }) => {
                                       key={item}
                                       className="flex gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
                                     >
-                                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
                                       {item}
                                     </li>
                                   ))}
@@ -354,7 +354,7 @@ export const AllWorksModal = ({ open, onClose }) => {
                                   {project.tech.map((tech) => (
                                     <span
                                       key={tech}
-                                      className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-400/20"
+                                      className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-400/20"
                                     >
                                       {tech}
                                     </span>
@@ -368,7 +368,7 @@ export const AllWorksModal = ({ open, onClose }) => {
                                     {project.demoModal ? (
                                       <button
                                         onClick={() => setDemoProject(project)}
-                                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+                                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
                                       >
                                         Live Demo <ArrowUpRight className="h-3.5 w-3.5" />
                                       </button>
@@ -377,7 +377,7 @@ export const AllWorksModal = ({ open, onClose }) => {
                                         href={project.demoUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
                                       >
                                         Live Demo <ArrowUpRight className="h-3.5 w-3.5" />
                                       </a>

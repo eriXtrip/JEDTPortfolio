@@ -42,14 +42,14 @@ export const SkillsSection = () => {
         {/* Services Header */}
         <div className="mb-12 md:mb-16">
           {/* Pre-title tag matching Works section */}
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             SERVICES & EXPERTISE
           </span>
 
           <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
             What i {" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 underline">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 underline">
               Do
             </span>
           </h2>

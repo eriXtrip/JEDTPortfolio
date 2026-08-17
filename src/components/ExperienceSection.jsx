@@ -42,13 +42,13 @@ export const ExperienceSection = () => {
       <div className="container max-w-7xl mx-auto px-2 mid:px-10 space-y-16">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             Chronology
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
             My{" "}
-            <span className="font-black text-emerald-600 dark:text-emerald-400">
+            <span className="font-black text-indigo-600 dark:text-indigo-400">
               Experience
             </span>
           </h2>
@@ -61,7 +61,7 @@ export const ExperienceSection = () => {
         <div className="max-w-4xl mx-auto relative space-y-12 text-left">
           {/* Straight Flow Connector Line */}
           <svg
-            className="absolute left-0 top-0 h-full w-8 pointer-events-none stroke-emerald-500/60 dark:stroke-emerald-400/50 fill-none z-0"
+            className="absolute left-0 top-0 h-full w-8 pointer-events-none stroke-indigo-500/60 dark:stroke-indigo-400/50 fill-none z-0"
             viewBox="0 0 32 100"
             preserveAspectRatio="none"
             style={{ strokeDasharray: "3 3" }}
@@ -71,15 +71,15 @@ export const ExperienceSection = () => {
           {experiences.map((exp, idx) => (
             <div key={idx} className="relative group pl-11 md:pl-12">
               {/* Timeline node icon */}
-              <div className="absolute left-0 top-1.5 flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-750 dark:text-white shadow-xs group-hover:scale-110 group-hover:border-emerald-500 dark:group-hover:border-emerald-400 transition-all duration-300">
-                <BriefcaseBusiness className="h-3.5 w-3.5 text-neutral-500 dark:text-neutral-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+              <div className="absolute left-0 top-1.5 flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-750 dark:text-white shadow-xs group-hover:scale-110 group-hover:border-indigo-500 dark:group-hover:border-indigo-400 transition-all duration-300">
+                <BriefcaseBusiness className="h-3.5 w-3.5 text-neutral-500 dark:text-neutral-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />
               </div>
 
               {/* Experience Card */}
-              <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[24px] p-6 md:p-8 space-y-4 hover:border-emerald-500/20 dark:hover:border-emerald-450/20 hover:shadow-xs transition-all duration-300">
+              <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[24px] p-6 md:p-8 space-y-4 hover:border-indigo-500/20 dark:hover:border-indigo-400/20 hover:shadow-xs transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                   <div className="space-y-1">
-                    <h3 className="text-xl font-extrabold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    <h3 className="text-xl font-extrabold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {exp.role}
                     </h3>
                     <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-450">
@@ -87,7 +87,7 @@ export const ExperienceSection = () => {
                     </p>
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-neutral-100 dark:bg-neutral-850 border border-neutral-200/30 dark:border-neutral-700/30 rounded-full text-xs font-bold text-neutral-600 dark:text-neutral-400 self-start md:self-center">
-                    <Calendar className="h-3.5 w-3.5 text-emerald-500" />
+                    <Calendar className="h-3.5 w-3.5 text-indigo-500" />
                     {exp.period}
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export const ExperienceSection = () => {
                         key={bIdx}
                         className="flex items-start gap-2.5 text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
                         <span>{bullet}</span>
                       </li>
                     ))}

@@ -89,7 +89,7 @@ export const CallingCardFace = ({ forceLandscape = false }) => {
               </p>
               <h3 className="text-4xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[0.95]">
                 Full-Stack{" "}
-                <span className="italic text-emerald-600 dark:text-emerald-400">
+                <span className="italic text-indigo-600 dark:text-indigo-400">
                   Developer
                 </span>
               </h3>
@@ -108,14 +108,14 @@ export const CallingCardFace = ({ forceLandscape = false }) => {
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 text-sm transition-colors"
                 >
-                  <span className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+                  <span className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="h-4 w-4" />
                   </span>
                   <span className="flex flex-col gap-0.5 min-w-0">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
                       {label}
                     </span>
-                    <span className="font-semibold text-neutral-800 dark:text-neutral-200 break-all group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    <span className="font-semibold text-neutral-800 dark:text-neutral-200 break-all group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {value}
                     </span>
                   </span>
@@ -133,7 +133,7 @@ export const CallingCardFace = ({ forceLandscape = false }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="p-2.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+                    className="p-2.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -165,8 +165,8 @@ export const CallingCardFace = ({ forceLandscape = false }) => {
           <p className="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
             Available for collaborations &amp; hiring
           </p>
-          <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             Open to Work
           </p>
         </div>
@@ -186,19 +186,19 @@ export const CallingCard = () => {
       className="py-24 px-3 md:px-10 bg-neutral-50 dark:bg-neutral-950/40 relative overflow-hidden"
     >
       {/* Decorative Background Accent Glows */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center space-y-4 mb-12">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             Calling Card
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
             Keep in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 italic">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 italic">
               Touch
             </span>
           </h2>

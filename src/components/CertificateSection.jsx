@@ -289,8 +289,8 @@ export const CertificatesSection = () => {
         {/* Header — aligned with ProjectsSection principle, redesigned */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 mb-14 border-b border-neutral-200/80 dark:border-neutral-800/80 relative">
           <div className="space-y-4 max-w-2xl text-left">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
               Accreditation &amp; Awards
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
@@ -308,8 +308,8 @@ export const CertificatesSection = () => {
               className={cn(
                 "inline-flex items-center justify-between gap-6 min-w-[200px] w-full lg:w-auto px-5 py-3.5 rounded-2xl text-left transition-all duration-300 cursor-pointer shadow-sm border",
                 filterOpen
-                  ? "bg-white dark:bg-neutral-900 border-emerald-500/40 shadow-emerald-500/10 shadow-lg"
-                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-emerald-500/40",
+                  ? "bg-white dark:bg-neutral-900 border-indigo-500/40 shadow-indigo-500/10 shadow-lg"
+                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-indigo-500/40",
               )}
             >
               <span className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-200">
@@ -317,8 +317,8 @@ export const CertificatesSection = () => {
                   className={cn(
                     "h-4 w-4 shrink-0 transition-colors",
                     filterOpen
-                      ? "text-emerald-500"
-                      : "text-emerald-600 dark:text-emerald-400",
+                      ? "text-indigo-500"
+                      : "text-indigo-600 dark:text-indigo-400",
                   )}
                 />
                 {activeCategoryLabel}
@@ -326,7 +326,7 @@ export const CertificatesSection = () => {
               <ChevronDown
                 className={cn(
                   "h-4 w-4 text-neutral-400 transition-transform duration-300",
-                  filterOpen && "rotate-180 text-emerald-500",
+                  filterOpen && "rotate-180 text-indigo-500",
                 )}
               />
             </button>
@@ -342,13 +342,13 @@ export const CertificatesSection = () => {
                       className={cn(
                         "w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer",
                         isActive
-                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"
+                          ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400"
                           : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/60 hover:text-neutral-900 dark:hover:text-white",
                       )}
                     >
                       <span className="flex items-center gap-2">
                         {isActive && (
-                          <Check className="h-3.5 w-3.5 text-emerald-500" />
+                          <Check className="h-3.5 w-3.5 text-indigo-500" />
                         )}
                         {cat.label}
                       </span>
@@ -356,7 +356,7 @@ export const CertificatesSection = () => {
                         className={cn(
                           "text-[10px] font-extrabold px-2 py-0.5 rounded-full",
                           isActive
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
+                            ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
                             : "bg-neutral-100 dark:bg-neutral-800 text-neutral-400",
                         )}
                       >
@@ -376,7 +376,7 @@ export const CertificatesSection = () => {
             <div
               key={cert.id}
               onClick={() => openCert(index)}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/55 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 hover:shadow-lg cursor-pointer"
+              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/55 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:shadow-lg cursor-pointer"
             >
               <img
                 src={cert.img}
@@ -393,7 +393,7 @@ export const CertificatesSection = () => {
               {/* Hover Frosted Overlay + Verification */}
               <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[1.5px] flex items-center justify-center">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-neutral-900 shadow-lg transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                  <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
+                  <ShieldCheck className="h-3.5 w-3.5 text-indigo-500" />
                   View Certificate
                 </span>
               </div>

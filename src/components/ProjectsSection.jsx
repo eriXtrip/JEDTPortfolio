@@ -26,10 +26,10 @@ const featuredProjects = projects.filter((project) => project.featured);
 const archiveProjects = projects.filter((project) => !project.featured);
 
 const badgeClass =
-  "inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-300 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/60 dark:border-emerald-800/40 rounded-full";
+  "inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-300 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/60 dark:border-indigo-800/40 rounded-full";
 
 const SectionLabel = ({ icon: Icon, children }) => (
-  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
     <Icon className="h-3.5 w-3.5" />
     {children}
   </h4>
@@ -222,7 +222,7 @@ export const ProjectsSection = () => {
       {project.demoModal ? (
         <button
           onClick={() => setDemoProject(project)}
-          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 cursor-pointer"
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 cursor-pointer"
         >
           Live Demo
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -232,7 +232,7 @@ export const ProjectsSection = () => {
           href={project.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300"
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300"
         >
           Live Demo
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -240,7 +240,7 @@ export const ProjectsSection = () => {
       ) : null}
       <button
         onClick={() => openDrawer(project)}
-        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 cursor-pointer"
+        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 cursor-pointer"
       >
         Full Details
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -257,13 +257,13 @@ export const ProjectsSection = () => {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80 mb-14">
           <div className="space-y-4 max-w-2xl text-left">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
               Featured Works &amp; Archive
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Works &amp;{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 underline">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 underline">
                 Archive
               </span>
             </h2>
@@ -329,7 +329,7 @@ export const ProjectsSection = () => {
                                 key={item}
                                 className="flex gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
                               >
-                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
                                 {item}
                               </li>
                             ))}
@@ -342,7 +342,7 @@ export const ProjectsSection = () => {
                             {project.tech.map((tech) => (
                               <span
                                 key={tech}
-                                className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-400/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-400/20"
+                                className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-400/20"
                               >
                                 {tech}
                               </span>
@@ -364,8 +364,8 @@ export const ProjectsSection = () => {
 
         {/* PHASE 3: Secondary Archive Grid */}
         <div className="mt-20 mb-8 flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <h3 className="text-xs font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+          <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+          <h3 className="text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
             Secondary Works
           </h3>
           <div className="h-px flex-1 bg-neutral-200/80 dark:bg-neutral-800/80" />
@@ -375,7 +375,7 @@ export const ProjectsSection = () => {
           {archiveProjects.slice(0, 3).map((project) => (
             <article
               key={project.id}
-              className="group flex flex-col rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
+              className="group flex flex-col rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-indigo-500/30"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img
@@ -388,7 +388,7 @@ export const ProjectsSection = () => {
                 </span>
               </div>
               <div className="p-5 flex flex-col flex-1 text-left space-y-2 bg-white dark:bg-neutral-900/40">
-                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-2">
@@ -396,7 +396,7 @@ export const ProjectsSection = () => {
                 </p>
                 <button
                   onClick={() => openDrawer(project)}
-                  className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 transition-colors cursor-pointer self-start"
+                  className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 transition-colors cursor-pointer self-start"
                 >
                   View Project
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -407,10 +407,10 @@ export const ProjectsSection = () => {
         </div>
 
         {/* Archive Modal Trigger */}
-        <div className="mt-12 flex justify-center">
+        <div className="relative z-10 mt-12 flex justify-center">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="outline-button whitespace-nowrap"
+            className="outline-button whitespace-nowrap cursor-pointer"
           >
             Open Complete Archive ({projects.length})
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -429,6 +429,7 @@ export const ProjectsSection = () => {
 
       {/* Sliding Drawer */}
       <div
+        data-lenis-prevent
         className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-950 border-l border-neutral-200/80 dark:border-neutral-800/80 shadow-2xl z-[150] flex flex-col transition-all duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
@@ -494,7 +495,7 @@ export const ProjectsSection = () => {
                               key={idx}
                               onClick={() => selectVideo(idx)}
                               className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
-                                ? "bg-white text-emerald-600 shadow-xs dark:bg-neutral-700 dark:text-emerald-400"
+                                ? "bg-white text-indigo-600 shadow-xs dark:bg-neutral-700 dark:text-indigo-400"
                                 : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
                                 }`}
                             >
@@ -557,7 +558,7 @@ export const ProjectsSection = () => {
                           key={idx}
                           onClick={() => setActiveImgIndex(idx)}
                           className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
-                            ? "border-emerald-500 scale-105 shadow-xs dark:border-emerald-400"
+                            ? "border-indigo-500 scale-105 shadow-xs dark:border-indigo-400"
                             : "border-transparent opacity-50 hover:opacity-100"
                             }`}
                         >
@@ -651,7 +652,7 @@ export const ProjectsSection = () => {
 
       {/* Demo App Instructions Modal */}
       {demoProject && demoProject.demoModal && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" data-lenis-prevent>
           <div
             className="absolute inset-0 bg-neutral-950/60 backdrop-blur-xs"
             onClick={() => setDemoProject(null)}
