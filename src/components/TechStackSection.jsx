@@ -94,13 +94,9 @@ export const TechStackSection = () => {
       <div className="container max-w-7xl mx-auto px-2 mid:px-10 space-y-16">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
-            Capabilities & Tools
-          </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
             Stack &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 italic">
+            <span className="text-indigo-600 dark:text-indigo-400 italic">
               Skills
             </span>
           </h2>
@@ -124,7 +120,7 @@ export const TechStackSection = () => {
                   {cat.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-3.5 py-2 bg-neutral-50 dark:bg-neutral-950 border border-neutral-200/40 dark:border-neutral-800/40 rounded-xl text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-400/40 dark:hover:border-indigo-400/30 hover:scale-105 transition-all duration-200 cursor-default"
+                      className="px-3 py-1.5 bg-neutral-100/80 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-md text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all duration-200 cursor-default"
                     >
                       {skill}
                     </span>

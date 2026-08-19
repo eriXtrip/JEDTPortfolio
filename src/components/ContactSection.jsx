@@ -109,8 +109,7 @@ export const ContactSection = () => {
                     Currently open to full-time roles, internships, and freelance technical projects. Feel free to reach out via email or phone.
                   </p>
                 </div>
-                <span className="hidden md:inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200/50 dark:border-indigo-800/30 px-4 py-2 rounded-full text-xs font-bold text-indigo-600 dark:text-indigo-400 whitespace-nowrap shadow-xs">
-                  <span className="w-2 h-2 rounded-full bg-indigo-500 block animate-pulse" />
+                <span className="hidden md:inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200/50 dark:border-indigo-800/30 px-4 py-2 rounded-xl text-xs font-bold text-indigo-600 dark:text-indigo-400 whitespace-nowrap shadow-xs">
                   Open to Work
                 </span>
               </div>
@@ -182,7 +181,7 @@ export const ContactSection = () => {
                     </p>
                     <h3 className="text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
                       Jon Eric{" "}
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
+                      <span className="text-indigo-600 dark:text-indigo-400">
                         Tripulca
                       </span>
                     </h3>
@@ -225,12 +224,11 @@ export const ContactSection = () => {
         <div className="container max-w-5xl mx-auto relative z-10 mt-16 md:mt-20">
           <div className="text-center space-y-3 mb-8">
             <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-              <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
               Digital Calling Card
             </span>
             <h3 className="text-2xl md:text-4xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Grab My{" "}
-              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
+              <span className="italic text-indigo-600 dark:text-indigo-400">
                 Card
               </span>
             </h3>

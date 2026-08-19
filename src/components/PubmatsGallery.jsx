@@ -273,10 +273,6 @@ export const PubmatsGallery = () => {
       <div className="relative container max-w-7xl mx-auto px-2 md:px-10">
         {/* Header — Centered High-Impact Headline */}
         <div className="mx-auto max-w-3xl space-y-5 pb-16 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
-            Visual Art & Media
-          </span>
           <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
             My{" "}
             <span className="italic font-black text-indigo-600 dark:text-indigo-400">
@@ -336,13 +332,9 @@ export const PubmatsGallery = () => {
           <div className="sticky top-0 z-10 border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/90 dark:bg-neutral-950/90 backdrop-blur-md">
             <div className="mx-auto max-w-7xl px-6 md:px-12 py-6 flex items-center justify-between gap-6">
               <div className="space-y-1 text-left">
-                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-                  <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
-                  Explore More
-                </span>
-                <h3 className="text-2xl md:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+                <h3 className="text-2xl md:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white uppercase">
                   Design{" "}
-                  <span className="text-neutral-500 dark:text-neutral-400">
+                  <span className="text-indigo-600 dark:text-indigo-400">
                     Gallery
                   </span>
                 </h3>

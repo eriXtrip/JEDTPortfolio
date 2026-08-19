@@ -42,10 +42,6 @@ export const ExperienceSection = () => {
       <div className="container max-w-7xl mx-auto px-2 mid:px-10 space-y-16">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
-            Chronology
-          </span>
           <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
             My{" "}
             <span className="font-black text-indigo-600 dark:text-indigo-400">
@@ -83,12 +79,8 @@ export const ExperienceSection = () => {
                       {exp.role}
                     </h3>
                     <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-450">
-                      {exp.company}
+                      {exp.company} {" | "} {exp.period}
                     </p>
-                  </div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-neutral-100 dark:bg-neutral-850 border border-neutral-200/30 dark:border-neutral-700/30 rounded-full text-xs font-bold text-neutral-600 dark:text-neutral-400 self-start md:self-center">
-                    <Calendar className="h-3.5 w-3.5 text-indigo-500" />
-                    {exp.period}
                   </div>
                 </div>
 

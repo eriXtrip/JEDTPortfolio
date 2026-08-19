@@ -166,7 +166,6 @@ export const CallingCardFace = ({ forceLandscape = false }) => {
             Available for collaborations &amp; hiring
           </p>
           <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             Open to Work
           </p>
         </div>

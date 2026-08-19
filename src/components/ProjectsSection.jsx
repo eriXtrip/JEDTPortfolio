@@ -26,7 +26,7 @@ const featuredProjects = projects.filter((project) => project.featured);
 const archiveProjects = projects.filter((project) => !project.featured);
 
 const badgeClass =
-  "inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-300 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/60 dark:border-indigo-800/40 rounded-full";
+  "inline-flex items-center gap-1.5 font-mono text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400";
 
 const SectionLabel = ({ icon: Icon, children }) => (
   <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
@@ -257,13 +257,9 @@ export const ProjectsSection = () => {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-neutral-200/80 dark:border-neutral-800/80 mb-14">
           <div className="space-y-4 max-w-2xl text-left">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-              Featured Works &amp; Archive
-            </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Works &amp;{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 underline">
+              <span className="text-transparent bg-clip-text bg-violet-400 underline">
                 Archive
               </span>
             </h2>
@@ -342,8 +338,9 @@ export const ProjectsSection = () => {
                             {project.tech.map((tech) => (
                               <span
                                 key={tech}
-                                className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-400/20"
+                                className="font-mono text-[10px] font-semibold text-indigo-700 dark:text-indigo-300 flex items-center gap-1"
                               >
+                                <span className="text-zinc-400 dark:text-zinc-600 font-normal">/</span>
                                 {tech}
                               </span>
                             ))}

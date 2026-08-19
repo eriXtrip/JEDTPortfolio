@@ -263,19 +263,13 @@ export const AboutSection = () => {
 
           {/* Left Column: Personal Background */}
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-32 text-left">
-            <div className="relative rounded-3xl p-6 md:p-8 bg-linear-to-br from-neutral-100/80 via-indigo-50/50 to-white/40 dark:from-neutral-900/80 dark:via-indigo-950/20 dark:to-neutral-950/40 overflow-hidden">
-              {/* Decorative gradient glows */}
-              <div className="absolute -top-16 -right-16 h-52 w-52 rounded-full bg-violet-300/25 dark:bg-violet-300/15 blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 -left-12 h-52 w-52 rounded-full bg-indigo-400/20 dark:bg-indigo-500/10 blur-3xl pointer-events-none" />
-              <div className="absolute top-6 right-8 w-16 h-16 border border-violet-300/40 dark:border-violet-500/20 rotate-12 rounded-2xl pointer-events-none" />
-              <div className="absolute bottom-8 left-6 w-3 h-3 rounded-full bg-violet-300/70 dark:bg-violet-500/40 animate-pulse pointer-events-none" />
+            <div className="relative rounded-3xl p-6 md:p-8 bg-white/90 dark:bg-neutral-950/40 overflow-hidden">
 
               <span className="relative inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
                 Personal Background
               </span>
 
-              <h3 className=" font-black relative mt-4 text-2xl md:text-3xl text-neutral-900 dark:text-white tracking-tight uppercase">
+              <h3 className=" font-black relative text-2xl md:text-3xl text-neutral-900 dark:text-white tracking-tight uppercase">
                 Career Profile
               </h3>
 
@@ -351,9 +345,13 @@ export const AboutSection = () => {
 
                   {/* Compact Card Body */}
                   <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-xl p-4.5 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-indigo-500/30 shadow-xs space-y-1.5 h-full z-0 relative">
-                    <span className="inline-block text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200/50 dark:border-indigo-800/40 rounded-md">
-                      {step.number}
-                    </span>
+                    {/* Left Bar Accent */}
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+                        {step.number}
+                      </span>
+                    </div>
+
                     <h3 className="text-base md:text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {step.title}
                     </h3>

@@ -14,13 +14,14 @@ export function HeroSection() {
     >
 
       <AnimatedGridPattern
-        numSquares={30}
-        maxOpacity={0.1}
-        duration={3}
-        repeatDelay={1}
+        numSquares={35}
+        maxOpacity={0.25}
+        duration={5}
+        repeatDelay={0.5}
         className={cn(
-          "mask-[radial-gradient(500px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[190%] skew-y-12"
+          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+          "inset-x-0 inset-y-[-30%] h-[190%] skew-y-12",
+          "stroke-neutral-400/80 fill-neutral-400/30 dark:stroke-white/10 dark:fill-white/5"
         )}
       />
 
@@ -38,7 +39,7 @@ export function HeroSection() {
       <div className="relative w-full max-w-6xl mt-15 md:mt-20">
 
         {/* Main Container Card */}
-        <div className="relative w-full bg-indigo-900 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl min-h-[520px] sm:min-h-[600px] md:min-h-[220px] flex flex-col justify-between">
+        <div className="relative w-full bg-white/40 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl min-h-[520px] sm:min-h-[600px] md:min-h-[220px] flex flex-col justify-between">
 
           {/* Decorative Abstract Background Strokes */}
           <div className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden rounded-[2.5rem]">
@@ -50,27 +51,23 @@ export function HeroSection() {
 
             {/* Left Column: Headline & Action */}
             <div className="lg:col-span-4 flex flex-col justify-center space-y-6">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase opacity-90 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full w-fit border border-white/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-300 animate-pulse"></span>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase opacity-90 text-zinc-500 dark:text-white px-3 py-1.5 w-fit">
                 Portfolio — 2025
               </span>
 
-              <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] mb-5">
+              <h2 className="text-4xl md:text-6xl font-extrabold text-zinc-900 dark:text-white uppercase tracking-tight leading-[0.95] mb-5">
                 Jon Eric<br />
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-violet-300 to-indigo-400 bg-clip-text text-transparent italic font-black">Tripulca</span>
-                  <svg className="absolute -bottom-2 left-0 w-full text-indigo-400" viewBox="0 0 200 12" fill="none">
-                    <path d="M2 9C60 3 140 3 198 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                  </svg>
+                  <span className="text-indigo-600 dark:text-indigo-400 italic font-black">Tripulca</span>
                 </span>
               </h2>
 
-              <p className="text-sm md:text-base opacity-85 max-w-xs leading-relaxed">
+              <p className="text-sm md:text-base text-zinc-900 dark:text-white opacity-85 max-w-xs leading-relaxed">
                 Building web applications and practical IT systems that streamline real-world workflows.
               </p>
 
               <div className="flex flex-wrap items-center gap-8 pt-4">
-                <a href="#works" className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-violet-300 transition-all duration-300 hover:text-white">
+                <a href="#works" className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-zinc-900 dark:text-white transition-all duration-300 hover:underline">
                   <span>View Projects</span>
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5"><ArrowRight /></span>
                 </a>
@@ -95,10 +92,10 @@ export function HeroSection() {
                   glareSize={300}
                   transitionDuration={1550}
                   playOnce={false}
-                  className="text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-white/20 overflow-hidden bg-white/5 backdrop-blur-md"
+                  className="text-zinc-800 dark:text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-zinc-200/80 dark:border-white/20 overflow-hidden bg-white/60 dark:bg-white/5 backdrop-blur-md"
                 >
-                  <div className="px-4 py-2.5 flex items-center justify-between border-b border-white/20">
-                    <span className="text-white/50 text-[11px]">Featured Project</span>
+                  <div className="px-4 py-2.5 flex items-center justify-between border-b border-zinc-200/80 dark:border-white/20">
+                    <span className="text-zinc-500 dark:text-white/50 text-[11px] font-medium">Featured Project</span>
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -109,18 +106,20 @@ export function HeroSection() {
                     <img
                       src={bucsmcc}
                       alt="BUCS MCC Specimen Tracking System"
-                      className="w-full h-full object-cover object-top "
+                      className="w-full h-full object-cover object-top"
                     />
-                    <span className="absolute top-2 left-2 bg-indigo-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Live Demo</span>
                   </div>
                   <div className="p-4 flex flex-col gap-2.5">
-                    <h3 className="text-sm font-bold text-white leading-snug">BUCS MCC</h3>
-                    <div className="flex flex-wrap gap-1.5">
-                      <span className="bg-indigo-400/15 text-indigo-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-indigo-400/20">React</span>
-                      <span className="bg-indigo-400/15 text-indigo-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-indigo-400/20">Laravel</span>
-                      <span className="bg-indigo-400/15 text-indigo-300 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-indigo-400/20">MySQL</span>
+                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white leading-snug">BUCS MCC</h3>
+
+                    {/* Code Accent Tags */}
+                    <div className="flex flex-wrap gap-3 font-mono text-[10px] tracking-tight">
+                      <span className="text-indigo-600 dark:text-indigo-400 font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> React</span>
+                      <span className="text-indigo-600 dark:text-indigo-400 font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> Laravel</span>
+                      <span className="text-indigo-600 dark:text-indigo-400 font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> MySQL</span>
                     </div>
-                    <p className="text-[11px] text-white/70 leading-relaxed">
+
+                    <p className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
                       Automated microbial specimen workflows across multiple labs, replacing manual logs and reducing tracking errors.
                     </p>
                   </div>

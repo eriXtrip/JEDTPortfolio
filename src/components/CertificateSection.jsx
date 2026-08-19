@@ -289,10 +289,6 @@ export const CertificatesSection = () => {
         {/* Header — aligned with ProjectsSection principle, redesigned */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 mb-14 border-b border-neutral-200/80 dark:border-neutral-800/80 relative">
           <div className="space-y-4 max-w-2xl text-left">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-              Accreditation &amp; Awards
-            </span>
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Credentials
             </h2>
@@ -347,9 +343,6 @@ export const CertificatesSection = () => {
                       )}
                     >
                       <span className="flex items-center gap-2">
-                        {isActive && (
-                          <Check className="h-3.5 w-3.5 text-indigo-500" />
-                        )}
                         {cat.label}
                       </span>
                       <span

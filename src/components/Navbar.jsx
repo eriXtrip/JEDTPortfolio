@@ -181,7 +181,6 @@ export const Navbar = ({ isDarkMode, onThemeToggle }) => {
         {/* Drawer Footer Status */}
         <div className="pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             Open to Work
           </div>
           <span className="text-xs text-neutral-400 dark:text-neutral-600 font-mono">

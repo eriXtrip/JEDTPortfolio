@@ -187,7 +187,6 @@ export const AllWorksModal = ({ open, onClose }) => {
       {/* Top Bar */}
       <header className="flex items-center justify-between gap-4 border-b border-neutral-200/80 dark:border-neutral-800/80 px-4 py-3 md:px-8 md:py-4 flex-shrink-0">
         <div className="flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
           <span className="text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
             Complete Catalogue
           </span>
@@ -354,8 +353,9 @@ export const AllWorksModal = ({ open, onClose }) => {
                                   {project.tech.map((tech) => (
                                     <span
                                       key={tech}
-                                      className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-400/15 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-400/20"
+                                      className="font-mono text-[10px] font-semibold text-indigo-700 dark:text-indigo-300 flex items-center gap-1"
                                     >
+                                      <span className="text-zinc-400 dark:text-zinc-600 font-normal">/</span>
                                       {tech}
                                     </span>
                                   ))}
@@ -363,7 +363,6 @@ export const AllWorksModal = ({ open, onClose }) => {
                               </div>
                               {project.demoUrl || project.demoModal ? (
                                 <div className="space-y-2">
-                                  <SectionLabel icon={ArrowUpRight}>Links</SectionLabel>
                                   <div className="flex flex-wrap gap-x-6 gap-y-3 pt-1">
                                     {project.demoModal ? (
                                       <button
