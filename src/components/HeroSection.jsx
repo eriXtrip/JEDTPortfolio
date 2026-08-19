@@ -27,10 +27,10 @@ export function HeroSection() {
 
       {/* Top Banner Typography */}
       <div className="w-full max-w-6xl flex justify-between items-end mb-[-56px] z-20 px-4">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase leading-none">
+        <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase leading-none">
           Full-Stack <span className="font-black italic text-[#ffc01d]">Dev</span>
         </h1>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase text-right leading-none">
+        <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase text-right leading-none">
           IT <span className="font-black italic text-[#ffc01d]">Specialist</span>
         </h1>
       </div>
@@ -47,7 +47,7 @@ export function HeroSection() {
             {/* Left Column: Headline & Action */}
             <div className="lg:col-span-4 flex flex-col justify-center space-y-6">
               <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#ffc01d] px-3 py-1.5 w-fit">
-                Portfolio — 2025
+                Portfolio Since 2025
               </span>
 
               <h2 className="text-4xl md:text-6xl font-extrabold text-zinc-900 dark:text-white uppercase tracking-tight leading-[0.95] mb-5">

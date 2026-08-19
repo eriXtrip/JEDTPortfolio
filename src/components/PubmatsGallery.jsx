@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { X, Eye, ArrowUpRight } from "lucide-react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import Pubmat1 from "../assets/pubmats/Adolescent Health Awareness 3x4.png";
 import Pubmat2 from "../assets/pubmats/APINO.png";
@@ -163,16 +165,19 @@ const skeletonAspects = [
   "aspect-[4/3]",
 ];
 
-const SkeletonCard = ({ aspect }) => (
-  <div className="break-inside-avoid overflow-hidden rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs">
-    <div
-      className={`relative w-full ${aspect} overflow-hidden bg-neutral-200/70 dark:bg-neutral-800/60`}
-    >
-      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-neutral-300/60 to-transparent dark:via-neutral-700/50" />
-      <div className="absolute inset-x-0 bottom-0 p-4">
-        <div className="h-2.5 w-24 rounded-full bg-neutral-300/80 dark:bg-neutral-700 animate-pulse" />
-        <div className="mt-2 h-3.5 w-32 rounded-full bg-neutral-300/80 dark:bg-neutral-700 animate-pulse" />
-      </div>
+const SkeletonCard = ({ aspect, className = "" }) => (
+  <div className={`overflow-hidden rounded-lg lg:rounded-[1.75rem] border border-neutral-200/50 dark:border-neutral-800/55 bg-white dark:bg-neutral-900/40 shadow-xs ${className}`}>
+    <div className={`relative w-full h-full ${aspect}`}>
+      <SkeletonTheme baseColor="var(--skeleton-base, #e5e5e5)" highlightColor="var(--skeleton-highlight, #f5f5f5)" borderRadius={0}>
+        <div className="dark:hidden w-full h-full">
+          <Skeleton height="100%" containerClassName="block h-full leading-none" className="h-full w-full" />
+        </div>
+      </SkeletonTheme>
+      <SkeletonTheme baseColor="var(--skeleton-base-dark, #262626)" highlightColor="var(--skeleton-highlight-dark, #404040)" borderRadius={0}>
+        <div className="hidden dark:block w-full h-full">
+          <Skeleton height="100%" containerClassName="block h-full leading-none" className="h-full w-full" />
+        </div>
+      </SkeletonTheme>
     </div>
   </div>
 );
@@ -182,8 +187,32 @@ export const PubmatsGallery = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isGalleryOpen, setisGalleryOpen] = useState(false);
   const [galleryLoaded, setGalleryLoaded] = useState(false);
+  const [featuredLoaded, setFeaturedLoaded] = useState(false);
   const loadedCount = useRef(0);
+  const featuredLoadedCount = useRef(0);
   const featured = pubmats[activeIndex];
+
+  // Preload featured images for the 5-column grid
+  useEffect(() => {
+    const featuredImgs = featuredIndexes.map((i) => pubmats[i].src);
+    const imgs = featuredImgs.map(() => new Image());
+
+    imgs.forEach((img, idx) => {
+      img.onload = () => {
+        featuredLoadedCount.current += 1;
+        if (featuredLoadedCount.current >= featuredImgs.length) {
+          setFeaturedLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        featuredLoadedCount.current += 1;
+        if (featuredLoadedCount.current >= featuredImgs.length) {
+          setFeaturedLoaded(true);
+        }
+      };
+      img.src = featuredImgs[idx];
+    });
+  }, []);
 
   useEffect(() => {
     if (!isGalleryOpen) {
@@ -286,41 +315,75 @@ export const PubmatsGallery = () => {
 
         {/* 5-Column Asymmetric Staggered Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
-          {/* Column 1 — Left Split Stack (3:4 top + 4:3 bottom) */}
-          <div className="flex flex-col justify-between gap-4 md:gap-5">
-            <Card pubmat={pubmats[1]} aspect="aspect-[3/4]" onSelect={handleCardSelect} />
-            <Card pubmat={pubmats[0]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
-          </div>
+          {!featuredLoaded ? (
+            <>
+              {/* Skeleton Column 1 */}
+              <div className="flex flex-col justify-between gap-4 md:gap-5">
+                <SkeletonCard aspect="aspect-[3/4]" />
+                <SkeletonCard aspect="aspect-[4/3]" />
+              </div>
+              {/* Skeleton Column 2 */}
+              <div className="flex flex-col justify-end gap-4 md:gap-5">
+                <SkeletonCard aspect="aspect-[1/2]" />
+              </div>
+              {/* Skeleton Column 3 */}
+              <div className="relative flex flex-col gap-4 md:gap-5 sm:col-span-2 lg:col-span-1">
+                <SkeletonCard aspect="aspect-[2/1]" />
+                <SkeletonCard aspect="aspect-[4/3]" />
+                <SkeletonCard aspect="aspect-[2/1]" />
+                <div className="relative z-20 mx-auto w-40 h-12 rounded-full overflow-hidden shadow-lg lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6">
+                  <Skeleton height="100%" containerClassName="block h-full" className="h-full w-full" baseColor="#333" highlightColor="#444" />
+                </div>
+              </div>
+              {/* Skeleton Column 4 */}
+              <div className="flex-col justify-end gap-4 md:gap-5 hidden lg:flex">
+                <SkeletonCard aspect="aspect-[1/2]" />
+              </div>
+              {/* Skeleton Column 5 */}
+              <div className="flex-col justify-between gap-4 md:gap-5 sm:col-span-2 lg:col-span-1 hidden lg:flex">
+                <SkeletonCard aspect="aspect-[3/4]" />
+                <SkeletonCard aspect="aspect-[4/3]" />
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Column 1 — Left Split Stack (3:4 top + 4:3 bottom) */}
+              <div className="flex flex-col justify-between gap-4 md:gap-5">
+                <Card pubmat={pubmats[1]} aspect="aspect-[3/4]" onSelect={handleCardSelect} />
+                <Card pubmat={pubmats[0]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
+              </div>
 
-          {/* Column 2 — Left Mid Full-Height (1:2), bottom baseline aligned */}
-          <div className="flex flex-col justify-end gap-4 md:gap-5">
-            <Card pubmat={pubmats[3]} aspect="aspect-[1/2]" onSelect={handleCardSelect} />
-          </div>
+              {/* Column 2 — Left Mid Full-Height (1:2), bottom baseline aligned */}
+              <div className="flex flex-col justify-end gap-4 md:gap-5">
+                <Card pubmat={pubmats[3]} aspect="aspect-[1/2]" onSelect={handleCardSelect} />
+              </div>
 
-          {/* Column 3 — Center Anchor Column (raised main card + floating CTA) */}
-          <div className="relative flex flex-col gap-4 md:gap-5 sm:col-span-2 lg:col-span-1">
-            <Card pubmat={pubmats[14]} aspect="aspect-[2/1]" onSelect={handleCardSelect} />
-            <Card pubmat={pubmats[11]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
-            <Card pubmat={pubmats[15]} aspect="aspect-[2/1]" onSelect={handleCardSelect} />
-            {/* Floating Pill CTA opening the full portfolio */}
-            <button
-              onClick={openGallery}
-              className="relative z-20 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#ffc01d] px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg shadow-[#ffc01d]/30 transition-all duration-300 hover:scale-105 cursor-pointer lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6"
-            >
-              View All Designs <ArrowUpRight className="h-4 w-4" />
-            </button>
-          </div>
+              {/* Column 3 — Center Anchor Column (raised main card + floating CTA) */}
+              <div className="relative flex flex-col gap-4 md:gap-5 sm:col-span-2 lg:col-span-1">
+                <Card pubmat={pubmats[14]} aspect="aspect-[2/1]" onSelect={handleCardSelect} />
+                <Card pubmat={pubmats[11]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
+                <Card pubmat={pubmats[15]} aspect="aspect-[2/1]" onSelect={handleCardSelect} />
+                {/* Floating Pill CTA opening the full portfolio */}
+                <button
+                  onClick={openGallery}
+                  className="relative z-20 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#ffc01d] px-6 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white shadow-lg shadow-[#ffc01d]/30 transition-all duration-300 hover:scale-105 cursor-pointer lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:-bottom-6"
+                >
+                  View All Designs <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
 
-          {/* Column 4 — Right Mid Full-Height (1:2), bottom baseline aligned */}
-          <div className="flex-col justify-end gap-4 md:gap-5 hidden lg:block ">
-            <Card pubmat={pubmats[10]} aspect="aspect-[1/2]" onSelect={handleCardSelect} />
-          </div>
+              {/* Column 4 — Right Mid Full-Height (1:2), bottom baseline aligned */}
+              <div className="flex-col justify-end gap-4 md:gap-5 hidden lg:flex">
+                <Card pubmat={pubmats[10]} aspect="aspect-[1/2]" onSelect={handleCardSelect} />
+              </div>
 
-          {/* Column 5 — Right Split Stack (3:4 top + 4:3 bottom) */}
-          <div className="flex-col justify-between gap-4 md:gap-5 sm:col-span-2 lg:col-span-1 hidden lg:block">
-            <Card pubmat={pubmats[19]} aspect="aspect-[3/4]" onSelect={handleCardSelect} />
-            <Card pubmat={pubmats[9]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
-          </div>
+              {/* Column 5 — Right Split Stack (3:4 top + 4:3 bottom) */}
+              <div className="flex-col justify-between gap-4 md:gap-5 sm:col-span-2 lg:col-span-1 hidden lg:flex">
+                <Card pubmat={pubmats[19]} aspect="aspect-[3/4]" onSelect={handleCardSelect} />
+                <Card pubmat={pubmats[9]} aspect="aspect-[4/3]" onSelect={handleCardSelect} />
+              </div>
+            </>
+          )}
         </div>
 
       </div>
