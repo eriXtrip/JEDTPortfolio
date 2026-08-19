@@ -109,7 +109,7 @@ export const ContactSection = () => {
                     Currently open to full-time roles, internships, and freelance technical projects. Feel free to reach out via email or phone.
                   </p>
                 </div>
-                <span className="hidden md:inline-flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200/50 dark:border-indigo-800/30 px-4 py-2 rounded-xl text-xs font-bold text-indigo-600 dark:text-indigo-400 whitespace-nowrap shadow-xs">
+                <span className="hidden md:inline-flex items-center gap-2 bg-[#ffc01d]/10 border border-[#ffc01d]/50 dark:border-[#ffc01d]/30 px-4 py-2 rounded-xl text-xs font-bold text-[#ffc01d] whitespace-nowrap shadow-xs">
                   Open to Work
                 </span>
               </div>
@@ -118,9 +118,9 @@ export const ContactSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <a
                   href="tel:+639054205568"
-                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20"
+                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20"
                 >
-                  <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+                  <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[#ffc01d] dark:text-[#ffc01d] group-hover:scale-110 transition-transform duration-300">
                     <Phone className="h-4 w-4" />
                   </span>
                   <span className="flex flex-col gap-0.5 min-w-0">
@@ -135,9 +135,9 @@ export const ContactSection = () => {
 
                 <button
                   onClick={handleCopyEmail}
-                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20 text-left cursor-pointer"
+                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20 text-left cursor-pointer"
                 >
-                  <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+                  <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[#ffc01d] dark:text-[#ffc01d] group-hover:scale-110 transition-transform duration-300">
                     <Mail className="h-4 w-4" />
                   </span>
                   <span className="flex flex-col gap-0.5 min-w-0">
@@ -154,9 +154,9 @@ export const ContactSection = () => {
                   href="https://maps.google.com/?q=Legazpi+City,+Albay"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20"
+                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20"
                 >
-                  <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+                  <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[#ffc01d] dark:text-[#ffc01d] group-hover:scale-110 transition-transform duration-300">
                     <MapPin className="h-4 w-4" />
                   </span>
                   <span className="flex flex-col gap-0.5 min-w-0">
@@ -181,7 +181,7 @@ export const ContactSection = () => {
                     </p>
                     <h3 className="text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-neutral-900 dark:text-white leading-[1.05]">
                       Jon Eric{" "}
-                      <span className="text-indigo-600 dark:text-indigo-400">
+                      <span className="text-[#ffc01d]">
                         Tripulca
                       </span>
                     </h3>
@@ -209,7 +209,7 @@ export const ContactSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="p-2.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:scale-115 transition-all duration-300 shadow-xs"
+                      className="p-2.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/40 dark:border-neutral-800/40 text-neutral-400 dark:text-neutral-500 hover:text-[#ffc01d] dark:hover:text-[#ffc01d] hover:border-[#ffc01d]/30 hover:scale-115 transition-all duration-300 shadow-xs"
                     >
                       <Icon className="h-4 w-4" />
                     </a>
@@ -223,12 +223,12 @@ export const ContactSection = () => {
         {/* Calling Card — View & Download */}
         <div className="container max-w-5xl mx-auto relative z-10 mt-16 md:mt-20">
           <div className="text-center space-y-3 mb-8">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-[#ffc01d] dark:text-[#ffc01d] uppercase">
               Digital Calling Card
             </span>
             <h3 className="text-2xl md:text-4xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Grab My{" "}
-              <span className="italic text-indigo-600 dark:text-indigo-400">
+              <span className="italic text-[#ffc01d] dark:text-[#ffc01d]">
                 Card
               </span>
             </h3>

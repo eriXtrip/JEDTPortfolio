@@ -182,7 +182,7 @@ const projects = [
     documentation:
       "Programmed on a normalized MySQL database structure. Implemented advanced Role-Based Access Control (RBAC), customized data filters, secure SMTP mail relays, and comprehensive backend API documentation.",
     conclusion:
-      "Transitioned the department to a paperless environment, reducing specimen processing turnaround times by 75% while laying a solid foundation for future biotech research.",
+      "Transitioned the department to a paperless environment, reducing specimen processing turnaround times while laying a solid foundation for future biotech research.",
   },
   {
     id: "mquest-elearning",
@@ -193,7 +193,7 @@ const projects = [
     featured: true,
     image: MQuestImg,
     overview:
-      "Traditional distance learning suffered from low engagement and no gamified milestones, driving high drop-out rates. MQuest is a mobile-first e-learning app with bite-sized interactive learning cards, gamified challenges, and real-time scoreboards that lifted course engagement by 38%.",
+      "Traditional distance learning suffered from low engagement and no gamified milestones, driving high drop-out rates. MQuest is a mobile-first e-learning app with bite-sized interactive learning cards, gamified challenges, and real-time scoreboards that lifted course engagement.",
     architecture: [
       "React Native cross-platform mobile client",
       "RESTful Node.js backend with custom React context state management",
@@ -285,7 +285,7 @@ const projects = [
     documentation:
       "Leveraged React Native for cross-platform app performance, combined with Tailwind CSS for layout styling. State management uses custom React contexts with a RESTful Node.js backend.",
     conclusion:
-      "Enhanced student course engagement rates by 38% and significantly improved micro-learning task completion metrics over traditional learning formats.",
+      "Enhanced student course engagement rates and significantly improved micro-learning task completion metrics over traditional learning formats.",
   },
   {
     id: "rental-management-system",
@@ -360,7 +360,7 @@ const projects = [
     featured: false,
     image: EcoLocalImg,
     overview:
-      "Local merchants had no direct digital channel to retail customers and relied on third-party intermediaries that ate into profit. EcoLocal gives them storefronts to list inventory and receive payments directly, digitizing 50+ vendor stores and raising net margins by ~22%.",
+      "Local merchants had no direct digital channel to retail customers and relied on third-party intermediaries that ate into profit. EcoLocal gives them storefronts to list inventory and receive payments directly, digitizing 50+ vendor stores and raising net margins.",
     architecture: [
       "React front-end with an Express-based Node.js API",
       "MongoDB data layer with secure JWT authentication",
@@ -380,7 +380,7 @@ const projects = [
     documentation:
       "Built using React for the front end and an Express-based Node.js back end. The data architecture is managed via MongoDB, featuring secure JWT authentication and Stripe integration for payments.",
     conclusion:
-      "Digitized over 50 local vendor storefronts, directly increasing their monthly net profit margins by an average of 22% while providing organic local goods to buyers.",
+      "Digitized over 50 local vendor storefronts, directly increasing their monthly net profit margins while providing organic local goods to buyers.",
   },
   {
     id: "network-design",

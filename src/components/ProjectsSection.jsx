@@ -26,10 +26,10 @@ const featuredProjects = projects.filter((project) => project.featured);
 const archiveProjects = projects.filter((project) => !project.featured);
 
 const badgeClass =
-  "inline-flex items-center gap-1.5 font-mono text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400";
+  "inline-flex items-center gap-1.5 font-mono text-[11px] font-extrabold uppercase tracking-wider text-[#ffc01d]";
 
 const SectionLabel = ({ icon: Icon, children }) => (
-  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+  <h4 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-[#ffc01d]">
     <Icon className="h-3.5 w-3.5" />
     {children}
   </h4>
@@ -222,7 +222,7 @@ export const ProjectsSection = () => {
       {project.demoModal ? (
         <button
           onClick={() => setDemoProject(project)}
-          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 cursor-pointer"
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#ffc01d] dark:text-[#ffc01d]-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 cursor-pointer"
         >
           Live Demo
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -232,7 +232,7 @@ export const ProjectsSection = () => {
           href={project.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300"
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#ffc01d] dark:text-[#ffc01d]-400 hover:text-neutral-900 dark:hover:text-white transition-all duration-300"
         >
           Live Demo
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -240,7 +240,7 @@ export const ProjectsSection = () => {
       ) : null}
       <button
         onClick={() => openDrawer(project)}
-        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 cursor-pointer"
+        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-[#ffc01d] dark:hover:text-[#ffc01d]-400 transition-all duration-300 cursor-pointer"
       >
         Full Details
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -259,7 +259,7 @@ export const ProjectsSection = () => {
           <div className="space-y-4 max-w-2xl text-left">
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               Works &amp;{" "}
-              <span className="text-transparent bg-clip-text bg-violet-400 underline">
+              <span className="text-transparent bg-clip-text bg-[#ffc01d] underline">
                 Archive
               </span>
             </h2>
@@ -325,7 +325,7 @@ export const ProjectsSection = () => {
                                 key={item}
                                 className="flex gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
                               >
-                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#ffc01d] flex-shrink-0" />
                                 {item}
                               </li>
                             ))}
@@ -338,7 +338,7 @@ export const ProjectsSection = () => {
                             {project.tech.map((tech) => (
                               <span
                                 key={tech}
-                                className="font-mono text-[10px] font-semibold text-indigo-700 dark:text-indigo-300 flex items-center gap-1"
+                                className="font-mono text-[10px] font-semibold text-[#ffc01d] flex items-center gap-1"
                               >
                                 <span className="text-zinc-400 dark:text-zinc-600 font-normal">/</span>
                                 {tech}
@@ -361,8 +361,8 @@ export const ProjectsSection = () => {
 
         {/* PHASE 3: Secondary Archive Grid */}
         <div className="mt-20 mb-8 flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-          <h3 className="text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+          <span className="w-2 h-2 rounded-full bg-[#ffc01d] animate-pulse" />
+          <h3 className="text-xs font-bold tracking-widest text-[#ffc01d] dark:text-[#ffc01d]-400 uppercase">
             Secondary Works
           </h3>
           <div className="h-px flex-1 bg-neutral-200/80 dark:bg-neutral-800/80" />
@@ -372,7 +372,7 @@ export const ProjectsSection = () => {
           {archiveProjects.slice(0, 3).map((project) => (
             <article
               key={project.id}
-              className="group flex flex-col rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-indigo-500/30"
+              className="group flex flex-col rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#ffc01d]/30 dark:hover:border-[#ffc01d]/30"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img
@@ -385,7 +385,7 @@ export const ProjectsSection = () => {
                 </span>
               </div>
               <div className="p-5 flex flex-col flex-1 text-left space-y-2 bg-white dark:bg-neutral-900/40">
-                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] dark:group-hover:text-[#ffc01d]-400 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-2">
@@ -393,7 +393,7 @@ export const ProjectsSection = () => {
                 </p>
                 <button
                   onClick={() => openDrawer(project)}
-                  className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 transition-colors cursor-pointer self-start"
+                  className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#ffc01d] dark:text-[#ffc01d]-400 transition-colors cursor-pointer self-start"
                 >
                   View Project
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -492,7 +492,7 @@ export const ProjectsSection = () => {
                               key={idx}
                               onClick={() => selectVideo(idx)}
                               className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
-                                ? "bg-white text-indigo-600 shadow-xs dark:bg-neutral-700 dark:text-indigo-400"
+                                ? "bg-white text-[#ffc01d] shadow-xs dark:bg-neutral-700 dark:text-[#ffc01d]-400"
                                 : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
                                 }`}
                             >
@@ -555,7 +555,7 @@ export const ProjectsSection = () => {
                           key={idx}
                           onClick={() => setActiveImgIndex(idx)}
                           className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
-                            ? "border-indigo-500 scale-105 shadow-xs dark:border-indigo-400"
+                            ? "border-[#ffc01d] scale-105 shadow-xs dark:border-[#ffc01d]-400"
                             : "border-transparent opacity-50 hover:opacity-100"
                             }`}
                         >

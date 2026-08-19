@@ -304,8 +304,8 @@ export const CertificatesSection = () => {
               className={cn(
                 "inline-flex items-center justify-between gap-6 min-w-[200px] w-full lg:w-auto px-5 py-3.5 rounded-2xl text-left transition-all duration-300 cursor-pointer shadow-sm border",
                 filterOpen
-                  ? "bg-white dark:bg-neutral-900 border-indigo-500/40 shadow-indigo-500/10 shadow-lg"
-                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-indigo-500/40",
+                  ? "bg-white dark:bg-neutral-900 border-[#ffc01d]/40 shadow-[#ffc01d]/10 shadow-lg"
+                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-[#ffc01d]/40",
               )}
             >
               <span className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-200">
@@ -313,8 +313,8 @@ export const CertificatesSection = () => {
                   className={cn(
                     "h-4 w-4 shrink-0 transition-colors",
                     filterOpen
-                      ? "text-indigo-500"
-                      : "text-indigo-600 dark:text-indigo-400",
+                      ? "text-[#ffc01d]"
+                      : "text-[#ffc01d]",
                   )}
                 />
                 {activeCategoryLabel}
@@ -322,7 +322,7 @@ export const CertificatesSection = () => {
               <ChevronDown
                 className={cn(
                   "h-4 w-4 text-neutral-400 transition-transform duration-300",
-                  filterOpen && "rotate-180 text-indigo-500",
+                  filterOpen && "rotate-180 text-[#ffc01d]",
                 )}
               />
             </button>
@@ -338,7 +338,7 @@ export const CertificatesSection = () => {
                       className={cn(
                         "w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer",
                         isActive
-                          ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400"
+                          ? "bg-[#ffc01d]/10 text-[#ffc01d] dark:text-[#ffc01d]"
                           : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/60 hover:text-neutral-900 dark:hover:text-white",
                       )}
                     >
@@ -349,7 +349,7 @@ export const CertificatesSection = () => {
                         className={cn(
                           "text-[10px] font-extrabold px-2 py-0.5 rounded-full",
                           isActive
-                            ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
+                            ? "bg-[#ffc01d]/10 text-[#ffc01d]-600 dark:text-[#ffc01d]-400 border border-[#ffc01d]/20"
                             : "bg-neutral-100 dark:bg-neutral-800 text-neutral-400",
                         )}
                       >
@@ -369,7 +369,7 @@ export const CertificatesSection = () => {
             <div
               key={cert.id}
               onClick={() => openCert(index)}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/55 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:shadow-lg cursor-pointer"
+              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/55 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ffc01d]/40 dark:hover:border-[#ffc01d]/40 hover:shadow-lg cursor-pointer"
             >
               <img
                 src={cert.img}
@@ -386,7 +386,7 @@ export const CertificatesSection = () => {
               {/* Hover Frosted Overlay + Verification */}
               <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[1.5px] flex items-center justify-center">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-neutral-900 shadow-lg transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                  <ShieldCheck className="h-3.5 w-3.5 text-indigo-500" />
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#ffc01d]" />
                   View Certificate
                 </span>
               </div>

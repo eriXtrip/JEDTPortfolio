@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-4 md:px-10 items-center max-md:border-b max-md:dark:border-indigo-700 max-md:border-gray-700 "
+      className="relative min-h-screen flex flex-col justify-center pt-27 sm:pb-0 md:pb-25 px-4 md:px-10 items-center max-md:border-b max-md:dark:border-[#06070a] max-md:border-gray-700 "
     >
 
       <AnimatedGridPattern
@@ -28,10 +28,10 @@ export function HeroSection() {
       {/* Top Banner Typography */}
       <div className="w-full max-w-6xl flex justify-between items-end mb-[-56px] z-20 px-4">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase leading-none">
-          Full-Stack <span className="font-black italic text-indigo-600 dark:text-indigo-400">Dev</span>
+          Full-Stack <span className="font-black italic text-[#ffc01d]">Dev</span>
         </h1>
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white uppercase text-right leading-none">
-          IT <span className="font-black italic text-indigo-600 dark:text-indigo-400">Specialist</span>
+          IT <span className="font-black italic text-[#ffc01d]">Specialist</span>
         </h1>
       </div>
 
@@ -39,26 +39,21 @@ export function HeroSection() {
       <div className="relative w-full max-w-6xl mt-15 md:mt-20">
 
         {/* Main Container Card */}
-        <div className="relative w-full bg-white/40 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl min-h-[520px] sm:min-h-[600px] md:min-h-[220px] flex flex-col justify-between">
-
-          {/* Decorative Abstract Background Strokes */}
-          <div className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden rounded-[2.5rem]">
-            <div className="w-[800px] h-[300px] bg-white dark:bg-indigo-950 rounded-full blur-2xl transform -rotate-12"></div>
-          </div>
+        <div className="relative w-full bg-white dark:bg-[#06070a] border border-neutral-200/80 dark:border-neutral-800 rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl min-h-[520px] sm:min-h-[600px] md:min-h-[220px] flex flex-col justify-between">
 
           {/* Hero Section Content Grid */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 h-full items-center">
 
             {/* Left Column: Headline & Action */}
             <div className="lg:col-span-4 flex flex-col justify-center space-y-6">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase opacity-90 text-zinc-500 dark:text-white px-3 py-1.5 w-fit">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#ffc01d] px-3 py-1.5 w-fit">
                 Portfolio — 2025
               </span>
 
               <h2 className="text-4xl md:text-6xl font-extrabold text-zinc-900 dark:text-white uppercase tracking-tight leading-[0.95] mb-5">
                 Jon Eric<br />
                 <span className="relative inline-block">
-                  <span className="text-indigo-600 dark:text-indigo-400 italic font-black">Tripulca</span>
+                  <span className="text-[#ffc01d] italic font-black">Tripulca</span>
                 </span>
               </h2>
 
@@ -92,9 +87,9 @@ export function HeroSection() {
                   glareSize={300}
                   transitionDuration={1550}
                   playOnce={false}
-                  className="text-zinc-800 dark:text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-zinc-200/80 dark:border-white/20 overflow-hidden bg-white/60 dark:bg-white/5 backdrop-blur-md"
+                  className="text-zinc-800 dark:text-zinc-300 rounded-3xl shadow-xl w-full md:w-80 flex flex-col border border-zinc-200/80 dark:border-neutral-800 overflow-hidden bg-white dark:bg-[#06070a] backdrop-blur-md"
                 >
-                  <div className="px-4 py-2.5 flex items-center justify-between border-b border-zinc-200/80 dark:border-white/20">
+                  <div className="px-4 py-2.5 flex items-center justify-between border-b border-zinc-200/80 dark:border-neutral-800">
                     <span className="text-zinc-500 dark:text-white/50 text-[11px] font-medium">Featured Project</span>
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -114,9 +109,9 @@ export function HeroSection() {
 
                     {/* Code Accent Tags */}
                     <div className="flex flex-wrap gap-3 font-mono text-[10px] tracking-tight">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> React</span>
-                      <span className="text-indigo-600 dark:text-indigo-400 font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> Laravel</span>
-                      <span className="text-indigo-600 dark:text-indigo-400 font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> MySQL</span>
+                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> React</span>
+                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> Laravel</span>
+                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> MySQL</span>
                     </div>
 
                     <p className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">

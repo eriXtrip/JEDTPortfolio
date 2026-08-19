@@ -74,16 +74,15 @@ export const SplashScreen = ({ onFinish }) => {
         }`}
     >
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#ffc01d]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Center Container */}
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center p-6 text-center">
 
         {/* Header Branding */}
-        <div className="space-y-3 max-w-lg mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[11px] font-extrabold uppercase tracking-widest text-indigo-400">
-            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
-            System Initialization
+        <div className="space-y-1 max-w-lg mb-8">
+          <div className="inline-flex items-center gap-2 px-1 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-[#ffc01d]">
+            Initializing...
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white leading-none">
@@ -96,12 +95,12 @@ export const SplashScreen = ({ onFinish }) => {
           {/* Card Top Indicator */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <div className="flex items-center gap-2.5">
-              <Download className="h-4 w-4 text-indigo-400 animate-bounce" />
+              <Download className="h-4 w-4 text-[#ffc01d] animate-bounce" />
               <span className="text-xs font-extrabold uppercase tracking-wider text-neutral-200">
                 Fetching Project Assets
               </span>
             </div>
-            <span className="text-xs font-mono text-indigo-400 font-bold">
+            <span className="text-xs font-mono text-[#ffc01d] font-bold">
               {Math.round(downloadProgress)}%
             </span>
           </div>
@@ -128,7 +127,7 @@ export const SplashScreen = ({ onFinish }) => {
                 </span>
               </div>
               <div className="flex items-center gap-1.5 text-[10px] text-neutral-400">
-                <ActiveIcon className="h-3 w-3 text-indigo-400" />
+                <ActiveIcon className="h-3 w-3 text-[#ffc01d]" />
                 <span className="truncate">{activeFile.type}</span>
               </div>
             </div>
@@ -138,14 +137,14 @@ export const SplashScreen = ({ onFinish }) => {
           <div className="space-y-2">
             <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
               <div
-                className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-150 ease-out"
+                className="h-full bg-[#ffc01d] rounded-full transition-all duration-150 ease-out"
                 style={{ width: `${downloadProgress}%` }}
               />
             </div>
 
             <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500">
               <span>status: downloading assets...</span>
-              <span className="text-indigo-400">[{currentIndex + 1}/6]</span>
+              <span className="text-[#ffc01d]">[{currentIndex + 1}/6]</span>
             </div>
           </div>
         </div>

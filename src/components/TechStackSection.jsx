@@ -96,7 +96,7 @@ export const TechStackSection = () => {
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
             Stack &{" "}
-            <span className="text-indigo-600 dark:text-indigo-400 italic">
+            <span className="text-[#ffc01d] italic">
               Skills
             </span>
           </h2>
@@ -113,14 +113,14 @@ export const TechStackSection = () => {
               className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl overflow-hidden hover:translate-y-[-6px] hover:shadow-lg transition-all duration-300 group text-left"
             >
               <div className="p-6 md:p-8 space-y-5">
-                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] transition-colors">
                   {cat.title}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-3 py-1.5 bg-neutral-100/80 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-md text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all duration-200 cursor-default"
+                      className="px-3 py-1.5 bg-neutral-100/80 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-md text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-[#ffc01d]/10 hover:text-[#ffc01d] hover:border-[#ffc01d]/40 transition-all duration-200 cursor-default"
                     >
                       {skill}
                     </span>

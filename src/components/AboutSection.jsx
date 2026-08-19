@@ -183,7 +183,7 @@ export const AboutSection = () => {
           <div className="space-y-4 max-w-2xl text-left">
             <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight uppercase">
               How I {" "}
-              <span className="font-black text-indigo-600 dark:text-indigo-400 italic">
+              <span className="font-black text-[#ffc01d] italic">
                 Solve Problems
               </span>
             </h2>
@@ -199,8 +199,8 @@ export const AboutSection = () => {
               className={cn(
                 "inline-flex items-center justify-between gap-6 min-w-[200px] w-full lg:w-auto px-5 py-3.5 rounded-2xl text-left transition-all duration-300 cursor-pointer shadow-sm border",
                 workflowOpen
-                  ? "bg-white dark:bg-neutral-900 border-indigo-500/40 shadow-indigo-500/10 shadow-lg"
-                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-indigo-500/40",
+                  ? "bg-white dark:bg-neutral-900 border-[#ffc01d]/40 shadow-[#ffc01d]/10 shadow-lg"
+                  : "bg-white dark:bg-neutral-900/70 border-neutral-200/80 dark:border-neutral-800 hover:border-[#ffc01d]/40",
               )}
             >
               <span className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-neutral-800 dark:text-neutral-200">
@@ -208,8 +208,8 @@ export const AboutSection = () => {
                   className={cn(
                     "h-4 w-4 shrink-0 transition-colors",
                     workflowOpen
-                      ? "text-indigo-500"
-                      : "text-indigo-600 dark:text-indigo-400",
+                      ? "text-[#ffc01d]"
+                      : "text-[#ffc01d]",
                   )}
                 />
                 {tabs.find((tab) => tab.id === activeTab)?.label}
@@ -217,7 +217,7 @@ export const AboutSection = () => {
               <ChevronDown
                 className={cn(
                   "h-4 w-4 text-neutral-400 transition-transform duration-300",
-                  workflowOpen && "rotate-180 text-indigo-500",
+                  workflowOpen && "rotate-180 text-[#ffc01d]",
                 )}
               />
             </button>
@@ -234,7 +234,7 @@ export const AboutSection = () => {
                       className={cn(
                         "w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer",
                         isActive
-                          ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400"
+                          ? "bg-indigo-50 dark:bg-indigo-950/40 text-[#ffc01d]"
                           : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100/80 dark:hover:bg-neutral-800/60 hover:text-neutral-900 dark:hover:text-white",
                       )}
                     >
@@ -243,8 +243,8 @@ export const AboutSection = () => {
                           className={cn(
                             "h-4 w-4 shrink-0 transition-colors",
                             isActive
-                              ? "text-indigo-600 dark:text-indigo-400"
-                              : "text-neutral-400 group-hover:text-indigo-500",
+                              ? "text-[#ffc01d]"
+                              : "text-neutral-400 group-hover:text-[#ffc01d]",
                           )}
                         />
                         {tab.label}
@@ -265,7 +265,7 @@ export const AboutSection = () => {
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-32 text-left">
             <div className="relative rounded-3xl p-6 md:p-8 bg-white/90 dark:bg-neutral-950/40 overflow-hidden">
 
-              <span className="relative inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+              <span className="relative inline-flex items-center gap-2 text-xs font-bold tracking-widest text-[#ffc01d] uppercase">
                 Personal Background
               </span>
 
@@ -290,7 +290,7 @@ export const AboutSection = () => {
               </div>
 
               <div className="relative mt-6 pt-6 border-t border-neutral-200/60 dark:border-neutral-800/60 space-y-3">
-                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-[#ffc01d] uppercase">
                   <GraduationCap className="h-4 w-4" />
                   Education
                 </span>
@@ -324,7 +324,7 @@ export const AboutSection = () => {
             <div className="relative lg:pl-0 space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-10 lg:gap-y-14">
               {/* Desktop S-Curve Flow Connector Line */}
               <svg
-                className="block absolute inset-0 w-full h-full pointer-events-none stroke-indigo-500/60 dark:stroke-indigo-400/50 fill-none z-0 overflow-visible"
+                className="block absolute inset-0 w-full h-full pointer-events-none stroke-[#ffc01d]/60 dark:stroke-[#ffc01d]/50 fill-none z-0 overflow-visible"
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
                 style={{ strokeDasharray: "3 3" }}
@@ -344,15 +344,15 @@ export const AboutSection = () => {
                 >
 
                   {/* Compact Card Body */}
-                  <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-xl p-4.5 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30 dark:hover:border-indigo-500/30 shadow-xs space-y-1.5 h-full z-0 relative">
+                  <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-xl p-4.5 transition-all duration-300 hover:-translate-y-1 hover:border-[#ffc01d]/30 dark:hover:border-[#ffc01d]/30 shadow-xs space-y-1.5 h-full z-0 relative">
                     {/* Left Bar Accent */}
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+                      <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#ffc01d]">
                         {step.number}
                       </span>
                     </div>
 
-                    <h3 className="text-base md:text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-base md:text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] dark:group-hover:text-[#ffc01d] transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-xs md:text-sm">
