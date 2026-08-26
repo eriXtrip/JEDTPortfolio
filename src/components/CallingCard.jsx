@@ -10,6 +10,7 @@ import {
 import TiltedCard from "./TiltedCard";
 import PropTypes from "prop-types";
 import qrcode from "../assets/qrcode_jedt-portfolio.vercel.app.png";
+import { socials } from "./ContactSection";
 
 const contacts = [
   {
@@ -30,13 +31,6 @@ const contacts = [
     href: "https://maps.google.com/?q=Legazpi+City,+Albay",
     Icon: MapPin,
   },
-];
-
-const socials = [
-  { label: "Facebook", href: "https://www.facebook.com/ccerilac", Icon: Facebook },
-  { label: "Instagram", href: "https://www.instagram.com/ccerilac/", Icon: Instagram },
-  { label: "GitHub", href: "https://github.com/eriXtrip", Icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/jon-eric-tripulca-2b87ab417", Icon: Linkedin },
 ];
 
 export const CallingCardFace = ({ forceLandscape = false }) => {

@@ -15,9 +15,9 @@ import html2canvas from "html2canvas-pro";
 import { CallingCardFace } from "./CallingCard";
 import { useToast } from "@/hooks/use-toast";
 
-const socials = [
-  { label: "Facebook", href: "https://www.facebook.com/ccerilac", Icon: Facebook },
-  { label: "Instagram", href: "https://www.instagram.com/ccerilac/", Icon: Instagram },
+export const socials = [
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100093856429551", Icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/by.jet_/", Icon: Instagram },
   { label: "GitHub", href: "https://github.com/eriXtrip", Icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/jon-eric-tripulca-2b87ab417", Icon: Linkedin },
 ];

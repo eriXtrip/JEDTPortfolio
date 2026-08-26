@@ -7,6 +7,7 @@ import { SkillsSection } from "../components/ServiceSection";
 import { TechStackSection } from "../components/TechStackSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { ProjectsSection } from "../components/ProjectsSection";
+import { GitHubSection } from "../components/GitHubSection";
 import { PubmatsGallery } from "../components/PubmatsGallery";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
@@ -61,6 +62,7 @@ export const Home = () => {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
+        <GitHubSection />
         <ExperienceSection />
         <CertificatesSection />
         <PubmatsGallery />
