@@ -140,9 +140,9 @@ export const GitHubSection = () => {
         {/* Contribution Graph Card */}
         <div className="max-w-5xl mx-auto bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl p-6 md:p-10 space-y-6">
           {/* Card Header */}
-          <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
+              <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 shrink-0">
                 <Github className="h-5 w-5" />
               </span>
               <div>
@@ -153,17 +153,17 @@ export const GitHubSection = () => {
                   </>
                 ) : error ? (
                   <>
-                    <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white">
+                    <h3 className="text-base sm:text-lg font-extrabold text-neutral-900 dark:text-white">
                       Unable to load data
                     </h3>
                     <p className="text-xs text-red-500">{error}</p>
                   </>
                 ) : (
                   <>
-                    <h3 className="text-lg font-extrabold text-neutral-900 dark:text-white">
+                    <h3 className="text-base sm:text-lg font-extrabold text-neutral-900 dark:text-white">
                       {filteredTotal.toLocaleString()} contributions
                     </h3>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                    <p className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400">
                       {dateRangeText}
                     </p>
                   </>
@@ -172,14 +172,14 @@ export const GitHubSection = () => {
             </div>
 
             {/* Year Tabs + Profile Link */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               {!loading && availableYears.length > 1 && (
-                <div className="flex items-center gap-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl p-1">
+                <div className="flex items-center gap-0.5 sm:gap-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl p-1">
                   {availableYears.map((year) => (
                     <button
                       key={year}
                       onClick={() => setSelectedYear(year)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer ${
+                      className={`px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all duration-200 cursor-pointer ${
                         selectedYear === year
                           ? "bg-[#ffc01d] text-neutral-900 shadow-sm"
                           : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200"
@@ -194,7 +194,7 @@ export const GitHubSection = () => {
                 href={GITHUB_PROFILE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/60 dark:border-neutral-700/60 text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:border-[#ffc01d]/50 hover:text-[#ffc01d] transition-all duration-300"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200/60 dark:border-neutral-700/60 text-[11px] sm:text-xs font-bold text-neutral-700 dark:text-neutral-300 hover:border-[#ffc01d]/50 hover:text-[#ffc01d] transition-all duration-300 shrink-0"
               >
                 @{GITHUB_USERNAME}
                 <ExternalLink className="h-3 w-3" />
@@ -203,125 +203,124 @@ export const GitHubSection = () => {
           </div>
 
           {/* Heatmap Grid */}
-          <div className="pb-2">
+          <div className="pb-2 overflow-hidden">
             {loading ? (
-              /* Skeleton grid */
-              <div className="flex gap-0 mt-5">
-                <div className="flex flex-col gap-[3px] mr-2 shrink-0">
-                  {Array.from({ length: 7 }).map((_, i) => (
-                    <SkeletonPulse
-                      key={i}
-                      className="w-[11px] h-[11px] rounded-[2px]"
-                    />
-                  ))}
-                </div>
-                <div className="flex gap-[3px]">
-                  {Array.from({ length: 40 }).map((_, w) => (
-                    <div key={w} className="flex flex-col gap-[3px]">
-                      {Array.from({ length: 7 }).map((_, d) => (
-                        <SkeletonPulse
-                          key={d}
-                          className="w-[11px] h-[11px] rounded-[2px]"
-                        />
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div>
-                {/* Month labels */}
-                <div className="relative h-4 mb-2 ml-8">
-                  {monthLabels.map((m, i) => (
-                    <span
-                      key={i}
-                      className="absolute text-[10px] font-semibold text-neutral-400 dark:text-neutral-500"
-                      style={{
-                        left: `${
-                          (m.index / Math.max(filteredWeeks.length, 1)) * 100
-                        }%`,
-                      }}
-                    >
-                      {m.label}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-0 mt-5">
-                  {/* Day labels */}
-                  <div className="flex flex-col gap-[3px] mr-2 text-[9px] font-semibold text-neutral-400 dark:text-neutral-500 shrink-0">
-                    {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
-                      <span key={i} className="h-[11px] leading-[11px]">
-                        {d}
-                      </span>
+              <div className="overflow-x-auto -mx-2 px-2">
+                <div className="flex gap-0 mt-5 min-w-max">
+                  <div className="flex flex-col gap-[3px] mr-2 shrink-0">
+                    {Array.from({ length: 7 }).map((_, i) => (
+                      <SkeletonPulse key={i} className="w-[11px] h-[11px] rounded-[2px]" />
                     ))}
                   </div>
-
-                  {/* Contribution squares */}
-                  <div className="flex gap-[3px] flex-1">
-                    {filteredWeeks.map((week, wIdx) => (
-                      <div key={wIdx} className="flex flex-col gap-[3px]">
-                        {week.map((day, dIdx) => {
-                          const level = getLevel(day.count);
-                          const key = `${wIdx}-${dIdx}`;
-
-                          return (
-                            <div
-                              key={key}
-                              className="relative group"
-                              onMouseEnter={() => setHovered(key)}
-                              onMouseLeave={() => setHovered(null)}
-                            >
-                              <div
-                                className={`w-[11px] h-[11px] rounded-[2px] transition-all duration-150 ${
-                                  level === 0
-                                    ? "bg-neutral-200/80 dark:bg-neutral-800/80 hover:ring-1 hover:ring-neutral-400/40 dark:hover:ring-neutral-600/40"
-                                    : LEVELS[level]
-                                } ${
-                                  hovered === key
-                                    ? "ring-2 ring-neutral-400 dark:ring-neutral-500 scale-150 z-10"
-                                    : ""
-                                }`}
-                              />
-                              {hovered === key && (
-                                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-[10px] font-bold rounded-lg whitespace-nowrap shadow-lg z-20 pointer-events-none">
-                                  <span className="block">
-                                    {day.count === 0
-                                      ? "No contributions"
-                                      : `${day.count} contribution${
-                                          day.count !== 1 ? "s" : ""
-                                        }`}
-                                  </span>
-                                  <span className="block text-neutral-400 dark:text-neutral-500 font-normal">
-                                    {formatDate(day.date)}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
+                  <div className="flex gap-[3px]">
+                    {Array.from({ length: 40 }).map((_, w) => (
+                      <div key={w} className="flex flex-col gap-[3px]">
+                        {Array.from({ length: 7 }).map((_, d) => (
+                          <SkeletonPulse key={d} className="w-[11px] h-[11px] rounded-[2px]" />
+                        ))}
                       </div>
                     ))}
                   </div>
                 </div>
+              </div>
+            ) : (
+              <div className="overflow-x-auto -mx-2 px-2">
+                <div className="min-w-max">
+                  {/* Month labels */}
+                  <div className="relative h-4 mb-2 ml-8">
+                    {monthLabels.map((m, i) => (
+                      <span
+                        key={i}
+                        className="absolute text-[10px] font-semibold text-neutral-400 dark:text-neutral-500"
+                        style={{
+                          left: `${(m.index / Math.max(filteredWeeks.length, 1)) * 100}%`,
+                        }}
+                      >
+                        {m.label}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Legend */}
-                <div className="flex items-center justify-end gap-1.5 mt-4 text-[10px] font-semibold text-neutral-400 dark:text-neutral-500">
-                  <span>Less</span>
-                  {LEVELS.map((cls, i) => (
-                    <div
-                      key={i}
-                      className={`w-[11px] h-[11px] rounded-[2px] ${cls}`}
-                    />
-                  ))}
-                  <span>More</span>
+                  <div className="flex gap-0 mt-5">
+                    {/* Day labels */}
+                    <div className="flex flex-col gap-[3px] mr-2 text-[9px] font-semibold text-neutral-400 dark:text-neutral-500 shrink-0">
+                      {["", "Mon", "", "Wed", "", "Fri", ""].map((d, i) => (
+                        <span key={i} className="h-[11px] leading-[11px]">{d}</span>
+                      ))}
+                    </div>
+
+                    {/* Contribution squares */}
+                    <div className="flex gap-[3px]">
+                      {filteredWeeks.map((week, wIdx) => (
+                        <div key={wIdx} className="flex flex-col gap-[3px]">
+                          {week.map((day, dIdx) => {
+                            const level = getLevel(day.count);
+                            const key = `${wIdx}-${dIdx}`;
+                            return (
+                              <div
+                                key={key}
+                                className="relative group"
+                                onMouseEnter={() => setHovered(key)}
+                                onMouseLeave={() => setHovered(null)}
+                              >
+                                <div
+                                  className={`w-[11px] h-[11px] rounded-[2px] transition-all duration-150 ${
+                                    level === 0
+                                      ? "bg-neutral-200/80 dark:bg-neutral-800/80 hover:ring-1 hover:ring-neutral-400/40 dark:hover:ring-neutral-600/40"
+                                      : LEVELS[level]
+                                  } ${
+                                    hovered === key
+                                      ? "ring-2 ring-neutral-400 dark:ring-neutral-500 scale-150 z-10"
+                                      : ""
+                                  }`}
+                                />
+                                {hovered === key && (
+                                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-[10px] font-bold rounded-lg whitespace-nowrap shadow-lg z-20 pointer-events-none hidden sm:block">
+                                    <span className="block">
+                                      {day.count === 0
+                                        ? "No contributions"
+                                        : `${day.count} contribution${day.count !== 1 ? "s" : ""}`}
+                                    </span>
+                                    <span className="block text-neutral-400 dark:text-neutral-500 font-normal">
+                                      {formatDate(day.date)}
+                                    </span>
+                                  </div>
+                                )}
+                                {hovered === key && (
+                                  <div className="fixed bottom-4 left-1/2 -translate-x-1/2 mb-0 px-2.5 py-1.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-[10px] font-bold rounded-lg whitespace-nowrap shadow-lg z-50 pointer-events-none sm:hidden">
+                                    <span className="block">
+                                      {day.count === 0
+                                        ? "No contributions"
+                                        : `${day.count} contribution${day.count !== 1 ? "s" : ""}`}
+                                    </span>
+                                    <span className="block text-neutral-400 dark:text-neutral-500 font-normal">
+                                      {formatDate(day.date)}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Legend */}
+                  <div className="flex items-center justify-end gap-1.5 mt-4 text-[10px] font-semibold text-neutral-400 dark:text-neutral-500">
+                    <span>Less</span>
+                    {LEVELS.map((cls, i) => (
+                      <div key={i} className={`w-[11px] h-[11px] rounded-[2px] ${cls}`} />
+                    ))}
+                    <span>More</span>
+                  </div>
                 </div>
               </div>
             )}
 
             {/* Stats Strip */}
             <div className="border-t border-neutral-200/50 dark:border-neutral-800/55 pt-5 mt-5">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                 {loading
                   ? Array.from({ length: 4 }).map((_, i) => (
                       <div key={i} className="flex items-center gap-3">
@@ -333,18 +332,15 @@ export const GitHubSection = () => {
                       </div>
                     ))
                   : statCards.map((stat, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-3 group"
-                      >
-                        <span className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 group-hover:text-[#ffc01d] group-hover:bg-[#ffc01d]/10 transition-all duration-300 shrink-0">
-                          <stat.icon className="h-4 w-4" />
+                      <div key={i} className="flex items-center gap-2 sm:gap-3 group">
+                        <span className="p-1.5 sm:p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 group-hover:text-[#ffc01d] group-hover:bg-[#ffc01d]/10 transition-all duration-300 shrink-0">
+                          <stat.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </span>
                         <div>
-                          <p className="text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] transition-colors leading-none">
+                          <p className="text-base sm:text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] transition-colors leading-none">
                             {stat.value.toLocaleString()}
                           </p>
-                          <p className="text-[9px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                          <p className="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
                             {stat.label}
                           </p>
                         </div>
