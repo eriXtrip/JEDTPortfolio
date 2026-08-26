@@ -1,3 +1,17 @@
+import { readFileSync } from "fs";
+import { resolve } from "path";
+
+function getToken() {
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+  try {
+    const envPath = resolve(process.cwd(), ".env.local");
+    const content = readFileSync(envPath, "utf-8");
+    const match = content.match(/^GITHUB_TOKEN=(.+)$/m);
+    if (match) return match[1].replace(/\r/g, "").trim();
+  } catch {}
+  return null;
+}
+
 const GITHUB_API = "https://api.github.com/graphql";
 
 const STATS_QUERY = `
@@ -56,8 +70,8 @@ function setCache(key, data) {
 }
 
 async function githubFetch(query, variables) {
-  const token = process.env.GITHUB_TOKEN;
-  if (!token) throw new Error("GITHUB_TOKEN env var is not set");
+  const token = getToken();
+  if (!token) throw new Error("GITHUB_TOKEN not found in env or .env.local");
 
   const res = await fetch(GITHUB_API, {
     method: "POST",
