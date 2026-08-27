@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Calendar } from "lucide-react";
+import { BriefcaseBusiness, Calendar, ExternalLink, FileText } from "lucide-react";
 import buLogo from "../assets/bicol-university-logo.svg";
 import comelecLogo from "../assets/COMELEC.svg";
 import selfEmployedLogo from "../assets/self-employed.svg";
@@ -16,6 +16,8 @@ export const ExperienceSection = () => {
         "Collaborated with faculty and project stakeholders to gather requirements, perform testing, and deliver production-ready system enhancements.",
         "Communicated complex technical solutions and conducted system walkthroughs for non-technical stakeholders.",
       ],
+      blog: "https://jedtojtthingssss.vercel.app/",
+      demo: "https://bucs-mcc-demo.vercel.app/",
     },
     {
       logo: comelecLogo,
@@ -28,6 +30,8 @@ export const ExperienceSection = () => {
         "Managed election-day connectivity using Starlink and a local internet provider USB SIM card, ensuring uninterrupted data transmission.",
         "Assisted users with technical issues, ensuring smooth operations",
       ],
+      blog: null,
+      demo: null,
     },
     {
       logo: selfEmployedLogo,
@@ -38,6 +42,8 @@ export const ExperienceSection = () => {
         "Designed publicity materials (pubmats) for 30+ clients, including barangay events, Oro Site High School teacher materials, individual requests, and national organizations such as Project Layag from UPLB.",
         "Collaborated with clients to deliver visually appealing content",
       ],
+      blog: null,
+      demo: null,
     },
   ];
 
@@ -118,6 +124,33 @@ export const ExperienceSection = () => {
                   <p className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
                     {exp.description}
                   </p>
+                )}
+
+                {(exp.blog || exp.demo) && (
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {exp.blog && (
+                      <a
+                        href={exp.blog}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 px-4 py-1.5 text-xs font-semibold text-neutral-700 dark:text-neutral-200 transition-all duration-300 hover:border-[#ffc01d] hover:text-[#ffc01d]"
+                      >
+                        <FileText className="h-3.5 w-3.5" />
+                        Blog
+                      </a>
+                    )}
+                    {exp.demo && (
+                      <a
+                        href={exp.demo}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 px-4 py-1.5 text-xs font-semibold text-neutral-700 dark:text-neutral-200 transition-all duration-300 hover:border-[#ffc01d] hover:text-[#ffc01d]"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        Demo
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </motion.div>

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function CardLong({ categories }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [selected, setSelected] = useState(null);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
@@ -19,13 +19,12 @@ export default function CardLong({ categories }) {
   const midIndex = (categories.length - 1) / 2;
 
   return (
-    <div
+    <div onClick={() => setSelected(null)}
       className="relative flex items-center justify-center h-[28rem] sm:h-[36rem] w-full cursor-pointer max-w-6xl mx-auto overflow-hidden sm:overflow-visible"
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
     >
       {categories.map((cat, index) => {
         const offset = index - midIndex; // e.g. [-3, -2, -1, 0, 1, 2, 3]
+        const isExpanded = selected === index;
 
         // Dynamic multipliers based on total length and screen size
         let xOffsetCollapsed = 30;
@@ -42,7 +41,22 @@ export default function CardLong({ categories }) {
         return (
           <motion.div
             key={index}
-            className="absolute w-44 sm:w-64 lg:w-72 h-[18rem] sm:h-[26rem] bg-white dark:bg-neutral-900/90 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl overflow-hidden group text-left origin-bottom shadow-lg backdrop-blur-sm"
+            className={`absolute w-44 sm:w-64 lg:w-72 h-[18rem] sm:h-[26rem] bg-white dark:bg-neutral-900/90 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl overflow-hidden group text-left origin-bottom shadow-lg backdrop-blur-sm ${isExpanded ? "border-[#ffc01d]/60" : ""}`}
+            initial={{
+              x: offset * xOffsetExpanded,
+              y: 0,
+              rotate: offset * 2,
+              scale: 1.05,
+              opacity: 0,
+            }}
+            whileInView={{
+              x: offset * xOffsetCollapsed,
+              y: Math.abs(offset) * 12 - 10,
+              rotate: offset * 6,
+              scale: 1,
+              opacity: 1,
+            }}
+            viewport={{ once: true, amount: 0.3 }}
             animate={{
               x: isExpanded ? offset * xOffsetExpanded : offset * xOffsetCollapsed,
               y: isExpanded ? 0 : Math.abs(offset) * 12 - 10,
@@ -50,9 +64,14 @@ export default function CardLong({ categories }) {
               scale: isExpanded ? 1.05 : 1,
             }}
             whileHover={{
-              y: isExpanded ? -20 : (Math.abs(offset) * 12 - 25),
+              y: isExpanded ? -20 : Math.abs(offset) * 12 - 25,
               scale: isExpanded ? 1.1 : 1.05,
               zIndex: 50,
+            }}
+            whileTap={{ scale: isExpanded ? 1.08 : 0.98 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelected(isExpanded ? null : index);
             }}
             transition={{
               type: "spring",
@@ -60,11 +79,11 @@ export default function CardLong({ categories }) {
               damping: 20,
             }}
             style={{
-              zIndex: isExpanded ? index : categories.length - Math.abs(offset), // Center cards higher z-index when collapsed
+              zIndex: isExpanded ? categories.length + 1 : categories.length - Math.abs(offset),
             }}
           >
             <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4 h-full flex flex-col pointer-events-none group-hover:pointer-events-auto">
-              <h3 className="text-sm sm:text-lg font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] transition-colors leading-tight">
+              <h3 className={`text-sm sm:text-lg font-extrabold transition-colors leading-tight ${isExpanded ? "text-[#ffc01d]" : "text-neutral-900 dark:text-white group-hover:text-[#ffc01d]"}`}>
                 {cat.title}
               </h3>
               <div className="flex flex-wrap gap-1 sm:gap-1.5 overflow-y-auto no-scrollbar pb-2">

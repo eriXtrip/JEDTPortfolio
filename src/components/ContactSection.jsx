@@ -118,7 +118,7 @@ export const ContactSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <a
                   href="tel:+639054205568"
-                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20"
+                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 px-3 py-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20"
                 >
                   <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[#ffc01d] dark:text-[#ffc01d] group-hover:scale-110 transition-transform duration-300">
                     <Phone className="h-4 w-4" />
@@ -135,7 +135,7 @@ export const ContactSection = () => {
 
                 <button
                   onClick={handleCopyEmail}
-                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20 text-left cursor-pointer"
+                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 px-3 py-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20 text-left cursor-pointer"
                 >
                   <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[#ffc01d] dark:text-[#ffc01d] group-hover:scale-110 transition-transform duration-300">
                     <Mail className="h-4 w-4" />
@@ -154,7 +154,7 @@ export const ContactSection = () => {
                   href="https://maps.google.com/?q=Legazpi+City,+Albay"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 p-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20"
+                  className="group flex items-start gap-3 rounded-2xl border border-neutral-200/70 dark:border-neutral-800 px-3 py-4 transition-all duration-300 hover:border-[#ffc01d]/50 dark:hover:border-[#ffc01d]/40 hover:bg-[#ffc01d]/10 dark:hover:bg-[#ffc01d]/20"
                 >
                   <span className="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 text-[#ffc01d] dark:text-[#ffc01d] group-hover:scale-110 transition-transform duration-300">
                     <MapPin className="h-4 w-4" />

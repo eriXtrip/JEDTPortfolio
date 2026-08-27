@@ -122,11 +122,11 @@ const buildKeyframes = ({ ease, startScale, endScale, spin, fade, reverse }) => 
   for (let step = 0; step <= KEYFRAME_STEPS; step += 1) {
     const progress = step / KEYFRAME_STEPS;
     const eased = ease(progress);
-    
+
     const scale = reverse
       ? endScale - (endScale - startScale) * eased
       : startScale + (endScale - startScale) * eased;
-      
+
     const angle = reverse
       ? -spin * eased
       : spin * (1 - eased);
@@ -345,7 +345,7 @@ function PixelSwapSplash({
 
   const renderLayer = (content, index) => {
     const isShown = index === (shownActive ? 1 : 0);
-    const hideIndex = animationDirection === 'out' 
+    const hideIndex = animationDirection === 'out'
       ? (transition ? (transition.to ? 0 : 1) : -1)
       : incomingIndex;
 

@@ -168,6 +168,7 @@ export const Navbar = ({ isDarkMode, onThemeToggle }) => {
             fontSize={1.2}
             smoothing={100}
             defaultActive={activeIndex >= 0 ? activeIndex : 0}
+            active={activeIndex >= 0 ? activeIndex : 0}
             onItemClick={handleLineItemClick}
             className="w-full"
           />

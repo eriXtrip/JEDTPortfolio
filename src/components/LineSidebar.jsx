@@ -39,6 +39,7 @@ const LineSidebar = ({
   fontSize = 1.1,
   smoothing = 100,
   defaultActive = null,
+  active = null,
   onItemClick,
   className = ''
 }) => {
@@ -120,6 +121,12 @@ const LineSidebar = ({
   useEffect(() => {
     startLoop();
   }, [activeIndex, startLoop]);
+
+  useEffect(() => {
+    if (active != null && active !== activeIndex) {
+      setActiveIndex(active);
+    }
+  }, [active, activeIndex]);
 
   useEffect(() => () => {
     if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
