@@ -1,8 +1,13 @@
 import { BriefcaseBusiness, Calendar } from "lucide-react";
+import buLogo from "../assets/bicol-university-logo.svg";
+import comelecLogo from "../assets/COMELEC.svg";
+import selfEmployedLogo from "../assets/self-employed.svg";
+import { motion } from "framer-motion";
 
 export const ExperienceSection = () => {
   const experiences = [
     {
+      logo: buLogo,
       role: "Full-Stack Developer Intern",
       company: "Bicol University College of Science (BUCS-MCC)",
       period: "14-Week Internship",
@@ -13,6 +18,7 @@ export const ExperienceSection = () => {
       ],
     },
     {
+      logo: comelecLogo,
       role: "Technical Support Specialist (DESO)",
       company: "COMELEC Legazpi",
       period: "May 2025 (Election Period)",
@@ -24,6 +30,7 @@ export const ExperienceSection = () => {
       ],
     },
     {
+      logo: selfEmployedLogo,
       role: "Freelance Graphic Designer",
       company: "Self-Employed",
       period: "2024 – Present",
@@ -57,7 +64,7 @@ export const ExperienceSection = () => {
         <div className="max-w-4xl mx-auto relative space-y-12 text-left">
           {/* Straight Flow Connector Line */}
           <svg
-            className="absolute left-0 top-0 h-full w-8 pointer-events-none stroke-[#ffc01d]/60 fill-none z-0"
+            className="absolute left-1 top-0 h-full w-8 pointer-events-none stroke-[#ffc01d]/60 fill-none z-0"
             viewBox="0 0 32 100"
             preserveAspectRatio="none"
             style={{ strokeDasharray: "3 3" }}
@@ -65,14 +72,25 @@ export const ExperienceSection = () => {
             <path d="M 16,0 L 16,100" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
           </svg>
           {experiences.map((exp, idx) => (
-            <div key={idx} className="relative group pl-11 md:pl-12">
+            <motion.div
+              key={idx}
+              className="relative group pl-11 md:pl-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.15, ease: "easeOut" }}
+            >
               {/* Timeline node icon */}
-              <div className="absolute left-0 top-1.5 flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-750 dark:text-white shadow-xs group-hover:scale-110 group-hover:border-[#ffc01d] transition-all duration-300">
-                <BriefcaseBusiness className="h-3.5 w-3.5 text-neutral-500 dark:text-neutral-400 group-hover:text-[#ffc01d]" />
+              <div className="absolute left-0 top-1.5 flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-xs overflow-hidden group-hover:scale-110 group-hover:border-[#ffc01d] transition-all duration-300">
+                <img
+                  src={exp.logo}
+                  alt={exp.company}
+                  className="h-full w-full object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
 
               {/* Experience Card */}
-              <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[24px] p-6 md:p-8 space-y-4 hover:border-[#ffc01d]/30 hover:shadow-xs transition-all duration-300">
+              <div className="bg-white dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/55 rounded-[24px] p-6 md:p-8 space-y-4 hover:border-[#ffc01d]/30 hover:shadow-md transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                   <div className="space-y-1">
                     <h3 className="text-xl font-extrabold text-neutral-900 dark:text-white group-hover:text-[#ffc01d] transition-colors">
@@ -102,7 +120,7 @@ export const ExperienceSection = () => {
                   </p>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
