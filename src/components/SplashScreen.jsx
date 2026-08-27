@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import PixelSwapSplash from "./PixelSwapSplash";
 
 export const SplashScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState("loading"); // loading, expand, text, exit
+  const [pixelActive, setPixelActive] = useState(false);
 
   useEffect(() => {
     // Apply theme
@@ -26,26 +28,51 @@ export const SplashScreen = ({ onFinish }) => {
 
         setTimeout(() => {
           setPhase("exit");
+          setPixelActive(true); // Trigger pixel swap transition
         }, 3200); // Trigger exit fade
-
-        setTimeout(() => {
-          onFinish();
-        }, 3600); // Complete splash screen
       } else {
         setProgress(Math.floor(current));
       }
     }, interval);
 
     return () => clearInterval(timer);
-  }, [onFinish]);
+  }, []);
+
+  const handlePixelComplete = useCallback(
+    (active) => {
+      if (active) onFinish();
+    },
+    [onFinish]
+  );
 
   const isExiting = phase === "exit";
 
   return (
-    <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#06070a] text-white transition-opacity duration-700 ease-in-out select-none ${isExiting ? "opacity-0" : "opacity-100"
-        }`}
-    >
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center text-white select-none">
+      {/* PixelSwapSplash Background */}
+      <div className="absolute inset-0 z-0">
+        <PixelSwapSplash
+          firstContent={<div className="w-full h-full bg-[#000a07]" />}
+          secondContent={<div className="w-full h-full bg-transparent" />}
+          pattern="center out"
+          animationDirection="out"
+          trigger="active"
+          active={pixelActive}
+          onComplete={handlePixelComplete}
+          duration={2300}
+          pixelDuration={200}
+          pixelSize={80}
+          gap={0}
+          pixelRadius={0}
+          pixelSpin={0}
+          pixelScale={0.35}
+          fade={true}
+          aspectRatio="auto"
+          className="w-full h-full"
+          style={{ aspectRatio: "unset" }}
+        />
+      </div>
+
       {/* Faint Background Grid Line Pulse */}
       <div
         className={`absolute inset-0 pointer-events-none transition-all duration-1000 ${phase === "expand" || phase === "text"
@@ -60,7 +87,11 @@ export const SplashScreen = ({ onFinish }) => {
         }}
       />
 
-      <div className="relative z-10 flex flex-col items-center justify-center">
+      {/* Splash Content */}
+      <div
+        className={`relative z-10 flex flex-col items-center justify-center transition-opacity duration-700 ease-in-out ${isExiting ? "opacity-0" : "opacity-100"
+          }`}
+      >
         {/* The Badge & Logo Reveal */}
         <div className="flex items-center justify-center gap-3 sm:gap-4">
           {/* Yellow Square Badge */}

@@ -17,18 +17,10 @@ function App() {
     }
   }, [showSplash]);
 
-  if (showSplash) {
-    return (
-      <>
-        <Toaster />
-        <SplashScreen onFinish={() => setShowSplash(false)} />
-      </>
-    );
-  }
-
   return (
     <>
       <Toaster />
+      {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
