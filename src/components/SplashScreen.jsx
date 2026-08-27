@@ -5,11 +5,11 @@ export const SplashScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState("loading"); // loading, expand, text, exit
   const [pixelActive, setPixelActive] = useState(false);
+  const [isDarkMode] = useState(() =>
+    typeof window !== "undefined" ? localStorage.getItem("theme") !== "light" : true
+  );
 
   useEffect(() => {
-    // Apply theme
-    document.documentElement.classList.add("dark");
-    document.documentElement.setAttribute("data-theme", "dark");
 
     const duration = 2000;
     const interval = 20;
@@ -48,11 +48,27 @@ export const SplashScreen = ({ onFinish }) => {
   const isExiting = phase === "exit";
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center text-white select-none">
+    <div className={`fixed inset-0 z-[9999] flex items-center justify-center select-none ${isDarkMode ? "text-black" : "text-white"}`}>
       {/* PixelSwapSplash Background */}
       <div className="absolute inset-0 z-0">
         <PixelSwapSplash
-          firstContent={<div className="w-full h-full bg-[#000a07]" />}
+          firstContent={
+            <div className={`relative w-full h-full ${isDarkMode ? "bg-white" : "bg-[#000a07]"}`}>
+              <div
+                className={`absolute inset-0 pointer-events-none transition-all duration-1000 ${phase === "expand" || phase === "text"
+                  ? "opacity-60 scale-100"
+                  : "opacity-0 scale-105"
+                  }`}
+                style={{
+                  backgroundImage: isDarkMode
+                    ? "linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)"
+                    : "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+                  backgroundSize: "4rem 4rem",
+                  backgroundPosition: "center center",
+                }}
+              />
+            </div>
+          }
           secondContent={<div className="w-full h-full bg-transparent" />}
           pattern="center out"
           animationDirection="out"
@@ -72,20 +88,6 @@ export const SplashScreen = ({ onFinish }) => {
           style={{ aspectRatio: "unset" }}
         />
       </div>
-
-      {/* Faint Background Grid Line Pulse */}
-      <div
-        className={`absolute inset-0 pointer-events-none transition-all duration-1000 ${phase === "expand" || phase === "text"
-          ? "opacity-60 scale-100"
-          : "opacity-0 scale-105"
-          }`}
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "4rem 4rem",
-          backgroundPosition: "center center",
-        }}
-      />
 
       {/* Splash Content */}
       <div
@@ -119,8 +121,8 @@ export const SplashScreen = ({ onFinish }) => {
                   : "opacity-0 -translate-x-8"
                   }`}
                 style={{
-                  WebkitTextStroke: "1.5px white",
-                  color: phase === "text" ? "white" : "transparent",
+                  WebkitTextStroke: isDarkMode ? "1.5px black" : "1.5px white",
+                  color: phase === "text" ? (isDarkMode ? "black" : "white") : "transparent",
                   transition:
                     "color 1s ease 0.4s, transform 0.8s ease, opacity 0.8s ease",
                 }}
@@ -147,7 +149,7 @@ export const SplashScreen = ({ onFinish }) => {
             : "opacity-0 translate-y-6"
             }`}
         >
-          <div className="text-xs sm:text-sm font-medium tracking-[0.4em] sm:tracking-[0.5em] text-neutral-300 uppercase">
+          <div className={`text-xs sm:text-sm font-medium tracking-[0.4em] sm:tracking-[0.5em] uppercase ${isDarkMode ? "text-neutral-700" : "text-neutral-300"}`}>
             Jon Eric Tripulca
           </div>
         </div>
