@@ -75,8 +75,8 @@ export const Navbar = ({ isDarkMode, onThemeToggle }) => {
         className={cn(
           "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500",
           isScrolled
-            ? "py-4 bg-white/80 dark:bg-neutral-950/30 backdrop-blur-xl border-b border-neutral-200/60 dark:border-neutral-800/60 shadow-xs"
-            : "py-6 bg-transparent"
+            ? "py-3 bg-white/80 dark:bg-neutral-950 backdrop-blur-xl border-b border-neutral-200/60 dark:border-neutral-800/60 shadow-xs"
+            : "py-5 bg-transparent"
         )}
       >
         <div className="container max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12">

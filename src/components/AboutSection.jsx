@@ -368,14 +368,14 @@ export const AboutSection = () => {
 
       {/* Resume Preview Modal (in-page, no new tab) */}
       {cvOpen && (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-50 bg-[#1E1E1E] pt-15">
           <iframe
             src="https://drive.google.com/file/d/1nRWuFgGzzmHxZDKoLaMx3yk2Bmt26C1t/preview"
             title="Resume Preview"
             className="w-full h-full border-0 bg-transparent"
             allow="autoplay"
           />
-          <div className="absolute top-4 right-4 flex items-center gap-2">
+          <div className="absolute top-4 right-4 flex items-center gap-2 ">
             <a
               href="https://drive.google.com/uc?id=1nRWuFgGzzmHxZDKoLaMx3yk2Bmt26C1t&export=download"
               className="inline-flex items-center justify-center gap-1.5 h-10 w-10 sm:w-auto sm:px-4 rounded-full bg-white/90 dark:bg-neutral-900/90 text-neutral-700 dark:text-neutral-200 shadow-lg border border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors text-sm font-semibold"

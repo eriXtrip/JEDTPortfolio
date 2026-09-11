@@ -238,6 +238,18 @@ export const ProjectsSection = () => {
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
         </a>
       ) : null}
+      {project.blogUrl ? (
+        <a
+          href={project.blogUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-[#ffc01d] dark:hover:text-[#ffc01d]-400 transition-all duration-300"
+        >
+          Blog
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      ) : null}
+
       <button
         onClick={() => openDrawer(project)}
         className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-[#ffc01d] dark:hover:text-[#ffc01d]-400 transition-all duration-300 cursor-pointer"
@@ -284,7 +296,7 @@ export const ProjectsSection = () => {
             return (
               <ScrollStackItem
                 key={project.id}
-                itemClassName="h-auto my-0 p-0 rounded-none shadow-none bg-transparent"
+                itemClassName="h-full my-0 pt-5 rounded-none shadow-none bg-transparent"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
                   {/* Image Preview */}
@@ -609,36 +621,38 @@ export const ProjectsSection = () => {
             </div>
 
             {/* Footer */}
-            <div className="p-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0 space-y-2">
+            <div className="p-4 border-t border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0 grid grid-cols-2 gap-3">
               {selectedProject.demoModal && (
                 <button
                   onClick={() => setDemoProject(selectedProject)}
-                  className="cosmic-button w-full whitespace-nowrap"
+                  className="cosmic-button w-full h-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
                 >
                   {selectedProject.demoModal.kind === "app" ? (
                     <>
-                      <Smartphone className="h-3.5 w-3.5" /> Demo Instructions
+                      <Smartphone className="h-4 w-4 shrink-0" /> Demo Instructions
                     </>
                   ) : (
                     <>
-                      <ExternalLink className="h-3.5 w-3.5" /> Demo Instructions
+                      <ExternalLink className="h-4 w-4 shrink-0" /> Demo Instructions
                     </>
                   )}
                 </button>
               )}
+
               {!selectedProject.demoModal && selectedProject.demoUrl && (
                 <a
                   href={selectedProject.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="outline-button w-full whitespace-nowrap"
+                  className="outline-button w-full h-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
                 >
-                  <ExternalLink className="h-3.5 w-3.5" /> Open Demo
+                  <ExternalLink className="h-4 w-4 shrink-0" /> Open Demo
                 </a>
               )}
+
               <button
                 onClick={closeDrawer}
-                className="outline-button w-full whitespace-nowrap"
+                className="outline-button w-full h-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
               >
                 Close Details
               </button>

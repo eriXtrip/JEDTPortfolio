@@ -102,6 +102,7 @@ const projects = [
     tech: ["React", "Laravel", "MySQL", "Tailwind CSS", "Vercel"],
     demoUrl: "https://bucs-mcc-demo.vercel.app/",
     codeUrl: "https://github.com/eriXtrip",
+    blogUrl: "https://jedtojtthingssss.vercel.app/",
     images: [
       BUCSMCCImg,
       BUCSMCC1,
@@ -204,6 +205,7 @@ const projects = [
     demoUrl:
       "https://drive.google.com/uc?id=1FUiAeCTxzD6KjV8BO3YmOiRRX2t_6QZ6&export=download",
     codeUrl: "https://github.com/eriXtrip",
+
     images: [
       MQuestImg,
       MQuest28,
@@ -307,6 +309,7 @@ const projects = [
     tech: ["C#", ".NET", "MySQL", "Inno Setup", "Excel"],
     demoUrl: null,
     codeUrl: "https://github.com/eriXtrip",
+    blogUrl: null,
     images: [RentalImg, Rental1, Rental2, Rental3, Rental4, Rental5],
     Gif: RentalGif,
     videoUrl:
@@ -369,6 +372,7 @@ const projects = [
     tech: ["HTML & CSS", "JavaScript", "Laravel"],
     demoUrl: null,
     codeUrl: "https://github.com/eriXtrip",
+    blogUrl: null,
     images: [EcoLocalImg],
     Gif: null,
     videoUrl:
@@ -400,6 +404,7 @@ const projects = [
     tech: ["Cisco Packet Tracer", "TCP/IP", "VLAN", "DNS", "DHCP"],
     demoUrl: null,
     codeUrl: null,
+    blogUrl: null,
     images: [
       NetworkingImg,
       Networking1,
@@ -438,6 +443,7 @@ const projects = [
     tech: ["Ubuntu", "VirtualBox", "SSH", "Apache", "MySQL"],
     demoUrl: null,
     codeUrl: null,
+    blogUrl: null,
     images: [
       SystemAdminImg,
       SystemAdmin1,

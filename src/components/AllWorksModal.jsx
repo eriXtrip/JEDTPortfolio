@@ -361,9 +361,20 @@ export const AllWorksModal = ({ open, onClose }) => {
                                   ))}
                                 </div>
                               </div>
-                              {project.demoUrl || project.demoModal ? (
+                              {project.demoUrl || project.demoModal || project.blogUrl ? (
                                 <div className="space-y-2">
                                   <div className="flex flex-wrap gap-x-6 gap-y-3 pt-1">
+                                    {project.blogUrl ? (
+                                      <a
+                                        href={project.blogUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-[#ffc01d] dark:hover:text-[#ffc01d]-400 transition-all duration-300"
+                                      >
+                                        Read Blog
+                                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                                      </a>
+                                    ) : null}
                                     {project.demoModal ? (
                                       <button
                                         onClick={() => setDemoProject(project)}
