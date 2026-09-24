@@ -28,6 +28,7 @@ import DiplomaSHS from "../assets/cert/Diploma SHS 2022.png"
 import DiplomaJHS from "../assets/cert/Diploma JHS 2020.png"
 import DiplomaElementary from "../assets/cert/Deploma_Elementary.png"
 import ITCustomerSupportBasicsImg from "../assets/cert/IT_Customer_Support_Basics_certificate_jedt.png"
+import FundamentalsOfDatabaseManagementImg from "../assets/cert/Fundamentals of Database Management.png"
 
 const certificates = [
   {
@@ -166,6 +167,14 @@ const certificates = [
     categoryLabel: "Technical Instruction",
     img: ITCustomerSupportBasicsImg,
   },
+  {
+    id: 17,
+    title: "Fundamentals of Database Management",
+    issuer: "DICT V5",
+    category: "programming",
+    categoryLabel: "Programming",
+    img: FundamentalsOfDatabaseManagementImg,
+  },
 ];
 
 const PAGE_SIZE = 12;
@@ -184,6 +193,7 @@ export const CertificatesSection = () => {
     { key: "leadership", label: "Leadership" },
     { key: "training", label: "Training" },
     { key: "recognition", label: "Recognition" },
+    { key: "programming", label: "Programming" },
   ];
 
   const categoriesWithCount = categories.map((cat) => ({
