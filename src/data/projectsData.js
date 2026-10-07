@@ -81,7 +81,127 @@ import Networking4 from "../assets/works/Networking/Networking (4).jpg";
 import Networking5 from "../assets/works/Networking/Networking (5).jpg";
 import Networking6 from "../assets/works/Networking/Networking (6).jpg";
 
+import MtMasaragaProtectedLandscapeGif from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape.gif";
+import MtMasaragaProtectedLandscapeImg from "../assets/works/MtMasaragaProtectedLandscape.png";
+import MtMasaragaProtectedLandscape1 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (1).png";
+import MtMasaragaProtectedLandscape2 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (2).png";
+import MtMasaragaProtectedLandscape3 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (3).png";
+import MtMasaragaProtectedLandscape4 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (4).png";
+import MtMasaragaProtectedLandscape5 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (5).png";
+import MtMasaragaProtectedLandscape6 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (6).png";
+import MtMasaragaProtectedLandscape7 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (7).png";
+import MtMasaragaProtectedLandscape8 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (8).png";
+import MtMasaragaProtectedLandscape9 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (9).png";
+import MtMasaragaProtectedLandscape10 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (10).png";
+import MtMasaragaProtectedLandscape11 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (11).png";
+
 const projects = [
+  {
+    id: "mt-masaraga-protected-landscape",
+    year: "2026",
+    title: "Mt. Masaraga Protected Landscape",
+    subtitle: "Mt. Masaraga Protected Landscape",
+    category: "Web Dev",
+    featured: true,
+    image: MtMasaragaProtectedLandscapeImg,
+    overview:
+      "Mt. Masaraga Protected Landscape is an eco-tourism web portal created as a proof of concept for managing centralized hiking bookings, permits, and park operations in Albay, Philippines.",
+    architecture: [
+      "Multi-entry React SPA front-end architecture with independent routers for public site, admin console, and staff console",
+      "Tailwind CSS v4 theme variable-based design system with custom color palettes and responsive layout components",
+      "Client-side state persistence using browser localStorage and sessionStorage with seed fallback data",
+      "Role-Based Access Control (RBAC) gates for Administrator and Park Staff/Guide",
+      "Comprehensive SEO/AEO optimizations including dynamic JSON-LD structured data, route metadata, and llms.txt generation",
+    ],
+    tech: ["React", "Vite", "Tailwind CSS", "Figma", "Google Stitch"],
+    demoUrl: "https://mt-masaraga-protected-landscape-demo.vercel.app/",
+    codeUrl: "https://github.com/eriXtrip",
+    blogUrl: null,
+    images: [
+      MtMasaragaProtectedLandscapeImg,
+      MtMasaragaProtectedLandscape1,
+      MtMasaragaProtectedLandscape2,
+      MtMasaragaProtectedLandscape3,
+      MtMasaragaProtectedLandscape4,
+      MtMasaragaProtectedLandscape5,
+      MtMasaragaProtectedLandscape6,
+      MtMasaragaProtectedLandscape7,
+      MtMasaragaProtectedLandscape8,
+      MtMasaragaProtectedLandscape9,
+      MtMasaragaProtectedLandscape10,
+      MtMasaragaProtectedLandscape11,
+    ],
+    Gif: MtMasaragaProtectedLandscapeGif,
+    videoUrl: null,
+    demoModal: {
+      kind: "web",
+      url: "https://mt-masaraga-protected-landscape-demo.vercel.app/",
+      instructions: [
+        {
+          type: "text",
+          parts: [
+            "This is a FRONT-END ONLY demo. Not every feature is fully functional. Email confirmation, validation, and data saving are simulated.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "To navigate to the console, go to ",
+            { bold: "https://mt-masaraga-protected-landscape-demo.vercel.app/login" },
+            " and enter one of the demo emails. Any password works.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "Demo accounts: ",
+            { bold: "admin@masaraga.gov.ph" },
+            " (Security PIN: 123456) or ",
+            { bold: "staff@masaraga.gov.ph" },
+            " (No PIN needed).",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "Data you add is stored locally in your browser (sessionStorage) and will NOT persist across browser refreshes.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "For Sign Up or Forgot Password flows, any 6-digit code will pass since email delivery is simulated.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [{ bold: "LIVE DEMO" }, " below to open the app."],
+        },
+      ],
+      notice: {
+        intro:
+          "This is a DEMO application. Not every feature is fully functional. The following features will NOT work or may fail without a complete, properly configured backend:",
+        items: [
+          "Email confirmation and verification codes",
+          "QR Code Scanning",
+          "Server-side data validation",
+          "Persistent data saving (data is only stored locally in your browser)",
+          "Real booking, payment, and pass issuance end-to-end",
+          "Any other feature that depends on a live backend server",
+        ],
+        outro:
+          "These screens and flows are present in the UI for demonstration purposes only.",
+      },
+    },
+    problemStatement:
+      "Eco-tourism operations for Mt. Masaraga lacked a centralized digital portal for public hiker inquiries, trail permit bookings, guide assignments, and on-site check-in verification.",
+    solution:
+      "Designed and developed a responsive, multi-interface web application prototype featuring hiker booking flows, interactive dashboards, guide/staff operational controls, and administrative management tools.",
+    documentation:
+      "Structured with Tailwind CSS v4 design tokens, single-source Geist typography, dynamic SEO/JSON-LD runtime generation, static host fallbacks, and modular React hooks for client-side state handling.",
+    conclusion:
+      "Successfully demonstrated a unified digital eco-tourism management experience that streamlines hiker registrations, pass generation, and administrative park workflows.",
+  },
   {
     id: "bucs-mcc",
     year: "2026",
