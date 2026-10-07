@@ -94,6 +94,11 @@ import MtMasaragaProtectedLandscape8 from "../assets/works/MtMasaragaProtectedLa
 import MtMasaragaProtectedLandscape9 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (9).png";
 import MtMasaragaProtectedLandscape10 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (10).png";
 import MtMasaragaProtectedLandscape11 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (11).png";
+import MtMasaragaProtectedLandscape12 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (12).png";
+import MtMasaragaProtectedLandscape13 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (13).png";
+import MtMasaragaProtectedLandscape14 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (14).png";
+import MtMasaragaProtectedLandscape15 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (15).png";
+import MtMasaragaProtectedLandscape16 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (16).png";
 
 const projects = [
   {
@@ -130,6 +135,11 @@ const projects = [
       MtMasaragaProtectedLandscape9,
       MtMasaragaProtectedLandscape10,
       MtMasaragaProtectedLandscape11,
+      MtMasaragaProtectedLandscape12,
+      MtMasaragaProtectedLandscape13,
+      MtMasaragaProtectedLandscape14,
+      MtMasaragaProtectedLandscape15,
+      MtMasaragaProtectedLandscape16,
     ],
     Gif: MtMasaragaProtectedLandscapeGif,
     videoUrl: [

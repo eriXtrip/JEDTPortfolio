@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import {
+  ChevronLeft,
+  ChevronRight,
   X,
   AlertCircle,
   FileText,
@@ -543,12 +545,48 @@ export const ProjectsSection = () => {
               {selectedProject.images && selectedProject.images.length > 0 && (
                 <div className="space-y-3">
                   <SectionLabel icon={ImageIcon}>Screenshots</SectionLabel>
-                  <div className="w-full aspect-video bg-neutral-100 dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 relative">
+                  <div className="w-full aspect-video bg-neutral-100 dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 relative group">
                     <img
                       src={selectedProject.images[activeImgIndex]}
                       alt={`${selectedProject.title} ${activeImgIndex + 1}`}
                       className="w-full h-full object-contain"
                     />
+
+                    {/* Next / Previous Controls */}
+                    {selectedProject.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={() =>
+                            setActiveImgIndex((prev) =>
+                              prev === 0 ? selectedProject.images.length - 1 : prev - 1
+                            )
+                          }
+                          className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-neutral-900/60 hover:bg-neutral-900/90 text-white transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                          aria-label="Previous image"
+                        >
+                          <ChevronLeft className="h-5 w-5" />
+                        </button>
+
+                        <button
+                          onClick={() =>
+                            setActiveImgIndex((prev) =>
+                              prev === selectedProject.images.length - 1 ? 0 : prev + 1
+                            )
+                          }
+                          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-neutral-900/60 hover:bg-neutral-900/90 text-white transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                          aria-label="Next image"
+                        >
+                          <ChevronRight className="h-5 w-5" />
+                        </button>
+
+                        {/* Image Counter Badge */}
+                        <div className="absolute top-2 left-2 px-2.5 py-1 bg-neutral-900/60 text-white text-xs rounded-full backdrop-blur-xs">
+                          {activeImgIndex + 1} / {selectedProject.images.length}
+                        </div>
+                      </>
+                    )}
+
+                    {/* Fullscreen Button */}
                     <button
                       onClick={() =>
                         setLightboxImage(selectedProject.images[activeImgIndex])
@@ -560,6 +598,7 @@ export const ProjectsSection = () => {
                     </button>
                   </div>
 
+                  {/* Scrollable Thumbnails */}
                   {selectedProject.images.length > 1 && (
                     <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
                       {selectedProject.images.map((img, idx) => (
@@ -567,7 +606,7 @@ export const ProjectsSection = () => {
                           key={idx}
                           onClick={() => setActiveImgIndex(idx)}
                           className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
-                            ? "border-[#ffc01d] scale-105 shadow-xs dark:border-[#ffc01d]-400"
+                            ? "border-[#ffc01d] scale-105 shadow-xs"
                             : "border-transparent opacity-50 hover:opacity-100"
                             }`}
                         >
