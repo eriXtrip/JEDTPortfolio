@@ -132,7 +132,10 @@ const projects = [
       MtMasaragaProtectedLandscape11,
     ],
     Gif: MtMasaragaProtectedLandscapeGif,
-    videoUrl: null,
+    videoUrl: [
+      "https://drive.google.com/file/d/1B_gSGFJ6jBzBxvcOd7aFBKKggODYuJOY/preview?autoplay=1",
+      "https://drive.google.com/file/d/1DQy4jBd9AplL_mtCdIi1r67lP9h1umyA/preview?autoplay=1",
+    ],
     demoModal: {
       kind: "web",
       url: "https://mt-masaraga-protected-landscape-demo.vercel.app/",
