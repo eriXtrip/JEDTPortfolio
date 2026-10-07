@@ -119,7 +119,7 @@ const projects = [
       "Comprehensive SEO/AEO optimizations including dynamic JSON-LD structured data, route metadata, and llms.txt generation",
     ],
     tech: ["React", "Vite", "Tailwind CSS", "Figma", "Google Stitch"],
-    demoUrl: "https://mt-masaraga-protected-landscape-demo.vercel.app/",
+    demoUrl: "https://mt-masaraga-protected-landscape-dem.vercel.app/",
     codeUrl: "https://github.com/eriXtrip",
     blogUrl: null,
     images: [
