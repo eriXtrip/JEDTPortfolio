@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import profileImg2 from "../assets/2.png";
-import bucsmcc from "../assets/works/BUCSMCC.png";
+import MtMasaragaProtectedLandscape from "../assets/works/MtMasaragaProtectedLandscape.png";
 import GlareHover from './GlareHover';
 import { cn } from "@/lib/utils"
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"
@@ -99,23 +99,23 @@ export function HeroSection() {
                   </div>
                   <div className="relative aspect-[12/10] overflow-hidden">
                     <img
-                      src={bucsmcc}
-                      alt="BUCS MCC Specimen Tracking System"
+                      src={MtMasaragaProtectedLandscape}
+                      alt="Mt Masaraga Protected Landscape"
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
                   <div className="p-4 flex flex-col gap-2.5">
-                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white leading-snug">BUCS MCC</h3>
+                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white leading-snug">MtMasaragaProtectedLandscape</h3>
 
                     {/* Code Accent Tags */}
                     <div className="flex flex-wrap gap-3 font-mono text-[10px] tracking-tight">
                       <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> React</span>
-                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> Laravel</span>
-                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> MySQL</span>
+                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> Tailwind CSS</span>
+                      <span className="text-[#ffc01d] font-semibold"><span className="text-zinc-400 dark:text-zinc-600">/</span> Google Stitch</span>
                     </div>
 
                     <p className="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                      Automated microbial specimen workflows across multiple labs, replacing manual logs and reducing tracking errors.
+                      An eco-tourism web portal created as a proof of concept for managing centralized hiking bookings, permits, and park operations.
                     </p>
                   </div>
                 </GlareHover>
