@@ -148,7 +148,7 @@ const projects = [
     ],
     demoModal: {
       kind: "web",
-      url: "https://mt-masaraga-protected-landscape-demo.vercel.app/",
+      url: "https://mt-masaraga-protected-landscape-dem.vercel.app/",
       instructions: [
         {
           type: "text",
@@ -160,7 +160,7 @@ const projects = [
           type: "text",
           parts: [
             "To navigate to the console, go to ",
-            { bold: "https://mt-masaraga-protected-landscape-demo.vercel.app/login" },
+            { bold: "https://mt-masaraga-protected-landscape-dem.vercel.app/login" },
             " and enter one of the demo emails. Any password works.",
           ],
         },
