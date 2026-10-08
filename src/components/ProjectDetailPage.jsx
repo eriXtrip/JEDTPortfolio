@@ -150,7 +150,7 @@ export const ProjectDetailPage = ({ projectId }) => {
     <section className="py-20 md:py-20 px-4 md:px-8 lg:px-20 lg:py-20">
       <div className="w-full h-full flex flex-col gap-3 xl:gap-4 max-w-[1700px] mx-auto">
         {/* Compact Header Bar */}
-        <div className="bg-neutral-900/80 border border-neutral-800/80 rounded-2xl p-3.5 sm:p-4 xl:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shrink-0 backdrop-blur-md animate-fade-in">
+        <div className="bg-white/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3.5 sm:p-4 xl:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shrink-0 backdrop-blur-md animate-fade-in">
           {/* Left Section: Back Button + Title + Subtitle */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 min-w-0">
             <div className="flex items-center gap-3 shrink-0">
@@ -158,7 +158,7 @@ export const ProjectDetailPage = ({ projectId }) => {
                 onClick={() => {
                   window.location.hash = "#works";
                 }}
-                className="group inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-400 hover:text-[#ffc01d] transition-colors cursor-pointer pr-3 border-r border-neutral-800"
+                className="group inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 hover:text-[#ffc01d] transition-colors cursor-pointer pr-3 border-r border-neutral-200 dark:border-neutral-800"
               >
                 <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
                 Back
@@ -167,27 +167,27 @@ export const ProjectDetailPage = ({ projectId }) => {
 
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                <h1 className="text-base sm:text-lg xl:text-2xl font-extrabold text-white tracking-tight truncate">
+                <h1 className="text-base sm:text-lg xl:text-2xl font-extrabold text-neutral-900 dark:text-white tracking-tight truncate">
                   {project.title}
                 </h1>
                 <span className={`hidden sm:inline-block ${badgeClass}`}>
                   {project.year} · {project.category}
                 </span>
               </div>
-              <p className="text-xs xl:text-sm text-neutral-400 line-clamp-1 mt-0.5">
+              <p className="text-xs xl:text-sm text-neutral-500 dark:text-neutral-400 line-clamp-1 mt-0.5">
                 {project.subtitle}
               </p>
             </div>
           </div>
 
           {/* Right Section: Action Buttons */}
-          <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-3 shrink-0 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-800/60 justify-end">
+          <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-3 shrink-0 w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-200/60 dark:border-neutral-800/60 justify-end">
             {project.blogUrl && (
               <a
                 href={project.blogUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-none justify-center inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest px-3 sm:px-3.5 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 hover:text-[#ffc01d] transition-all"
+                className="flex-1 sm:flex-none justify-center inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest px-3 sm:px-3.5 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 hover:text-[#ffc01d] transition-all"
               >
                 Blog <ArrowUpRight className="h-3 w-3" />
               </a>
@@ -216,13 +216,13 @@ export const ProjectDetailPage = ({ projectId }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 lg:grid-rows-5 gap-3 xl:gap-4 flex-1 min-h-0">
 
           {/* Main Media Showcase (Video / Main Screenshot) */}
-          <div className="lg:col-span-6 lg:row-span-5 bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3 xl:p-4 flex flex-col justify-between overflow-hidden animate-fade-in" style={{ animationDelay: "0.05s", animationFillMode: "backwards" }}>
+          <div className="lg:col-span-6 lg:row-span-5 bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3 xl:p-4 flex flex-col justify-between overflow-hidden animate-fade-in" style={{ animationDelay: "0.05s", animationFillMode: "backwards" }}>
             <div className="flex items-center justify-between mb-2 shrink-0">
               <SectionLabel icon={hasVideo ? Play : ImageIcon}>
                 {hasVideo ? "Video Demo" : "Gallery Showcase"}
               </SectionLabel>
               {hasVideo && projectVideos.length > 1 && (
-                <div className="flex items-center gap-1 bg-neutral-800 p-1 rounded-lg text-[10px] font-bold">
+                <div className="flex items-center gap-1 bg-neutral-100 dark:bg-neutral-800 p-1 rounded-lg text-[10px] font-bold">
                   {projectVideos.map((_, idx) => (
                     <button
                       key={idx}
@@ -232,7 +232,7 @@ export const ProjectDetailPage = ({ projectId }) => {
                       }}
                       className={`px-2 py-0.5 rounded transition-all cursor-pointer ${activeVideoIndex === idx
                         ? "bg-[#ffc01d] text-neutral-950"
-                        : "text-neutral-400 hover:text-white"
+                        : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                         }`}
                     >
                       {idx + 1}
@@ -243,7 +243,7 @@ export const ProjectDetailPage = ({ projectId }) => {
             </div>
 
             {hasVideo ? (
-              <div className="w-full h-full min-h-65 bg-black rounded-xl overflow-hidden border border-neutral-800 relative">
+              <div className="w-full h-full min-h-65 bg-black rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 relative">
                 {isMobile && useNativeVideo ? (
                   <video
                     key={projectVideos[activeVideoIndex]}
@@ -265,7 +265,7 @@ export const ProjectDetailPage = ({ projectId }) => {
                 )}
               </div>
             ) : hasImages ? (
-              <div className="w-full h-[260px] xl:h-[300px] bg-neutral-950 rounded-xl overflow-hidden border border-neutral-800 relative group shrink-0">
+              <div className="w-full h-[260px] xl:h-[300px] bg-neutral-950 rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 relative group shrink-0">
                 <img
                   src={project.images[activeImgIndex]}
                   alt=""
@@ -277,19 +277,19 @@ export const ProjectDetailPage = ({ projectId }) => {
                   <>
                     <button
                       onClick={handlePrevImg}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-700"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-300 dark:border-neutral-700"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
                     <button
                       onClick={handleNextImg}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-700"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-300 dark:border-neutral-700"
                       aria-label="Next image"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-neutral-900/80 text-white text-xs font-mono rounded-full border border-neutral-800 backdrop-blur-xs">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/80 dark:bg-neutral-900/80 text-neutral-900 dark:text-white text-xs font-mono rounded-full border border-neutral-200 dark:border-neutral-800 backdrop-blur-xs">
                       {activeImgIndex + 1} / {project.images.length}
                     </div>
                   </>
@@ -297,7 +297,7 @@ export const ProjectDetailPage = ({ projectId }) => {
 
                 <button
                   onClick={() => setLightboxImage(activeImgIndex)}
-                  className="absolute bottom-3 right-3 p-2 bg-neutral-900/80 hover:bg-neutral-800 text-white rounded-lg transition-colors cursor-pointer border border-neutral-700"
+                  className="absolute bottom-3 right-3 p-2 bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white rounded-lg transition-colors cursor-pointer border border-neutral-300 dark:border-neutral-700"
                   aria-label="Maximize screenshot"
                 >
                   <Maximize2 className="h-4 w-4" />
@@ -308,16 +308,16 @@ export const ProjectDetailPage = ({ projectId }) => {
 
           {/* Screenshots Thumbnails / Secondary Gallery */}
           {hasImages && hasVideo && (
-            <div className="lg:col-span-3 lg:row-span-3 bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3 xl:p-4 flex flex-col justify-between overflow-hidden animate-fade-in" style={{ animationDelay: "0.15s", animationFillMode: "backwards" }}>
+            <div className="lg:col-span-3 lg:row-span-3 bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3 xl:p-4 flex flex-col justify-between overflow-hidden animate-fade-in" style={{ animationDelay: "0.15s", animationFillMode: "backwards" }}>
               <div className="flex items-center justify-between shrink-0 mb-2">
                 <SectionLabel icon={ImageIcon}>Screenshots</SectionLabel>
-                <span className="text-[10px] text-neutral-400 font-mono">
+                <span className="text-[10px] text-neutral-500 dark:text-neutral-400 font-mono">
                   {activeImgIndex + 1}/{project.images.length}
                 </span>
               </div>
 
               {/* Fixed-height image wrapper matching the video/main showcase proportional height */}
-              <div className="w-full h-[200px] xl:h-[230px] bg-neutral-950 rounded-xl overflow-hidden border border-neutral-800 relative group shrink-0">
+              <div className="w-full h-[200px] xl:h-[230px] bg-neutral-950 rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 relative group shrink-0">
                 <img
                   src={project.images[activeImgIndex]}
                   alt=""
@@ -329,14 +329,14 @@ export const ProjectDetailPage = ({ projectId }) => {
                   <>
                     <button
                       onClick={handlePrevImg}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-700"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-300 dark:border-neutral-700"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </button>
                     <button
                       onClick={handleNextImg}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-700"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white transition-all opacity-0 group-hover:opacity-100 cursor-pointer border border-neutral-300 dark:border-neutral-700"
                       aria-label="Next image"
                     >
                       <ChevronRight className="h-4 w-4" />
@@ -346,7 +346,7 @@ export const ProjectDetailPage = ({ projectId }) => {
 
                 <button
                   onClick={() => setLightboxImage(activeImgIndex)}
-                  className="absolute bottom-2 right-2 p-1.5 bg-neutral-900/80 hover:bg-neutral-800 text-white rounded-md cursor-pointer border border-neutral-700"
+                  className="absolute bottom-2 right-2 p-1.5 bg-white/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white rounded-md cursor-pointer border border-neutral-300 dark:border-neutral-700"
                   aria-label="Maximize image"
                 >
                   <Maximize2 className="h-3 w-3" />
@@ -373,11 +373,11 @@ export const ProjectDetailPage = ({ projectId }) => {
             </div>
           )}
 
-          <div className={`${hasImages && hasVideo ? "lg:col-span-3 lg:row-span-3" : "lg:col-span-6 lg:row-span-3"} bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in`} style={{ animationDelay: "0.25s", animationFillMode: "backwards" }}>
+          <div className={`${hasImages && hasVideo ? "lg:col-span-3 lg:row-span-3" : "lg:col-span-6 lg:row-span-3"} bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in`} style={{ animationDelay: "0.25s", animationFillMode: "backwards" }}>
             {/* Overview Tile */}
             <SectionLabel icon={FileText}>Overview</SectionLabel>
-            <div className="mt-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-800">
-              <p className="text-xs xl:text-sm text-neutral-300 leading-relaxed">
+            <div className="mt-2 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800">
+              <p className="text-xs xl:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
                 {project.overview}
               </p>
             </div>
@@ -391,7 +391,7 @@ export const ProjectDetailPage = ({ projectId }) => {
                   key={tech}
                   className="px-1 py-1 font-mono text-[10px] xl:text-xs font-semibold text-[#ffc01d] flex items-center"
                 >
-                  <span className="text-neutral-600 font-normal">/</span>
+                  <span className="text-zinc-400 dark:text-zinc-600 font-normal">/</span>
                   {tech}
                 </span>
               ))}
@@ -400,13 +400,13 @@ export const ProjectDetailPage = ({ projectId }) => {
 
           {/* Key Architecture List */}
           {project.architecture && project.architecture.length > 0 && (
-            <div className="lg:col-span-6 lg:row-span-2 bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.35s", animationFillMode: "backwards" }}>
+            <div className="lg:col-span-6 lg:row-span-2 bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.35s", animationFillMode: "backwards" }}>
               <SectionLabel icon={Layers}>Key Architecture</SectionLabel>
-              <ul className="mt-2 space-y-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-800">
+              <ul className="mt-2 space-y-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800">
                 {project.architecture.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2 text-xs text-neutral-300"
+                    className="flex items-start gap-2 text-xs text-neutral-600 dark:text-neutral-300"
                   >
                     <span className="mt-1 w-1.5 h-1.5 rounded-full bg-[#ffc01d] shrink-0" />
                     <span className="line-clamp-2">{item}</span>
@@ -419,30 +419,30 @@ export const ProjectDetailPage = ({ projectId }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {/* Problem Statement Tile */}
-          <div className="lg:col-span-1 lg:row-span-2 bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.45s", animationFillMode: "backwards" }}>
+          <div className="lg:col-span-1 lg:row-span-2 bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.45s", animationFillMode: "backwards" }}>
             <SectionLabel icon={AlertCircle}>The Problem</SectionLabel>
-            <div className="mt-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-800">
-              <p className="text-xs text-neutral-300 leading-relaxed">
+            <div className="mt-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800">
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
                 {project.problemStatement}
               </p>
             </div>
           </div>
 
           {/* Solution Tile */}
-          <div className="lg:col-span-1 lg:row-span-2 bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.55s", animationFillMode: "backwards" }}>
+          <div className="lg:col-span-1 lg:row-span-2 bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.55s", animationFillMode: "backwards" }}>
             <SectionLabel icon={CheckCircle2}>The Solution</SectionLabel>
-            <div className="mt-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-800">
-              <p className="text-xs text-neutral-300 leading-relaxed">
+            <div className="mt-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800">
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
                 {project.solution}
               </p>
             </div>
           </div>
 
           {/* Impact & Outcomes Tile */}
-          <div className="lg:col-span-1 lg:row-span-2 bg-neutral-900/60 border border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.65s", animationFillMode: "backwards" }}>
+          <div className="lg:col-span-1 lg:row-span-2 bg-white/60 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-3.5 xl:p-4 flex flex-col justify-start overflow-hidden animate-fade-in" style={{ animationDelay: "0.65s", animationFillMode: "backwards" }}>
             <SectionLabel icon={Target}>Outcomes & Impact</SectionLabel>
-            <div className="mt-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-800">
-              <p className="text-xs text-neutral-300 leading-relaxed">
+            <div className="mt-1.5 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800">
+              <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
                 {project.conclusion}
               </p>
             </div>
@@ -454,11 +454,11 @@ export const ProjectDetailPage = ({ projectId }) => {
       {demoProject && demoProject.demoModal && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" data-lenis-prevent>
           <div
-            className="absolute inset-0 bg-neutral-950/80 backdrop-blur-xs"
+            className="absolute inset-0 bg-neutral-950/60 backdrop-blur-xs"
             onClick={() => setDemoProject(null)}
           />
-          <div className="relative w-full max-w-lg bg-neutral-950 border border-neutral-800 rounded-3xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
-            <div className="flex items-start justify-between p-6 pb-4 shrink-0 border-b border-neutral-800">
+          <div className="relative w-full max-w-lg bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800/80 rounded-3xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
+            <div className="flex items-start justify-between p-6 pb-4 shrink-0 border-b border-neutral-200/80 dark:border-neutral-800/80">
               <div className="text-left space-y-2">
                 <span className={badgeClass}>
                   {demoProject.demoModal.kind === "app" ? (
@@ -467,13 +467,13 @@ export const ProjectDetailPage = ({ projectId }) => {
                     <><ExternalLink className="h-3.5 w-3.5" /> Live Demo</>
                   )}
                 </span>
-                <h2 className="text-xl font-extrabold text-white tracking-tight pr-8">
+                <h2 className="text-xl font-extrabold text-neutral-900 dark:text-white tracking-tight pr-8">
                   {demoProject.title}
                 </h2>
               </div>
               <button
                 onClick={() => setDemoProject(null)}
-                className="p-2 rounded-full hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors cursor-pointer shrink-0"
+                className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer shrink-0"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -481,20 +481,20 @@ export const ProjectDetailPage = ({ projectId }) => {
             <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-5 text-left">
               <div className="space-y-2 pt-4">
                 <SectionLabel icon={FileText}>Instructions</SectionLabel>
-                <ol className="text-sm text-neutral-300 leading-relaxed space-y-2">
+                <ol className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed space-y-2">
                   {demoProject.demoModal.instructions.map((instr, idx) => (
                     <li key={idx}>
                       {idx + 1}){" "}
                       {instr.type === "credentials" ? (
                         <>
                           {instr.title}
-                          <div className="mt-2 space-y-1 bg-neutral-900 p-3 rounded-2xl border border-neutral-800 text-sm">
+                          <div className="mt-2 space-y-1 bg-neutral-100 dark:bg-neutral-900/40 p-3 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55 text-sm">
                             {instr.credentials.map((cred) => (
                               <p key={cred.label}>
-                                <span className="font-semibold text-white">
+                                <span className="font-semibold text-neutral-900 dark:text-white">
                                   {cred.label}:
                                 </span>{" "}
-                                <span className="text-neutral-300">
+                                <span className="text-neutral-600 dark:text-neutral-300">
                                   {cred.value}
                                 </span>
                               </p>
@@ -507,7 +507,7 @@ export const ProjectDetailPage = ({ projectId }) => {
                             typeof part === "string" ? (
                               <span key={j}>{part}</span>
                             ) : (
-                              <span key={j} className="font-semibold text-white break-all">
+                              <span key={j} className="font-semibold text-neutral-900 dark:text-white break-all">
                                 {part.bold}
                               </span>
                             ),
@@ -519,7 +519,7 @@ export const ProjectDetailPage = ({ projectId }) => {
                 </ol>
               </div>
             </div>
-            <div className="p-6 pt-4 border-t border-neutral-800 shrink-0 space-y-2">
+            <div className="p-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800/80 shrink-0 space-y-2">
               <a
                 href={demoProject.demoModal.url}
                 target={demoProject.demoModal.kind === "web" ? "_blank" : undefined}
