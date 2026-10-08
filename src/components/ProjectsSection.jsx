@@ -1,22 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import {
-  ChevronLeft,
-  ChevronRight,
   X,
   AlertCircle,
   FileText,
-  CheckCircle2,
-  MonitorCog,
-  Target,
-  Maximize2,
   ExternalLink,
   Download,
   Smartphone,
   ArrowRight,
   ArrowUpRight,
-  Image as ImageIcon,
-  Play,
   Cpu,
   Layers,
 } from "lucide-react";
@@ -57,26 +49,6 @@ const getFirstVideoUrl = (project) => {
     return project.videoUrl;
   }
   return null;
-};
-
-const getEmbedUrl = (url, autoplay = false) => {
-  if (!url || typeof url !== "string") return null;
-  let embed;
-  if (url.includes("/preview")) {
-    embed = url;
-  } else {
-    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      embed = `https://drive.google.com/file/d/${match[1]}/preview`;
-    } else {
-      return url;
-    }
-  }
-  const sep = embed.includes("?") ? "&" : "?";
-  const params = [];
-  if (autoplay) params.push("autoplay=1");
-  if (autoplay) params.push("mute=1");
-  return params.length ? `${embed}${sep}${params.join("&")}` : embed;
 };
 
 const FeaturedPreview = ({
@@ -155,38 +127,11 @@ FeaturedPreview.propTypes = {
 
 export const ProjectsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [activeImgIndex, setActiveImgIndex] = useState(0);
-  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [demoProject, setDemoProject] = useState(null);
   const [hoverImage, setHoverImage] = useState(null);
-  const [lightboxImage, setLightboxImage] = useState(null);
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== "undefined" && window.innerWidth < 768,
-  );
-  const [useNativeVideo, setUseNativeVideo] = useState(true);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const handler = (e) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    setIsMobile(mq.matches);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  const openDrawer = (project) => {
-    setSelectedProject(project);
-    setActiveImgIndex(0);
-    setActiveVideoIndex(0);
-    setUseNativeVideo(true);
-    setIsDrawerOpen(true);
-    document.body.style.overflow = "hidden";
-  };
-
-  const selectVideo = (idx) => {
-    setActiveVideoIndex(idx);
-    setUseNativeVideo(true);
+  const openProjectPage = (project) => {
+    window.location.hash = `#works/${project.id}`;
   };
 
   const handleImageEnter = (project) => {
@@ -197,27 +142,6 @@ export const ProjectsSection = () => {
   };
 
   const handleImageLeave = () => setHoverImage(null);
-
-  useEffect(() => {
-    if (!lightboxImage) return;
-    document.body.style.overflow = "hidden";
-    const onKey = (e) => {
-      if (e.key === "Escape") setLightboxImage(null);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [lightboxImage]);
-
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-    setTimeout(() => {
-      setSelectedProject(null);
-    }, 500);
-    document.body.style.overflow = "unset";
-  };
 
   const renderActionLinks = (project) => (
     <>
@@ -253,7 +177,7 @@ export const ProjectsSection = () => {
       ) : null}
 
       <button
-        onClick={() => openDrawer(project)}
+        onClick={() => openProjectPage(project)}
         className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-neutral-600 dark:text-neutral-300 hover:text-[#ffc01d] dark:hover:text-[#ffc01d]-400 transition-all duration-300 cursor-pointer"
       >
         Full Details
@@ -406,7 +330,7 @@ export const ProjectsSection = () => {
                   {project.subtitle}
                 </p>
                 <button
-                  onClick={() => openDrawer(project)}
+                  onClick={() => openProjectPage(project)}
                   className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#ffc01d] dark:text-[#ffc01d]-400 transition-colors cursor-pointer self-start"
                 >
                   View Project
@@ -428,278 +352,6 @@ export const ProjectsSection = () => {
           </button>
         </div>
       </div>
-
-      {/* Overlay */}
-      <div
-        className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-xs z-50 transition-opacity duration-500 ease-in-out ${isDrawerOpen
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
-          }`}
-        onClick={closeDrawer}
-      />
-
-      {/* Sliding Drawer */}
-      <div
-        data-lenis-prevent
-        className={`fixed top-0 right-0 h-screen w-full max-w-2xl bg-white dark:bg-neutral-950 border-l border-neutral-200/80 dark:border-neutral-800/80 shadow-2xl z-[150] flex flex-col transition-all duration-500 ease-in-out ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-      >
-        {selectedProject && (
-          <>
-            {/* Header */}
-            <div className="flex items-start justify-between gap-4 p-6 pb-4 border-b border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0">
-              <div className="text-left space-y-2">
-                <span className={badgeClass}>
-                  {selectedProject.year} · {selectedProject.category}
-                </span>
-                <h2 className="text-2xl font-extrabold text-neutral-900 dark:text-white tracking-tight pr-8">
-                  {selectedProject.title}
-                </h2>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                  {selectedProject.subtitle}
-                </p>
-              </div>
-              <button
-                onClick={closeDrawer}
-                className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer flex-shrink-0"
-                aria-label="Close details"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8 text-left">
-              {/* Media: Video */}
-              {(() => {
-                let projectVideos = [];
-                if (Array.isArray(selectedProject.videoUrls)) {
-                  projectVideos = selectedProject.videoUrls;
-                } else if (Array.isArray(selectedProject.videoUrl)) {
-                  projectVideos = selectedProject.videoUrl;
-                } else if (
-                  typeof selectedProject.videoUrls === "string" &&
-                  selectedProject.videoUrls
-                ) {
-                  projectVideos = [selectedProject.videoUrls];
-                } else if (
-                  typeof selectedProject.videoUrl === "string" &&
-                  selectedProject.videoUrl
-                ) {
-                  projectVideos = [selectedProject.videoUrl];
-                }
-
-                if (projectVideos.length === 0) return null;
-
-                return (
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <SectionLabel icon={Play}>
-                        Video{" "}
-                        {projectVideos.length > 1 &&
-                          `(${activeVideoIndex + 1}/${projectVideos.length})`}
-                      </SectionLabel>
-                      {projectVideos.length > 1 && (
-                        <div className="flex items-center gap-1 bg-neutral-100 dark:bg-neutral-800/80 p-1 rounded-full text-[10px] font-bold">
-                          {projectVideos.map((_, idx) => (
-                            <button
-                              key={idx}
-                              onClick={() => selectVideo(idx)}
-                              className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${activeVideoIndex === idx
-                                ? "bg-white text-[#ffc01d] shadow-xs dark:bg-neutral-700 dark:text-[#ffc01d]-400"
-                                : "text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
-                                }`}
-                            >
-                              {idx + 1}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                    <div className="w-full h-[65vh] md:h-auto md:aspect-video bg-black rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50">
-                      {isMobile && useNativeVideo ? (
-                        <video
-                          key={projectVideos[activeVideoIndex]}
-                          src={projectVideos[activeVideoIndex]}
-                          className="w-full h-full object-contain bg-black"
-                          controls
-                          playsInline
-                          preload="metadata"
-                          onError={() => setUseNativeVideo(false)}
-                        />
-                      ) : (
-                        <iframe
-                          src={getEmbedUrl(projectVideos[activeVideoIndex])}
-                          className="w-full h-full border-0"
-                          allow="autoplay; encrypted-media; picture-in-picture"
-                          allowFullScreen
-                          title={`${selectedProject.title} Video ${activeVideoIndex + 1}`}
-                        />
-                      )}
-                    </div>
-                  </div>
-                );
-              })()}
-
-              {/* Media: Screenshots */}
-              {selectedProject.images && selectedProject.images.length > 0 && (
-                <div className="space-y-3">
-                  <SectionLabel icon={ImageIcon}>Screenshots</SectionLabel>
-                  <div className="w-full aspect-video bg-neutral-100 dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 relative group">
-                    <img
-                      src={selectedProject.images[activeImgIndex]}
-                      alt={`${selectedProject.title} ${activeImgIndex + 1}`}
-                      className="w-full h-full object-contain"
-                    />
-
-                    {/* Next / Previous Controls */}
-                    {selectedProject.images.length > 1 && (
-                      <>
-                        <button
-                          onClick={() =>
-                            setActiveImgIndex((prev) =>
-                              prev === 0 ? selectedProject.images.length - 1 : prev - 1
-                            )
-                          }
-                          className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-neutral-900/60 hover:bg-neutral-900/90 text-white transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
-                          aria-label="Previous image"
-                        >
-                          <ChevronLeft className="h-5 w-5" />
-                        </button>
-
-                        <button
-                          onClick={() =>
-                            setActiveImgIndex((prev) =>
-                              prev === selectedProject.images.length - 1 ? 0 : prev + 1
-                            )
-                          }
-                          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-neutral-900/60 hover:bg-neutral-900/90 text-white transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
-                          aria-label="Next image"
-                        >
-                          <ChevronRight className="h-5 w-5" />
-                        </button>
-
-                        {/* Image Counter Badge */}
-                        <div className="absolute top-2 left-2 px-2.5 py-1 bg-neutral-900/60 text-white text-xs rounded-full backdrop-blur-xs">
-                          {activeImgIndex + 1} / {selectedProject.images.length}
-                        </div>
-                      </>
-                    )}
-
-                    {/* Fullscreen Button */}
-                    <button
-                      onClick={() =>
-                        setLightboxImage(selectedProject.images[activeImgIndex])
-                      }
-                      className="absolute bottom-2 right-2 p-1.5 bg-neutral-800/70 rounded-full hover:bg-neutral-600 transition-colors"
-                      aria-label="View full image"
-                    >
-                      <Maximize2 className="h-4 w-4 text-white" />
-                    </button>
-                  </div>
-
-                  {/* Scrollable Thumbnails */}
-                  {selectedProject.images.length > 1 && (
-                    <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-                      {selectedProject.images.map((img, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setActiveImgIndex(idx)}
-                          className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 cursor-pointer flex-shrink-0 ${activeImgIndex === idx
-                            ? "border-[#ffc01d] scale-105 shadow-xs"
-                            : "border-transparent opacity-50 hover:opacity-100"
-                            }`}
-                        >
-                          <img src={img} alt="" className="w-full h-full object-cover" />
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Overview */}
-              <div className="space-y-2">
-                <SectionLabel icon={FileText}>Overview</SectionLabel>
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                  {selectedProject.overview}
-                </p>
-              </div>
-
-              {/* Problem & Solution */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="space-y-2 bg-neutral-100 dark:bg-neutral-900/40 p-5 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55">
-                  <SectionLabel icon={AlertCircle}>The Problem</SectionLabel>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                    {selectedProject.problemStatement}
-                  </p>
-                </div>
-                <div className="space-y-2 bg-neutral-100 dark:bg-neutral-900/40 p-5 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/55">
-                  <SectionLabel icon={CheckCircle2}>The Solution</SectionLabel>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                    {selectedProject.solution}
-                  </p>
-                </div>
-              </div>
-
-              {/* Tech Architecture */}
-              <div className="space-y-2">
-                <SectionLabel icon={MonitorCog}>Technical Architecture</SectionLabel>
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                  {selectedProject.documentation}
-                </p>
-              </div>
-
-              {/* Outcomes */}
-              <div className="space-y-2">
-                <SectionLabel icon={Target}>Outcomes &amp; Impact</SectionLabel>
-                <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                  {selectedProject.conclusion}
-                </p>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="p-4 border-t border-neutral-200/80 dark:border-neutral-800/80 flex-shrink-0 grid grid-cols-2 gap-3">
-              {selectedProject.demoModal && (
-                <button
-                  onClick={() => setDemoProject(selectedProject)}
-                  className="cosmic-button w-full h-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
-                >
-                  {selectedProject.demoModal.kind === "app" ? (
-                    <>
-                      <Smartphone className="h-4 w-4 shrink-0" /> Demo Instructions
-                    </>
-                  ) : (
-                    <>
-                      <ExternalLink className="h-4 w-4 shrink-0" /> Demo Instructions
-                    </>
-                  )}
-                </button>
-              )}
-
-              {!selectedProject.demoModal && selectedProject.demoUrl && (
-                <a
-                  href={selectedProject.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="outline-button w-full h-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
-                >
-                  <ExternalLink className="h-4 w-4 shrink-0" /> Open Demo
-                </a>
-              )}
-
-              <button
-                onClick={closeDrawer}
-                className="outline-button w-full h-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
-              >
-                Close Details
-              </button>
-            </div>
-          </>
-        )}
-      </div>
-
       {/* Demo App Instructions Modal */}
       {demoProject && demoProject.demoModal && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" data-lenis-prevent>
@@ -825,28 +477,6 @@ export const ProjectsSection = () => {
               </button>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* Fullscreen Image Viewer */}
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 z-[220] bg-neutral-950/90 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setLightboxImage(null)}
-        >
-          <button
-            onClick={() => setLightboxImage(null)}
-            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
-            aria-label="Close fullscreen image"
-          >
-            <X className="h-5 w-5" />
-          </button>
-          <img
-            src={lightboxImage}
-            alt=""
-            className="max-w-full max-h-full object-contain animate-fade-in"
-            onClick={(e) => e.stopPropagation()}
-          />
         </div>
       )}
 

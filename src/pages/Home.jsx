@@ -12,6 +12,7 @@ import { PubmatsGallery } from "../components/PubmatsGallery";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 import PixelSwap from "../components/PixelSwap";
+import { ProjectDetailPage } from "../components/ProjectDetailPage";
 // import { CombinedHero } from "../components/TestSection";
 
 const getInitialTheme = () =>
@@ -33,6 +34,18 @@ export const Home = () => {
   }, [isDarkMode]);
 
   const handleThemeToggle = () => setIsDarkMode((prev) => !prev);
+
+  const [hash, setHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : "",
+  );
+
+  useEffect(() => {
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  const projectMatch = hash.match(/^#works\/([\w-]+)/);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-clip">
@@ -56,7 +69,11 @@ export const Home = () => {
       {/* Navbar */}
       <Navbar isDarkMode={isDarkMode} onThemeToggle={handleThemeToggle} />
 
-      {/* Main Content */}
+      {projectMatch ? (
+        <main className="relative">
+          <ProjectDetailPage projectId={projectMatch[1]} />
+        </main>
+      ) : (
       <main className="relative">
         {/* <CombinedHero /> */}
         <HeroSection />
@@ -71,6 +88,7 @@ export const Home = () => {
         <ContactSection />
         <Footer />
       </main>
+      )}
 
     </div>
   );

@@ -105,7 +105,7 @@ export function HeroSection() {
                     />
                   </div>
                   <div className="p-4 flex flex-col gap-2.5">
-                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white leading-snug">MtMasaragaProtectedLandscape</h3>
+                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white leading-snug">Mt. Masaraga Protected Landscape</h3>
 
                     {/* Code Accent Tags */}
                     <div className="flex flex-wrap gap-3 font-mono text-[10px] tracking-tight">

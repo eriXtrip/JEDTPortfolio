@@ -428,7 +428,7 @@ const projects = [
     title: "Rental Management System",
     subtitle: "Windows Forms rental & inventory utility",
     category: "Desktop Dev",
-    featured: true,
+    featured: false,
     image: RentalImg,
     overview:
       "Local rental shops tracked bookings on physical paper grids — booking collisions, inventory mismatches, and untracked late returns. This desktop utility digitizes the whole workflow: auto-scheduling buffers, real-time product states, invoice generation, and Excel-based reports, all packaged into a single installer.",

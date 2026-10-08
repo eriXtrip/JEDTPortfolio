@@ -19,7 +19,8 @@ export default function CardLong({ categories }) {
   const midIndex = (categories.length - 1) / 2;
 
   return (
-    <div onClick={() => setSelected(null)}
+    <div
+      onClick={() => setSelected(null)}
       className="relative flex items-center justify-center h-[28rem] sm:h-[36rem] w-full cursor-pointer max-w-6xl mx-auto overflow-hidden sm:overflow-visible"
     >
       {categories.map((cat, index) => {
@@ -41,24 +42,31 @@ export default function CardLong({ categories }) {
         return (
           <motion.div
             key={index}
-            className={`absolute w-44 sm:w-64 lg:w-72 h-[18rem] sm:h-[26rem] bg-white dark:bg-neutral-900/90 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl overflow-hidden group text-left origin-bottom shadow-lg backdrop-blur-sm ${isExpanded ? "border-[#ffc01d]/60" : ""}`}
+            className={`absolute w-44 sm:w-64 lg:w-72 h-[18rem] sm:h-[26rem] bg-white dark:bg-neutral-900/90 border border-neutral-200/50 dark:border-neutral-800/55 rounded-3xl overflow-hidden group text-left origin-bottom shadow-lg backdrop-blur-sm ${isExpanded ? "border-[#ffc01d]/60" : ""
+              }`}
+            /* Entrance Staking Animation State */
             initial={{
-              x: offset * xOffsetExpanded,
-              y: 0,
-              rotate: offset * 2,
-              scale: 1.05,
+              x: 0,
+              y: -220, // Start above the container
+              rotate: 0,
+              scale: 1.1,
               opacity: 0,
             }}
+            /* In-View Fan-Out Target */
             whileInView={{
-              x: offset * xOffsetCollapsed,
-              y: Math.abs(offset) * 12 - 10,
-              rotate: offset * 6,
-              scale: 1,
+              x: isExpanded
+                ? offset * xOffsetExpanded
+                : offset * xOffsetCollapsed,
+              y: isExpanded ? 0 : Math.abs(offset) * 12 - 10,
+              rotate: isExpanded ? offset * 2 : offset * 6,
+              scale: isExpanded ? 1.05 : 1,
               opacity: 1,
             }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             animate={{
-              x: isExpanded ? offset * xOffsetExpanded : offset * xOffsetCollapsed,
+              x: isExpanded
+                ? offset * xOffsetExpanded
+                : offset * xOffsetCollapsed,
               y: isExpanded ? 0 : Math.abs(offset) * 12 - 10,
               rotate: isExpanded ? offset * 2 : offset * 6,
               scale: isExpanded ? 1.05 : 1,
@@ -75,15 +83,23 @@ export default function CardLong({ categories }) {
             }}
             transition={{
               type: "spring",
-              stiffness: 260,
-              damping: 20,
+              stiffness: 220,
+              damping: 22,
+              delay: index * 0.08, // Sequential card dealing delay
             }}
             style={{
-              zIndex: isExpanded ? categories.length + 1 : categories.length - Math.abs(offset),
+              zIndex: isExpanded
+                ? categories.length + 1
+                : categories.length - Math.abs(offset),
             }}
           >
             <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4 h-full flex flex-col pointer-events-none group-hover:pointer-events-auto">
-              <h3 className={`text-sm sm:text-lg font-extrabold transition-colors leading-tight ${isExpanded ? "text-[#ffc01d]" : "text-neutral-900 dark:text-white group-hover:text-[#ffc01d]"}`}>
+              <h3
+                className={`text-sm sm:text-lg font-extrabold transition-colors leading-tight ${isExpanded
+                    ? "text-[#ffc01d]"
+                    : "text-neutral-900 dark:text-white group-hover:text-[#ffc01d]"
+                  }`}
+              >
                 {cat.title}
               </h3>
               <div className="flex flex-wrap gap-1 sm:gap-1.5 overflow-y-auto no-scrollbar pb-2">
