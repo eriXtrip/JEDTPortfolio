@@ -151,6 +151,7 @@ const certificates = [
     category: "training",
     categoryLabel: "Automation",
     img: PowerAutomateBeginnertoProWorkshop,
+  },
   {
     id: 15,
     title: "Certificate of Appreciation",
