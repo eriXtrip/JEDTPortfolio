@@ -29,6 +29,7 @@ import DiplomaJHS from "../assets/cert/Diploma JHS 2020.png"
 import DiplomaElementary from "../assets/cert/Deploma_Elementary.png"
 import ITCustomerSupportBasicsImg from "../assets/cert/IT_Customer_Support_Basics_certificate_jedt.png"
 import FundamentalsOfDatabaseManagementImg from "../assets/cert/Fundamentals of Database Management.png"
+import PowerAutomateBeginnertoProWorkshop from "../assets/cert/Power Automate Beginner to Pro Workshop - Jon Eric Tripulca_page_1.png"
 
 const certificates = [
   {
@@ -145,6 +146,13 @@ const certificates = [
   },
   {
     id: 14,
+    title: "Power Automate Beginner to Pro Workshop",
+    issuer: "PragmaticWorks",
+    category: "training",
+    categoryLabel: "Automation",
+    img: PowerAutomateBeginnertoProWorkshop,
+  {
+    id: 15,
     title: "Certificate of Appreciation",
     issuer: "Bicol University",
     category: "recognition",
@@ -152,7 +160,7 @@ const certificates = [
     img: CertofAppreciation,
   },
   {
-    id: 15,
+    id: 16,
     title: "Diploma in Information Technology",
     issuer: "Bicol University",
     category: "diploma",
@@ -160,7 +168,7 @@ const certificates = [
     img: DiplomaCollege,
   },
   {
-    id: 16,
+    id: 17,
     title: "IT Customer Support Basics",
     issuer: "CISCO Network Academy",
     category: "technical",
@@ -168,7 +176,7 @@ const certificates = [
     img: ITCustomerSupportBasicsImg,
   },
   {
-    id: 17,
+    id: 18,
     title: "Fundamentals of Database Management",
     issuer: "DICT V5",
     category: "programming",
