@@ -13,6 +13,7 @@ export const ExperienceSection = () => {
       period: "14-Week Internship",
       bullets: [
         "Developed and deployed a React-Laravel web application that automated specimen management workflows and centralized laboratory records, reducing specimen processing.",
+        "Automated the data cleaning and migration of legacy Excel metadata for hundreds of laboratory specimens using Power Automate, reducing manual data-entry errors and formatting raw text into structured relational database schemas.",
         "Collaborated with faculty and project stakeholders to gather requirements, perform testing, and deliver production-ready system enhancements.",
         "Communicated complex technical solutions and conducted system walkthroughs for non-technical stakeholders.",
       ],
@@ -28,6 +29,7 @@ export const ExperienceSection = () => {
         "Provided on-site IT support for election systems across 5 voting precincts, serving 15+ election personnel and 1,000+ voters.",
         "Set up and configured Automatic Counting Machines (ACMs), preparing batteries and connecting them to all ACMs.",
         "Managed election-day connectivity using Starlink and a local internet provider USB SIM card, ensuring uninterrupted data transmission.",
+        "Maintained continuous polling operations during Starlink connection outages by executing emergency network failover protocols via backup USB dongle/SIM hardware, following a structured incident escalation chain from local troubleshooting to regional technical lead reporting.",
         "Assisted users with technical issues, ensuring smooth operations",
       ],
       blog: null,
