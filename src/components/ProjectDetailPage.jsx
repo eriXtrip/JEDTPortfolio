@@ -518,6 +518,23 @@ export const ProjectDetailPage = ({ projectId }) => {
                   ))}
                 </ol>
               </div>
+              {/* Notice */}
+              <div className="space-y-2 bg-amber-50 dark:bg-amber-950/20 p-5 rounded-2xl border border-amber-100 dark:border-amber-900/40">
+                <h3 className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+                  <AlertCircle className="h-3.5 w-3.5" /> Notice
+                </h3>
+                <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
+                  {demoProject.demoModal.notice.intro}
+                </p>
+                <ul className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed list-disc pl-5 space-y-1">
+                  {demoProject.demoModal.notice.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-amber-700 dark:text-amber-200/90 leading-relaxed">
+                  {demoProject.demoModal.notice.outro}
+                </p>
+              </div>
             </div>
             <div className="p-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800/80 shrink-0 space-y-2">
               <a

@@ -293,7 +293,20 @@ const projects = [
           ],
         },
       ],
-      notice: null,
+      notice: {
+        intro:
+          "Please read these legal terms before using LottoCam. By accessing this utility, you agree to the following:",
+        items: [
+          "Independent educational tool; not affiliated with PCSO.",
+          "For reference only—always verify physical tickets at pcso.gov.ph before claiming prizes.",
+          "Does not sell tickets, process bets, or handle money.",
+          "All camera feeds and OCR process locally on your device; no data is sent to servers.",
+          "Provided 'as is' without liability for scanning errors or missed claim deadlines.",
+          "Must be 18+ to play.",
+        ],
+        outro:
+          "LottoCam promotes responsible play. Always verify physical tickets officially before making financial decisions.",
+      },
     },
     problemStatement:
       "PCSO jackpot players had no quick way to check a ticket's printed combinations against the published draw without manually retyping numbers, and existing tools often send ticket images to a server.",

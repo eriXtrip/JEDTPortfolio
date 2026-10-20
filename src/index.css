@@ -170,7 +170,7 @@
   }
 
   html {
-    @apply scroll-smooth font-sans;
+    @apply font-sans md:scroll-smooth;
   }
 
   body {
