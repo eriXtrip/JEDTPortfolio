@@ -100,6 +100,13 @@ import MtMasaragaProtectedLandscape14 from "../assets/works/MtMasaragaProtectedL
 import MtMasaragaProtectedLandscape15 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (15).png";
 import MtMasaragaProtectedLandscape16 from "../assets/works/MtMasaragaProtectedLandscape/MtMasaragaProtectedLandscape (16).png";
 
+import LottoCamGif from "../assets/works/LottoCam/LottoCam.gif";
+import LottoCamImg from "../assets/works/LottoCam.png";
+import LottoCam1 from "../assets/works/LottoCam/LottoCam (1).png";
+import LottoCam2 from "../assets/works/LottoCam/LottoCam (2).png";
+import LottoCam3 from "../assets/works/LottoCam/LottoCam (3).png";
+import LottoCam4 from "../assets/works/LottoCam/LottoCam (4).png";
+
 const projects = [
   {
     id: "mt-masaraga-protected-landscape",
@@ -214,6 +221,88 @@ const projects = [
       "Structured with Tailwind CSS v4 design tokens, single-source Geist typography, dynamic SEO/JSON-LD runtime generation, static host fallbacks, and modular React hooks for client-side state handling.",
     conclusion:
       "Successfully demonstrated a unified digital eco-tourism management experience that streamlines hiker registrations, pass generation, and administrative park workflows.",
+  },
+  {
+    id: "lottocam",
+    year: "2026",
+    title: "LottoCam",
+    subtitle: "PCSO Jackpot Ticket Reader",
+    category: "Web Dev",
+    featured: true,
+    image: LottoCamImg,
+    overview:
+      "LottoCam is a camera-first web app that reads a PCSO Major Jackpot ticket, confirms the printed game, draw date, and combinations, and checks them against the live draw. OCR runs entirely in the browser, so ticket images never leave the device.",
+    architecture: [
+      "React 19 + Vite SPA with a CORS-open third-party results aggregator wired through Vercel serverless proxy functions (/api/*) for caching and a single upstream swap point",
+      "Pure-function ticket parser (src/lib/parseTicket.js) that turns raw OCR text into { category, drawDate, combinations }, with on-ticket date and label formats enforced",
+      "In-browser OCR pipeline using tesseract.js with image scaling, grayscale, contrast stretching, and a constrained character whitelist",
+      "Client-side persistence of saved tickets via browser localStorage only",
+      "Dual-element date picker overlaying a formatted DD-Mon-YY text field on a native date input for consistent display and a working native picker",
+    ],
+    tech: ["React", "Vite", "tesseract.js", "Vercel", "React Router"],
+    demoUrl: "https://lotto-cam.vercel.app/",
+    codeUrl: "https://github.com/eriXtrip",
+    blogUrl: null,
+    images: [
+      LottoCamImg,
+      LottoCam1,
+      LottoCam2,
+      LottoCam3,
+      LottoCam4,
+    ],
+    Gif: LottoCamGif,
+    videoUrl: [
+      "https://drive.google.com/file/d/1UfSlMreCHoBSvVLDExEwQEjy2GylZtz_/preview?autoplay=1"
+    ],
+    demoModal: {
+      kind: "web",
+      url: "https://lotto-cam.vercel.app/",
+      instructions: [
+        {
+          type: "text",
+          parts: [
+            "This is the live, working website. Allow camera access, or use ",
+            { bold: "Choose a photo" },
+            " / drag a ticket image onto the drop area.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "Point the camera at a PCSO Major Jackpot ticket (6/42, 6/45, 6/49, 6/55, 6/58) and let it read the game, draw date, and combinations.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "OCR is never trusted as final. Review and fix the editable fields, then press ",
+            { bold: "Check this ticket" },
+            " to verify each combination against the published draw.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            "Draw results come from an independent aggregator and are for reference only. Always confirm winning numbers at an authorized PCSO outlet or pcso.gov.ph before claiming.",
+          ],
+        },
+        {
+          type: "text",
+          parts: [
+            { bold: "LIVE SITE" }, " below to open the app.",
+          ],
+        },
+      ],
+      notice: null,
+    },
+    problemStatement:
+      "PCSO jackpot players had no quick way to check a ticket's printed combinations against the published draw without manually retyping numbers, and existing tools often send ticket images to a server.",
+    solution:
+      "Built a browser-only ticket reader that photographs or uploads a ticket, extracts the game, draw date, and up to four combinations via on-device OCR, and checks each combination against live results. Images never leave the device.",
+    documentation:
+      "Kept the parser a single pure function as the only place OCR text becomes ticket data, added games and result sources through one module (src/lib/games.js), and gave every data view empty, loading, and error states.",
+    conclusion:
+      "LottoCam demonstrates a privacy-first, camera-assisted lottery ticket verification experience that removes manual re-entry while keeping all ticket processing on the user's device.",
   },
   {
     id: "bucs-mcc",
