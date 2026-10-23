@@ -323,7 +323,7 @@
   right: calc(1.25rem + 0.875rem);
   bottom: calc(1.25rem + 0.875rem);
   pointer-events: none;
-  animation: like-heart-float 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: like-heart-float 6s ease-in-out forwards;
   filter: drop-shadow(0 2px 4px rgb(244 63 94 / 25%));
 }
 
@@ -340,7 +340,7 @@
 
   100% {
     opacity: 0;
-    transform: translate3d(var(--heart-drift-x, 0px), -78vh, 0) scale(0.8) rotate(12deg);
+    transform: translate3d(var(--heart-drift-x, 0px), -2in, 0) scale(0.8) rotate(12deg);
   }
 }
 
