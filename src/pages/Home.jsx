@@ -13,6 +13,7 @@ import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 import PixelSwap from "../components/PixelSwap";
 import { ProjectDetailPage } from "../components/ProjectDetailPage";
+import { LikeButton } from "../components/LikeButton";
 // import { CombinedHero } from "../components/TestSection";
 
 const getInitialTheme = () =>
@@ -68,6 +69,7 @@ export const Home = () => {
 
       {/* Navbar */}
       <Navbar isDarkMode={isDarkMode} onThemeToggle={handleThemeToggle} />
+      <LikeButton />
 
       {projectMatch ? (
         <main className="relative">
