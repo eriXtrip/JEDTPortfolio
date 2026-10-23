@@ -310,12 +310,20 @@
   }
 }
 
+.like-heart-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .like-heart-float {
   position: absolute;
-  left: calc(50% + var(--heart-offset, 0px));
-  bottom: 50%;
+  right: calc(1.25rem + var(--heart-offset-x, 0px));
+  bottom: 1.25rem;
   pointer-events: none;
-  animation: like-heart-float 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: like-heart-float 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   filter: drop-shadow(0 2px 4px rgb(244 63 94 / 25%));
 }
 
@@ -332,7 +340,7 @@
 
   100% {
     opacity: 0;
-    transform: translate3d(var(--heart-drift, 0px), -82px, 0) scale(0.8) rotate(12deg);
+    transform: translate3d(var(--heart-drift-x, 0px), -78vh, 0) scale(0.8) rotate(12deg);
   }
 }
 
