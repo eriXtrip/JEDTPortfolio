@@ -5,7 +5,7 @@ const VISITOR_ID_KEY = "portfolio-visitor-id";
 const HEART_EMIT_INTERVAL_MS = 700;
 const HEART_STREAM_DURATION_MS = 60_000;
 const HEART_STREAM_PAUSE_MS = 30_000;
-const HEART_DRIFT_PATTERN = [-28, -14, 0, 14, 28];
+const HEART_DRIFT_PATTERN = [-28, 14, 0, -14, 28];
 
 function createVisitorId() {
   if (window.crypto?.randomUUID) return window.crypto.randomUUID();
