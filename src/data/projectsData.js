@@ -112,7 +112,7 @@ const projects = [
     id: "mt-masaraga-protected-landscape",
     year: "2026",
     title: "Mt. Masaraga Protected Landscape",
-    subtitle: "Mt. Masaraga Protected Landscape",
+    subtitle: "Eco-tourism Portal",
     category: "Web Dev",
     featured: true,
     image: MtMasaragaProtectedLandscapeImg,
