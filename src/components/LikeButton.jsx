@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 
 const VISITOR_ID_KEY = "portfolio-visitor-id";
+const HEART_EMIT_INTERVAL_MS = 320;
+const HEART_STREAM_DURATION_MS = 60_000;
+const HEART_STREAM_PAUSE_MS = 30_000;
+const HEART_DRIFT_PATTERN = [-28, -14, 0, 14, 28];
 
 function createVisitorId() {
   if (window.crypto?.randomUUID) return window.crypto.randomUUID();
@@ -31,7 +35,6 @@ export function LikeButton() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [isHeartStreamActive, setIsHeartStreamActive] = useState(false);
   const [floatingHearts, setFloatingHearts] = useState([]);
 
   useEffect(() => {
@@ -59,26 +62,45 @@ export function LikeButton() {
   }, []);
 
   useEffect(() => {
-    if (!liked || !isHeartStreamActive) {
+    if (!liked) {
       setFloatingHearts([]);
       return undefined;
     }
 
+    let heartIndex = 0;
+    let emitInterval;
+    let streamTimeout;
+    let pauseTimeout;
+
     const emitHeart = () => {
+      const drift = HEART_DRIFT_PATTERN[heartIndex % HEART_DRIFT_PATTERN.length];
+      const id = `heart-${heartIndex}`;
+      heartIndex += 1;
       setFloatingHearts((current) => [
         ...current,
         {
-          id: `${Date.now()}-${Math.random()}`,
-          offset: `${Math.round(Math.random() * 90 - 45)}px`,
-          drift: `${Math.round(Math.random() * 100 - 50)}px`,
+          id,
+          drift: `${drift}px`,
         },
       ]);
     };
 
-    emitHeart();
-    const interval = window.setInterval(emitHeart, 320);
-    return () => window.clearInterval(interval);
-  }, [isHeartStreamActive, liked]);
+    const startStream = () => {
+      emitHeart();
+      emitInterval = window.setInterval(emitHeart, HEART_EMIT_INTERVAL_MS);
+      streamTimeout = window.setTimeout(() => {
+        window.clearInterval(emitInterval);
+        pauseTimeout = window.setTimeout(startStream, HEART_STREAM_PAUSE_MS);
+      }, HEART_STREAM_DURATION_MS);
+    };
+
+    startStream();
+    return () => {
+      window.clearInterval(emitInterval);
+      window.clearTimeout(streamTimeout);
+      window.clearTimeout(pauseTimeout);
+    };
+  }, [liked]);
 
   const toggleLiked = async () => {
     if (!visitorId || isSaving) return;
@@ -89,7 +111,6 @@ export function LikeButton() {
     setLikesCount((count) =>
       count === null ? null : Math.max(0, count + (nextLiked ? 1 : -1)),
     );
-    setIsHeartStreamActive(nextLiked);
     setIsSaving(true);
     setHasError(false);
 
@@ -107,7 +128,6 @@ export function LikeButton() {
     } catch {
       setLiked(!nextLiked);
       setLikesCount(previousCount);
-      setIsHeartStreamActive(liked);
       setHasError(true);
     } finally {
       setIsSaving(false);
@@ -122,7 +142,6 @@ export function LikeButton() {
             key={heart.id}
             className="like-heart-float h-5 w-5 fill-rose-500 text-rose-500"
             style={{
-              "--heart-offset-x": heart.offset,
               "--heart-drift-x": heart.drift,
             }}
             onAnimationEnd={() =>

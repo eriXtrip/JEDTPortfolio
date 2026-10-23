@@ -313,15 +313,15 @@
 .like-heart-layer {
   position: fixed;
   inset: 0;
-  z-index: 70;
+  z-index: 55;
   overflow: hidden;
   pointer-events: none;
 }
 
 .like-heart-float {
   position: absolute;
-  right: calc(1.25rem + var(--heart-offset-x, 0px));
-  bottom: 1.25rem;
+  right: calc(1.25rem + 0.875rem);
+  bottom: calc(1.25rem + 0.875rem);
   pointer-events: none;
   animation: like-heart-float 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   filter: drop-shadow(0 2px 4px rgb(244 63 94 / 25%));
