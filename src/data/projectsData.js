@@ -123,7 +123,7 @@ import WorkstationDeploymentFieldOps6 from "../assets/works/WorkstationDeploymen
 import WorkstationDeploymentFieldOps7 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (7).jpg";
 import WorkstationDeploymentFieldOps8 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (8).png";
 
-import PcHardwareMaintenanceRepairGif from "../assets/works/PCHardwareMaintenanceRepair.gif";
+import PcHardwareMaintenanceRepairGif from "../assets/works/PcHardwareMaintenanceRepair.gif";
 
 const projects = [
   {
