@@ -107,6 +107,24 @@ import LottoCam2 from "../assets/works/LottoCam/LottoCam (2).png";
 import LottoCam3 from "../assets/works/LottoCam/LottoCam (3).png";
 import LottoCam4 from "../assets/works/LottoCam/LottoCam (4).png";
 
+import ServiceDeskImg from "../assets/works/EnterpriseServiceDesk.png";
+import ServiceDesk1 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (1).png";
+import ServiceDesk2 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (2).png";
+import ServiceDesk3 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (3).png";
+import ServiceDesk4 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (4).png";
+
+import WorkstationDeploymentFieldOpsImg from "../assets/works/WorkstationDeploymentFieldOps.jpg";
+import WorkstationDeploymentFieldOps1 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (1).jpg";
+import WorkstationDeploymentFieldOps2 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (2).jpg";
+import WorkstationDeploymentFieldOps3 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (3).jpg";
+import WorkstationDeploymentFieldOps4 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (4).jpg";
+import WorkstationDeploymentFieldOps5 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (5).jpg";
+import WorkstationDeploymentFieldOps6 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (6).jpg";
+import WorkstationDeploymentFieldOps7 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (7).jpg";
+import WorkstationDeploymentFieldOps8 from "../assets/works/WorkstationDeploymentFieldOps/WorkstationDeploymentFieldOps (8).png";
+
+import PcHardwareMaintenanceRepairGif from "../assets/works/PCHardwareMaintenanceRepair.gif";
+
 const projects = [
   {
     id: "mt-masaraga-protected-landscape",
@@ -223,6 +241,38 @@ const projects = [
       "Successfully demonstrated a unified digital eco-tourism management experience that streamlines hiker registrations, pass generation, and administrative park workflows.",
   },
   {
+    id: "enterprise-service-desk",
+    year: "2026",
+    title: "Enterprise Service Desk & IT Support Simulation",
+    subtitle: "ServiceDesk Simulator Platform",
+    category: "IT Support",
+    featured: true,
+    image: ServiceDeskImg,
+    images: [ServiceDeskImg, ServiceDesk1, ServiceDesk2, ServiceDesk3, ServiceDesk4],
+    videoUrl: [
+      // Paste your Google Drive preview link or video URL:
+      // "https://drive.google.com/file/d/YOUR_DRIVE_FILE_ID/preview?autoplay=1"
+    ],
+    architecture: [
+      "Resolved L1/L2 tickets via chat/call, documenting incident lifecycles and managing Active Directory accounts, resets, and group permissions.",
+      "Performed remote desktop troubleshooting to resolve end-user hardware issues, update drivers/firmware, and fix display configurations."
+    ],
+    tech: ["Active Directory", "Remote Desktop", "Ticket Lifecycle", "L1/L2 Support", "Driver & Firmware"],
+    demoUrl: null,
+    codeUrl: null,
+    blogUrl: null,
+    overview:
+      "Enterprise Service Desk & IT Support simulation focusing on incident lifecycles, user access management, and remote troubleshooting.",
+    problemStatement:
+      "Simulated enterprise environments require rapid ticket diagnosis, strict escalation adherence, and secure user management without impacting live production systems.",
+    solution:
+      "Handled L1/L2 incidents, managed Active Directory account lifecycles and role permissions, and performed remote technical interventions for hardware/display faults.",
+    documentation:
+      "Documented standard operating procedures (SOPs), incident handling logs, and configuration steps for rapid user recovery.",
+    conclusion:
+      "Strengthened Tier 1 and Tier 2 IT support competencies, identity management, and remote resolution workflows."
+  },
+  {
     id: "lottocam",
     year: "2026",
     title: "LottoCam",
@@ -316,6 +366,35 @@ const projects = [
       "Kept the parser a single pure function as the only place OCR text becomes ticket data, added games and result sources through one module (src/lib/games.js), and gave every data view empty, loading, and error states.",
     conclusion:
       "LottoCam demonstrates a privacy-first, camera-assisted lottery ticket verification experience that removes manual re-entry while keeping all ticket processing on the user's device.",
+  },
+  {
+    id: "pc-hardware-maintenance-repair",
+    year: "2025",
+    title: "PC Hardware Maintenance & System Repair",
+    subtitle: "Personal Technical Projects",
+    category: "IT Support",
+    featured: false,
+    image: PcHardwareMaintenanceRepairGif,
+    images: [PcHardwareMaintenanceRepairGif],
+    videoUrl: [],
+    architecture: [
+      "Diagnosed laptop and desktop hardware failures, performing physical component troubleshooting for black screen and frozen/stuck screen issues.",
+      "Executed hardware updates and maintenance, including main laptop battery replacements, BIOS battery changes, BIOS setup/configuration, and power calibration."
+    ],
+    tech: ["PC Diagnostics", "Component Troubleshooting", "BIOS Setup", "Power Calibration", "Battery Replacement"],
+    demoUrl: null,
+    codeUrl: null,
+    blogUrl: null,
+    overview:
+      "Hands-on diagnostics, preventative maintenance, component replacement, and firmware/power calibration for desktop and laptop computers.",
+    problemStatement:
+      "Intermittent display freezes, boot failures, and depleted battery power cells caused unbootable systems and unstable performance.",
+    solution:
+      "Isolated faulty components (RAM, storage, CMOS/main batteries), configured and updated BIOS settings, and recalibrated power delivery.",
+    documentation:
+      "Created hardware diagnosis trees, POST error checklists, and step-by-step disassembly guides.",
+    conclusion:
+      "Restored unbootable systems to reliable operating condition and extended hardware lifespan."
   },
   {
     id: "bucs-mcc",
@@ -419,6 +498,35 @@ const projects = [
       "Programmed on a normalized MySQL database structure. Implemented advanced Role-Based Access Control (RBAC), customized data filters, secure SMTP mail relays, and comprehensive backend API documentation.",
     conclusion:
       "Transitioned the department to a paperless environment, reducing specimen processing turnaround times while laying a solid foundation for future biotech research.",
+  },
+  {
+    id: "workstation-deployment-field-ops",
+    year: "2026",
+    title: "Workstation Deployment & Field Operations",
+    subtitle: "Internship & Field Deployment",
+    category: "IT Support",
+    featured: false,
+    image: WorkstationDeploymentFieldOpsImg,
+    images: [WorkstationDeploymentFieldOpsImg, WorkstationDeploymentFieldOps1, WorkstationDeploymentFieldOps2, WorkstationDeploymentFieldOps3, WorkstationDeploymentFieldOps4, WorkstationDeploymentFieldOps5, WorkstationDeploymentFieldOps6, WorkstationDeploymentFieldOps7, WorkstationDeploymentFieldOps8],
+    videoUrl: [],
+    architecture: [
+      "Assembled desktop PCs, installed and configured Windows OS, and deployed AV projectors for organizational meetings.",
+      "Diagnosed and resolved office LAN and wireless access point (AP) connectivity issues to restore client network access."
+    ],
+    tech: ["Hardware Assembly", "Windows OS", "LAN / AP Networking", "AV Deployment", "Field Support"],
+    demoUrl: null,
+    codeUrl: null,
+    blogUrl: null,
+    overview:
+      "Field IT operations involving hardware rollout, operating system provisioning, network endpoint setup, and audiovisual meeting preparations.",
+    problemStatement:
+      "Offices and meeting venues needed prompt workstation assembly, dependable OS installation, and zero-downtime audiovisual configuration for organizational sessions.",
+    solution:
+      "Constructed desktop hardware, provisioned clean Windows installations, configured network endpoints, and restored wireless AP connectivity during outages.",
+    documentation:
+      "Maintained equipment checklists, network port mappings, and pre-meeting AV verification guides.",
+    conclusion:
+      "Ensured smooth organizational operations and established reliable network and workstation availability."
   },
   {
     id: "mquest-elearning",
@@ -709,6 +817,7 @@ export const categories = [
   { id: "App Dev", name: "App Dev" },
   { id: "Networking", name: "Networking" },
   { id: "System Admin", name: "System Admin" },
+  { id: "IT Support", name: "IT Support" },
 ];
 
 export { projects };
