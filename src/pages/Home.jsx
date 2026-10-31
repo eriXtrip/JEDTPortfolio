@@ -9,7 +9,7 @@ import { ExperienceSection } from "../components/ExperienceSection";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { GitHubSection } from "../components/GitHubSection";
 import { PubmatsGallery } from "../components/PubmatsGallery";
-import { ContactSection } from "../components/ContactSection";
+import { ContactCard } from "../components/ContactCard";
 import { Footer } from "../components/Footer";
 import PixelSwap from "../components/PixelSwap";
 import { ProjectDetailPage } from "../components/ProjectDetailPage";
@@ -87,7 +87,7 @@ export const Home = () => {
         <PubmatsGallery />
         <SkillsSection />
         <TechStackSection />
-        <ContactSection />
+        <ContactCard />
         <Footer />
       </main>
       )}
