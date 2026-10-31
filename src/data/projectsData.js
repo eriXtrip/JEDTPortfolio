@@ -108,6 +108,7 @@ import LottoCam3 from "../assets/works/LottoCam/LottoCam (3).png";
 import LottoCam4 from "../assets/works/LottoCam/LottoCam (4).png";
 
 import ServiceDeskImg from "../assets/works/EnterpriseServiceDesk.png";
+import ServiceDeskGif from "../assets/works/EnterpriseServiceDesk.gif";
 import ServiceDesk1 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (1).png";
 import ServiceDesk2 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (2).png";
 import ServiceDesk3 from "../assets/works/EnterpriseServiceDesk/EnterpriseServiceDesk (3).png";
@@ -249,9 +250,10 @@ const projects = [
     featured: true,
     image: ServiceDeskImg,
     images: [ServiceDeskImg, ServiceDesk1, ServiceDesk2, ServiceDesk3, ServiceDesk4],
+     Gif: ServiceDeskGif,
     videoUrl: [
-      // Paste your Google Drive preview link or video URL:
-      // "https://drive.google.com/file/d/YOUR_DRIVE_FILE_ID/preview?autoplay=1"
+      "https://drive.google.com/file/d/1BpwOxDOy8pbfanac4_UXdDHC4cUXaSTA/preview?autoplay=1",
+      "https://drive.google.com/file/d/1ngftt3kTFlBm6Xr-OVMYt0eneEAh_drr/preview?autoplay=1",
     ],
     architecture: [
       "Resolved L1/L2 tickets via chat/call, documenting incident lifecycles and managing Active Directory accounts, resets, and group permissions.",
